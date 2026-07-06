@@ -154,6 +154,32 @@
     color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
   }
 
+  /* ---- Testimonials carousel ---- */
+  .carousel { margin-top: 2.5rem; }
+  .carousel__viewport { overflow: hidden; }
+  .carousel__track { display: flex; margin: 0; padding: 0; list-style: none; transition: transform var(--dur-base) var(--ease-out); }
+  .carousel__slide { flex: 0 0 100%; display: flex; justify-content: center; padding: 0 0.5rem; }
+  .carousel__slide .testi { max-width: 640px; width: 100%; text-align: center; border: none; box-shadow: var(--shadow-float); }
+  .carousel__slide .testi blockquote { font-size: 24px; line-height: 1.4; }
+  .carousel__controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.75rem; }
+  .carousel__btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--plum);
+    background: var(--white); color: var(--plum); font-size: 20px; line-height: 1; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+  }
+  .carousel__btn:hover { background: var(--plum); color: var(--white); }
+  .carousel__btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  .carousel__dots { display: flex; gap: 0.5rem; }
+  .carousel__dot {
+    width: 10px; height: 10px; padding: 0; border-radius: 50%; cursor: pointer;
+    border: 1px solid var(--plum); background: transparent;
+    transition: background var(--dur-fast) var(--ease-out);
+  }
+  .carousel__dot[aria-current="true"] { background: var(--plum); }
+  .carousel__dot:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  @media (prefers-reduced-motion: reduce) { .carousel__track { transition: none; } }
+
   /* ---- Podcast ---- */
   .podcast-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center; }
   .podcast-grid img { border-radius: var(--radius); }
@@ -376,18 +402,37 @@
         <p class="eyebrow">Ervaringen</p>
         <h2 class="h-under-image">Wat deelnemers vertellen</h2>
       </div>
-      <div class="testi-grid">
-        <div class="testi">
-          <blockquote>"De cursus heeft mijn leven veranderd. Ik voel me sterker en meer in controle dan ooit tevoren."</blockquote>
-          <cite>Anja, voormalig deelnemer</cite>
+      <div class="carousel" id="testiCarousel" aria-roledescription="carrousel" aria-label="Ervaringen van deelnemers">
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="1 van 3">
+              <div class="testi">
+                <blockquote>"De cursus heeft mijn leven veranderd. Ik voel me sterker en meer in controle dan ooit tevoren."</blockquote>
+                <cite>Anja, voormalig deelnemer</cite>
+              </div>
+            </li>
+            <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="2 van 3">
+              <div class="testi">
+                <blockquote>"Dankzij de cursus begrijp ik nu mijn verleden beter en kan ik met vertrouwen naar de toekomst kijken."</blockquote>
+                <cite>Marieke, voormalig deelnemer</cite>
+              </div>
+            </li>
+            <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="3 van 3">
+              <div class="testi">
+                <blockquote>"De steun van de groep en de cursusleider was precies wat ik nodig had om mijn leven weer op de rails te krijgen."</blockquote>
+                <cite>Sophie, voormalig deelnemer</cite>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="testi">
-          <blockquote>"Dankzij de cursus begrijp ik nu mijn verleden beter en kan ik met vertrouwen naar de toekomst kijken."</blockquote>
-          <cite>Marieke, voormalig deelnemer</cite>
-        </div>
-        <div class="testi">
-          <blockquote>"De steun van de groep en de cursusleider was precies wat ik nodig had om mijn leven weer op de rails te krijgen."</blockquote>
-          <cite>Sophie, voormalig deelnemer</cite>
+        <div class="carousel__controls">
+          <button class="carousel__btn" type="button" data-dir="-1" aria-label="Vorige ervaring">&lsaquo;</button>
+          <div class="carousel__dots" role="tablist" aria-label="Kies een ervaring">
+            <button class="carousel__dot" type="button" aria-current="true" aria-label="Ervaring 1"></button>
+            <button class="carousel__dot" type="button" aria-label="Ervaring 2"></button>
+            <button class="carousel__dot" type="button" aria-label="Ervaring 3"></button>
+          </div>
+          <button class="carousel__btn" type="button" data-dir="1" aria-label="Volgende ervaring">&rsaquo;</button>
         </div>
       </div>
     </div>
@@ -545,6 +590,43 @@
       alert('Deze link koppelen we binnenkort (' + el.getAttribute('data-todo') + ').');
     });
   });
+
+  // Testimonials: zelf-verschuivende carrousel. Pauzeert bij hover/focus en
+  // staat stil voor bezoekers met 'reduce motion' aan (traumageïnformeerd: rustig, nooit verrassend).
+  (function () {
+    var root = document.getElementById('testiCarousel');
+    if (!root) return;
+    var track = root.querySelector('.carousel__track');
+    var slides = root.querySelectorAll('.carousel__slide');
+    var dots = root.querySelectorAll('.carousel__dot');
+    var prev = root.querySelector('[data-dir="-1"]');
+    var next = root.querySelector('[data-dir="1"]');
+    var i = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var DELAY = 6000;
+
+    function render() {
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      dots.forEach(function (d, n) {
+        if (n === i) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
+      });
+    }
+    function go(n) { i = (n + slides.length) % slides.length; render(); }
+    function start() { if (reduce || timer) return; timer = setInterval(function () { go(i + 1); }, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    next.addEventListener('click', function () { go(i + 1); });
+    prev.addEventListener('click', function () { go(i - 1); });
+    dots.forEach(function (d, n) { d.addEventListener('click', function () { go(n); }); });
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+
+    render();
+    start();
+  })();
 </script>
 </body>
 </html>
