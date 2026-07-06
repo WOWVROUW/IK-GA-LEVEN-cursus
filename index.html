@@ -122,13 +122,19 @@
   .persona:hover .persona__hint,
   .persona:focus-within .persona__hint { display: none; }
 
-  /* ---- Ervaring-pills ---- */
-  .pills { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
-  .pill {
-    font-family: var(--font-body); font-size: 14px;
-    background: var(--mint); color: var(--plum);
-    border-radius: 20px; padding: 6px 16px; white-space: nowrap;
+  /* ---- Ervaring-strip — rustige, hairline-omlijnde regel i.p.v. pills ---- */
+  .exp-strip {
+    margin: 0; text-align: center; line-height: 2.4;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border-rose);
+    border-bottom: 1px solid var(--border-rose);
   }
+  .exp-strip span {
+    font-family: var(--font-body); font-size: 13px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted); white-space: nowrap;
+  }
+  .exp-strip span::before { content: "·"; margin: 0 1.1rem; color: var(--rose); }
+  .exp-strip span:first-child::before { content: none; }
 
   /* ---- Over Hiltje: full-bleed split ---- */
   .about-split { display: grid; grid-template-columns: 1fr 1fr; background: var(--rose-tint); }
@@ -370,15 +376,9 @@
   <!-- Ervaring-pills -->
   <section class="section" id="ervaring" style="padding-top:0;">
     <div class="section__inner">
-      <div class="pills">
-        <span class="pill">Gratis</span>
-        <span class="pill">Online te volgen</span>
-        <span class="pill">20.000+ vrouwen wereldwijd via Own My Life</span>
-        <span class="pill">10 weken</span>
-        <span class="pill">In jouw tempo</span>
-        <span class="pill">Veilig</span>
-        <span class="pill">Sisterhood zonder oordeel</span>
-      </div>
+      <p class="exp-strip">
+        <span>Gratis</span><span>Online via Zoom</span><span>20.000+ vrouwen via Own My Life</span><span>10 weken</span><span>In jouw tempo</span><span>Veilig</span><span>Sisterhood zonder oordeel</span>
+      </p>
     </div>
   </section>
 
