@@ -22,17 +22,20 @@
   }
   .skip-link:focus { left: var(--gutter); top: var(--gutter); }
 
-  /* Exit button — always visible, always on top */
+  /* Exit button — always visible, always on top.
+     Magenta = de 'acute' pop-kleur (max 1 per pagina): de snelle-uitgang
+     is de meest acute veiligheidsknop, dus die krijgt het magenta accent. */
   .exit-btn {
     position: fixed; top: 14px; right: 14px; z-index: 1200;
-    background: var(--white); color: var(--plum); border: 1px solid var(--plum);
-    font-family: var(--font-body); font-size: 12px; font-weight: 500;
+    background: var(--white); color: var(--magenta); border: 1px solid var(--magenta);
+    font-family: var(--font-body); font-size: 12px; font-weight: 600;
     letter-spacing: 0.04em; text-transform: uppercase;
     padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
     box-shadow: var(--shadow-float);
     white-space: nowrap;
   }
-  .exit-btn:hover { background: var(--plum); color: #fff; }
+  .exit-btn:hover { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+  .exit-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(206, 18, 174, 0.35); }
   .exit-btn__short { display: none; }
 
   /* Safety banner — right padding reserves room for the fixed exit button */
@@ -159,8 +162,19 @@
   .carousel__viewport { overflow: hidden; }
   .carousel__track { display: flex; margin: 0; padding: 0; list-style: none; transition: transform var(--dur-base) var(--ease-out); }
   .carousel__slide { flex: 0 0 100%; display: flex; justify-content: center; padding: 0 0.5rem; }
-  .carousel__slide .testi { max-width: 640px; width: 100%; text-align: center; border: none; box-shadow: var(--shadow-float); }
-  .carousel__slide .testi blockquote { font-size: 24px; line-height: 1.4; }
+  .carousel__slide .testi { max-width: 720px; width: 100%; text-align: center; background: transparent; border: none; box-shadow: none; padding: 0; }
+  .carousel__slide .testi blockquote {
+    font-family: var(--font-display); font-weight: var(--weight-light);
+    font-size: var(--fs-testimonial); line-height: var(--lh-testimonial); color: var(--plum);
+  }
+  /* Rond aanhalingsteken-icoon boven de quote */
+  .carousel__quote {
+    display: flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; margin: 0 auto 1.5rem;
+    border-radius: 50%; border: 2px solid var(--plum); background: var(--white);
+    font-family: var(--font-display); font-size: 46px; line-height: 1; color: var(--plum);
+    padding-top: 24px; /* de hoog-zittende “ optisch centreren */
+  }
   .carousel__controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.75rem; }
   .carousel__btn {
     width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--plum);
@@ -407,19 +421,22 @@
           <ul class="carousel__track">
             <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="1 van 3">
               <div class="testi">
-                <blockquote>"De cursus heeft mijn leven veranderd. Ik voel me sterker en meer in controle dan ooit tevoren."</blockquote>
+                <span class="carousel__quote" aria-hidden="true">&ldquo;</span>
+                <blockquote>De cursus heeft mijn leven veranderd. Ik voel me sterker en meer in controle dan ooit tevoren.</blockquote>
                 <cite>Anja, voormalig deelnemer</cite>
               </div>
             </li>
             <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="2 van 3">
               <div class="testi">
-                <blockquote>"Dankzij de cursus begrijp ik nu mijn verleden beter en kan ik met vertrouwen naar de toekomst kijken."</blockquote>
+                <span class="carousel__quote" aria-hidden="true">&ldquo;</span>
+                <blockquote>Dankzij de cursus begrijp ik nu mijn verleden beter en kan ik met vertrouwen naar de toekomst kijken.</blockquote>
                 <cite>Marieke, voormalig deelnemer</cite>
               </div>
             </li>
             <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="3 van 3">
               <div class="testi">
-                <blockquote>"De steun van de groep en de cursusleider was precies wat ik nodig had om mijn leven weer op de rails te krijgen."</blockquote>
+                <span class="carousel__quote" aria-hidden="true">&ldquo;</span>
+                <blockquote>De steun van de groep en de cursusleider was precies wat ik nodig had om mijn leven weer op de rails te krijgen.</blockquote>
                 <cite>Sophie, voormalig deelnemer</cite>
               </div>
             </li>
@@ -486,7 +503,7 @@
         <div class="product">
           <h3>Gratis kennismakingsgesprek</h3>
           <p>Een kort, gratis gesprek — geen verplichtingen, geen verkooppraatje. Gewoon kijken of dit bij je past.</p>
-          <a href="#" class="btn" data-todo="calendly">Plan een gesprek <span class="btn__arrow">→</span></a>
+          <a href="https://calendly.com/wowvrouw/ikgaleven" class="btn" target="_blank" rel="noopener">Plan een gesprek <span class="btn__arrow">→</span></a>
         </div>
       </div>
     </div>

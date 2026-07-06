@@ -21,13 +21,14 @@
 
   .exit-btn {
     position: fixed; top: 14px; right: 14px; z-index: 1200;
-    background: var(--white); color: var(--plum); border: 1px solid var(--plum);
-    font-family: var(--font-body); font-size: 12px; font-weight: 500;
+    background: var(--white); color: var(--magenta); border: 1px solid var(--magenta);
+    font-family: var(--font-body); font-size: 12px; font-weight: 600;
     letter-spacing: 0.04em; text-transform: uppercase;
     padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
     box-shadow: var(--shadow-float); white-space: nowrap;
   }
-  .exit-btn:hover { background: var(--plum); color: #fff; }
+  .exit-btn:hover { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+  .exit-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(206, 18, 174, 0.35); }
   .exit-btn__short { display: none; }
 
   .announce {
