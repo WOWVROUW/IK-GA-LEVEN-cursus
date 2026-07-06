@@ -202,25 +202,27 @@
   @media (prefers-reduced-motion: reduce) { .carousel__track { transition: none; } }
 
   /* ---- Podcast: foto + telefoon-mockup links, witte kaart met afleveringen rechts ---- */
-  #podcast { position: relative; overflow: hidden; background: var(--rose-100); }
+  #podcast { position: relative; overflow: hidden; background: var(--rose-100); padding: 0; }
   .podcast-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; }
-  .podcast-visual { position: relative; align-self: stretch; min-height: 540px; }
+  .podcast-visual { position: relative; align-self: stretch; min-height: 560px; }
+  /* Foto vult de linkerkolom edge-to-edge, geen padding of afronding */
   .podcast-visual .podcast-photo {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; border-radius: var(--radius); z-index: 0;
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
   }
   /* Telefoon: eindigt ~25% over de witte kaart, schuift vanuit de zijkant in */
   .podcast-visual .podcast-phone {
-    position: absolute; bottom: 0; left: 27%; width: 54%; max-width: 300px; height: auto; z-index: 3;
+    position: absolute; bottom: 0; left: 32.5%; width: 300px; max-width: 78%; height: auto; z-index: 3;
     filter: drop-shadow(0 20px 40px rgba(92, 85, 86, 0.28));
-    opacity: 0; transform: translateX(-170%);
+    opacity: 0; transform: translateX(-180%);
     transition: opacity 0.6s var(--ease-out), transform 0.9s var(--ease-out);
   }
   .podcast-visual.in .podcast-phone { opacity: 1; transform: none; }
-  /* Witte kaart valt ~1/3 over de middenlijn in de linkerkolom */
+  /* Witte kaart valt ~1/3 over de middenlijn; rechts uitgelijnd op de container */
   .podcast-content {
     background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-float);
-    padding: 2.75rem; margin-left: -185px; position: relative; z-index: 2;
+    padding: 2.75rem; position: relative; z-index: 2;
+    margin-left: -210px;
+    margin-right: max(var(--gutter), calc((100vw - var(--container-max)) / 2));
   }
   .episode-list { list-style: none; padding: 0; margin: 1.5rem 0; }
   .episode { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 0; border-top: 1px solid var(--border-rose); }
@@ -274,7 +276,7 @@
     .hero-image { min-height: 320px; order: -1; }
     .optin-grid, .podcast-split { grid-template-columns: 1fr; gap: 2.5rem; }
     .podcast-visual { min-height: 380px; order: -1; }
-    .podcast-content { margin-left: 0; }
+    .podcast-content { margin: 0 var(--gutter) var(--gutter); }
     .about-photo-side { order: -1; }
     .persona-grid, .testi-grid, .products-grid, .program-features {
       grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto;
@@ -484,7 +486,7 @@
 
   <!-- Podcast -->
   <section class="section" id="podcast">
-    <div class="section__inner podcast-split">
+    <div class="podcast-split">
       <div class="podcast-visual">
         <img class="podcast-photo" src="assets/photos/hero-bloesem.jpg" alt="">
         <img class="podcast-phone" src="assets/photos/podcast-phone.png" alt="Podcastspeler op een telefoon">
@@ -507,7 +509,7 @@
             <p class="episode__text"><span class="episode__num">Episode 053</span>How to Create an Amazing Lead Magnet That Grows Your Email List</p>
           </li>
         </ul>
-        <a href="#" class="btn btn--outline" data-todo="podcast-link">Listen to the podcast <span class="btn__arrow">→</span></a>
+        <a href="#" class="btn" data-todo="podcast-link">Listen to the podcast <span class="btn__arrow">→</span></a>
       </div>
     </div>
   </section>
