@@ -164,7 +164,7 @@ Deze regels gelden voor élke pagina op de site, niet alleen de salespagina.
   `.section--band` / `.section--butter` / `.section--plum`, `.h-hero` /
   `.h-testimonial` / `.h-optin` / `.h-under-image`, `.card` / `.card--float`,
   `.divider`, `.joy`.
-- `design-system.md` — dit bestand.
+- `ik-ga-leven-design-system.md` — dit bestand (bestandsnaam bevat "ik ga leven" om verwarring met het aparte WOW! Vrouw / Claude Design-systeem te voorkomen — zie de verzoening bovenaan).
 - `preview.html` — levende styleguide; open 'm in de browser om alles te zien.
 
 ## 8. Openstaande / niet-bevestigde punten
