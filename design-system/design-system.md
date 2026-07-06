@@ -23,14 +23,16 @@ niet-technisch naslagwerk. Zie `preview.html` voor de levende styleguide.
 ## 1. Logo
 
 Het echte merklogo is een handgetekende ("graffiti-stijl") stapel-wordmark:
-**"IK GA"** in roos boven **"LEVEN"** verticaal in pruim. Eén ontwerp, drie
-bestanden voor verschillende achtergronden — bestanden staan in `assets/logo/`:
+**"IK GA"** boven **"LEVEN"** verticaal. Eén ontwerp, drie kleurvarianten,
+aangeleverd door Hiltje via Drive (2026-07-06) — dit zijn de definitieve
+bestanden, eerdere logo-varianten in het project zijn vervangen. Bestanden
+staan in `assets/logo/`:
 
 | Bestand | Gebruik |
 |---|---|
 | `logo-bordeaux.png` | **Primair** — op lichte vlakken (header op ecru, footer) |
-| `logo-rose-shadow.png` | Op een zachte roos-tint achtergrond (`.section--band`) |
-| `logo-rose.png` | Op donkere pruim-vlakken of over foto's |
+| `logo-original.png` | Op een zachte roos-tint achtergrond (`.section--band`) |
+| `logo-roos.png` | Lichtste variant — op donkere pruim-vlakken of over foto's |
 
 Alle drie zijn transparante PNG's op 2000×2000px — ruim voldoende resolutie voor
 retina-headers; schaal ze naar beneden, nooit op.
