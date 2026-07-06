@@ -117,28 +117,32 @@
     border: 0; border-top: 0.4px solid var(--plum);
     margin: 1.25rem auto 1.5rem;
   }
-  .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-  .persona {
-    background: var(--white); border-left: 3px solid var(--rose);
-    border-radius: var(--radius); padding: 0; overflow: hidden;
-    transition: box-shadow var(--dur-base) var(--ease-out);
+  .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+  .persona { text-align: center; display: flex; flex-direction: column; }
+  .persona .btn { margin-top: auto; align-self: center; }
+  .persona__imgwrap { position: relative; }
+  .persona__img {
+    width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); display: block;
   }
-  .persona:hover, .persona:focus-within { box-shadow: var(--shadow-float); outline: none; }
-  .persona__img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-  .persona__body { padding: 1.5rem 1.75rem; }
+  .persona__img--placeholder {
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 1.5rem;
+    border: 1px dashed var(--plum); background: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+  }
+  /* Rondje met monogram, overlapt de onderkant van de foto */
+  .persona__badge {
+    position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 50%); z-index: 2;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--white); border: 2px solid var(--plum);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 22px; color: var(--plum);
+  }
   .persona__label {
-    display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--plum); margin-bottom: 0.5rem;
+    display: block; margin: 2.6rem 0 0.6rem;
+    font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--plum);
   }
-  .persona__hint { font-size: 13px; color: var(--text-muted); margin: 0; }
-  .persona__text {
-    margin: 0; max-height: 0; opacity: 0; overflow: hidden;
-    transition: max-height var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
-  }
-  .persona:hover .persona__text,
-  .persona:focus-within .persona__text { max-height: 460px; opacity: 1; }
-  .persona:hover .persona__hint,
-  .persona:focus-within .persona__hint { display: none; }
+  .persona__text { margin: 0 0 1.25rem; }
   /* Afsluitende regels + knop onder de kaarten */
   .herken-closing { margin-top: 3rem; }
   .herken-closing__text {
@@ -395,29 +399,32 @@
         <p>Iedere situatie is anders. Maar de vragen die vrouwen zichzelf stellen, lijken vaak op elkaar.</p>
       </div>
       <div class="persona-grid">
-        <article class="persona" tabindex="0">
-          <img class="persona__img" src="assets/photos/woman-writing.png" alt="Vrouw die schrijft in een dagboek">
-          <div class="persona__body">
-            <span class="persona__label">Marijke</span>
-            <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
-            <p class="persona__text">Haar partner kleineert haar, spot met haar, geeft al hun geld uit en wil niet dat ze contact heeft met haar moeder of vriendinnen. In het begin was alles fantastisch. <em>Nu vraagt ze zich af: hoe is het zo ver gekomen?</em></p>
+        <article class="persona">
+          <div class="persona__imgwrap">
+            <img class="persona__img" src="assets/photos/woman-writing.png" alt="Vrouw die schrijft in een dagboek">
+            <span class="persona__badge" aria-hidden="true">M</span>
           </div>
+          <span class="persona__label">Marijke</span>
+          <p class="persona__text">Haar partner kleineert haar, spot met haar, geeft al hun geld uit en wil niet dat ze contact heeft met haar moeder of vriendinnen. In het begin was alles fantastisch. <em>Nu vraagt ze zich af: hoe is het zo ver gekomen?</em></p>
+          <a href="#over-cursus" class="btn btn--fill">Lees meer <span class="btn__arrow">→</span></a>
         </article>
-        <article class="persona" tabindex="0">
-          <img class="persona__img" src="assets/photos/woman-coffee.png" alt="Vrouw die een rustig moment voor zichzelf neemt met koffie">
-          <div class="persona__body">
-            <span class="persona__label">Joyce</span>
-            <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
-            <p class="persona__text">Elke keer als ze probeert te vertrekken, keert ze terug. Hij verdraait haar woorden, gebruikt de kinderen als pressiemiddel. <em>Ze blijft zichzelf afvragen: 'Wat is er toch mis met mij?'</em></p>
+        <article class="persona">
+          <div class="persona__imgwrap">
+            <img class="persona__img" src="assets/photos/woman-coffee.png" alt="Vrouw die een rustig moment voor zichzelf neemt met koffie">
+            <span class="persona__badge" aria-hidden="true">J</span>
           </div>
+          <span class="persona__label">Joyce</span>
+          <p class="persona__text">Elke keer als ze probeert te vertrekken, keert ze terug. Hij verdraait haar woorden, gebruikt de kinderen als pressiemiddel. <em>Ze blijft zichzelf afvragen: 'Wat is er toch mis met mij?'</em></p>
+          <a href="#over-cursus" class="btn btn--fill">Lees meer <span class="btn__arrow">→</span></a>
         </article>
-        <article class="persona" tabindex="0">
-          <img class="persona__img" src="assets/photos/woman-beach.png" alt="Vrouw die rustig langs het water loopt">
-          <div class="persona__body">
-            <span class="persona__label">Ava</span>
-            <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
-            <p class="persona__text">Haar ex verandert continu de afspraken over de kinderen, stuurt dreigende berichten en belt haar huilend op. Ze heeft geen vriendinnen meer. <em>Ze is continu angstig. Ze weet niet meer wie ze zelf is.</em></p>
+        <article class="persona">
+          <div class="persona__imgwrap">
+            <div class="persona__img persona__img--placeholder">Foto: vrouw achter een laptop — nog toe te voegen</div>
+            <span class="persona__badge" aria-hidden="true">A</span>
           </div>
+          <span class="persona__label">Ava</span>
+          <p class="persona__text">Haar ex verandert continu de afspraken over de kinderen, stuurt dreigende berichten en belt haar huilend op. Ze heeft geen vriendinnen meer. <em>Ze is continu angstig. Ze weet niet meer wie ze zelf is.</em></p>
+          <a href="#over-cursus" class="btn btn--fill">Lees meer <span class="btn__arrow">→</span></a>
         </article>
       </div>
       <div class="center-narrow herken-closing">
