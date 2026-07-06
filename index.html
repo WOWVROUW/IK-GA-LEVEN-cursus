@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ik ga leven — 10-weken traject</title>
+<meta name="description" content="Ik ga leven: een 10-weekse training voor vrouwen die geweld in hun relatie meemaken of hebben meegemaakt. In jouw tempo, stap voor stap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system/tokens.css">
+<style>
+  /* ---- Page-specific layout (not part of the reusable token set) ---- */
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; background: var(--plum); color: #fff;
+    padding: 10px 16px; z-index: 2000; border-radius: var(--radius);
+  }
+  .skip-link:focus { left: var(--gutter); top: var(--gutter); }
+
+  /* Exit button — always visible, always on top */
+  .exit-btn {
+    position: fixed; top: 14px; right: 14px; z-index: var(--z-toast, 1200);
+    background: var(--white); color: var(--plum); border: 1px solid var(--plum);
+    font-family: var(--font-body); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
+    box-shadow: var(--shadow-float);
+    white-space: nowrap;
+  }
+  .exit-btn:hover { background: var(--plum); color: #fff; }
+  .exit-btn__short { display: none; }
+
+  /* Announcement bar — right padding reserves room for the fixed exit button */
+  .announce {
+    background: var(--butter); color: var(--text); text-align: center;
+    font-family: var(--font-body); font-size: 13px; padding: 10px 150px 10px var(--gutter);
+  }
+  @media (max-width: 600px) {
+    .exit-btn__full { display: none; }
+    .exit-btn__short { display: inline; }
+    .announce { padding-right: 100px; font-size: 12px; }
+  }
+
+  /* Header */
+  .site-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    max-width: var(--container-max); margin: 0 auto;
+  }
+  .site-header img { height: 44px; width: auto; }
+  .site-nav { display: flex; gap: 2rem; align-items: center; }
+  .site-nav a {
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    text-decoration: none; color: var(--text);
+  }
+  .site-nav a:hover { color: var(--plum); }
+  .nav-toggle { display: none; }
+  .nav-links { display: flex; gap: 2rem; }
+
+  /* Hero */
+  .hero { position: relative; }
+  .hero-photo {
+    position: relative;
+    background: linear-gradient(180deg, rgba(107,25,83,0.05), rgba(107,25,83,0.05)), var(--ecru);
+    min-height: 560px;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-photo img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    object-position: 60% 30%;
+  }
+  .hero-card {
+    position: relative; z-index: 1;
+    background: var(--white);
+    max-width: 480px;
+    margin: 3rem 0 3rem var(--gutter);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+  }
+  .hero-card .btn { margin-top: 1.5rem; }
+
+  /* Opt-in band */
+  .optin-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  }
+  .optin-form { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; max-width: 380px; }
+  .optin-form label { font-family: var(--font-body); font-size: 13px; color: var(--text); margin-bottom: 2px; }
+  .optin-form input {
+    font-family: var(--font-body); font-size: 16px; padding: 12px 14px;
+    border: 1px solid var(--border-rose); border-radius: var(--radius);
+    background: var(--white); color: var(--text);
+  }
+  .optin-form input:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  .optin-form .hint { font-size: 13px; color: var(--text-muted); margin-top: 0.25rem; }
+  .optin-photo img { border-radius: var(--radius); }
+
+  /* Three paths */
+  .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
+  .path h3 { margin: 1rem 0 0.5rem; }
+
+  /* Origin (podcast) */
+  .origin-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center; }
+  .origin-grid img { border-radius: var(--radius); }
+
+  /* Reassurance row */
+  .reassurance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .reassurance-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 2rem; }
+  .fact b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--plum); }
+  .fact span { font-family: var(--font-body); font-size: 14px; color: var(--text-muted); }
+  .reassurance-photo img { border-radius: var(--radius); }
+
+  /* About Hiltje */
+  .about-grid { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 3rem; align-items: center; }
+  .about-photo-placeholder {
+    aspect-ratio: 4/5; border-radius: var(--radius); border: 1px dashed var(--border-rose);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 1.5rem; background: var(--white);
+    font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+  }
+
+  /* Final CTA */
+  .cta-final { text-align: center; }
+  .cta-final .btn { margin-top: 1.5rem; }
+
+  /* Footer */
+  .site-footer { padding: var(--section-padding-mobile) var(--gutter) 2.5rem; }
+  .footer-grid {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;
+    padding-bottom: 2rem;
+  }
+  .footer-col h4 {
+    font-family: var(--font-body); font-weight: 600; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .footer-col a { display: block; font-family: var(--font-body); font-size: 14px; margin-bottom: 0.5rem; text-decoration: none; }
+  .footer-col a:hover { color: var(--plum); }
+  .safety-line {
+    font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+    padding-top: 1.5rem; line-height: 1.6;
+  }
+  .safety-line strong { color: var(--text); }
+
+  @media (max-width: 860px) {
+    .optin-grid, .origin-grid, .reassurance-grid, .about-grid { grid-template-columns: 1fr; }
+    .optin-photo, .origin-grid img.origin-img, .about-photo-placeholder { order: -1; }
+    .paths-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    .hero-card { margin: 2rem 1rem; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Ga direct naar de inhoud</a>
+
+<button class="exit-btn" id="exitBtn" type="button" aria-label="Verlaat deze site snel">
+  <span class="exit-btn__full">Verlaat deze site snel</span>
+  <span class="exit-btn__short">Snel weg</span>
+</button>
+
+<div class="announce">Vrijblijvend kennismakingsgesprek — geheel gratis, geen verplichtingen.</div>
+
+<header class="site-header">
+  <a href="#main" aria-label="Ik ga leven — home">
+    <img src="design-system/assets/logo/logo-bordeaux.png" alt="Ik ga leven">
+  </a>
+  <nav class="site-nav" aria-label="Hoofdmenu">
+    <span class="nav-links">
+      <a href="#aanpak">Aanpak</a>
+      <a href="#voor-wie">Voor wie</a>
+      <a href="#over-hiltje">Over Hiltje</a>
+    </span>
+    <a href="#kennismaking" class="btn btn--outline" style="padding:10px 18px;">Kennismaking</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-photo">
+      <img src="assets/photos/woman-beach.png" alt="Vrouw die vrij en ontspannen langs het water loopt">
+      <div class="hero-card">
+        <p class="eyebrow">Ik ga leven · 10-weken traject</p>
+        <h1 class="h-hero">Je hebt het overleefd. Nu mag je gaan leven.</h1>
+        <p>Een traject voor vrouwen die geweld in hun relatie meemaken of hebben meegemaakt — stap voor stap, in jouw eigen tempo.</p>
+        <a href="#kennismaking" class="btn">Ontdek hoe het werkt <span class="btn__arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opt-in band -->
+  <section class="section section--band" id="weggever">
+    <div class="section__inner">
+      <div class="optin-grid">
+        <div>
+          <p class="eyebrow">Gratis</p>
+          <h2 class="h-optin">Zet een eerste, kleine stap</h2>
+          <p>Nog niet toe aan het traject, maar wel benieuwd? Ontvang het gratis e-book <em>"Kleine stappen — vijf oefeningen voor als het zwaar is"</em> in je mailbox.</p>
+          <form class="optin-form" id="optinForm">
+            <div>
+              <label for="optinName">Naam (optioneel)</label>
+              <input type="text" id="optinName" name="name" autocomplete="given-name">
+            </div>
+            <div>
+              <label for="optinEmail">E-mailadres</label>
+              <input type="email" id="optinEmail" name="email" required autocomplete="email">
+            </div>
+            <button type="submit" class="btn">Stuur mij het e-book <span class="btn__arrow">→</span></button>
+            <p class="hint">Je mag je naam ook weglaten — dat is helemaal jouw keuze. We delen je gegevens nooit met anderen.</p>
+          </form>
+        </div>
+        <div class="optin-photo">
+          <div class="card card--float" style="padding:0; overflow:hidden;">
+            <img src="assets/photos/journal.png" alt="Dagboek met de tekst 'small steps every day', naast een kop koffie">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drie paden -->
+  <section class="section" id="voor-wie">
+    <div class="section__inner">
+      <p class="eyebrow">Voor wie</p>
+      <h2 class="h-under-image">Herken je jezelf hierin?</h2>
+      <div class="paths-grid">
+        <div class="path">
+          <span class="step-num">1</span>
+          <h3 class="igl-h3" style="font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--plum);">Ik zit er nu middenin</h3>
+          <p>Je bent nog in de situatie, of net eruit, en zoekt een veilige volgende stap — in jouw tempo, niemand duwt je vooruit.</p>
+        </div>
+        <div class="path">
+          <span class="step-num">2</span>
+          <h3 style="font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--plum);">Het is voorbij, maar laat me niet los</h3>
+          <p>De relatie is al een tijd voorbij, maar wat er is gebeurd, speelt nog steeds mee in je dagelijks leven.</p>
+        </div>
+        <div class="path">
+          <span class="step-num">3</span>
+          <h3 style="font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--plum);">Ik wil weten of dit herkenbaar is</h3>
+          <p>Je twijfelt of je ervaring "erg genoeg" is om hulp te zoeken. Die twijfel hoeft je niet tegen te houden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waar dit vandaan komt -->
+  <section class="section section--butter" id="aanpak">
+    <div class="section__inner origin-grid">
+      <img class="origin-img" src="assets/photos/podcast-cover.png" alt="Cover van de podcast Van Geweld Naar Geluk, door WOW! Vrouw">
+      <div>
+        <p class="eyebrow">Waar dit vandaan komt</p>
+        <h2 class="h-under-image">Voortgekomen uit de podcast Van Geweld Naar Geluk</h2>
+        <p>Ik ga leven is ontstaan vanuit de podcast <em>Van Geweld Naar Geluk</em> en de bredere beweging <strong>Own My Life</strong> — wereldwijd inmiddels gevolgd door meer dan 20.000 vrouwen die hun leven weer terugpakken.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geruststelling -->
+  <section class="section" id="traject">
+    <div class="section__inner reassurance-grid">
+      <div>
+        <p class="eyebrow">Geen verrassingen</p>
+        <h2 class="h-under-image">Wat je wel en niet kunt verwachten</h2>
+        <p>Geen groot programma, geen mastermind, geen verkooppraatje. Gewoon een overzichtelijk traject, met ruimte voor jouw verhaal.</p>
+        <div class="reassurance-facts">
+          <div class="fact"><b>10 weken</b><span>Vaste opbouw, rustig tempo</span></div>
+          <div class="fact"><b>Kleine groep</b><span>Veilig en overzichtelijk</span></div>
+          <div class="fact"><b>Own My Life</b><span>Onderdeel van de bredere beweging</span></div>
+          <div class="fact"><b>Gratis</b><span>Vrijblijvend kennismakingsgesprek</span></div>
+        </div>
+      </div>
+      <div class="reassurance-photo">
+        <img src="assets/photos/group-session.png" alt="Kleine groep vrouwen in gesprek, met het boek Ik ga leven op tafel">
+      </div>
+    </div>
+  </section>
+
+  <!-- Over Hiltje -->
+  <section class="section section--band" id="over-hiltje">
+    <div class="section__inner about-grid">
+      <div class="about-photo-placeholder">
+        Foto van Hiltje volgt<br>— vervang dit vlak zodra je een foto aanlevert.
+      </div>
+      <div>
+        <p class="eyebrow">Over Hiltje</p>
+        <h2 class="h-under-image">Huisarts, coach, en oprichter van Ik ga leven</h2>
+        <p>Ik ben Hiltje — huisarts en coach. In mijn spreekkamer en via de podcast <em>Van Geweld Naar Geluk</em> hoorde ik keer op keer hoezeer geweld in een relatie doorwerkt, lang nadat het "voorbij" is. Ik ga leven is ontstaan om daar iets structureels tegenover te zetten: geen quick fix, maar een traject waarin je stap voor stap weer bij jezelf komt.</p>
+        <p class="joy">je mag er weer zijn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slot-CTA -->
+  <section class="section section--plum cta-final" id="kennismaking">
+    <div class="section__inner">
+      <p class="eyebrow" style="color:var(--rose-tint)">Vrijblijvend</p>
+      <h2 class="h-optin">Boek een kennismakingsgesprek</h2>
+      <p>Een kort, gratis gesprek — geen verplichtingen, geen verkooppraatje. Gewoon kijken of dit bij je past.</p>
+      <a href="#" class="btn" style="background:var(--white); color:var(--plum); border-color:var(--white);" id="calendlyLink">Plan een gesprek <span class="btn__arrow">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="design-system/assets/logo/logo-bordeaux.png" alt="Ik ga leven" style="height:32px; margin-bottom:0.75rem;">
+      </div>
+      <div class="footer-col">
+        <h4>Traject</h4>
+        <a href="#aanpak">Aanpak</a>
+        <a href="#voor-wie">Voor wie</a>
+        <a href="#over-hiltje">Over Hiltje</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#kennismaking">Kennismaking</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <hr class="divider">
+    <p class="safety-line">
+      <strong>Veilig verder browsen:</strong> gebruik de knop rechtsboven (of de Esc-toets) om deze site snel te verlaten — je gaat dan naar een neutrale pagina en de site verdwijnt uit je browsegeschiedenis.<br>
+      <strong>Ben je nu in gevaar?</strong> Bel 112. Voor hulp en advies: Veilig Thuis, 0800-2000 (gratis, 24/7).
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Quick-exit: always available via the fixed button and the Esc key.
+  // Replaces history so the back button can't return here, and leaves for a neutral site.
+  function quickExit() {
+    window.location.replace('https://www.nu.nl/weer');
+  }
+  document.getElementById('exitBtn').addEventListener('click', quickExit);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') quickExit();
+  });
+
+  // Opt-in form: placeholder submit handler until a real form backend is connected.
+  document.getElementById('optinForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Bedankt! (Dit formulier is nog niet gekoppeld aan een echte verzendlijst — dat zetten we hierna op.)');
+  });
+</script>
+</body>
+</html>
