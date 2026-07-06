@@ -124,7 +124,7 @@
 
   --fs-button:   13px;
   --lh-button:   1.3;      /* ≈16.9px */
-  --tracking-button: 0.06em;
+  --tracking-button: normal;
 
   --weight-light:  300;  /* koppen */
   --weight-regular: 400; /* body */
@@ -201,7 +201,8 @@ h1, h2, h3, h4 {
   color: var(--magenta);
 }
 
-/* ---- Knop — bijna recht, pruim vlak of pruim rand, pijl schuift op hover ---- */
+/* ---- Knop — zachte ChicSpark-stijl: licht roos vlak met pruim onderrand-accent,
+   pruim getrackte tekst en pijl die opschuift. Outline = dunne roos rand. ---- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -212,26 +213,27 @@ h1, h2, h3, h4 {
   line-height: var(--lh-button);
   letter-spacing: var(--tracking-button);
   text-transform: uppercase;
-  padding: 16px 32px;
+  padding: 15px 30px 13px;
   border-radius: var(--radius);
-  border: 1px solid var(--plum);
-  background: var(--plum);
-  color: var(--white);
+  border: 1px solid var(--rose);
+  border-bottom: 3px solid var(--plum);   /* onderrand-accent */
+  background: var(--rose-200);
+  color: var(--plum);
   cursor: pointer;
   text-decoration: none;
   transition: background var(--dur-base) var(--ease-out),
               color var(--dur-base) var(--ease-out),
               border-color var(--dur-base) var(--ease-out);
 }
-.btn:hover { background: var(--plum-hover); border-color: var(--plum-hover); }
+.btn:hover { background: var(--rose-300); border-bottom-color: var(--plum-hover); }
 .btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
 .btn--outline {
   background: transparent;
   color: var(--plum);
-  border: 1px solid var(--plum);
+  border: 1px solid var(--rose);
 }
-.btn--outline:hover { background: var(--plum); color: var(--white); }
+.btn--outline:hover { background: var(--rose-100); border-color: var(--plum); }
 
 /* Pijl die opschuift op hover — plaats <span class="btn__arrow">→</span> in de knop */
 .btn__arrow {
