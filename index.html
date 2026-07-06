@@ -46,6 +46,7 @@
   }
 
   /* Header */
+  .site-header-band { background: var(--rose-tint); }
   .site-header {
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.25rem var(--gutter);
@@ -58,68 +59,101 @@
     text-decoration: none; color: var(--text);
   }
   .site-nav a:hover { color: var(--plum); }
-  .nav-toggle { display: none; }
   .nav-links { display: flex; gap: 2rem; }
 
-  /* Hero */
-  .hero { position: relative; }
-  .hero-photo {
-    position: relative;
-    background: linear-gradient(180deg, rgba(107,25,83,0.05), rgba(107,25,83,0.05)), var(--ecru);
-    min-height: 560px;
-    display: flex; align-items: center;
-    overflow: hidden;
+  /* ---- Hero: split band + full-bleed photo, overlapping card ---- */
+  .hero-split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--rose-tint);
   }
-  .hero-photo img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    object-position: 60% 30%;
-  }
+  .hero-text { display: flex; align-items: center; padding: 4rem var(--gutter); }
   .hero-card {
-    position: relative; z-index: 1;
     background: var(--white);
-    max-width: 480px;
-    margin: 3rem 0 3rem var(--gutter);
-    padding: 2.5rem;
+    max-width: 460px;
+    padding: 2.75rem;
     border-radius: var(--radius);
+    margin-right: -70px;
+    position: relative; z-index: 2;
   }
   .hero-card .btn { margin-top: 1.5rem; }
+  .hero-image { position: relative; overflow: hidden; min-height: 560px; }
+  .hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 25%; }
 
-  /* Opt-in band */
-  .optin-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  /* ---- Opt-in: tilted lead-magnet graphic + inline form ---- */
+  .optin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .optin-mockup { position: relative; padding: 2rem 2.5rem; }
+  .optin-mockup .sheet {
+    position: absolute; top: 2.75rem; left: 3.25rem; width: 78%;
+    background: var(--white); border: 1px solid var(--border-rose);
+    aspect-ratio: 3/4; transform: rotate(4deg);
   }
-  .optin-form { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; max-width: 380px; }
-  .optin-form label { font-family: var(--font-body); font-size: 13px; color: var(--text); margin-bottom: 2px; }
-  .optin-form input {
-    font-family: var(--font-body); font-size: 16px; padding: 12px 14px;
+  .optin-mockup .cover {
+    position: relative; width: 78%; margin: 0 auto;
+    box-shadow: var(--shadow-float);
+    transform: rotate(-4deg);
+    overflow: hidden; background: var(--white);
+  }
+  .optin-mockup .cover img { aspect-ratio: 3/4; object-fit: cover; }
+  .optin-form-row { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .optin-form-row input {
+    font-family: var(--font-body); font-size: 15px; padding: 12px 14px;
     border: 1px solid var(--border-rose); border-radius: var(--radius);
-    background: var(--white); color: var(--text);
+    background: var(--white); color: var(--text); flex: 1 1 160px;
   }
-  .optin-form input:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-  .optin-form .hint { font-size: 13px; color: var(--text-muted); margin-top: 0.25rem; }
-  .optin-photo img { border-radius: var(--radius); }
+  .optin-form-row input:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  .optin-form .hint { font-size: 13px; color: var(--text-muted); margin-top: 0.6rem; }
 
-  /* Three paths */
-  .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
-  .path h3 { margin: 1rem 0 0.5rem; }
+  /* ---- Three paths: photo + overlapping numbered badge + outline CTA ---- */
+  .paths-intro { text-align: center; max-width: 640px; margin: 0 auto 2.5rem; }
+  .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  .path-photo-wrap { position: relative; margin-top: 26px; }
+  .path-photo {
+    width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: var(--radius);
+  }
+  .path-badge {
+    position: absolute; top: -26px; left: 50%; transform: translateX(-50%);
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--white); border: 2px solid var(--plum);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 20px; color: var(--plum); z-index: 2;
+  }
+  .path h3 {
+    font-family: var(--font-display); font-weight: 300; font-size: 21px;
+    color: var(--plum); margin: 1.25rem 0 0.5rem; line-height: 1.25;
+  }
+  .path { text-align: center; }
+  .path .btn { margin-top: 1rem; padding: 10px 18px; }
 
   /* Origin (podcast) */
   .origin-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center; }
   .origin-grid img { border-radius: var(--radius); }
 
-  /* Reassurance row */
+  /* ---- Geruststelling: split intro + full-width stat row ---- */
   .reassurance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-  .reassurance-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 2rem; }
-  .fact b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--plum); }
-  .fact span { font-family: var(--font-body); font-size: 14px; color: var(--text-muted); }
   .reassurance-photo img { border-radius: var(--radius); }
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    text-align: center; margin-top: 3.5rem;
+    border-top: 1px solid var(--border-rose); border-bottom: 1px solid var(--border-rose);
+    padding: 2.5rem 0;
+  }
+  .stat b {
+    display: block; font-family: var(--font-display); font-weight: 300;
+    font-size: 34px; color: var(--plum); margin-bottom: 0.4rem;
+  }
+  .stat span {
+    font-family: var(--font-body); font-size: 12px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
 
-  /* About Hiltje */
-  .about-grid { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 3rem; align-items: center; }
+  /* ---- About Hiltje: full-bleed split ---- */
+  .about-split { display: grid; grid-template-columns: 1fr 1fr; background: var(--rose-tint); }
+  .about-text { display: flex; align-items: center; padding: 4rem var(--gutter); }
+  .about-photo-side { position: relative; min-height: 460px; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .about-photo-placeholder {
-    aspect-ratio: 4/5; border-radius: var(--radius); border: 1px dashed var(--border-rose);
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    padding: 1.5rem; background: var(--white);
+    width: 100%; max-width: 320px; aspect-ratio: 4/5; border-radius: var(--radius);
+    border: 1px dashed var(--plum); display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.5);
     font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
   }
 
@@ -147,11 +181,16 @@
   .safety-line strong { color: var(--text); }
 
   @media (max-width: 860px) {
-    .optin-grid, .origin-grid, .reassurance-grid, .about-grid { grid-template-columns: 1fr; }
-    .optin-photo, .origin-grid img.origin-img, .about-photo-placeholder { order: -1; }
-    .paths-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-split, .about-split { grid-template-columns: 1fr; }
+    .hero-card { margin: 2rem 0 0; max-width: none; }
+    .hero-text { padding: 2.5rem var(--gutter) 0; }
+    .hero-image { min-height: 320px; order: -1; }
+    .optin-grid, .origin-grid, .reassurance-grid { grid-template-columns: 1fr; }
+    .origin-grid img.origin-img, .about-photo-side { order: -1; }
+    .paths-grid { grid-template-columns: 1fr; gap: 2.5rem; max-width: 340px; margin: 0 auto; }
+    .stat-row { grid-template-columns: 1fr 1fr; row-gap: 1.75rem; }
     .nav-links { display: none; }
-    .hero-card { margin: 2rem 1rem; max-width: none; }
+    .optin-mockup { padding: 1rem; max-width: 280px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -165,26 +204,27 @@
 
 <div class="announce">Vrijblijvend kennismakingsgesprek — geheel gratis, geen verplichtingen.</div>
 
-<header class="site-header">
-  <a href="#main" aria-label="Ik ga leven — home">
-    <img src="design-system/assets/logo/logo-bordeaux.png" alt="Ik ga leven">
-  </a>
-  <nav class="site-nav" aria-label="Hoofdmenu">
-    <span class="nav-links">
-      <a href="#aanpak">Aanpak</a>
-      <a href="#voor-wie">Voor wie</a>
-      <a href="#over-hiltje">Over Hiltje</a>
-    </span>
-    <a href="#kennismaking" class="btn btn--outline" style="padding:10px 18px;">Kennismaking</a>
-  </nav>
-</header>
+<div class="site-header-band">
+  <header class="site-header">
+    <a href="#main" aria-label="Ik ga leven — home">
+      <img src="design-system/assets/logo/logo-bordeaux.png" alt="Ik ga leven">
+    </a>
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <span class="nav-links">
+        <a href="#aanpak">Aanpak</a>
+        <a href="#voor-wie">Voor wie</a>
+        <a href="#over-hiltje">Over Hiltje</a>
+      </span>
+      <a href="#kennismaking" class="btn btn--outline" style="padding:10px 18px;">Kennismaking</a>
+    </nav>
+  </header>
+</div>
 
 <main id="main">
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-photo">
-      <img src="assets/photos/woman-beach.png" alt="Vrouw die vrij en ontspannen langs het water loopt">
+  <!-- Hero: split band + full-bleed photo -->
+  <section class="hero-split" id="hero">
+    <div class="hero-text">
       <div class="hero-card">
         <p class="eyebrow">Ik ga leven · 10-weken traject</p>
         <h1 class="h-hero">Je hebt het overleefd. Nu mag je gaan leven.</h1>
@@ -192,33 +232,33 @@
         <a href="#kennismaking" class="btn">Ontdek hoe het werkt <span class="btn__arrow">→</span></a>
       </div>
     </div>
+    <div class="hero-image">
+      <img src="assets/photos/woman-beach.png" alt="Vrouw die vrij en ontspannen langs het water loopt">
+    </div>
   </section>
 
   <!-- Opt-in band -->
   <section class="section section--band" id="weggever">
     <div class="section__inner">
       <div class="optin-grid">
+        <div class="optin-mockup">
+          <div class="sheet" aria-hidden="true"></div>
+          <div class="cover">
+            <img src="assets/photos/journal.png" alt="Dagboek met de tekst 'small steps every day', naast een kop koffie">
+          </div>
+        </div>
         <div>
           <p class="eyebrow">Gratis</p>
           <h2 class="h-optin">Zet een eerste, kleine stap</h2>
           <p>Nog niet toe aan het traject, maar wel benieuwd? Ontvang het gratis e-book <em>"Kleine stappen — vijf oefeningen voor als het zwaar is"</em> in je mailbox.</p>
           <form class="optin-form" id="optinForm">
-            <div>
-              <label for="optinName">Naam (optioneel)</label>
-              <input type="text" id="optinName" name="name" autocomplete="given-name">
+            <div class="optin-form-row">
+              <input type="text" id="optinName" name="name" placeholder="Naam (optioneel)" autocomplete="given-name">
+              <input type="email" id="optinEmail" name="email" placeholder="E-mailadres" required autocomplete="email">
+              <button type="submit" class="btn">Verstuur <span class="btn__arrow">→</span></button>
             </div>
-            <div>
-              <label for="optinEmail">E-mailadres</label>
-              <input type="email" id="optinEmail" name="email" required autocomplete="email">
-            </div>
-            <button type="submit" class="btn">Stuur mij het e-book <span class="btn__arrow">→</span></button>
             <p class="hint">Je mag je naam ook weglaten — dat is helemaal jouw keuze. We delen je gegevens nooit met anderen.</p>
           </form>
-        </div>
-        <div class="optin-photo">
-          <div class="card card--float" style="padding:0; overflow:hidden;">
-            <img src="assets/photos/journal.png" alt="Dagboek met de tekst 'small steps every day', naast een kop koffie">
-          </div>
         </div>
       </div>
     </div>
@@ -227,23 +267,37 @@
   <!-- Drie paden -->
   <section class="section" id="voor-wie">
     <div class="section__inner">
-      <p class="eyebrow">Voor wie</p>
-      <h2 class="h-under-image">Herken je jezelf hierin?</h2>
+      <div class="paths-intro">
+        <p class="eyebrow">Voor wie</p>
+        <h2 class="h-under-image">Herken je jezelf hierin?</h2>
+      </div>
       <div class="paths-grid">
         <div class="path">
-          <span class="step-num">1</span>
-          <h3 class="igl-h3" style="font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--plum);">Ik zit er nu middenin</h3>
+          <div class="path-photo-wrap">
+            <span class="path-badge">1</span>
+            <img class="path-photo" src="assets/photos/woman-writing.png" alt="Vrouw die schrijft in een dagboek">
+          </div>
+          <h3>Ik zit er nu middenin</h3>
           <p>Je bent nog in de situatie, of net eruit, en zoekt een veilige volgende stap — in jouw tempo, niemand duwt je vooruit.</p>
+          <a href="#kennismaking" class="btn btn--outline">Lees meer <span class="btn__arrow">→</span></a>
         </div>
         <div class="path">
-          <span class="step-num">2</span>
-          <h3 style="font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--plum);">Het is voorbij, maar laat me niet los</h3>
+          <div class="path-photo-wrap">
+            <span class="path-badge">2</span>
+            <img class="path-photo" src="assets/photos/woman-coffee.png" alt="Vrouw die rustig een moment voor zichzelf neemt met een kop koffie">
+          </div>
+          <h3>Het is voorbij, maar laat me niet los</h3>
           <p>De relatie is al een tijd voorbij, maar wat er is gebeurd, speelt nog steeds mee in je dagelijks leven.</p>
+          <a href="#kennismaking" class="btn btn--outline">Lees meer <span class="btn__arrow">→</span></a>
         </div>
         <div class="path">
-          <span class="step-num">3</span>
-          <h3 style="font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--plum);">Ik wil weten of dit herkenbaar is</h3>
+          <div class="path-photo-wrap">
+            <span class="path-badge">3</span>
+            <img class="path-photo" src="assets/photos/women-laughing.png" alt="Vrouwen die samen lachen en herkenning vinden bij elkaar">
+          </div>
+          <h3>Ik wil weten of dit herkenbaar is</h3>
           <p>Je twijfelt of je ervaring "erg genoeg" is om hulp te zoeken. Die twijfel hoeft je niet tegen te houden.</p>
+          <a href="#kennismaking" class="btn btn--outline">Doe de check <span class="btn__arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -263,35 +317,39 @@
 
   <!-- Geruststelling -->
   <section class="section" id="traject">
-    <div class="section__inner reassurance-grid">
-      <div>
-        <p class="eyebrow">Geen verrassingen</p>
-        <h2 class="h-under-image">Wat je wel en niet kunt verwachten</h2>
-        <p>Geen groot programma, geen mastermind, geen verkooppraatje. Gewoon een overzichtelijk traject, met ruimte voor jouw verhaal.</p>
-        <div class="reassurance-facts">
-          <div class="fact"><b>10 weken</b><span>Vaste opbouw, rustig tempo</span></div>
-          <div class="fact"><b>Kleine groep</b><span>Veilig en overzichtelijk</span></div>
-          <div class="fact"><b>Own My Life</b><span>Onderdeel van de bredere beweging</span></div>
-          <div class="fact"><b>Gratis</b><span>Vrijblijvend kennismakingsgesprek</span></div>
+    <div class="section__inner">
+      <div class="reassurance-grid">
+        <div>
+          <p class="eyebrow">Geen verrassingen</p>
+          <h2 class="h-under-image">Wat je wel en niet kunt verwachten</h2>
+          <p>Geen groot programma, geen mastermind, geen verkooppraatje. Gewoon een overzichtelijk traject, met ruimte voor jouw verhaal.</p>
+        </div>
+        <div class="reassurance-photo">
+          <img src="assets/photos/group-session.png" alt="Kleine groep vrouwen in gesprek, met het boek Ik ga leven op tafel">
         </div>
       </div>
-      <div class="reassurance-photo">
-        <img src="assets/photos/group-session.png" alt="Kleine groep vrouwen in gesprek, met het boek Ik ga leven op tafel">
+      <div class="stat-row">
+        <div class="stat"><b>10 weken</b><span>Vaste opbouw</span></div>
+        <div class="stat"><b>Klein</b><span>Kleine groep</span></div>
+        <div class="stat"><b>Own My Life</b><span>Bredere beweging</span></div>
+        <div class="stat"><b>Gratis</b><span>Kennismakingsgesprek</span></div>
       </div>
     </div>
   </section>
 
   <!-- Over Hiltje -->
-  <section class="section section--band" id="over-hiltje">
-    <div class="section__inner about-grid">
-      <div class="about-photo-placeholder">
-        Foto van Hiltje volgt<br>— vervang dit vlak zodra je een foto aanlevert.
-      </div>
+  <section class="about-split" id="over-hiltje">
+    <div class="about-text">
       <div>
         <p class="eyebrow">Over Hiltje</p>
         <h2 class="h-under-image">Huisarts, coach, en oprichter van Ik ga leven</h2>
         <p>Ik ben Hiltje — huisarts en coach. In mijn spreekkamer en via de podcast <em>Van Geweld Naar Geluk</em> hoorde ik keer op keer hoezeer geweld in een relatie doorwerkt, lang nadat het "voorbij" is. Ik ga leven is ontstaan om daar iets structureels tegenover te zetten: geen quick fix, maar een traject waarin je stap voor stap weer bij jezelf komt.</p>
         <p class="joy">je mag er weer zijn.</p>
+      </div>
+    </div>
+    <div class="about-photo-side">
+      <div class="about-photo-placeholder">
+        Foto van Hiltje volgt<br>— vervang dit vlak zodra je een foto aanlevert.
       </div>
     </div>
   </section>
