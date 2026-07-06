@@ -98,10 +98,18 @@
   }
   .optin-form-row input:focus-visible { outline: none; box-shadow: var(--focus-ring); }
   .optin-form .hint { font-size: 13px; color: var(--text-muted); margin-top: 0.6rem; }
+  /* Drie vakken (naam, e-mail, knop) op één rij */
+  .optin-form-row--inline { flex-wrap: nowrap; }
+  .optin-form-row--inline input { flex: 1 1 0; min-width: 0; }
+  .optin-form-row--inline .btn { flex: 0 0 auto; white-space: nowrap; }
+  @media (max-width: 560px) {
+    .optin-form-row--inline { flex-wrap: wrap; }
+    .optin-form-row--inline input { flex: 1 1 160px; }
+  }
   .optin-card { padding: 2.5rem; }
   .form-note { font-size: 14px; margin-top: 1.25rem; }
   .plan-mockup { display: flex; align-items: center; justify-content: center; }
-  .plan-mockup img { max-width: 440px; width: 100%; }
+  .plan-mockup img { max-width: 300px; width: 100%; }
 
   /* ---- Herkenning / persona's — hover/focus onthult de tekst ---- */
   .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
@@ -347,17 +355,14 @@
           <img src="assets/photos/veiligheidsplan-mockup.png" alt="Mockup van het gratis veiligheidsplan">
         </div>
         <div>
-          <p class="eyebrow">Gratis veiligheidsplan</p>
           <h2 class="h-optin">Weet je al dat je wilt vertrekken?</h2>
           <p>Het allerbelangrijkste is dat je een plan maakt om veilig te vertrekken. Het liefst bereid je je vertrek voor en maak je een noodplan voor als de situatie uit de hand loopt. Als het veilig kan, laat dan je e-mailadres achter voor een invulversie.</p>
           <!-- TODO: vervang dit placeholder-formulier door de Flodesk-embed -->
           <form class="optin-form js-optin" aria-label="Download het veiligheidsplan">
-            <div class="optin-form-row">
+            <div class="optin-form-row optin-form-row--inline">
               <input type="text" name="name" placeholder="Naam (optioneel)" autocomplete="given-name">
               <input type="email" name="email" placeholder="E-mailadres" required autocomplete="email">
-            </div>
-            <div class="optin-form-row">
-              <button type="submit" class="btn">Download het plan <span class="btn__arrow">→</span></button>
+              <button type="submit" class="btn btn--solid">Download het plan <span class="btn__arrow">→</span></button>
             </div>
             <p class="hint">We sturen je het plan per e-mail. We delen je gegevens nooit met anderen.</p>
           </form>
