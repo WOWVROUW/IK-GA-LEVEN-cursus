@@ -185,7 +185,7 @@ h1, h2, h3, h4 {
   line-height: var(--lh-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--plum);
+  color: var(--rose);           /* rose-500 — eyebrows sitewide */
   margin: 0 0 0.75em;
 }
 
