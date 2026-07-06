@@ -1,0 +1,4 @@
+# Preview / bouwfase: zoekmachines volledig weren van deze site.
+# Verwijder dit bestand (en de noindex-meta) zodra de site echt live mag.
+User-agent: *
+Disallow: /
