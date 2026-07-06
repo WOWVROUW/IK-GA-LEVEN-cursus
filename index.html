@@ -40,11 +40,11 @@
 
   /* Safety banner — right padding reserves room for the fixed exit button */
   .announce {
-    background: var(--plum); color: var(--white); text-align: center;
+    background: var(--rose-300); color: var(--plum); text-align: center;
     font-family: var(--font-body); font-size: 13px; line-height: 1.5;
     padding: 12px 150px 12px var(--gutter);
   }
-  .announce a { color: var(--white); text-underline-offset: 2px; }
+  .announce a { color: var(--mint); font-weight: 600; text-underline-offset: 2px; }
   @media (max-width: 600px) {
     .exit-btn__full { display: none; }
     .exit-btn__short { display: inline; }
@@ -70,7 +70,7 @@
   /* ---- Hero: split band + full-bleed photo, overlapping card ---- */
   .hero-split {
     display: grid; grid-template-columns: 1fr 1fr;
-    background: var(--rose-tint);
+    background: var(--rose-200);
   }
   .hero-text { display: flex; align-items: center; justify-content: flex-end; padding: 4rem var(--gutter); }
   .hero-card {

@@ -19,6 +19,8 @@
   --plum:        #6B1953;  /* Pruim — primair */
   --plum-hover:  #4E1240;  /* Diep pruim — hover */
   --rose:        #D585AE;  /* Roos — secundair */
+  --rose-300:    #E4B0CA;  /* Roos, lichte tint (≈300) — roos gemengd met wit */
+  --rose-200:    #ECC8DB;  /* Roos, lichtere tint (≈200) — roos gemengd met wit */
   --rose-tint:   #F5E3EE;  /* Roos-tint — lichte roze band */
   --mint:        #B8E5D7;  /* Mint — accent */
   --butter:      #FFF8D1;  /* Boter — lichte band */
