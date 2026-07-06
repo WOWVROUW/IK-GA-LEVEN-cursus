@@ -111,14 +111,21 @@
   .plan-mockup { display: flex; align-items: center; justify-content: center; }
   .plan-mockup img { max-width: 300px; width: 100%; }
 
-  /* ---- Herkenning / persona's — hover/focus onthult de tekst ---- */
+  /* ---- Herkenning / persona's — kaart met afbeelding, hover onthult de tekst ---- */
+  .herken-divider {
+    width: 300px; max-width: 80%; height: 0;
+    border: 0; border-top: 0.4px solid var(--plum);
+    margin: 1.25rem auto 1.5rem;
+  }
   .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
   .persona {
     background: var(--white); border-left: 3px solid var(--rose);
-    border-radius: var(--radius); padding: 1.75rem;
+    border-radius: var(--radius); padding: 0; overflow: hidden;
     transition: box-shadow var(--dur-base) var(--ease-out);
   }
   .persona:hover, .persona:focus-within { box-shadow: var(--shadow-float); outline: none; }
+  .persona__img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .persona__body { padding: 1.5rem 1.75rem; }
   .persona__label {
     display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600;
     letter-spacing: 2px; text-transform: uppercase; color: var(--plum); margin-bottom: 0.5rem;
@@ -132,6 +139,13 @@
   .persona:focus-within .persona__text { max-height: 460px; opacity: 1; }
   .persona:hover .persona__hint,
   .persona:focus-within .persona__hint { display: none; }
+  /* Afsluitende regels + knop onder de kaarten */
+  .herken-closing { margin-top: 3rem; }
+  .herken-closing__text {
+    font-family: var(--font-display); font-weight: var(--weight-light);
+    font-size: 24px; line-height: 1.3; color: var(--plum);
+    max-width: 640px; margin: 0 auto 1.5rem;
+  }
 
   /* ---- Ervaring-strip — rustige, hairline-omlijnde regel i.p.v. pills ---- */
   .exp-strip {
@@ -376,26 +390,39 @@
   <section class="section" id="herken">
     <div class="section__inner">
       <div class="center-narrow">
-        <p class="eyebrow">Ik ga leven</p>
-        <h2 class="h-under-image">Herken jij jezelf hierin?</h2>
-        <p>Iedere situatie is anders. Maar de vragen die vrouwen zichzelf stellen, lijken vaak op elkaar. Als jij jezelf ook deze vragen stelt, of je herkent in het verhaal van Marijke, Joyce of Ava — dan is Ik ga leven er voor jou.</p>
+        <h2 class="h-hero">Ik ga leven — Herken jij jezelf hierin?</h2>
+        <hr class="herken-divider">
+        <p>Iedere situatie is anders. Maar de vragen die vrouwen zichzelf stellen, lijken vaak op elkaar.</p>
       </div>
       <div class="persona-grid">
         <article class="persona" tabindex="0">
-          <span class="persona__label">Marijke</span>
-          <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
-          <p class="persona__text">Haar partner kleineert haar, spot met haar, geeft al hun geld uit en wil niet dat ze contact heeft met haar moeder of vriendinnen. In het begin was alles fantastisch. <em>Nu vraagt ze zich af: hoe is het zo ver gekomen?</em></p>
+          <img class="persona__img" src="assets/photos/woman-writing.png" alt="Vrouw die schrijft in een dagboek">
+          <div class="persona__body">
+            <span class="persona__label">Marijke</span>
+            <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
+            <p class="persona__text">Haar partner kleineert haar, spot met haar, geeft al hun geld uit en wil niet dat ze contact heeft met haar moeder of vriendinnen. In het begin was alles fantastisch. <em>Nu vraagt ze zich af: hoe is het zo ver gekomen?</em></p>
+          </div>
         </article>
         <article class="persona" tabindex="0">
-          <span class="persona__label">Joyce</span>
-          <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
-          <p class="persona__text">Elke keer als ze probeert te vertrekken, keert ze terug. Hij verdraait haar woorden, gebruikt de kinderen als pressiemiddel. <em>Ze blijft zichzelf afvragen: 'Wat is er toch mis met mij?'</em></p>
+          <img class="persona__img" src="assets/photos/woman-coffee.png" alt="Vrouw die een rustig moment voor zichzelf neemt met koffie">
+          <div class="persona__body">
+            <span class="persona__label">Joyce</span>
+            <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
+            <p class="persona__text">Elke keer als ze probeert te vertrekken, keert ze terug. Hij verdraait haar woorden, gebruikt de kinderen als pressiemiddel. <em>Ze blijft zichzelf afvragen: 'Wat is er toch mis met mij?'</em></p>
+          </div>
         </article>
         <article class="persona" tabindex="0">
-          <span class="persona__label">Ava</span>
-          <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
-          <p class="persona__text">Haar ex verandert continu de afspraken over de kinderen, stuurt dreigende berichten en belt haar huilend op. Ze heeft geen vriendinnen meer. <em>Ze is continu angstig. Ze weet niet meer wie ze zelf is.</em></p>
+          <img class="persona__img" src="assets/photos/woman-beach.png" alt="Vrouw die rustig langs het water loopt">
+          <div class="persona__body">
+            <span class="persona__label">Ava</span>
+            <p class="persona__hint">Beweeg over de kaart of tik erop →</p>
+            <p class="persona__text">Haar ex verandert continu de afspraken over de kinderen, stuurt dreigende berichten en belt haar huilend op. Ze heeft geen vriendinnen meer. <em>Ze is continu angstig. Ze weet niet meer wie ze zelf is.</em></p>
+          </div>
         </article>
+      </div>
+      <div class="center-narrow herken-closing">
+        <p class="herken-closing__text">Als jij jezelf ook deze vragen stelt, of je herkent in het verhaal van Marijke, Joyce of Ava — dan is Ik ga leven er voor jou.</p>
+        <a href="#video" class="btn btn--fill">Doe de check <span class="btn__arrow">→</span></a>
       </div>
     </div>
   </section>

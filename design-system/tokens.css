@@ -243,6 +243,14 @@ h1, h2, h3, h4 {
 }
 .btn--solid:hover { background: var(--plum-hover); border-color: var(--plum-hover); color: var(--white); }
 
+/* Outline die op hover volledig vult, zoals de snel-weg-knop (maar niet-magenta) */
+.btn--fill {
+  background: var(--white);
+  color: var(--plum);
+  border: 1px solid var(--plum);
+}
+.btn--fill:hover { background: var(--plum); color: var(--white); border-color: var(--plum); }
+
 /* Pijl die opschuift op hover — plaats <span class="btn__arrow">→</span> in de knop */
 .btn__arrow {
   display: inline-block;
