@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veilig browsen — je browsergeschiedenis wissen | Ik ga leven</title>
+<meta name="description" content="Wil je niet dat iemand ziet dat je deze website bezocht? Zo bekijk je de site privé en wis je je browsergeschiedenis.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system/tokens.css">
+<style>
+  a { color: var(--plum); }
+  img { max-width: 100%; display: block; }
+
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; background: var(--plum); color: #fff;
+    padding: 10px 16px; z-index: 2000; border-radius: var(--radius);
+  }
+  .skip-link:focus { left: var(--gutter); top: var(--gutter); }
+
+  .exit-btn {
+    position: fixed; top: 14px; right: 14px; z-index: 1200;
+    background: var(--white); color: var(--plum); border: 1px solid var(--plum);
+    font-family: var(--font-body); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
+    box-shadow: var(--shadow-float); white-space: nowrap;
+  }
+  .exit-btn:hover { background: var(--plum); color: #fff; }
+  .exit-btn__short { display: none; }
+
+  .announce {
+    background: var(--plum); color: var(--white); text-align: center;
+    font-family: var(--font-body); font-size: 13px; line-height: 1.5;
+    padding: 12px 150px 12px var(--gutter);
+  }
+  @media (max-width: 600px) {
+    .exit-btn__full { display: none; }
+    .exit-btn__short { display: inline; }
+    .announce { padding-right: 100px; font-size: 12px; }
+  }
+
+  .site-header-band { background: var(--rose-tint); }
+  .site-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem var(--gutter); max-width: var(--container-max); margin: 0 auto;
+  }
+  .site-header img { height: 44px; width: auto; }
+  .site-header a.back {
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    text-decoration: none; color: var(--text);
+  }
+  .site-header a.back:hover { color: var(--plum); }
+
+  .doc { max-width: 760px; margin: 0 auto; padding: var(--section-padding-mobile) var(--gutter) 5rem; }
+  .doc h1 { font-size: var(--fs-optin); line-height: var(--lh-optin); margin-bottom: 0.75rem; }
+  .doc h2 { font-size: var(--fs-under-image); line-height: var(--lh-under-image); margin: 2.5rem 0 0.75rem; }
+  .doc p, .doc li { line-height: 1.7; }
+  .doc ul { padding-left: 1.2rem; }
+  .doc li { margin-bottom: 0.5rem; }
+
+  .callout {
+    background: var(--butter); border-radius: var(--radius);
+    padding: 1.25rem 1.5rem; margin: 1.5rem 0; font-size: 15px; line-height: 1.6;
+  }
+  .callout strong { color: var(--plum); }
+
+  .table-wrap { overflow-x: auto; margin: 1rem 0 2rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-rose); vertical-align: top; }
+  th { font-family: var(--font-body); font-weight: 600; color: var(--plum); background: var(--rose-tint); }
+
+  .site-footer { padding: 2.5rem var(--gutter); background: var(--rose-tint); }
+  .site-footer .safety-line {
+    max-width: 760px; margin: 0 auto; font-family: var(--font-body);
+    font-size: 13px; color: var(--text-muted); line-height: 1.6;
+  }
+  .site-footer .safety-line strong { color: var(--text); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Ga direct naar de inhoud</a>
+
+<button class="exit-btn" id="exitBtn" type="button" aria-label="Verlaat deze site snel">
+  <span class="exit-btn__full">Verlaat deze site snel</span>
+  <span class="exit-btn__short">Snel weg</span>
+</button>
+
+<div class="announce">
+  <strong>Acuut gevaar? Bel altijd 112.</strong> Voor hulp en advies: Veilig Thuis, 0800-2000 (gratis, 24/7).
+</div>
+
+<div class="site-header-band">
+  <header class="site-header">
+    <a href="index.html" aria-label="Ik ga leven — home">
+      <img src="design-system/assets/logo/logo-bordeaux.png" alt="Ik ga leven">
+    </a>
+    <a class="back" href="index.html">← Terug naar de site</a>
+  </header>
+</div>
+
+<main id="main" class="doc">
+  <h1>Wil je niet dat iemand ziet dat je deze website bezocht?</h1>
+  <p>Iemand die jouw computer, telefoon of tablet gebruikt, kan zien welke websites je hebt bezocht. Dat kan soms ook op afstand. Vertrouw je die persoon niet, dan heb je een aantal mogelijkheden.</p>
+
+  <div class="callout">
+    <strong>Het veiligst:</strong> gebruik als het kan een apparaat waar de ander niet bij kan — bijvoorbeeld een computer in de bibliotheek, op het gemeentehuis of bij vrienden, familie of kennissen die jij vertrouwt. Zo weet je zeker dat niemand thuis kan zien dat je deze site bezocht.
+  </div>
+
+  <ul>
+    <li>Gebruik een veilig apparaat (bijvoorbeeld in de bibliotheek of bij goede vrienden).</li>
+    <li>Schakel de privacymodus (incognito) van je webbrowser in vóór je de site bezoekt.</li>
+    <li>Wis je internetgeschiedenis na je bezoek.</li>
+  </ul>
+
+  <p>Let op: als iemand er handig mee is, kan gewiste geschiedenis soms toch worden teruggehaald. Een veilig apparaat blijft daarom de beste keuze.</p>
+
+  <h2>Privacymodus (incognito) inschakelen</h2>
+  <p>Als je de privacymodus inschakelt, onthoudt je browser niet welke websites je bezoekt en worden cookies geblokkeerd. Sluit je na je bezoek de browser af, dan blijft je bezoek verborgen. Weet je niet welke browser je gebruikt? Bekijk dat op <a href="https://www.whatsmybrowser.org/" target="_blank" rel="noopener">whatsmybrowser.org</a>.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Browser</th><th>Naam privacymodus</th><th>Sneltoets</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://support.google.com/chrome/answer/95464" target="_blank" rel="noopener">Google Chrome</a></td><td>Incognito</td><td>Ctrl-Shift-N</td></tr>
+        <tr><td><a href="https://support.microsoft.com/nl-nl/microsoft-edge/inprivate-browsen-in-microsoft-edge-e6f47704-340c-7d4f-b00d-d0cf35aa1fcc" target="_blank" rel="noopener">Edge</a></td><td>InPrivate</td><td>Ctrl-Shift-N</td></tr>
+        <tr><td><a href="https://support.mozilla.org/nl/kb/privenavigatie-firefox-gebruiken-zonder-geschiedenis" target="_blank" rel="noopener">Firefox</a></td><td>Privénavigatie</td><td>Ctrl-Shift-P</td></tr>
+        <tr><td>Safari (Mac)</td><td>Privémodus</td><td>Cmd-Shift-N</td></tr>
+        <tr><td>Safari (iPhone/iPad)</td><td>Privémodus</td><td>—</td></tr>
+        <tr><td>Google Chrome (Android)</td><td>Incognito</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><em>Gebruik je een Mac (Apple)? Gebruik dan de Cmd-toets in plaats van Ctrl.</em></p>
+
+  <h2>Browsergeschiedenis wissen</h2>
+  <p>Je kunt ook handmatig je internetgeschiedenis en cookies wissen na je bezoek. Je kunt kiezen om alle geschiedenis te wissen, of alleen die van een bepaalde periode — bijvoorbeeld alleen de dag waarop je hulp zocht.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Browser</th><th>Menu-optie</th><th>Sneltoets</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://support.google.com/chrome/answer/95589" target="_blank" rel="noopener">Google Chrome</a></td><td>De drie stipjes rechtsboven › Meer hulpprogramma's › Browsegegevens wissen</td><td>Ctrl-Shift-Delete</td></tr>
+        <tr><td><a href="https://support.microsoft.com/nl-nl/microsoft-edge/browsergeschiedenis-weergeven-en-verwijderen-in-microsoft-edge-00cf7943-a9e1-975a-a33d-ac10ce454ca4" target="_blank" rel="noopener">Edge</a></td><td>De drie stipjes rechtsboven › Geschiedenis › drie stipjes › Browsegegevens wissen</td><td>Ctrl-Shift-Delete</td></tr>
+        <tr><td><a href="https://support.mozilla.org/nl/kb/navigatie-zoek-en-downloadgeschiedenis-verwijderen" target="_blank" rel="noopener">Firefox</a></td><td>De drie streepjes rechtsboven › Geschiedenis › Recente geschiedenis wissen</td><td>Ctrl-Shift-Delete</td></tr>
+        <tr><td>Safari (Mac)</td><td>Geschiedenis › Wis geschiedenis</td><td>—</td></tr>
+        <tr><td>Safari (iPhone/iPad)</td><td>Boek-icoon › klok-icoon › Wis</td><td>—</td></tr>
+        <tr><td>Google Chrome (Android)</td><td>De drie stipjes rechtsboven › Geschiedenis › Browsegegevens wissen</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Gebruik je Google en zie je je e-mailadres rechtsboven op <a href="https://www.google.nl/" target="_blank" rel="noopener">google.nl</a>?</strong> Dan ben je ingelogd op je Google-account. Wis dan óók de geschiedenis die Google bijhoudt, via <a href="https://myactivity.google.com/" target="_blank" rel="noopener">myactivity.google.com</a>.
+  </div>
+
+  <p>Meer uitleg per browser vind je op <a href="https://veiliginternetten.nl/wat-een-incognitovenster-en-hoe-schakel-ik-dit-in/" target="_blank" rel="noopener">veiliginternetten.nl</a>. Bronnen: <a href="https://www.moviera.nl/wis-geschiedenis/" target="_blank" rel="noopener">Moviera</a> en <a href="https://www.levantogroep.nl/website-bezoek" target="_blank" rel="noopener">Levanto Groep</a>.</p>
+</main>
+
+<footer class="site-footer">
+  <p class="safety-line">
+    <strong>Ben je nu in gevaar?</strong> Bel 112. Voor hulp en advies: Veilig Thuis, 0800-2000 (gratis, 24/7).
+    Denk je aan zelfdoding of maak je je zorgen om iemand? Bel 113 Zelfmoordpreventie, 0800-0113.
+  </p>
+</footer>
+
+<script>
+  function quickExit() { window.location.replace('https://www.nu.nl/weer'); }
+  document.getElementById('exitBtn').addEventListener('click', quickExit);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') quickExit(); });
+</script>
+</body>
+</html>
