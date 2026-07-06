@@ -100,6 +100,8 @@
   .optin-form .hint { font-size: 13px; color: var(--text-muted); margin-top: 0.6rem; }
   .optin-card { padding: 2.5rem; }
   .form-note { font-size: 14px; margin-top: 1.25rem; }
+  .plan-mockup { display: flex; align-items: center; justify-content: center; }
+  .plan-mockup img { max-width: 440px; width: 100%; }
 
   /* ---- Herkenning / persona's — hover/focus onthult de tekst ---- */
   .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
@@ -341,13 +343,13 @@
   <section class="section section--band" id="veiligheidsplan">
     <div class="section__inner">
       <div class="optin-grid">
+        <div class="plan-mockup">
+          <img src="assets/photos/veiligheidsplan-mockup.png" alt="Mockup van het gratis veiligheidsplan">
+        </div>
         <div>
           <p class="eyebrow">Gratis veiligheidsplan</p>
           <h2 class="h-optin">Weet je al dat je wilt vertrekken?</h2>
           <p>Het allerbelangrijkste is dat je een plan maakt om veilig te vertrekken. Het liefst bereid je je vertrek voor en maak je een noodplan voor als de situatie uit de hand loopt. Als het veilig kan, laat dan je e-mailadres achter voor een invulversie.</p>
-          <p class="form-note">Wil je wel het veiligheidsplan maken, maar kun je je e-mailadres niet veilig achterlaten? <a href="#" data-todo="webversie-veiligheidsplan">Klik dan hier voor de webversie</a>.</p>
-        </div>
-        <div class="card card--float optin-card">
           <!-- TODO: vervang dit placeholder-formulier door de Flodesk-embed -->
           <form class="optin-form js-optin" aria-label="Download het veiligheidsplan">
             <div class="optin-form-row">
@@ -359,6 +361,7 @@
             </div>
             <p class="hint">We sturen je het plan per e-mail. We delen je gegevens nooit met anderen.</p>
           </form>
+          <p class="form-note">Wil je wel het veiligheidsplan maken, maar kun je je e-mailadres niet veilig achterlaten? <a href="#" data-todo="webversie-veiligheidsplan">Klik dan hier voor de webversie</a>.</p>
         </div>
       </div>
     </div>
