@@ -18,15 +18,68 @@
   /* ---- Merkkleuren (bevestigd) ---- */
   --plum:        #6B1953;  /* Pruim — primair */
   --plum-hover:  #4E1240;  /* Diep pruim — hover */
-  --rose:        #D585AE;  /* Roos — secundair */
-  --rose-300:    #E4B0CA;  /* Roos, lichte tint (≈300) — roos gemengd met wit */
-  --rose-200:    #ECC8DB;  /* Roos, lichtere tint (≈200) — roos gemengd met wit */
+  --rose:        #D585AE;  /* Roos — secundair (= --rose-500) */
   --rose-tint:   #F5E3EE;  /* Roos-tint — lichte roze band */
-  --mint:        #B8E5D7;  /* Mint — accent */
-  --butter:      #FFF8D1;  /* Boter — lichte band */
-  --magenta:     #CE12AE;  /* Magenta — pop, spaarzaam, max 1 element */
+  --mint:        #B8E5D7;  /* Mint — accent (= --mint-400) */
+  --butter:      #FFF8D1;  /* Boter — lichte band (= --butter-300) */
+  --magenta:     #CE12AE;  /* Magenta — pop, spaarzaam, max 1 element (= --magenta-500) */
   --ecru:        #F6F1EA;  /* Ecru — paginabasis */
   --white:       #FFFFFF;
+
+  /* ---- Officiële kleurenschalen (aangeleverd door Hiltje, 2026-07-06) ----
+     Bron van waarheid voor tinten. De merkkleuren hierboven vallen op vaste
+     stappen: pruim = 700, roos = 500, mint = 400, boter = 300, magenta = 500.
+     Waarden zijn 1-op-1 overgenomen (incl. eventuele hiaten in de schaal). */
+  --plum-900:    #2D1422;
+  --plum-800:    #471035;
+  --plum-700:    #6B1953;  /* = --plum */
+  --plum-600:    #84265F;
+  --plum-500:    #9B2B7A;
+  --plum-400:    #B25E8E;
+  --plum-300:    #CB8FB1;
+  --plum-200:    #E2C2D5;
+  --plum-100:    #F8F0F5;
+  --plum-50:     #FDF5F9;
+
+  --rose-600:    #B65788;
+  --rose-500:    #D585AE;  /* = --rose */
+  --rose-400:    #E0A0C2;
+  --rose-300:    #ECBED6;
+  --rose-200:    #F8DCEA;
+  --rose-100:    #FDF0F5;
+
+  --mint-700:    #1A7A5A;
+  --mint-600:    #1A3D35;
+  --mint-500:    #87CCB6;
+  --mint-400:    #B8E5D7;  /* = --mint */
+  --mint-300:    #CFEEE5;
+  --mint-200:    #E8F8F3;
+  --mint-100:    #F1FAF7;
+
+  --butter-700:  #7A5C20;
+  --butter-600:  #9A7A00;
+  --butter-500:  #F4E89A;
+  --butter-400:  #FBF1B8;
+  --butter-300:  #FFF8D1;  /* = --butter */
+  --butter-200:  #FFFBEA;
+  --butter-100:  #FFFDF2;
+
+  --magenta-600: #B70F9B;
+  --magenta-500: #CE12AE;  /* = --magenta */
+  --magenta-400: #E03DC4;
+  --magenta-200: #F5ACE8;
+  --magenta-100: #FEF0FA;
+
+  --ink:         #2D1422;
+  --neutral-800: #4A3340;
+  --neutral-700: #6E5563;
+  --neutral-600: #9B7082;
+  --neutral-500: #B59AA8;
+  --neutral-400: #CDBAC5;
+  --neutral-300: #E5D8DF;
+  --neutral-200: #EFE6EB;
+  --neutral-100: #F7F1F4;
+  --neutral-50:  #FFFAF7;
 
   /* ---- Tekst ---- */
   --text:        #5C5556; /* warm donkergrijs — hoofdtekst */
