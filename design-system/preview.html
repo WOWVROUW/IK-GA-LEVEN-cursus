@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ik ga leven — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .styleguide { max-width: 1120px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+  .styleguide h2 { border-bottom: 1px solid var(--border-rose); padding-bottom: 0.5rem; margin-top: 3.5rem; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .swatch { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-rose); }
+  .swatch__chip { height: 70px; }
+  .swatch__meta { background: var(--white); padding: 8px 10px; font-family: var(--font-body); font-size: 12px; }
+  .swatch__hex { color: var(--text-muted); font-family: monospace; }
+  .type-row { margin: 1.25rem 0; }
+  .type-row .label { font-family: var(--font-body); font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+  .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 1.5rem 0; }
+  .step-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+  .step-row .step { display: flex; align-items: center; gap: 0.75rem; }
+  .band-demo { border-radius: var(--radius); margin: 1rem 0; }
+  .mockup-demo { display: inline-block; padding: 2rem 3rem; margin: 1.5rem 0; }
+  .logo-row { display: flex; gap: 1.5rem; align-items: flex-end; flex-wrap: wrap; margin: 1.5rem 0; }
+  .logo-tile { text-align: center; }
+  .logo-tile img { height: 110px; width: auto; display: block; }
+  .logo-tile.on-plum { background: var(--plum); padding: 1.5rem; border-radius: var(--radius); }
+  .logo-tile.on-rose { background: var(--rose-tint); padding: 1.5rem; border-radius: var(--radius); }
+  .logo-tile .cap { font-family: var(--font-body); font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="styleguide">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+    <img src="assets/logo/logo-bordeaux.png" alt="Ik ga leven" style="height:64px; width:auto;">
+    <p class="eyebrow" style="margin:0">Design system</p>
+  </div>
+  <h1 class="h-hero">Ik ga leven</h1>
+  <p>Levende styleguide — kleuren, typografie, knoppen en secties zoals vastgelegd in <code>design-system.md</code>.</p>
+
+  <h2>Logo</h2>
+  <div class="logo-row">
+    <div class="logo-tile"><img src="assets/logo/logo-bordeaux.png" alt="Logo, bordeaux"><div class="cap">Bordeaux — primair, op lichte vlakken (header, ecru)</div></div>
+    <div class="logo-tile on-rose"><img src="assets/logo/logo-rose-shadow.png" alt="Logo, rosé met schaduw"><div class="cap">Rosé met schaduw — op zachte roos-tint</div></div>
+    <div class="logo-tile on-plum"><img src="assets/logo/logo-rose.png" alt="Logo, rosé"><div class="cap" style="color:#fff9">Rosé — op donker pruim / foto</div></div>
+  </div>
+
+  <h2>Kleur</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch__chip" style="background:var(--plum)"></div><div class="swatch__meta">Pruim <span class="swatch__hex">#6B1953</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--plum-hover)"></div><div class="swatch__meta">Diep pruim <span class="swatch__hex">#4E1240</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--rose)"></div><div class="swatch__meta">Roos <span class="swatch__hex">#D585AE</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--rose-tint)"></div><div class="swatch__meta">Roos-tint <span class="swatch__hex">#F5E3EE</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--mint)"></div><div class="swatch__meta">Mint <span class="swatch__hex">#B8E5D7</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--butter)"></div><div class="swatch__meta">Boter <span class="swatch__hex">#FFF8D1</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--magenta)"></div><div class="swatch__meta">Magenta (pop) <span class="swatch__hex">#CE12AE</span></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--ecru)"></div><div class="swatch__meta">Ecru <span class="swatch__hex">#F6F1EA</span></div></div>
+  </div>
+
+  <h2>Typografie</h2>
+  <div class="type-row"><div class="label">Hero-kop · 42px / 300</div><div class="h-hero">Je bent eruit — maar niet heel</div></div>
+  <div class="type-row"><div class="label">Testimonial-kop · 36px / 300</div><div class="h-testimonial">"Ik durf weer te leven."</div></div>
+  <div class="type-row"><div class="label">Opt-in-kop · 32px / 300</div><div class="h-optin">Begin jouw traject</div></div>
+  <div class="type-row"><div class="label">Kop onder beeld · 24px / 300</div><div class="h-under-image">Jouw herstel, jouw tempo</div></div>
+  <div class="type-row"><div class="label">Eyebrow · 15px / 500, kapitalen</div><p class="eyebrow">Van geweld naar geluk</p></div>
+  <div class="type-row"><div class="label">Body · 17px / 400, line-height 34px</div><p>In tien weken, in kleine groep, bouw je stap voor stap aan een leven waarin jij weer centraal staat. Er is geen haast — je gaat in jouw eigen tempo, en je mag altijd anoniem blijven.</p></div>
+  <div class="type-row"><div class="label">Joy-laag · Special Elite, spaarzaam</div><p class="joy">je gaat leven.</p></div>
+
+  <h2>Knoppen</h2>
+  <div class="btn-row">
+    <a href="#" class="btn">Begin jouw traject <span class="btn__arrow">→</span></a>
+    <a href="#" class="btn btn--outline">Meer informatie <span class="btn__arrow">→</span></a>
+  </div>
+
+  <h2>Genummerde stappen</h2>
+  <div class="step-row">
+    <div class="step"><span class="step-num">1</span> Ik zit er nu middenin</div>
+    <div class="step"><span class="step-num">2</span> Het is voorbij maar laat me niet los</div>
+    <div class="step"><span class="step-num">3</span> Ik wil weten of dit herkenbaar is</div>
+  </div>
+
+  <h2>Secties / banden</h2>
+  <div class="section section--band band-demo"><div class="section__inner"><p class="eyebrow">Roos-tint band</p><p>Gebruikt voor de opt-in sectie.</p></div></div>
+  <div class="section section--butter band-demo"><div class="section__inner"><p class="eyebrow">Boter band</p><p>Lichte, warme afwisseling tussen secties.</p></div></div>
+  <div class="section section--plum band-demo"><div class="section__inner"><p class="eyebrow" style="color:#fff">Pruim sectie</p><p>Voor een enkel dieper, rustgevend blok (bv. slot-CTA).</p></div></div>
+
+  <h2>Kaarten &amp; schaduw</h2>
+  <p>Schaduw is voorbehouden aan zwevende objecten — hier het ebook-mockup:</p>
+  <div class="card card--float mockup-demo">Ebook-mockup</div>
+  <p>Gewone kaarten krijgen geen schaduw, alleen een dunne roos-rand:</p>
+  <div class="card" style="max-width:320px">Gewone kaart — geen schaduw.</div>
+
+  <h2>Scheidslijn</h2>
+  <hr class="divider">
+</div>
+</body>
+</html>

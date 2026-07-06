@@ -1,0 +1,244 @@
+/* ============================================================
+   IK GA LEVEN — DESIGN TOKENS
+   10-weekse training voor vrouwen die geweld in hun relatie
+   meemaken of hebben meegemaakt. Bron van waarheid: HANDOFF.md
+   §2 (kleuren + typografie, bevestigd door Hiltje) + §5
+   (traumageïnformeerde regels).
+
+   Rolverdeling kleur (definitief):
+     pruim    #6B1953  → primair: koppen, knoppen, kaders
+     roos     #D585AE  → secundair: zachte vlakken
+     mint     #B8E5D7  → accent
+     boter    #FFF8D1  → lichte band
+     magenta  #CE12AE  → pop, SPAARZAAM, max 1 element per pagina
+     ecru     #F6F1EA  → paginabasis (achtergrond)
+   ============================================================ */
+
+:root {
+  /* ---- Merkkleuren (bevestigd) ---- */
+  --plum:        #6B1953;  /* Pruim — primair */
+  --plum-hover:  #4E1240;  /* Diep pruim — hover */
+  --rose:        #D585AE;  /* Roos — secundair */
+  --rose-tint:   #F5E3EE;  /* Roos-tint — lichte roze band */
+  --mint:        #B8E5D7;  /* Mint — accent */
+  --butter:      #FFF8D1;  /* Boter — lichte band */
+  --magenta:     #CE12AE;  /* Magenta — pop, spaarzaam, max 1 element */
+  --ecru:        #F6F1EA;  /* Ecru — paginabasis */
+  --white:       #FFFFFF;
+
+  /* ---- Tekst ---- */
+  --text:        #5C5556; /* warm donkergrijs — hoofdtekst */
+  --text-on-plum: var(--white);
+  --text-muted:  #8A8283; /* afgeleide, lichtere variant van --text — niet expliciet bevestigd */
+
+  /* ---- Afgeleide tinten (NIET expliciet bevestigd — pas aan indien gewenst) ---- */
+  --rose-hover:   #C36F98;
+  --mint-hover:   #9FD6C4;
+  --border-rose:  rgba(213, 133, 174, 0.5); /* 1px roos @ 50% — scheidslijnen */
+  --focus-ring:   0 0 0 3px rgba(107, 25, 83, 0.25);
+
+  /* ---- Surfaces / secties ---- */
+  --surface-page:    var(--ecru);
+  --surface-card:    var(--white);
+  --surface-band:    var(--rose-tint);
+  --surface-butter:  var(--butter);
+  --surface-plum:    var(--plum);
+
+  /* ---- Typografie: families ---- */
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-body:    'Work Sans', system-ui, -apple-system, sans-serif;
+  --font-joy:     'Special Elite', 'Courier New', monospace; /* joy-laag: alleen hoop/herstel-content */
+
+  /* ---- Typografie: exacte specs (desktop-waarden, zie design-system.md) ---- */
+  --fs-hero:        42px;
+  --lh-hero:        1.2;   /* ≈50.4px */
+  --fs-testimonial: 36px;
+  --lh-testimonial: 1.2;
+  --fs-optin:       32px;
+  --lh-optin:       1.2;
+  --fs-under-image: 24px;
+  --lh-under-image: 1.2;
+  --tracking-display: 0.4px; /* alle Source Serif 4-koppen */
+
+  --fs-eyebrow:  15px;
+  --lh-eyebrow:  1.3;      /* ≈19.5px */
+  --tracking-eyebrow: 1.5px;
+
+  --fs-body:     17px;
+  --lh-body:     34px;     /* ≈2.0 — bewust ruim */
+
+  --fs-button:   13px;
+  --lh-button:   1.3;      /* ≈16.9px */
+  --tracking-button: 0.06em;
+
+  --weight-light:  300;  /* koppen */
+  --weight-regular: 400; /* body */
+  --weight-medium: 500;  /* eyebrow, knop */
+  --weight-bold:   700;  /* joy-laag (Special Elite is enkel regular, maar zwaarder ogend door letterbeeld) */
+
+  /* ---- Vorm & ritme ---- */
+  --radius: 2px;          /* bijna recht — knoppen, kaders, inputs */
+  --radius-circle: 50%;   /* genummerde stappen */
+  --step-size: 52px;      /* diameter "1/2/3"-cirkels */
+  --step-border: 2px solid var(--plum);
+
+  --section-padding: 7rem;      /* genereuze witruimte tussen secties */
+  --section-padding-mobile: 3rem;
+  --container-max: 1120px;
+  --gutter: 1.5rem;
+
+  /* ---- Schaduw — ALLEEN op zwevende objecten (bv. ebook-mockup) ---- */
+  --shadow-float: 0 24px 48px rgba(92, 85, 86, 0.18), 0 4px 12px rgba(92, 85, 86, 0.08);
+
+  /* ---- Beweging — rustig, nooit verrassend ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+}
+
+/* ============================================================
+   HERBRUIKBARE KLASSEN
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.2;
+  color: var(--plum);
+  margin: 0 0 0.5em;
+}
+
+/* ---- Eyebrow — kleine getrackte label boven een kop ---- */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--plum);
+  margin: 0 0 0.75em;
+}
+
+/* ---- Koppen op vaste maten ---- */
+.h-hero      { font-size: var(--fs-hero); line-height: var(--lh-hero); }
+.h-testimonial { font-size: var(--fs-testimonial); line-height: var(--lh-testimonial); }
+.h-optin     { font-size: var(--fs-optin); line-height: var(--lh-optin); }
+.h-under-image { font-size: var(--fs-under-image); line-height: var(--lh-under-image); }
+
+/* ---- Joy-laag — enkel voor hoop/herstel-content, spaarzaam ---- */
+.joy {
+  font-family: var(--font-joy);
+  color: var(--magenta);
+}
+
+/* ---- Knop — bijna recht, pruim vlak of pruim rand, pijl schuift op hover ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: var(--fs-button);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-button);
+  letter-spacing: var(--tracking-button);
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--plum);
+  background: var(--plum);
+  color: var(--white);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.btn:hover { background: var(--plum-hover); border-color: var(--plum-hover); }
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.btn--outline {
+  background: transparent;
+  color: var(--plum);
+  border: 1px solid var(--plum);
+}
+.btn--outline:hover { background: var(--plum); color: var(--white); }
+
+/* Pijl die opschuift op hover — plaats <span class="btn__arrow">→</span> in de knop */
+.btn__arrow {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.btn:hover .btn__arrow { transform: translateX(4px); }
+
+/* ---- Genummerde stappen (1/2/3) — pruim rand, geen vulling ---- */
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--step-size);
+  height: var(--step-size);
+  border-radius: var(--radius-circle);
+  border: var(--step-border);
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: 20px;
+  color: var(--plum);
+  background: transparent;
+}
+
+/* ---- Kaart — bijna recht, wit, alleen schaduw als hij "zweeft" ---- */
+.card {
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-rose);
+  padding: 2rem;
+}
+.card--float {
+  border: none;
+  box-shadow: var(--shadow-float);
+}
+
+/* ---- Scheidslijn — 1px roos op 50% ---- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-rose);
+  margin: 0;
+}
+
+/* ---- Secties — band-achtergronden voor ritme ---- */
+.section {
+  padding: var(--section-padding) var(--gutter);
+}
+.section > .section__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+.section--band   { background: var(--surface-band); }
+.section--butter { background: var(--surface-butter); }
+.section--plum   { background: var(--surface-plum); color: var(--text-on-plum); }
+.section--plum h1, .section--plum h2, .section--plum h3 { color: var(--text-on-plum); }
+
+@media (max-width: 768px) {
+  .section { padding: var(--section-padding-mobile) var(--gutter); }
+  :root {
+    --fs-hero: clamp(28px, 8vw, 42px);
+    --fs-testimonial: clamp(24px, 7vw, 36px);
+    --fs-optin: clamp(22px, 6vw, 32px);
+    --fs-under-image: clamp(19px, 5vw, 24px);
+  }
+}
