@@ -203,19 +203,24 @@
 
   /* ---- Podcast: foto + telefoon-mockup links, witte kaart met afleveringen rechts ---- */
   #podcast { position: relative; overflow: hidden; background: var(--rose-100); }
-  .podcast-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
-  .podcast-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; z-index: 1; }
-  .podcast-visual { position: relative; align-self: stretch; min-height: 520px; }
+  .podcast-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; }
+  .podcast-visual { position: relative; align-self: stretch; min-height: 540px; }
+  .podcast-visual .podcast-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; border-radius: var(--radius); z-index: 0;
+  }
+  /* Telefoon: eindigt ~25% over de witte kaart, schuift vanuit de zijkant in */
   .podcast-visual .podcast-phone {
-    position: absolute; bottom: 0; left: 6%; width: 62%; max-width: 300px; height: auto;
+    position: absolute; bottom: 0; left: 27%; width: 54%; max-width: 300px; height: auto; z-index: 3;
     filter: drop-shadow(0 20px 40px rgba(92, 85, 86, 0.28));
-    opacity: 0; transform: translateX(-135%);   /* komt volledig vanuit de zijkant */
+    opacity: 0; transform: translateX(-170%);
     transition: opacity 0.6s var(--ease-out), transform 0.9s var(--ease-out);
   }
   .podcast-visual.in .podcast-phone { opacity: 1; transform: none; }
+  /* Witte kaart valt ~1/3 over de middenlijn in de linkerkolom */
   .podcast-content {
     background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-float);
-    padding: 2.75rem; margin-left: -70px; position: relative; z-index: 2;
+    padding: 2.75rem; margin-left: -185px; position: relative; z-index: 2;
   }
   .episode-list { list-style: none; padding: 0; margin: 1.5rem 0; }
   .episode { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 0; border-top: 1px solid var(--border-rose); }
@@ -479,9 +484,9 @@
 
   <!-- Podcast -->
   <section class="section" id="podcast">
-    <img class="podcast-bg" src="assets/photos/hero-bloesem.jpg" alt="">
     <div class="section__inner podcast-split">
       <div class="podcast-visual">
+        <img class="podcast-photo" src="assets/photos/hero-bloesem.jpg" alt="">
         <img class="podcast-phone" src="assets/photos/podcast-phone.png" alt="Podcastspeler op een telefoon">
       </div>
       <div class="podcast-content">
