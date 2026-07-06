@@ -117,10 +117,11 @@
     border: 0; border-top: 0.4px solid var(--plum);
     margin: 1.25rem auto 1.5rem;
   }
-  .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+  .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
   .persona { text-align: center; display: flex; flex-direction: column; }
   .persona .btn { margin-top: auto; align-self: center; }
-  .persona__imgwrap { position: relative; }
+  .persona__imgwrap { position: relative; border-radius: var(--radius); }
+  .persona__imgwrap:focus-visible { outline: none; box-shadow: var(--focus-ring); }
   .persona__img {
     width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); display: block;
   }
@@ -129,20 +130,35 @@
     border: 1px dashed var(--plum); background: rgba(255, 255, 255, 0.5);
     font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
   }
-  /* Rondje met monogram, overlapt de onderkant van de foto */
+  /* Monogram-rondje bovenaan, overlapt de bovenkant van de foto */
   .persona__badge {
-    position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 50%); z-index: 2;
+    position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); z-index: 3;
     width: 56px; height: 56px; border-radius: 50%;
     background: var(--white); border: 2px solid var(--plum);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-display); font-size: 22px; color: var(--plum);
   }
-  .persona__label {
-    display: block; margin: 2.6rem 0 0.6rem;
-    font-family: var(--font-body); font-size: 13px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--plum);
+  /* Kaart met naam + verhaal 'achter' de foto — verschijnt op hover/focus */
+  .persona__overlay {
+    position: absolute; inset: 0; border-radius: var(--radius);
+    background: rgba(107, 25, 83, 0.92); color: var(--white);
+    padding: 1.75rem; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity var(--dur-base) var(--ease-out);
   }
-  .persona__text { margin: 0 0 1.25rem; }
+  .persona__imgwrap:hover .persona__overlay,
+  .persona__imgwrap:focus .persona__overlay,
+  .persona__imgwrap:focus-within .persona__overlay { opacity: 1; }
+  .persona__label {
+    display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin: 0 0 0.75rem;
+  }
+  .persona__story { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.92); }
+  /* Statement + knop onder de foto */
+  .persona__statement {
+    font-family: var(--font-display); font-weight: var(--weight-light);
+    font-size: 21px; line-height: 1.35; color: var(--plum);
+    margin: 1.75rem 0 1.25rem;
+  }
   /* Afsluitende regels + knop onder de kaarten */
   .herken-closing { margin-top: 3rem; }
   .herken-closing__text {
@@ -400,31 +416,40 @@
       </div>
       <div class="persona-grid">
         <article class="persona">
-          <div class="persona__imgwrap">
+          <div class="persona__imgwrap" tabindex="0">
             <img class="persona__img" src="assets/photos/woman-writing.png" alt="Vrouw die schrijft in een dagboek">
             <span class="persona__badge" aria-hidden="true">M</span>
+            <div class="persona__overlay">
+              <span class="persona__label">Marijke</span>
+              <p class="persona__story">Haar partner kleineert haar, spot met haar, geeft al hun geld uit en wil niet dat ze contact heeft met haar moeder of vriendinnen. In het begin was alles fantastisch. <em>Nu vraagt ze zich af: hoe is het zo ver gekomen?</em></p>
+            </div>
           </div>
-          <span class="persona__label">Marijke</span>
-          <p class="persona__text">Haar partner kleineert haar, spot met haar, geeft al hun geld uit en wil niet dat ze contact heeft met haar moeder of vriendinnen. In het begin was alles fantastisch. <em>Nu vraagt ze zich af: hoe is het zo ver gekomen?</em></p>
-          <a href="#over-cursus" class="btn btn--fill">Lees meer <span class="btn__arrow">→</span></a>
+          <p class="persona__statement">Ik twijfel over geweld in mijn relatie.</p>
+          <a href="#" class="btn btn--fill" data-todo="video-pagina">Bekijk video <span class="btn__arrow">→</span></a>
         </article>
         <article class="persona">
-          <div class="persona__imgwrap">
+          <div class="persona__imgwrap" tabindex="0">
             <img class="persona__img" src="assets/photos/woman-coffee.png" alt="Vrouw die een rustig moment voor zichzelf neemt met koffie">
             <span class="persona__badge" aria-hidden="true">J</span>
+            <div class="persona__overlay">
+              <span class="persona__label">Joyce</span>
+              <p class="persona__story">Elke keer als ze probeert te vertrekken, keert ze terug. Hij verdraait haar woorden, gebruikt de kinderen als pressiemiddel. <em>Ze blijft zichzelf afvragen: 'Wat is er toch mis met mij?'</em></p>
+            </div>
           </div>
-          <span class="persona__label">Joyce</span>
-          <p class="persona__text">Elke keer als ze probeert te vertrekken, keert ze terug. Hij verdraait haar woorden, gebruikt de kinderen als pressiemiddel. <em>Ze blijft zichzelf afvragen: 'Wat is er toch mis met mij?'</em></p>
-          <a href="#over-cursus" class="btn btn--fill">Lees meer <span class="btn__arrow">→</span></a>
+          <p class="persona__statement">Ik zit in een relatie met geweld.</p>
+          <a href="#" class="btn btn--fill" data-todo="bijeenkomst-aanmeldpagina">Lees verder <span class="btn__arrow">→</span></a>
         </article>
         <article class="persona">
-          <div class="persona__imgwrap">
+          <div class="persona__imgwrap" tabindex="0">
             <div class="persona__img persona__img--placeholder">Foto: vrouw achter een laptop — nog toe te voegen</div>
             <span class="persona__badge" aria-hidden="true">A</span>
+            <div class="persona__overlay">
+              <span class="persona__label">Ava</span>
+              <p class="persona__story">Haar ex verandert continu de afspraken over de kinderen, stuurt dreigende berichten en belt haar huilend op. Ze heeft geen vriendinnen meer. <em>Ze is continu angstig. Ze weet niet meer wie ze zelf is.</em></p>
+            </div>
           </div>
-          <span class="persona__label">Ava</span>
-          <p class="persona__text">Haar ex verandert continu de afspraken over de kinderen, stuurt dreigende berichten en belt haar huilend op. Ze heeft geen vriendinnen meer. <em>Ze is continu angstig. Ze weet niet meer wie ze zelf is.</em></p>
-          <a href="#over-cursus" class="btn btn--fill">Lees meer <span class="btn__arrow">→</span></a>
+          <p class="persona__statement">Ik heb geweld in mijn relatie meegemaakt.</p>
+          <a href="#" class="btn btn--fill" data-todo="cursus-aanmeldpagina">Lees meer <span class="btn__arrow">→</span></a>
         </article>
       </div>
       <div class="center-narrow herken-closing">
