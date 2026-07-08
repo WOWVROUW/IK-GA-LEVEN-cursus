@@ -140,8 +140,8 @@ Structuur ontleend aan het ChicSpark-thema, ontdaan van de business-coach-huid:
    Wel: 10 weken, kleine groep, Own My Life, gratis kennismaking.
 8. **Over Hiltje** — warme foto, korte persoonlijke tekst.
 9. **Slot-CTA** — kennismakingsgesprek via Calendly. Eén kalme knop.
-10. **Footer** — links, socials, veiligheidsregel + acute hulproute (112, Veilig Thuis
-    0800-2000).
+10. **Footer** — links, socials, veiligheidsregel + acute hulproute (alleen 112; Veilig
+    Thuis NIET noemen, besluit 2026-07-07, tenzij Hiltje er expliciet om vraagt).
 
 **Bewust weggelaten uit ChicSpark:** de "$5M / mastermind"-cijferrij, "Take the quiz",
 de drie concurrerende knoppen naast elkaar, de mediologo's-balk.
@@ -153,7 +153,8 @@ de drie concurrerende knoppen naast elkaar, de mediologo's-balk.
 1. **Snel-weg-knop** rechtsboven, altijd zichtbaar ("Verlaat deze site snel"), stuurt
    naar een neutrale site en houdt de pagina uit de geschiedenis. Werkt ook op **Esc**.
 2. **Geen autoplay** van video of geluid, ooit.
-3. **Footerregel** over veilig browsen + acute hulproute (112, Veilig Thuis).
+3. **Footerregel** over veilig browsen + acute hulproute (alleen 112; Veilig Thuis
+   staat sinds 2026-07-07 bewust niet in content, tenzij Hiltje er expliciet om vraagt).
 4. **Rust en voorspelbaarheid** boven verrassende animaties — geen countdown-timers,
    geen schaarste-trucs, geen pop-ups die de aandacht grijpen.
 5. Taal is **je/jij**, informeel, nooit "u"; nooit clinisch ("slachtoffer",
@@ -162,6 +163,25 @@ de drie concurrerende knoppen naast elkaar, de mediologo's-balk.
    opgeven.
 
 Deze regels gelden voor élke pagina op de site, niet alleen de salespagina.
+
+### Video-embeds (Vimeo) — vaste instellingen
+
+Vastgelegd 2026-07-08 bij de bouw van video.html. Elke Vimeo-embed op de site krijgt:
+
+1. **Niet volgen:** `dnt=1` in de speler-URL, zodat Vimeo geen kijkgedrag bijhoudt.
+   Voor dit publiek is dat een veiligheidsmaatregel, geen detail.
+2. **Speler-chrome uit:** `title=0&byline=0&portrait=0`, dus geen titel, naam of
+   avatar over het beeld.
+3. **Responsive:** geen vaste width/height op de iframe, maar een wrapper met
+   `aspect-ratio: 16/9` en de iframe op 100% breed en hoog.
+4. **Autoplay uit:** geen `autoplay` in de URL en niet in het `allow`-attribuut.
+   De vrouw start de video zelf (regel 2 hierboven).
+
+Voorbeeld-URL: `https://player.vimeo.com/video/ID?h=HASH&dnt=1&title=0&byline=0&portrait=0`
+met `allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"`,
+`loading="lazy"` en een beschrijvende `title` op de iframe. Werkend voorbeeld: video.html.
+NB: een vimeo.com/share/…-link is geen embed-URL; haal ID + hash uit de embed-code of
+de share-pagina.
 
 ---
 
@@ -180,5 +200,8 @@ Deze regels gelden voor élke pagina op de site, niet alleen de salespagina.
 - Afgeleide hover-/randtinten (§2) zijn ingevuld, niet expliciet bevestigd.
 - Card-radius volgt nu dezelfde `--radius: 2px` als knoppen (consistent met "bijna
   recht"); zeg het als kaarten iets ronder mogen.
-- Snel-weg-knop en de crisis-melding (§6.1, 6.3) zijn nog niet als concrete
-  componenten gebouwd — dat gebeurt bij het bouwen van de salespagina zelf.
+- De volledige lijst openstaande beslissingen wordt bijgehouden in
+  `brein/open-beslissingen.md` in de werkmap (Operations/Claude CODE), niet hier.
+
+(Bijgewerkt 2026-07-08: snel-weg-knop en crisis-melding zijn inmiddels gebouwd en
+staan op alle pagina's.)
