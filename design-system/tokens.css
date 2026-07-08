@@ -104,12 +104,16 @@
   --font-body:    'Work Sans', system-ui, -apple-system, sans-serif;
   --font-joy:     'Special Elite', 'Courier New', monospace; /* joy-laag: alleen hoop/herstel-content */
 
-  /* ---- Typografie: exacte specs (desktop-waarden, zie ik-ga-leven-design-system.md) ---- */
-  --fs-hero:        42px;
-  --lh-hero:        1.2;   /* ≈50.4px */
-  --fs-testimonial: 36px;
+  /* ---- Typografie: exacte specs (desktop-waarden, zie ik-ga-leven-design-system.md) ----
+     Schaal bijgesteld 2026-07-08: de echte ChicSpark-demo voert koppen groter
+     uit (hero rond 58px) dan de eerder gemeten 42px, en dat verschil was wat
+     Hiltje miste. Goedgekeurd op de bijeenkomst-pagina als proef. Oude vaste
+     waarden: 42 / 36 / 32. clamp() schaalt kleinere schermen vanzelf terug. */
+  --fs-hero:        clamp(34px, 4.6vw, 58px);
+  --lh-hero:        1.2;
+  --fs-testimonial: clamp(28px, 3.6vw, 46px);
   --lh-testimonial: 1.2;
-  --fs-optin:       32px;
+  --fs-optin:       clamp(24px, 3vw, 36px);
   --lh-optin:       1.2;
   --fs-under-image: 24px;
   --lh-under-image: 1.2;
@@ -315,3 +319,121 @@ h1, h2, h3, h4 {
     --fs-under-image: clamp(19px, 5vw, 24px);
   }
 }
+
+/* ============================================================
+   COMPONENTLAAG — de ChicSpark-signatuur, vertaald naar het merk
+   Toegevoegd 2026-07-08, na de proef op bijeenkomst.html. Dit zijn
+   de terugkerende elementen die de ChicSpark-demo zijn look geven.
+   De signatuur-knop (licht vlak + pruim onderrand) bestond hier al
+   als .btn; hieronder de rest.
+   ============================================================ */
+
+/* Container voor pagina's die secties zonder eigen zijpadding bouwen
+   (de funnelpagina's; de homepage gebruikt .wrap/.section__inner) */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Hairlines aan de randen van elke gekleurde band */
+.section--band, .section--butter {
+  border-top: 1px solid var(--border-rose);
+  border-bottom: 1px solid var(--border-rose);
+}
+
+/* Korte gecentreerde divider onder een kop (modifier op .divider) */
+.divider--short {
+  width: 140px;
+  margin: 1.6rem auto 0;
+}
+.divider--short.divider--left { margin-left: 0; }
+
+/* Strip tussen hairlines (het "featured in"-ritme; bij ons voor
+   herkomst, doorverwijzing of een kalme aankondiging) */
+.strip {
+  border-top: 1px solid var(--border-rose);
+  border-bottom: 1px solid var(--border-rose);
+  padding: 1.5rem 0;
+}
+.strip--roomy { padding: 3rem 0; }
+.strip-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 3.5rem;
+}
+.strip-items span {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Cijferrij: grote dunne serif-waarden met kleine labels
+   (bij ons in kalme woorden, nooit als opschepperige getallen) */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2.5rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-size: clamp(32px, 4vw, 52px);
+  color: var(--plum);
+  line-height: 1.1;
+}
+.stat-label {
+  margin-top: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Getint binnenpaneel dat in een gewone sectie zweeft */
+.panel {
+  background: var(--rose-tint);
+  padding: clamp(2.5rem, 5vw, 4.5rem);
+}
+.panel--butter { background: var(--butter); }
+
+/* Foto met offset-vlak erachter (de gelaagde portretvorm).
+   Geef de wrapper marge rechtsonder zodat het vlak ruimte heeft. */
+.photo-offset { position: relative; }
+.photo-offset::before {
+  content: "";
+  position: absolute;
+  top: 2.2rem; left: 2.2rem; right: -2.2rem; bottom: -2.2rem;
+  background: var(--butter);
+}
+.photo-offset > * { position: relative; }
+
+/* Omcirkeld aanhalingsteken boven een citaat */
+.quote-circle {
+  width: 4.6rem; height: 4.6rem;
+  margin-inline: auto;
+  display: grid; place-items: center;
+  border: 1.5px solid var(--rose);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  color: var(--rose);
+  line-height: 1;
+}
+
+/* Signatuur-knop voor op een pruim vlak: boter met roos onderrand */
+.btn--tint-invert {
+  background: var(--butter);
+  color: var(--plum);
+  border: 0;
+  border-bottom: 3px solid var(--rose);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.btn--tint-invert:hover { background: var(--white); color: var(--plum); }
