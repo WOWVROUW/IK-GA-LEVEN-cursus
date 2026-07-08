@@ -74,8 +74,11 @@ en randstaten. Vraag het na als iets daarvan niet goed voelt.
 
 Drie lagen, elk met een duidelijke taak. Alle drie gratis op Google Fonts.
 
-- **Koppen — Source Serif 4** (weight 300, licht/elegant, nooit vet).
-- **Body / labels / knoppen — Work Sans** (regular 400, medium 500 voor labels/knoppen).
+- **Koppen — Source Serif 4**, altijd de **Light-variant** (weight 300), nooit vetter.
+  (Source Serif 4 is de huidige Google Fonts-uitgave van Source Serif Pro; zelfde letter.)
+- **Body / labels / knoppen — Work Sans**, altijd **Regular** (weight 400).
+  Besluit Hiltje 2026-07-08: geen medium (500) of semibold (600) meer, ook niet voor
+  eyebrows, knoppen of labels. Nadruk komt uit kapitalen, tracking en kleur, niet uit gewicht.
 - **Joy-laag — Special Elite** (typemachine-gevoel), *uitsluitend* voor hoop/herstel-
   content — een losse zin, een citaat, nooit een hele alinea.
 
@@ -83,13 +86,16 @@ Drie lagen, elk met een duidelijke taak. Alle drie gratis op Google Fonts.
 
 | Rol | Font | Grootte | Weight | Line-height | Tracking | Kapitalen |
 |---|---|---|---|---|---|---|
-| Hero-kop | Source Serif 4 | 42px | 300 | ≈1.2 (50.4px) | 0.4px | nee |
-| Testimonial-kop | Source Serif 4 | 36px | 300 | ≈1.2 | 0.4px | nee |
-| Opt-in-kop | Source Serif 4 | 32px | 300 | ≈1.2 | 0.4px | nee |
+| Hero-kop | Source Serif 4 | clamp 34-58px | 300 | ≈1.2 | 0.4px | nee |
+| Testimonial-kop | Source Serif 4 | clamp 28-46px | 300 | ≈1.2 | 0.4px | nee |
+| Opt-in-kop | Source Serif 4 | clamp 24-36px | 300 | ≈1.2 | 0.4px | nee |
 | Kop onder beeld | Source Serif 4 | 24px | 300 | ≈1.2 | 0.4px | nee |
-| Eyebrow-label | Work Sans | 15px | 500 | ≈1.3 (19.5px) | 1.5px | **JA** |
+| Eyebrow-label | Work Sans | 15px | 400 | ≈1.3 (19.5px) | 1.5px | **JA** |
 | Body | Work Sans | 17px | 400 | 34px (≈2.0) | normaal | nee |
-| Knop | Work Sans | 13px | 500 | ≈1.3 (16.9px) | 0.06em | **JA** |
+| Knop | Work Sans | 13px | 400 | ≈1.3 (16.9px) | 0.06em | **JA** |
+
+(Kopgroottes 2026-07-08 opgeschaald naar de echte ChicSpark-demo-maat via `clamp()`;
+de oude vaste waarden waren 42/36/32.)
 
 Bevestigd: eyebrow én knoppen in kapitalen; de ruime 34px body line-height is bewust
 (leesbaarheid, rust).

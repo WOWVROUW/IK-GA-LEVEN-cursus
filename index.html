@@ -7,7 +7,8 @@
 <meta name="description" content="Ik ga leven: een gratis 10-weekse training voor vrouwen die geweld of dwingende controle meemaken in hun relatie. Online via Zoom, in jouw eigen tempo, zonder oordeel.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,400i&family=Work+Sans:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<!-- Fonts: Source Serif in de Light-variant (300), Work Sans in Regular (400) — besluit Hiltje 2026-07-08 -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&family=Work+Sans:ital,wght@0,400;1,400&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system/tokens.css">
 <style>
   /* ---- Page-specific layout (not part of the reusable token set) ---- */
@@ -29,7 +30,7 @@
   .exit-btn {
     position: fixed; top: 14px; right: 14px; z-index: 1200;
     background: var(--white); color: var(--magenta); border: 1px solid var(--magenta);
-    font-family: var(--font-body); font-size: 12px; font-weight: 600;
+    font-family: var(--font-body); font-size: 12px; font-weight: 400;
     letter-spacing: 0.04em; text-transform: uppercase;
     padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
     box-shadow: var(--shadow-float);
@@ -45,7 +46,7 @@
     font-family: var(--font-body); font-size: 13px; line-height: 1.5;
     padding: 12px 150px 12px var(--gutter);
   }
-  .announce a { color: var(--mint-700); font-weight: 600; text-underline-offset: 2px; }
+  .announce a { color: var(--mint-700); font-weight: 400; text-underline-offset: 2px; }
   @media (max-width: 600px) {
     .exit-btn__full { display: none; }
     .exit-btn__short { display: inline; }
@@ -62,7 +63,7 @@
   .site-header img { height: 64px; width: auto; }
   .site-nav { display: flex; gap: 2rem; align-items: center; }
   .site-nav a {
-    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    font-family: var(--font-body); font-size: 14px; font-weight: 400;
     text-decoration: none; color: var(--text);
   }
   .site-nav a:hover { color: var(--plum); }
@@ -149,7 +150,7 @@
   .persona__imgwrap:focus .persona__overlay,
   .persona__imgwrap:focus-within .persona__overlay { opacity: 1; }
   .persona__label {
-    display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    display: block; font-family: var(--font-body); font-size: 13px; font-weight: 400;
     letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin: 0 0 0.75rem;
   }
   .persona__story { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.92); }
@@ -202,7 +203,7 @@
   /* ---- Testimonials ---- */
   .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
   .testi { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border-rose); padding: 1.75rem; }
-  .testi blockquote { margin: 0; font-family: var(--font-display); font-size: 19px; line-height: 1.45; color: var(--plum); }
+  .testi blockquote { margin: 0; font-family: var(--font-display); font-weight: var(--weight-light); font-size: 19px; line-height: 1.45; color: var(--plum); }
   .testi cite {
     display: block; margin-top: 1rem; font-family: var(--font-body); font-size: 12px; font-style: normal;
     color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
@@ -276,8 +277,8 @@
     border: 1.5px solid var(--rose); color: var(--plum);
     display: flex; align-items: center; justify-content: center; font-size: 11px; margin-top: 2px;
   }
-  .episode__text { margin: 0; font-family: var(--font-display); font-size: 18px; line-height: 1.35; color: var(--plum); }
-  .episode__num { display: block; font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.15rem; }
+  .episode__text { margin: 0; font-family: var(--font-display); font-weight: var(--weight-light); font-size: 18px; line-height: 1.35; color: var(--plum); }
+  .episode__num { display: block; font-family: var(--font-body); font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.15rem; }
   @media (prefers-reduced-motion: reduce) {
     .podcast-visual .podcast-phone { opacity: 1; transform: none; transition: none; }
   }
@@ -301,7 +302,7 @@
   .site-footer { padding: var(--section-padding-mobile) var(--gutter) 2.5rem; }
   .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; }
   .footer-col h4 {
-    font-family: var(--font-body); font-weight: 600; font-size: 13px;
+    font-family: var(--font-body); font-weight: 400; font-size: 13px;
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);
     margin-bottom: 0.75rem;
   }
