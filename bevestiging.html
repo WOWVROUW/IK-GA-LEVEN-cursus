@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tab-titel bewust neutraal: zichtbaar in tabblad en geschiedenis op een gedeeld toestel. -->
+  <title>Bevestiging | Ik ga leven</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Je aanmelding is gelukt. Alles wat je nodig hebt komt per mail naar je toe.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="design-system/tokens.css">
+
+  <style>
+    /* ── Aansluiting op tokens.css: deze pagina bouwt secties met .container,
+          de zijmarges komen daarvandaan, niet uit .section ─────────────── */
+    .section { padding-inline: 0; }
+    h1 { font-size: var(--fs-hero); line-height: var(--lh-hero); }
+    h2 { font-size: var(--fs-testimonial); line-height: var(--lh-testimonial); }
+    h3 { font-size: var(--fs-under-image); line-height: var(--lh-under-image); }
+    p { margin: 0 0 1.1em; max-width: 62ch; }
+    .eyebrow { color: var(--plum); } /* op de funnelpagina's pruim i.p.v. roos */
+
+    /* Snel-weg-knop: altijd zichtbaar, het ene felle element van de pagina */
+    .exit-btn {
+      position: fixed;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 1200;
+      background: var(--magenta);
+      color: var(--white);
+      border: 0;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: var(--fs-button);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.8em 1.4em;
+      cursor: pointer;
+      box-shadow: var(--shadow-float);
+    }
+    .exit-btn:hover { background: var(--plum); }
+    .exit-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+    /* Header */
+    .site-header {
+      padding: 1.4rem 0;
+      background: var(--ecru);
+    }
+    .site-header .container { display: flex; align-items: center; padding-right: 15rem; }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: var(--weight-light);
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--plum);
+      text-decoration: none;
+    }
+
+    /* Hero-band: kalme bevestiging, gecentreerd zoals de confirmation-template */
+    .confirm-hero {
+      text-align: center;
+      padding-block: clamp(3.5rem, 6vw, 6rem);
+    }
+    .confirm-hero h1 { max-width: 18ch; margin-inline: auto; }
+    .confirm-hero p { margin: 1.6rem auto 0; }
+
+    /* Next steps: drie witte kaarten met dunne rand (confirmation-template) */
+    .steps-head { text-align: center; }
+    .steps-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: clamp(2.5rem, 4vw, 4rem);
+    }
+    .steps-card {
+      background: var(--white);
+      border: 1px solid var(--rose);
+      padding: clamp(1.8rem, 3vw, 2.6rem) clamp(1.4rem, 2.5vw, 2rem);
+      text-align: center;
+    }
+    .steps-card .step-num { margin: 0 auto 1.3rem; }
+    .steps-card h3 { font-size: 22px; }
+    .steps-card p { font-size: 15px; line-height: 1.9; }
+
+    /* Slotband */
+    .closing { text-align: center; }
+    .closing p { margin-inline: auto; color: var(--butter); }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.5rem 0 3rem;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+    .site-footer p { max-width: 72ch; }
+    .site-footer strong { color: var(--text); font-weight: var(--weight-medium); }
+
+    /* Mobiel */
+    @media (max-width: 860px) {
+      .site-header .container { padding-right: var(--gutter); }
+      .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
+      .steps-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Snel-weg-knop: vervangt de pagina direct door een neutrale site (ook via Esc) -->
+  <button class="exit-btn" id="exitBtn" type="button">Verlaat deze site snel</button>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">IK GA LEVEN</a>
+    </div>
+  </header>
+
+  <!-- ── BEVESTIGING ──────────────────────────────────────────────────── -->
+  <section class="section section--band confirm-hero">
+    <div class="container">
+      <p class="eyebrow">Online bijeenkomst &middot; dinsdag 21 juli</p>
+      <h1>Je bent erbij.</h1>
+      <hr class="divider divider--short">
+      <p>Fijn dat je komt. Alles wat je nodig hebt komt per mail naar je toe; hieronder zie je
+         wat je kunt verwachten.</p>
+    </div>
+  </section>
+
+  <!-- ── NEXT STEPS ───────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="steps-head">
+        <h2>Dit zijn je volgende stappen</h2>
+        <hr class="divider divider--short">
+      </div>
+      <div class="steps-cards">
+        <div class="steps-card">
+          <div class="step-num">1</div>
+          <h3>Check je mail</h3>
+          <p>Je ontvangt binnen enkele minuten een mail met de deelnamelink voor Zoom en de gids
+             Veilig meelezen. Zie je hem niet? Kijk dan even in je spam- of reclamemap.</p>
+        </div>
+        <div class="steps-card">
+          <div class="step-num">2</div>
+          <h3>Dinsdag 21 juli, 10:00 uur</h3>
+          <p>We nemen er ruim twee uur voor, online via Zoom. Je hoeft niets voor te bereiden en
+             niets te delen. Erbij zijn is genoeg.</p>
+        </div>
+        <div class="steps-card">
+          <div class="step-num">3</div>
+          <h3>Lees de gids Veilig meelezen</h3>
+          <p>Bij de mail zit een korte gids: veilig meelezen op een gedeeld toestel, sporen
+             wissen, en de snelste weg van deze site af (de knop op deze pagina of de Esc-toets).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SLOT ─────────────────────────────────────────────────────────── -->
+  <section class="section section--plum">
+    <div class="container closing">
+      <h2>Tot dinsdag 21 juli</h2>
+      <p>Twee uur voor jou. Wij zorgen voor de rest.</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Bij acuut gevaar bel je 112.</strong></p>
+      <p>Deel je een computer of telefoon? Met de knop op deze pagina of de Esc-toets verlaat je
+         deze site direct; de pagina vervangt zichzelf door een neutrale website. Wil je geen
+         sporen achterlaten, wis dit bezoek dan ook uit je browsergeschiedenis.</p>
+      <p>&copy; 2026 IK GA LEVEN</p>
+    </div>
+  </footer>
+
+  <script>
+    // Snel-weg: vervangt de huidige pagina (geen terug-knop naar deze site) door een neutrale site.
+    function quickExit() {
+      window.location.replace("https://www.buienradar.nl");
+    }
+    document.getElementById("exitBtn").addEventListener("click", quickExit);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") quickExit();
+    });
+  </script>
+
+</body>
+</html>

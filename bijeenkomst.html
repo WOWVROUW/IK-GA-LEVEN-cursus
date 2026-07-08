@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tab-titel bewust zonder "psychisch geweld": de titel is zichtbaar in tabblad en
+       browsergeschiedenis op een gedeeld toestel. -->
+  <title>Online bijeenkomst dinsdag 21 juli | Ik ga leven</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Gratis online bijeenkomst op dinsdag 21 juli 2026, 10:00 uur. Twee uur helderheid, in een besloten groep vrouwen.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="design-system/tokens.css">
+
+  <style>
+    /* ── Aansluiting op tokens.css: deze pagina bouwt secties met .container,
+          de zijmarges komen daarvandaan, niet uit .section ─────────────── */
+    .section { padding-inline: 0; }
+    h1 { font-size: var(--fs-hero); line-height: var(--lh-hero); }
+    h2 { font-size: var(--fs-testimonial); line-height: var(--lh-testimonial); }
+    h3 { font-size: var(--fs-under-image); line-height: var(--lh-under-image); }
+    p { margin: 0 0 1.1em; max-width: 62ch; }
+    .eyebrow { color: var(--plum); } /* op de funnelpagina's pruim i.p.v. roos */
+
+    /* Snel-weg-knop: altijd zichtbaar, het ene felle element van de pagina */
+    .exit-btn {
+      position: fixed;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 1200;
+      background: var(--magenta);
+      color: var(--white);
+      border: 0;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: var(--fs-button);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.8em 1.4em;
+      cursor: pointer;
+      box-shadow: var(--shadow-float);
+    }
+    .exit-btn:hover { background: var(--plum); }
+    .exit-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+    /* Header */
+    .site-header {
+      padding: 1.4rem 0;
+      background: var(--ecru);
+    }
+    .site-header .container { display: flex; align-items: center; padding-right: 15rem; }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: var(--weight-light);
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--plum);
+      text-decoration: none;
+    }
+
+    /* Hero: witte kaart over een beeldvlak dat doorloopt tot de paginarand */
+    .hero {
+      position: relative;
+      padding-block: clamp(2.5rem, 5vw, 5rem) clamp(3rem, 6vw, 6rem);
+    }
+    .hero-photo {
+      position: absolute;
+      top: 0; bottom: 0; right: 0; left: 34%;
+      background: var(--rose-tint);
+    }
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 1.6rem;
+      border: 1.5px solid var(--rose);
+    }
+    .hero .container { position: relative; }
+    .hero-card {
+      background: var(--white);
+      width: min(600px, 100%);
+      padding: clamp(2rem, 4vw, 3.5rem);
+    }
+    .hero-card p { margin-bottom: 1.4em; }
+    .hero-meta {
+      font-size: var(--fs-eyebrow);
+      font-weight: var(--weight-medium);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin: 0 0 1.8rem;
+    }
+
+    /* Aanmeldformulier (blauwdruk; wordt vervangen door de Flodesk-embed) */
+    .signup { max-width: 620px; margin-inline: auto; text-align: center; }
+    .signup p { margin-inline: auto; }
+    .signup-form {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 2.2rem;
+      text-align: left;
+    }
+    .signup-form label {
+      font-size: var(--fs-eyebrow);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+    .signup-form input {
+      width: 100%;
+      padding: 0.95em 1.1em;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      color: var(--text);
+      background: var(--white);
+      border: 1.5px solid var(--rose);
+      border-radius: var(--radius);
+    }
+    .signup-form input:focus {
+      outline: none;
+      border-color: var(--plum);
+    }
+    .signup-form .btn { justify-content: center; margin-top: 0.4rem; }
+    .signup-note {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 1.4rem;
+    }
+
+    /* Drie punten, gecentreerd zoals in de demo */
+    .points-head { text-align: center; }
+    .points-head p { margin-inline: auto; margin-top: 1.6rem; }
+    .points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 3.5rem);
+      margin-top: clamp(2.5rem, 4vw, 4rem);
+    }
+    .point { text-align: center; }
+    .point .step-num { margin: 0 auto 1.4rem; background: var(--white); }
+    .point p { margin-inline: auto; }
+
+    /* Praktisch: boterpaneel dat in de sectie zweeft */
+    .panel-inner { max-width: 640px; margin-inline: auto; text-align: center; }
+    .panel-inner p { margin-inline: auto; }
+    .panel-inner .eyebrow { margin-bottom: 1.1rem; }
+
+    /* Over Hiltje */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(3rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .about-grid .photo-offset { margin: 0 2.2rem 2.2rem 0; }
+
+    /* Fotoplaatshouder: rustig merkvlak, later te vervangen door een echte foto */
+    .photo-ph {
+      background: var(--rose-tint);
+      min-height: 440px;
+      position: relative;
+    }
+    .photo-ph::after {
+      content: "";
+      position: absolute;
+      inset: 1.4rem;
+      border: 1.5px solid var(--rose);
+    }
+
+    /* Slotband */
+    .closing { text-align: center; }
+    .closing p { margin-inline: auto; margin-bottom: 2rem; color: var(--butter); }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.5rem 0 3rem;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+    .site-footer p { max-width: 72ch; }
+    .site-footer strong { color: var(--text); font-weight: var(--weight-medium); }
+
+    /* Mobiel */
+    @media (max-width: 860px) {
+      .site-header .container { padding-right: var(--gutter); }
+      .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
+      .hero { padding-top: 0; }
+      .hero-photo {
+        position: static;
+        display: block;
+        height: 280px;
+        margin-bottom: 1.6rem;
+      }
+      .hero-card { padding-inline: 0; background: transparent; }
+      .points { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-grid .photo-offset { order: -1; }
+      .photo-ph { min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Snel-weg-knop: vervangt de pagina direct door een neutrale site (ook via Esc) -->
+  <button class="exit-btn" id="exitBtn" type="button">Verlaat deze site snel</button>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">IK GA LEVEN</a>
+    </div>
+  </header>
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <!-- PLAATSHOUDER: hier komt een warme foto (Hiltje of hoopvol beeld), doorlopend tot de paginarand -->
+    <div class="hero-photo" role="presentation" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-card">
+        <p class="eyebrow">Gratis online bijeenkomst</p>
+        <h1>Zit ik in een relatie met psychisch geweld?</h1>
+        <p>Die vraag stel je jezelf niet zomaar. Iets in jou zegt al langer dat het niet klopt.
+           In twee uur krijg je helderheid over wat psychisch geweld is, hoe het werkt en waarom
+           het zo verwarrend voelt. Online, in een besloten groep vrouwen. Je hoeft niets uit te
+           leggen.</p>
+        <p class="hero-meta">Dinsdag 21 juli 2026 &middot; 10:00 uur &middot; via Zoom &middot; gratis</p>
+        <a class="btn" href="#aanmelden">Ik ben erbij <span class="btn__arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HERKOMST-STRIP ───────────────────────────────────────────────── -->
+  <div class="strip">
+    <div class="container strip-items">
+      <span>Gebaseerd op Own My Life</span>
+      <span>Wereldwijd 20.000+ vrouwen</span>
+      <span>Begeleid door huisarts Hiltje Oude Luttikhuis</span>
+    </div>
+  </div>
+
+  <!-- ── AANMELDEN ────────────────────────────────────────────────────── -->
+  <section class="section section--band" id="aanmelden">
+    <div class="container">
+      <div class="signup">
+        <h2 class="h-optin">Meld je aan voor dinsdag 21 juli</h2>
+        <hr class="divider divider--short">
+        <p style="margin-top: 1.6rem;">Vul je voornaam en e-mailadres in. Je ontvangt de
+           deelnamelink per mail, samen met de gids Veilig meelezen. Gebruik een e-mailadres dat
+           alleen jij leest.</p>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             FLODESK: vervang dit formulier door de Flodesk inline embed-code
+             (Flodesk > Forms > inline form > Embed). Het formulier hieronder
+             is de blauwdruk voor de styling: voornaam + e-mail + één knop.
+             Redirect na verzending: bevestiging.html
+             ═══════════════════════════════════════════════════════════════ -->
+        <form class="signup-form" action="#" method="post">
+          <div>
+            <label for="voornaam">Voornaam</label>
+            <input type="text" id="voornaam" name="voornaam" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <button class="btn btn--solid" type="submit">Ja, ik ben erbij</button>
+        </form>
+
+        <p class="signup-note">Je gegevens blijven bij ons. Aanmelden betekent alleen dat je er op
+           21 juli bij bent.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAT JE ERAAN HEBT ────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="points-head">
+        <h2>Wat deze twee uur je geven</h2>
+        <hr class="divider divider--short">
+      </div>
+      <div class="points">
+        <div class="point">
+          <div class="step-num">1</div>
+          <h3>Je ziet wat er gebeurt</h3>
+          <p>Psychisch geweld heeft een patroon. Als je dat patroon ziet, valt er iets op zijn
+             plek: het ligt niet aan jou, het is wat iemand die geweld gebruikt d&oacute;&eacute;t.
+             We lopen er stap voor stap doorheen.</p>
+        </div>
+        <div class="point">
+          <div class="step-num">2</div>
+          <h3>Je toetst je eigen relatie</h3>
+          <p>Met de relatiemythes-quiz en een helder overzicht van hoe een gezonde relatie
+             eruitziet. Zodat je niet langer twijfelt aan je eigen waarneming.</p>
+        </div>
+        <div class="point">
+          <div class="step-num">3</div>
+          <h3>Je bent twee uur niet de enige</h3>
+          <p>Een besloten groep vrouwen die herkennen wat jij meemaakt. Je hoeft niets te delen.
+             Erbij zijn is genoeg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CIJFERRIJ ────────────────────────────────────────────────────── -->
+  <div class="strip strip--roomy">
+    <div class="container">
+      <div class="stats">
+        <div><div class="stat-num">21 juli</div><div class="stat-label">Dinsdag</div></div>
+        <div><div class="stat-num">10:00</div><div class="stat-label">Aanvang</div></div>
+        <div><div class="stat-num">&plusmn;2 uur</div><div class="stat-label">Duur</div></div>
+        <div><div class="stat-num">gratis</div><div class="stat-label">Deelname</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRAKTISCH ────────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="panel panel--butter">
+        <div class="panel-inner">
+          <p class="eyebrow">Zo ziet het eruit</p>
+          <h2>Twee uur, bij jou aan tafel</h2>
+          <p>Online via Zoom; de link krijg je na aanmelding per mail. Een besloten groep, en we
+             maken geen opname: wat je zegt of laat zien blijft binnen de groep. Camera&#39;s
+             staan aan; zo zien we elkaar echt.</p>
+          <p>Aanmelden betekent niet dat je iets aan je relatie verandert. Het betekent dat je twee
+             uur lang inzicht en herkenning krijgt, in jouw tempo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OVER HILTJE ──────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <!-- PLAATSHOUDER: warme foto van Hiltje, met offset-vlak erachter -->
+        <div class="photo-offset">
+          <div class="photo-ph" role="presentation" aria-hidden="true"></div>
+        </div>
+        <div>
+          <p class="eyebrow">Wie de bijeenkomst begeleidt</p>
+          <h2>Hiltje Oude Luttikhuis</h2>
+          <hr class="divider divider--short divider--left">
+          <p style="margin-top: 1.6rem;">Ruim twintig jaar huisarts, acht jaar coach. Ik ben door
+             Natalie Collins getraind om haar programma Own My Life naar Nederland te brengen:
+             wereldwijd volgden ruim 20.000 vrouwen het. IK GA LEVEN is de Nederlandse bewerking.</p>
+          <p>Deze bijeenkomst begeleid ik zelf. Geen theorieles, maar twee uur die antwoord geven
+             op de vraag die je al zo lang meedraagt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SLOT ─────────────────────────────────────────────────────────── -->
+  <section class="section section--plum">
+    <div class="container closing">
+      <h2>Dinsdag 21 juli, 10:00 uur</h2>
+      <p>Twee uur voor jou. Meld je aan, de rest komt vanzelf naar je toe.</p>
+      <a class="btn btn--tint-invert" href="#aanmelden">Ik ben erbij <span class="btn__arrow">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Bij acuut gevaar bel je 112.</strong></p>
+      <p>Deel je een computer of telefoon? Met de knop op deze pagina of de Esc-toets verlaat je
+         deze site direct; de pagina vervangt zichzelf door een neutrale website. Wil je geen
+         sporen achterlaten, wis dit bezoek dan ook uit je browsergeschiedenis.</p>
+      <p>&copy; 2026 IK GA LEVEN</p>
+    </div>
+  </footer>
+
+  <script>
+    // Snel-weg: vervangt de huidige pagina (geen terug-knop naar deze site) door een neutrale site.
+    function quickExit() {
+      window.location.replace("https://www.buienradar.nl");
+    }
+    document.getElementById("exitBtn").addEventListener("click", quickExit);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") quickExit();
+    });
+  </script>
+
+</body>
+</html>

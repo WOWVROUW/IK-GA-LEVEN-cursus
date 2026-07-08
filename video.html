@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tab-titel bewust neutraal: zichtbaar in tabblad en geschiedenis op een gedeeld toestel. -->
+  <title>Video: Het begon met liefde | Ik ga leven</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Gratis video van 20 minuten. Kijk wanneer het jou uitkomt, en download het e-book direct als pdf.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="design-system/tokens.css">
+
+  <style>
+    /* ── Aansluiting op tokens.css: deze pagina bouwt secties met .container,
+          de zijmarges komen daarvandaan, niet uit .section ─────────────── */
+    .section { padding-inline: 0; }
+    h1 { font-size: var(--fs-hero); line-height: var(--lh-hero); }
+    h2 { font-size: var(--fs-testimonial); line-height: var(--lh-testimonial); }
+    h3 { font-size: var(--fs-under-image); line-height: var(--lh-under-image); }
+    p { margin: 0 0 1.1em; max-width: 62ch; }
+    .eyebrow { color: var(--plum); } /* op de funnelpagina's pruim i.p.v. roos */
+
+    /* Snel-weg-knop: altijd zichtbaar, het ene felle element van de pagina */
+    .exit-btn {
+      position: fixed;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 1200;
+      background: var(--magenta);
+      color: var(--white);
+      border: 0;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: var(--fs-button);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.8em 1.4em;
+      cursor: pointer;
+      box-shadow: var(--shadow-float);
+    }
+    .exit-btn:hover { background: var(--plum); }
+    .exit-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+    /* Header */
+    .site-header {
+      padding: 1.4rem 0;
+      background: var(--ecru);
+    }
+    .site-header .container { display: flex; align-items: center; padding-right: 15rem; }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: var(--weight-light);
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--plum);
+      text-decoration: none;
+    }
+
+    /* Hero-band met kop; de videokaart valt er half overheen (replay-template) */
+    .video-hero {
+      text-align: center;
+      padding-top: clamp(3rem, 5vw, 5rem);
+      padding-bottom: clamp(8rem, 12vw, 11rem);
+    }
+    .video-hero h1 { max-width: 21ch; margin-inline: auto; }
+    .video-hero p { margin: 1.6rem auto 0; }
+
+    /* Videokaart: witte lijst, over de bandrand heen getrokken */
+    .video-pull { position: relative; z-index: 2; }
+    .video-frame {
+      max-width: 900px;
+      margin: clamp(-7rem, -9vw, -6rem) auto 0;
+      background: var(--white);
+      padding: clamp(0.8rem, 1.5vw, 1.2rem);
+      box-shadow: var(--shadow-float);
+    }
+    .embed-ph {
+      aspect-ratio: 16 / 9;
+      background: #E9DCCF; /* warm beige, rustig vlak tot de echte embed er is */
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .embed-ph::after {
+      content: "";
+      position: absolute;
+      inset: 1.2rem;
+      border: 1.5px solid var(--rose);
+    }
+    .embed-ph span {
+      font-size: 13px;
+      font-weight: var(--weight-medium);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Pdf-blok onder de video */
+    .pdf-block {
+      text-align: center;
+      padding: clamp(2.5rem, 4vw, 4rem) 0 clamp(3.5rem, 6vw, 6rem);
+    }
+    .pdf-block p { margin-inline: auto; margin-bottom: 1.8rem; }
+
+    /* Smal opt-in blok: twee vakken en knop naast elkaar */
+    .optin-narrow { max-width: 760px; margin-inline: auto; text-align: center; }
+    .optin-narrow .h-optin { max-width: 30ch; margin-inline: auto; }
+    .optin-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .optin-row input {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 0.95em 1.1em;
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      color: var(--text);
+      background: var(--white);
+      border: 1.5px solid var(--rose);
+      border-radius: var(--radius);
+    }
+    .optin-row input:focus { outline: none; border-color: var(--plum); }
+    .optin-row .btn { flex: 0 0 auto; white-space: nowrap; }
+    .optin-note {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 1.2rem;
+    }
+
+    /* Next steps: drie witte kaarten met dunne rand (confirmation-template) */
+    .steps-head { text-align: center; }
+    .steps-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: clamp(2.5rem, 4vw, 4rem);
+    }
+    .steps-card {
+      background: var(--white);
+      border: 1px solid var(--rose);
+      padding: clamp(1.8rem, 3vw, 2.6rem) clamp(1.4rem, 2.5vw, 2rem);
+      text-align: center;
+    }
+    .steps-card .step-num { margin: 0 auto 1.3rem; }
+    .steps-card h3 { font-size: 22px; }
+    .steps-card p { font-size: 15px; line-height: 1.9; }
+    .steps-card a {
+      color: var(--plum);
+      font-size: var(--fs-button);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 2px solid var(--plum);
+      padding-bottom: 0.35em;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.5rem 0 3rem;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+    .site-footer p { max-width: 72ch; }
+    .site-footer strong { color: var(--text); font-weight: var(--weight-medium); }
+
+    /* Mobiel */
+    @media (max-width: 860px) {
+      .site-header .container { padding-right: var(--gutter); }
+      .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
+      .optin-row { flex-wrap: wrap; }
+      .optin-row input { flex: 1 1 160px; }
+      .steps-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Snel-weg-knop: vervangt de pagina direct door een neutrale site (ook via Esc) -->
+  <button class="exit-btn" id="exitBtn" type="button">Verlaat deze site snel</button>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">IK GA LEVEN</a>
+    </div>
+  </header>
+
+  <!-- ── HERO-BAND MET KOP ────────────────────────────────────────────── -->
+  <section class="section section--band video-hero">
+    <div class="container">
+      <p class="eyebrow">Gratis video &middot; 20 minuten</p>
+      <h1>Het begon met liefde. Waarom voelt het nu alsof het niet klopt?</h1>
+      <hr class="divider divider--short">
+      <p>Twijfel je over wat er in je relatie aan de hand is? In twintig minuten laat ik je zien
+         hoe het komt dat het zo verwarrend voelt. Kijk wanneer het jou uitkomt.</p>
+    </div>
+  </section>
+
+  <!-- ── VIDEO ────────────────────────────────────────────────────────── -->
+  <div class="video-pull">
+    <div class="container">
+      <div class="video-frame">
+        <!-- ═══════════════════════════════════════════════════════════════
+             VIDEO-EMBED: vervang deze plaatshouder door de echte embed-code
+             (YouTube verborgen of Vimeo). GEEN autoplay: de vrouw start de
+             video zelf. data-todo="video-embed"
+             ═══════════════════════════════════════════════════════════════ -->
+        <div class="embed-ph" data-todo="video-embed">
+          <span>Hier komt de video</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PDF-KNOP (geen opt-in nodig) ─────────────────────────────────── -->
+  <section class="pdf-block">
+    <div class="container">
+      <p>Wil je alles op je eigen tempo teruglezen? Het e-book bij deze video download je hier
+         direct. Geen e-mailadres nodig.</p>
+      <!-- data-todo="ebook-pdf": vervang # door de directe link naar de pdf -->
+      <a class="btn" href="#" data-todo="ebook-pdf" target="_blank" rel="noopener">
+        Download het e-book (pdf) <span class="btn__arrow">&darr;</span></a>
+    </div>
+  </section>
+
+  <!-- ── SMAL OPT-IN BLOK ─────────────────────────────────────────────── -->
+  <section class="section section--butter">
+    <div class="container">
+      <div class="optin-narrow">
+        <h2 class="h-optin">Laat je e-mailadres achter voor de nieuwste podcastafleveringen,
+           cursusdata en inspiratie.</h2>
+        <!-- TODO: vervang dit placeholder-formulier door de Flodesk-embed -->
+        <form class="optin-form js-optin" aria-label="Blijf op de hoogte">
+          <div class="optin-row">
+            <input type="text" name="voornaam" placeholder="Voornaam" autocomplete="given-name">
+            <input type="email" name="email" placeholder="E-mailadres" required autocomplete="email">
+            <button class="btn btn--solid" type="submit">Houd me op de hoogte</button>
+          </div>
+        </form>
+        <p class="optin-note">Gebruik een e-mailadres dat alleen jij leest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEXT STEPS ───────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="steps-head">
+        <h2>Wat je hierna kunt doen</h2>
+        <hr class="divider divider--short">
+      </div>
+      <div class="steps-cards">
+        <div class="steps-card">
+          <div class="step-num">1</div>
+          <h3>Download het e-book</h3>
+          <p>Alles uit de video, plus de voorbeelden, om terug te lezen wanneer jij wilt.
+             Direct te downloaden, zonder e-mailadres.</p>
+          <a href="#" data-todo="ebook-pdf">Naar de pdf &rarr;</a>
+        </div>
+        <div class="steps-card">
+          <div class="step-num">2</div>
+          <h3>Kom naar de online bijeenkomst</h3>
+          <p>Dinsdag 21 juli om 10:00 uur, twee uur via Zoom, gratis. In een besloten groep
+             vrouwen; je hoeft niets uit te leggen.</p>
+          <a href="bijeenkomst.html">Meld je aan &rarr;</a>
+        </div>
+        <div class="steps-card">
+          <div class="step-num">3</div>
+          <h3>Lees over de cursus</h3>
+          <p>IK GA LEVEN is de 10-weekse cursus waarin je de regie over je leven terugbouwt,
+             in een kleine groep.</p>
+          <a href="index.html">Naar de cursus &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Bij acuut gevaar bel je 112.</strong></p>
+      <p>Deel je een computer of telefoon? Met de knop op deze pagina of de Esc-toets verlaat je
+         deze site direct; de pagina vervangt zichzelf door een neutrale website. Wil je geen
+         sporen achterlaten, wis dit bezoek dan ook uit je browsergeschiedenis.</p>
+      <p>&copy; 2026 IK GA LEVEN</p>
+    </div>
+  </footer>
+
+  <script>
+    // Snel-weg: vervangt de huidige pagina (geen terug-knop naar deze site) door een neutrale site.
+    function quickExit() {
+      window.location.replace("https://www.buienradar.nl");
+    }
+    document.getElementById("exitBtn").addEventListener("click", quickExit);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") quickExit();
+    });
+
+    // Opt-in: plaatshouder tot de Flodesk-koppeling er is (zelfde patroon als de homepage).
+    document.querySelectorAll(".js-optin").forEach(function (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Bedankt! (Dit formulier is nog niet gekoppeld aan Flodesk; dat zetten we hierna op.)");
+      });
+    });
+  </script>
+
+</body>
+</html>
