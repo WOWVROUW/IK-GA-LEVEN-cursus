@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Het begon met liefde. Waarom voelt het nu alsof het niet klopt? | E-book IK GA LEVEN</title>
+<!-- Bron: Google Doc 1GM6RoORqvmNkg_UNMshuoDjtu7L_Lv9XDo6LLCrmgyw (aangeleverd 2026-07-08).
+     Renderen naar PDF: zie ebooks/_HOE-RENDER.md in de werkmap (kopieer de repo naar een pad
+     zonder spaties en render ebook-src/ebook-het-begon-met-liefde.html met Chrome headless). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,300i&family=Work+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── IK GA LEVEN design tokens (subset, zelfvoorzienend voor print) ── */
+  :root {
+    --plum: #6B1953;
+    --rose: #D585AE;
+    --rose-tint: #F5E3EE;
+    --butter: #FFF8D1;
+    --ecru: #F6F1EA;
+    --white: #FFFFFF;
+    --text: #5C5556;
+    --text-muted: #8A8283;
+    --border-rose: rgba(213, 133, 174, 0.5);
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Work Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 0; }
+
+  /* ── Pagina (A4 op 96dpi) ── */
+  .page {
+    width: 794px;
+    height: 1123px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--white);
+    padding: 54px 66px 92px;
+  }
+  .page--ecru { background: var(--ecru); }
+  .page--tint { background: var(--rose-tint); }
+
+  .pfoot {
+    position: absolute;
+    left: 66px; right: 66px; bottom: 34px;
+    border-top: 1px solid var(--border-rose);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── Typografie ── */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    color: var(--plum);
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    margin: 0 0 14px;
+  }
+  h1 { font-size: 40px; }
+  h2 { font-size: 29px; }
+  h3 { font-size: 20px; margin: 26px 0 8px; }
+  p { margin: 0 0 13px; }
+  a { color: var(--plum); }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin: 0 0 12px;
+  }
+  .divider {
+    border: 0;
+    border-top: 1px solid var(--border-rose);
+    width: 140px;
+    margin: 18px 0 22px;
+  }
+  .divider--center { margin-left: auto; margin-right: auto; }
+  .center { text-align: center; }
+  .small { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+  .lead-in { font-weight: 500; color: var(--plum); }
+
+  /* Pull-quote: groot, serif, pruim */
+  .pull {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 1.35;
+    color: var(--plum);
+    letter-spacing: 0.4px;
+    margin: 30px 0;
+    padding-left: 22px;
+    border-left: 2px solid var(--rose);
+  }
+
+  /* Getint binnenpaneel */
+  .panel {
+    background: var(--butter);
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .panel--rose { background: var(--rose-tint); }
+  .panel :last-child { margin-bottom: 0; }
+
+  /* Monogram-cirkel (zoals de persona-badges op de site) */
+  .who { display: flex; gap: 18px; margin: 0 0 22px; }
+  .who-badge {
+    flex: 0 0 auto;
+    width: 52px; height: 52px;
+    border: 2px solid var(--plum);
+    border-radius: 50%;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--plum);
+  }
+  .who-body h3 { margin: 4px 0 6px; }
+  .who-body p { margin-bottom: 0; }
+
+  /* Letter-blokken (ZEG-T-VEILIG) */
+  .letter { display: flex; gap: 16px; margin: 0 0 16px; }
+  .letter-badge {
+    flex: 0 0 auto;
+    min-width: 44px; height: 44px;
+    padding: 0 12px;
+    border: 1.5px solid var(--plum);
+    border-radius: 22px;
+    background: var(--rose-tint);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: var(--plum);
+  }
+  .letter p { margin-bottom: 0; }
+
+  /* Schrijfregels */
+  .q { margin: 0 0 26px; }
+  .q .vraag { font-family: var(--font-display); font-weight: 300; font-size: 19px; color: var(--plum); margin: 0 0 2px; }
+  .q .hint { font-size: 12.5px; color: var(--text-muted); margin: 0 0 6px; }
+  .lijn { height: 37px; border-bottom: 1px solid var(--border-rose); }
+
+  /* Begrippen */
+  .begrip { margin: 0 0 6px; }
+  .begrip h3 { margin: 20px 0 5px; }
+  .begrip p { margin-bottom: 0; }
+
+  /* Cover */
+  .cover { padding: 60px 66px 60px; text-align: center; }
+  .cover-logo { height: 88px; width: auto; margin: 8px auto 34px; display: block; }
+  .cover-photo {
+    height: 356px;
+    background: url('../assets/photos/hero-bloesem.jpg') center 42% / cover no-repeat;
+    position: relative;
+    margin: 0 0 44px;
+  }
+  .cover-photo::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1.5px solid var(--white);
+  }
+  .cover h1 { max-width: 540px; margin: 16px auto 22px; }
+  .cover .sub { font-size: 15px; margin: 0 0 6px; }
+  .cover .auteur {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--plum); margin-top: 18px;
+  }
+  .cover-foot {
+    position: absolute;
+    left: 66px; right: 66px; bottom: 40px;
+    text-align: center;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .sign { font-family: var(--font-display); font-style: italic; font-size: 21px; color: var(--plum); margin-top: 4px; }
+  .geweld-woord {
+    font-family: var(--font-display); font-weight: 300;
+    font-size: 44px; letter-spacing: 3px; color: var(--plum);
+    text-align: center; margin: 26px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ PAGINA 1: COVER ═══ -->
+<div class="page page--tint cover">
+  <img class="cover-logo" src="../design-system/assets/logo/logo-original.png" alt="Ik ga leven">
+  <div class="cover-photo"></div>
+  <p class="eyebrow" style="margin-bottom:0;">E-book bij de video</p>
+  <h1>Het begon met liefde. Waarom voelt het nu alsof het niet klopt?</h1>
+  <hr class="divider divider--center">
+  <p class="sub">Begeleidend e-book bij de videotraining</p>
+  <p class="auteur">Van Hiltje Oude Luttikhuis &middot; IK GA LEVEN</p>
+  <div class="cover-foot">ikgalevencursus.nl</div>
+</div>
+
+<!-- ═══ PAGINA 2: WELKOM + OVER HILTJE ═══ -->
+<div class="page">
+  <p class="eyebrow">Welkom</p>
+  <h2>Fijn dat je er bent</h2>
+  <hr class="divider">
+  <p>Je hebt net de video "Het begon met liefde. Waarom voelt het nu alsof het niet klopt?"
+     gekeken. Of misschien heb je hem op pauze gezet en ben je eerst hierheen gegaan. Dat mag
+     allebei.</p>
+  <p>Dit e-book is de geschreven versie van wat ik in de video vertel, iets uitgebreider. Je kunt
+     het rustig doorlezen, bewaren, of er later op terugkomen. Je hoeft er niets mee te doen. Maar
+     als er iets in je is gaan bewegen terwijl je keek, dan is dit de plek om dat wat meer ruimte
+     te geven.</p>
+  <p>In de video beloofde ik je drie dingen. Woorden voor wat er speelt. Uitleg over waarom je
+     twijfelt. En drie eerste stappen. Je vindt ze alle drie terug in dit e-book, zodat je ze bij
+     je kunt houden.</p>
+  <p>Je bent hier omdat er iets is. Iets wat je niet precies kunt benoemen. Iets wat je al een
+     tijd voelt en steeds weer wegduwt. Dat gevoel heeft je hier gebracht. En dat gevoel klopt.</p>
+  <p>Geef jezelf de tijd die je nodig hebt om er meer over te ontdekken.</p>
+  <p class="sign">Hiltje</p>
+
+  <div class="panel" style="margin-top:34px;">
+    <p class="eyebrow" style="margin-bottom:8px;">Over Hiltje</p>
+    <p>Ik ben Hiltje. Als huisarts en als arts bij Veilig Thuis heb ik veel ervaring met geweld in
+       afhankelijkheidsrelaties, zoals partnergeweld en kindermishandeling. Als coach begeleid ik
+       vrouwen die ingrijpende dingen hebben meegemaakt. En ik ben de initiatiefnemer van de IK GA
+       LEVEN-cursus: een cursus die vrouwen na geweld of misbruik helpt het te begrijpen, de regie
+       terug te nemen en weer geluk en plezier in hun leven te vinden.</p>
+    <p>In dit e-book geef ik je drie dingen. Woorden voor wat je voelt. Uitleg over waarom je
+       twijfelt. En drie eerste stappen, ook als je nog helemaal niet weet wat je wil.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>02</span></div>
+</div>
+
+<!-- ═══ PAGINA 3: DRIE VROUWEN ═══ -->
+<div class="page page--ecru">
+  <p class="eyebrow">Herken je dit?</p>
+  <h2>Ik wil je drie vrouwen voorstellen</h2>
+  <hr class="divider">
+
+  <div class="who" style="margin-top:26px;">
+    <div class="who-badge">M</div>
+    <div class="who-body">
+      <h3>Marijke</h3>
+      <p>Marijke probeert te begrijpen wat er in haar relatie gebeurt. Haar partner Joost geeft
+         haar vaak het gevoel dat ze dom is. Hij kleineert haar, lacht haar uit, zet haar voor
+         schut. In het begin was het heel fijn. Joost was lief en attent, hij deed alles voor
+         haar. Alles ging heel snel, en hij trok binnen een paar weken bij haar in. Het was een
+         wervelwindromance. Nu zegt hij steeds dat ze een baby moeten krijgen om hun relatie beter
+         te maken. Tegelijk geeft hij veel geld uit. Ook vindt hij het niet goed als Marijke met
+         haar moeder praat of met een vriendin afspreekt.</p>
+    </div>
+  </div>
+
+  <div class="who">
+    <div class="who-badge">J</div>
+    <div class="who-body">
+      <h3>Joyce</h3>
+      <p>Joyce voelt zich vaak dom en onzeker. Haar man Imro behandelt haar slecht. Toch gaat ze
+         steeds terug als ze probeert weg te gaan. Hij heeft haar veel pijn gedaan, maar vaak is
+         zij degene die sorry zegt. Imro verdraait haar woorden, maakt haar bang, en gebruikt de
+         kinderen om haar te laten doen wat hij wil. Haar familie snapt niet waarom ze blijft.
+         Door zijn gedrag dreigt Joyce ook nog haar werk kwijt te raken. Zelf denkt ze steeds:
+         wat is er mis met mij?</p>
+    </div>
+  </div>
+
+  <div class="who">
+    <div class="who-badge">A</div>
+    <div class="who-body">
+      <h3>Ava</h3>
+      <p>Ava heeft veel last van haar ex-partner Reinout. Hij verandert steeds de afspraken over
+         de kinderen, dus ze weet nooit waar ze aan toe is. Als de kinderen terugkomen van een
+         bezoek aan hem, zijn ze vaak erg onrustig. Reinout stuurt haar soms dreigende berichten.
+         Op andere momenten belt hij huilend op en smeekt haar of ze terugkomt. Toen ze nog samen
+         waren, ging hij vreemd met haar beste vriendin. En hij dwong haar tot seksdingen die ze
+         niet wilde. Ava heeft bijna geen vrienden meer en voelt zich vaak bang en gespannen.</p>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>03</span></div>
+</div>
+
+<!-- ═══ PAGINA 4: HET WOORD GEWELD ═══ -->
+<div class="page">
+  <p style="margin-top:40px;">E&eacute;n woord dat de meeste vrouwen in deze situaties, net zoals
+     Marijke, Joyce en Ava, niet gebruiken voor zichzelf is:</p>
+  <div class="geweld-woord">GEWELD</div>
+  <p>Omdat geweld in je hoofd iets anders is. Een blauw oog. Een gebroken arm. Een ziekenhuis.
+     Iets wat je kunt zien.</p>
+  <p class="pull">Geweld in een relatie ziet er meestal heel anders uit.</p>
+  <p>Het zit in de manier waarop hij bepaalt wat jij aantrekt. Wie je mag zien. Hoe je je geld
+     uitgeeft.</p>
+  <p>Het zit in de opmerkingen die net geen belediging zijn, maar je wel elke keer een stukje
+     kleiner maken.</p>
+  <p>Het zit in het gevoel dat jij altijd degene bent die het verpest. Dat jij te gevoelig bent.
+     Dat jij het niet goed begrijpt.</p>
+
+  <div class="panel panel--rose" style="margin-top:36px;">
+    <p class="eyebrow" style="margin-bottom:8px;">Geweld heeft meer vormen dan je denkt</p>
+    <p>Op de volgende pagina's vind je de begrippen die je hierbij meer uitleg geven. Misschien
+       herken je er &eacute;&eacute;n. Misschien meer. Misschien herken je nog niets, en dat is
+       ook niet erg.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>04</span></div>
+</div>
+
+<!-- ═══ PAGINA 5: PSYCHISCH GEWELD, ACHT VORMEN ═══ -->
+<div class="page page--ecru">
+  <p class="eyebrow">Woorden voor wat er speelt</p>
+  <h2>Psychisch geweld</h2>
+  <hr class="divider">
+  <p>Psychisch geweld is geen eenmalige gebeurtenis. Het is een patroon van gedrag waarmee hij jou
+     stelselmatig klein maakt, controleert en gevangen houdt, zonder dat hij je hoeft te slaan.
+     Het heeft acht herkenbare vormen.</p>
+  <p><span class="lead-in">Hij put je uit.</span> Houdt je wakker, laat jou al het werk doen, gunt
+     je geen rust, gaat maar door en door.</p>
+  <p><span class="lead-in">Hij vernedert je.</span> Kleineert je, zet je voor schut bij anderen,
+     gebruikt woorden die je van binnen doen krimpen. Laat je je vies en beschaamd voelen.</p>
+  <p><span class="lead-in">Hij isoleert je.</span> Houdt je weg bij familie en vrienden, zorgt dat
+     je geen ander perspectief hebt dan het zijne. Volgt of trackt je.</p>
+  <p><span class="lead-in">Hij houdt je gevangen in zijn hoofd.</span> Zo gericht op hem dat je
+     geen tijd of ruimte meer hebt om na te denken. Houdt je continu in verwarring.</p>
+  <p><span class="lead-in">Hij bedreigt je.</span> Maakt je bang voor je eigen veiligheid of die
+     van anderen. Laat je voelen dat je niemand kunt vertrouwen en dat je gevangen zit.</p>
+  <p><span class="lead-in">Hij is af en toe lief.</span> Net als je wil vertrekken, is hij ineens
+     aardig. Bloemen, excuses, het gevoel dat alles beter wordt. Dat brengt je in verwarring en
+     laat je denken dat het de ellende waard is.</p>
+  <p><span class="lead-in">Hij eist.</span> Dwingt je tot onbenullige of zinloze taken, stelt
+     kleine regels die strikt moeten kloppen. Zo blijf jij je steeds verward en onzeker voelen.</p>
+  <p><span class="lead-in">Hij intimideert.</span> Gebruikt extreme machtsmiddelen om jou ervan te
+     overtuigen dat hij alle macht heeft, en jij geen enkele.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>05</span></div>
+</div>
+
+<!-- ═══ PAGINA 6: SYSTEEM + HERSENSPOELEN + GASLIGHTING ═══ -->
+<div class="page">
+  <p class="pull" style="margin-top:24px;">Dit is geen slechte relatie. Dit is een systeem.</p>
+  <p>Psychisch geweld, of geestelijke mishandeling, is een ernstige vorm van mishandeling. Het
+     tast je zelfvertrouwen en je vrijheid aan. Dat leidt tot ernstige emotionele schade, angst en
+     langdurige stress. Emotionele mishandeling kan net zo schadelijk zijn als lichamelijk geweld,
+     ook al zijn er geen zichtbare wonden.</p>
+
+  <div class="begrip">
+    <h3>Hersenspoelen (brainwashing)</h3>
+    <p>Hersenspoelen betekent dat hij je gedachten stukje bij beetje verandert. Je oude identiteit
+       en overtuigingen worden bestempeld als fout of slecht. Subtiele steken onder water
+       veranderen in openlijke kritiek op je uiterlijk, je intelligentie of de keuzes die je
+       maakt. Je gaat continu op eierschalen lopen om woede-uitbarstingen of de stilte als straf
+       te voorkomen. Je zoekt zijn goedkeuring en stemt al je beslissingen, meningen en kleding af
+       op wat hij wil. Je gelooft oprecht dat alle problemen in de relatie door jou komen, en dat
+       hij jou juist "verder helpt" om een beter mens te worden.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Gaslighting</h3>
+    <p>Een vorm van manipulatie waarmee hij jou laat twijfelen aan wat je zelf hebt gezien,
+       gehoord of gevoeld. Hij ontkent dingen die echt zijn gebeurd. Hij zegt dat je overdrijft,
+       te gevoelig bent, of het verkeerd begrijpt. Na een tijd geloof je hem, en vertrouw je
+       jezelf niet meer. Als je het gevoel hebt dat je geheugen je in de steek laat, of dat je
+       niet meer weet wat echt is: dat is gaslighting.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>06</span></div>
+</div>
+
+<!-- ═══ PAGINA 7: MEER BEGRIPPEN ═══ -->
+<div class="page">
+  <div class="begrip">
+    <h3 style="margin-top:6px;">Microregulatie</h3>
+    <p>Als hij tot in detail bepaalt hoe jij je leven inricht. Wat je eet. Wat je aantrekt. Hoe je
+       het huis schoonmaakt. Wie je mag bellen. Het lijkt soms op betrokkenheid of zorgzaamheid,
+       maar het is controle.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>De stilte als straf (silent treatment)</h3>
+    <p>Als hij dagenlang weigert met je te praten. Geen ruzie, geen uitleg, alleen stilte. Dat
+       voelt als straf. En dat is het ook. Het is een manier om macht uit te oefenen zonder
+       woorden. Het laat je je ge&iuml;soleerd, verwaarloosd en onzichtbaar voelen.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Intieme terreur, dwingende controle</h3>
+    <p>De Nederlandse term voor wat in het Engels coercive control heet. Het gaat om een patroon
+       van dwang en controle waarin jij langzaam minder vrijheid hebt, minder ruimte inneemt en
+       minder jezelf wordt. Het hoeft geen lichamelijk geweld te zijn, maar dat kan wel. Het gaat
+       om de manier waarop hij jouw leven beheerst. Wat je doet, wie je ziet, wat je voelt, wat je
+       durft te zeggen. Er is niets intiems aan. Het is eenzijdig geweld, waarbij de &eacute;&eacute;n
+       de ander domineert. Niet altijd met een expliciete opdracht, maar door de sfeer, de
+       blikken, de reacties. Na een tijd doe je het vanzelf.</p>
+  </div>
+
+  <div class="panel" style="margin-top:34px;">
+    <p>In de bijlage achterin vind je een langere woordenlijst, met meer uitleg over sommige
+       geweldspatronen en wat ze met je doen.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>07</span></div>
+</div>
+
+<!-- ═══ PAGINA 8: WAAROM JE TWIJFELT ═══ -->
+<div class="page page--ecru">
+  <p class="eyebrow">Uitleg over waarom je twijfelt</p>
+  <h2>Waarom je twijfelt, en waarom je je twijfel serieus mag nemen</h2>
+  <hr class="divider">
+  <p>Bij psychisch geweld of dwingende controle gaat het niet om losse ruzies of slechte dagen.
+     Het gaat om een patroon. Bijna een systeem. Waarin jij langzaam leert om minder ruimte in te
+     nemen. Minder te voelen. Minder te willen.</p>
+  <p>En dat patroon zie je vaak zelf niet meer. Omdat je er middenin zit. Omdat het normaal is
+     geworden. Omdat hij het vast ook niet zo bedoelt. Precies zo werkt het.</p>
+  <p>Ken je het gezegde "door de bomen het bos niet meer zien"? Of stel je een doolhof voor met
+     hoge muren. Je bent blij als je een opening ziet en weer verder kunt. Je leeft in de
+     overlevingsstand. En waarschijnlijk ben je continu op je hoede.</p>
+  <p>Wat jouw lichaam doet als je jarenlang op je hoede bent, als je zenuwstelsel de hele dag in
+     een lichte staat van alarm staat, dat is niet niks. Dat is niet overdrijven. Dat is een
+     lichaam dat zijn werk doet. Dat jou probeert te beschermen.</p>
+  <p>De slaapproblemen. De schouders die nooit zakken. Het gevoel dat je nooit echt tot rust komt.
+     De angst die je nergens aan kunt ophangen.</p>
+  <p>Dat zijn geen tekenen dat jij te gevoelig bent. Dat zijn tekenen dat er iets aan de hand is.</p>
+  <p class="pull">Je hoeft het niet groter te maken dan het is. Maar je mag het ook niet kleiner
+     maken dan het is. Je mag dit serieus nemen. Omdat jij ertoe doet.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>08</span></div>
+</div>
+
+<!-- ═══ PAGINA 9: DRIE STAPPEN + STAP 1 (vraag 1 en 2) ═══ -->
+<div class="page">
+  <p class="eyebrow">Drie eerste stappen</p>
+  <h2>Drie stappen die je nu kunt zetten</h2>
+  <hr class="divider">
+  <p>Begin met schrijven over hoe je je voelt. Neem &eacute;&eacute;n iemand in vertrouwen. En als
+     je nog steeds twijfelt, ga dan naar de informatiebijeenkomst.</p>
+
+  <h3 style="margin-top:30px;">Stap 1: schrijf het op voor jezelf</h3>
+  <p>Je bent moe, je hoofd loopt over en is toch al een chaos. Je twijfelt continu aan jezelf.
+     Opschrijven maakt je hoofd wat leger en helpt je dingen beter te zien. Voor jezelf. Hier is
+     de ruimte.</p>
+  <p>Je hoeft het niemand te laten lezen. Je hoeft er niets mee te doen. Maar als je het
+     opschrijft, zie je het voor je. En als je het ziet, kun je er iets mee.</p>
+
+  <div class="q" style="margin-top:26px;">
+    <p class="vraag">Wat voel ik in mijn lichaam als ik thuis ben?</p>
+    <p class="hint">Denk aan spanning, alertheid, opluchting als hij er niet is, angst als hij er
+       wel is.</p>
+    <div class="lijn"></div><div class="lijn"></div><div class="lijn"></div><div class="lijn"></div>
+  </div>
+
+  <div class="q">
+    <p class="vraag">Wat doe ik anders vanwege hem?</p>
+    <p class="hint">Denk aan wat je zegt, wat je aantrekt, wie je ziet, wat je durft te willen.</p>
+    <div class="lijn"></div><div class="lijn"></div><div class="lijn"></div><div class="lijn"></div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>09</span></div>
+</div>
+
+<!-- ═══ PAGINA 10: STAP 1 (vraag 3 en 4) + afsluiting ═══ -->
+<div class="page">
+  <div class="q" style="margin-top:10px;">
+    <p class="vraag">Wat mis ik in mezelf van vroeger?</p>
+    <p class="hint">Denk aan vrijheid, plezier, zelfvertrouwen, rust.</p>
+    <div class="lijn"></div><div class="lijn"></div><div class="lijn"></div><div class="lijn"></div>
+  </div>
+
+  <div class="q">
+    <p class="vraag">Wat houdt me tegen om dit serieus te nemen?</p>
+    <p class="hint">Er is geen fout antwoord. Schrijf wat er opkomt.</p>
+    <div class="lijn"></div><div class="lijn"></div><div class="lijn"></div><div class="lijn"></div>
+  </div>
+
+  <p style="margin-top:30px;">Misschien heb je iets opgeschreven dat je verraste. Misschien ook
+     niet. Allebei is goed.</p>
+
+  <div class="panel">
+    <p>Wil je praten over wat je hebt opgeschreven, ook als je er nog niet uit bent, dan mag je
+       mij altijd een bericht sturen op <a href="mailto:info@ikgalevencursus.nl">info@ikgalevencursus.nl</a>.
+       Geen verplichtingen, geen vragen die je niet wil beantwoorden. Ik lees mee, in jouw tempo.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>10</span></div>
+</div>
+
+<!-- ═══ PAGINA 11: STAP 2 ZEG-T-VEILIG ═══ -->
+<div class="page page--ecru">
+  <h3 style="margin-top:0;">Stap 2: praat met &eacute;&eacute;n iemand die je vertrouwt</h3>
+  <h2 style="font-size:25px;">ZEG-T-VEILIG</h2>
+  <hr class="divider">
+  <p>Het is moeilijk om te praten over iemand die je pijn doet, zonder helemaal v&oacute;&oacute;r
+     of helemaal tegen hem te zijn. Dat kan het voor je kinderen lastig maken om zich veilig te
+     voelen, je familie en vrienden in verwarring brengen, en het moeilijk maken om om te gaan met
+     de professionals die bij je situatie betrokken zijn.</p>
+  <p style="margin-bottom:24px;">De principes van ZEG-T-VEILIG helpen je daarbij.</p>
+
+  <div class="letter">
+    <div class="letter-badge">Z</div>
+    <p><span class="lead-in">Zin.</span> Wat is de zin, het doel, van het gesprek? Vergeet nooit
+       dat het doel van een pleger is om zijn gevoel van eigenaarschap en voorrecht te behouden.
+       Wij zijn uit op het veranderen van motieven, niet alleen van gedrag.</p>
+  </div>
+  <div class="letter">
+    <div class="letter-badge">E</div>
+    <p><span class="lead-in">Eerlijk en erken.</span> Wees eerlijk over wat er gebeurt. Eerst
+       tegenover jezelf, dan tegenover de mensen om je heen. Ga niet mee in het bagatelliseren,
+       ontkennen en beschuldigen van de pleger. Ontken de pijn die hij heeft veroorzaakt niet,
+       maar erken die. Dat kan pijnlijk zijn, en het maakt het mogelijk om eerlijk over hem te
+       praten.</p>
+  </div>
+  <div class="letter">
+    <div class="letter-badge">G</div>
+    <p><span class="lead-in">Geliefd.</span> We zijn geliefd, en mensen geven echt om ons. Zelfs
+       als ze dingen zeggen die we moeilijk kunnen verdragen, is dat meestal omdat ze om ons
+       geven. Wij zijn de moeite waard om van te houden.</p>
+  </div>
+  <div class="letter">
+    <div class="letter-badge">T</div>
+    <p><span class="lead-in">Trouw aan onszelf.</span> We mogen trouw blijven aan onszelf. Wij
+       zijn de specialist van ons eigen leven en onze eigen situatie. Wij voelen en weten het
+       beste wat goed voor ons is.</p>
+  </div>
+  <div class="letter">
+    <div class="letter-badge">VEILIG</div>
+    <p><span class="lead-in">Veiligheid eerst.</span> Veiligheid staat altijd voorop. We passen de
+       ZEG-T-VEILIG-principes toe op een manier die ons, en onze kinderen, veilig houdt.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>11</span></div>
+</div>
+
+<!-- ═══ PAGINA 12: STAP 3 BIJEENKOMST + AFSLUITING ═══ -->
+<div class="page">
+  <h3 style="margin-top:0;">Stap 3: de informatiebijeenkomst</h3>
+  <h2 style="font-size:25px;">Zit ik in een relatie met psychisch geweld?</h2>
+  <hr class="divider">
+  <p>Je hebt de video gekeken. Je hebt dit e-book gelezen. Misschien heb je iets opgeschreven.</p>
+  <p>Dat is al veel.</p>
+  <p>De volgende stap is de gratis online informatiebijeenkomst.</p>
+
+  <div class="panel panel--rose">
+    <p class="eyebrow" style="margin-bottom:8px;">Gratis online bijeenkomst</p>
+    <p><span class="lead-in">"Zit ik in een relatie met psychisch geweld?"</span><br>
+       Een gratis online bijeenkomst van twee uur die je meer helderheid geeft over die ene vraag.</p>
+    <p>Geen verplichtingen. Geen beslissingen. Meedoen betekent niet dat je iets aan je relatie
+       verandert of iets hoeft uit te leggen. Wel de helderheid die je verdient.</p>
+    <p style="margin-bottom:0;">&rarr; Aanmelden:
+       <a href="https://ikgalevencursus.nl/bijeenkomst"><strong>ikgalevencursus.nl/bijeenkomst</strong></a></p>
+  </div>
+
+  <h3>Meer weten over de IK GA LEVEN-cursus?</h3>
+  <p>De informatiebijeenkomst is de eerste stap. Wil je alvast lezen wat de cursus zelf inhoudt,
+     voor wie hij is en hoe hij werkt, kijk dan op
+     <a href="https://ikgalevencursus.nl/informatie">ikgalevencursus.nl/informatie</a>.</p>
+
+  <div class="panel" style="margin-top:28px;">
+    <p style="margin-bottom:0;"><span class="lead-in">Ben je op dit moment in gevaar, of is iemand
+       gewond? Bel 112.</span></p>
+  </div>
+
+  <p style="margin-top:24px;">Heb je vragen, of wil je even praten? Je mag mij een bericht sturen
+     op <a href="mailto:info@ikgalevencursus.nl">info@ikgalevencursus.nl</a>. Ik ben er.</p>
+  <p class="sign">Hiltje</p>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>12</span></div>
+</div>
+
+<!-- ═══ PAGINA 13: BIJLAGE, DEEL 1 ═══ -->
+<div class="page page--ecru">
+  <p class="eyebrow">Bijlage 1</p>
+  <h2>Aanvullende woordenlijst</h2>
+  <hr class="divider">
+
+  <div class="begrip">
+    <h3>DARVO</h3>
+    <p>Een patroon dat veel plegers gebruiken als ze worden aangesproken op hun gedrag. DARVO
+       staat voor Deny, Attack, Reverse Victim and Offender: ontkennen, aanvallen, en de rollen
+       omdraaien. Hij wordt ineens het slachtoffer. Herken je dat hij altijd degene is die
+       gekwetst is als jij iets bespreekt? Dat jij uiteindelijk degene bent die sorry zegt? Dat
+       is DARVO.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Love bombing</h3>
+    <p>Het overweldigende begin van de relatie. De intense aandacht, de cadeaus, het gevoel dat je
+       de belangrijkste persoon ter wereld bent. Love bombing voelt als liefde, maar het is een
+       techniek om jou snel aan hem te binden. Het verklaart ook waarom weggaan zo moeilijk is: je
+       houdt van de persoon die hij in het begin leek te zijn.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Eigenaarschap en entitlement</h3>
+    <p>Het gevoel dat hij heeft dat jij er voor hem bent. Dat zijn behoeften, zijn humeur en zijn
+       wensen vooropstaan, vanzelfsprekend, zonder discussie. Eigenaarschap en entitlement zijn de
+       onderliggende motieven van een pleger.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Entrapment</h3>
+    <p>Het gevoel klem te zitten. Niet alleen fysiek, ook emotioneel, financieel, praktisch. Je
+       wil misschien wel weg, maar je weet niet hoe. Of je bent bang voor wat er gebeurt als je
+       gaat. Dat gevoel van opgesloten zitten heeft een naam. Het is geen zwakte. Het is een
+       gevolg van wat er met je is gedaan.</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>13</span></div>
+</div>
+
+<!-- ═══ PAGINA 14: BIJLAGE, DEEL 2 + COLOFON ═══ -->
+<div class="page page--ecru">
+  <div class="begrip">
+    <h3 style="margin-top:6px;">Zelfcontrole (self-policing)</h3>
+    <p>Wat er na verloop van tijd met jou gebeurt. Je hebt zijn regels en reacties zo goed geleerd
+       dat je jezelf al corrigeert voor hij iets zegt. Je past je aan zonder dat hij je hoeft te
+       dwingen. Veel vrouwen herkennen dit als het moment waarop ze zichzelf zijn kwijtgeraakt.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Zelfverwijt (self-blame)</h3>
+    <p>De neiging om jezelf de schuld te geven van wat er misgaat. Soms is dat een gevolg van zijn
+       manipulatie: hij geeft jou altijd de schuld, en je bent het gaan geloven. Soms is het ook
+       een manier om een gevoel van controle te houden: als het aan mij ligt, kan ik het ook
+       veranderen. Maar het ligt niet aan jou.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Situationeel geweld</h3>
+    <p>Een andere vorm van geweld in relaties, waarbij het geweld niet voortdurend aanwezig is
+       maar opflakkert in bepaalde situaties, door stress, verslaving of andere factoren. Dit is
+       iets anders dan intieme terreur. Beide zijn serieus. Beide verdienen aandacht.</p>
+  </div>
+
+  <div class="begrip">
+    <h3>Secundaire victimisatie</h3>
+    <p>Als de mensen of instanties die jou zouden moeten steunen, de huisarts, de rechtbank, de
+       hulpverlening, jou het gevoel geven dat jij het probleem bent. Dat is niet jouw
+       verbeelding. Het heeft een naam.</p>
+  </div>
+
+  <div class="panel" style="margin-top:32px;">
+    <p class="small" style="color:var(--text); margin-bottom:8px;"><strong>Veilig lezen.</strong>
+       Dit e-book staat als bestand op je apparaat. Deel je een computer of telefoon met iemand
+       die niet mag weten dat je dit leest? Verwijder het bestand dan na het lezen, ook uit de
+       prullenbak en je downloadmap. Bij acuut gevaar bel je 112.</p>
+    <p class="small" style="margin-bottom:0;">IK GA LEVEN &middot; ikgalevencursus.nl &middot;
+       &copy; Hiltje Oude Luttikhuis</p>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN</span><span>14</span></div>
+</div>
+
+</body>
+</html>
