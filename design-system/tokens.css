@@ -132,7 +132,8 @@
 
   --weight-light:  300;  /* koppen */
   --weight-regular: 400; /* body */
-  --weight-medium: 400;  /* eyebrow, knop — Work Sans altijd Regular (besluit Hiltje 2026-07-08; was 500) */
+  --weight-medium: 500;  /* eyebrows, knoppen en het ervaring/statistieken-blok: Work Sans Medium
+                            (bevestigd Hiltje 2026-07-08). Lopende tekst blijft Regular 400. */
   --weight-bold:   700;  /* joy-laag (Special Elite is enkel regular, maar zwaarder ogend door letterbeeld) */
 
   /* ---- Vorm & ritme ---- */

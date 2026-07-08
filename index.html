@@ -7,8 +7,9 @@
 <meta name="description" content="Ik ga leven: een gratis 10-weekse training voor vrouwen die geweld of dwingende controle meemaken in hun relatie. Online via Zoom, in jouw eigen tempo, zonder oordeel.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- Fonts: Source Serif in de Light-variant (300), Work Sans in Regular (400) — besluit Hiltje 2026-07-08 -->
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&family=Work+Sans:ital,wght@0,400;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<!-- Fonts (besluit Hiltje 2026-07-08): Source Serif altijd Light (300); Work Sans Regular (400)
+     voor lopende tekst en Medium (500) voor eyebrows, knoppen en het ervaring/statistieken-blok -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&family=Work+Sans:ital,wght@0,400;0,500;1,400&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system/tokens.css">
 <style>
   /* ---- Page-specific layout (not part of the reusable token set) ---- */
@@ -30,7 +31,7 @@
   .exit-btn {
     position: fixed; top: 14px; right: 14px; z-index: 1200;
     background: var(--white); color: var(--magenta); border: 1px solid var(--magenta);
-    font-family: var(--font-body); font-size: 12px; font-weight: 400;
+    font-family: var(--font-body); font-size: 12px; font-weight: var(--weight-medium);
     letter-spacing: 0.04em; text-transform: uppercase;
     padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
     box-shadow: var(--shadow-float);
@@ -176,8 +177,8 @@
     border-bottom: 1px solid var(--border-rose);
   }
   .exp-strip span {
-    font-family: var(--font-body); font-size: 13px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--text-muted); white-space: nowrap;
+    font-family: var(--font-body); font-weight: var(--weight-medium); font-size: 13px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap;
   }
   .exp-strip span::before { content: "·"; margin: 0 1.1rem; color: var(--rose); }
   .exp-strip span:first-child::before { content: none; }

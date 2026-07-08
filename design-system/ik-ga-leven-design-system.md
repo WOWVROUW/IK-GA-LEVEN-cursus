@@ -76,9 +76,10 @@ Drie lagen, elk met een duidelijke taak. Alle drie gratis op Google Fonts.
 
 - **Koppen — Source Serif 4**, altijd de **Light-variant** (weight 300), nooit vetter.
   (Source Serif 4 is de huidige Google Fonts-uitgave van Source Serif Pro; zelfde letter.)
-- **Body / labels / knoppen — Work Sans**, altijd **Regular** (weight 400).
-  Besluit Hiltje 2026-07-08: geen medium (500) of semibold (600) meer, ook niet voor
-  eyebrows, knoppen of labels. Nadruk komt uit kapitalen, tracking en kleur, niet uit gewicht.
+- **Body — Work Sans Regular** (weight 400) voor alle lopende tekst.
+- **Eyebrows, knoppen en het ervaring/statistieken-blok — Work Sans Medium** (weight 500).
+  Bevestigd door Hiltje 2026-07-08. Semibold (600) wordt nergens gebruikt; meer nadruk dan
+  Medium komt uit kapitalen, tracking en kleur.
 - **Joy-laag — Special Elite** (typemachine-gevoel), *uitsluitend* voor hoop/herstel-
   content — een losse zin, een citaat, nooit een hele alinea.
 
@@ -90,9 +91,10 @@ Drie lagen, elk met een duidelijke taak. Alle drie gratis op Google Fonts.
 | Testimonial-kop | Source Serif 4 | clamp 28-46px | 300 | ≈1.2 | 0.4px | nee |
 | Opt-in-kop | Source Serif 4 | clamp 24-36px | 300 | ≈1.2 | 0.4px | nee |
 | Kop onder beeld | Source Serif 4 | 24px | 300 | ≈1.2 | 0.4px | nee |
-| Eyebrow-label | Work Sans | 15px | 400 | ≈1.3 (19.5px) | 1.5px | **JA** |
+| Eyebrow-label | Work Sans | 15px | 500 | ≈1.3 (19.5px) | 1.5px | **JA** |
 | Body | Work Sans | 17px | 400 | 34px (≈2.0) | normaal | nee |
-| Knop | Work Sans | 13px | 400 | ≈1.3 (16.9px) | 0.06em | **JA** |
+| Knop | Work Sans | 13px | 500 | ≈1.3 (16.9px) | 0.06em | **JA** |
+| Ervaring/statistieken-labels | Work Sans | 12-13px | 500 | ≈1.3 | 1.5px | **JA** |
 
 (Kopgroottes 2026-07-08 opgeschaald naar de echte ChicSpark-demo-maat via `clamp()`;
 de oude vaste waarden waren 42/36/32.)
