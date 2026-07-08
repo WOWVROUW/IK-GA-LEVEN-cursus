@@ -52,14 +52,20 @@
       background: var(--ecru);
     }
     .site-header .container { display: flex; align-items: center; padding-right: 15rem; }
-    .logo {
-      font-family: var(--font-display);
-      font-weight: var(--weight-light);
-      font-size: 1.5rem;
-      letter-spacing: 0.06em;
+    .logo { display: block; }
+    .logo img { height: 64px; width: auto; display: block; }
+
+    /* Veiligheidsbanner, standaard op elke pagina (afspraak 2026-07-08) */
+    .announce {
+      background: var(--rose-200);
       color: var(--plum);
-      text-decoration: none;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 12px 150px 12px var(--gutter);
     }
+    .announce a { color: var(--mint-700); text-underline-offset: 2px; }
 
     /* Hero-band: kalme bevestiging, gecentreerd zoals de confirmation-template */
     .confirm-hero {
@@ -103,6 +109,7 @@
     /* Mobiel */
     @media (max-width: 860px) {
       .site-header .container { padding-right: var(--gutter); }
+      .announce { padding-right: var(--gutter); font-size: 12px; }
       .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
       .steps-cards { grid-template-columns: 1fr; }
     }
@@ -113,9 +120,17 @@
   <!-- Snel-weg-knop: vervangt de pagina direct door een neutrale site (ook via Esc) -->
   <button class="exit-btn" id="exitBtn" type="button">Verlaat deze site snel</button>
 
+  <!-- Veiligheidsbanner: standaard op elke pagina -->
+  <div class="announce">
+    <strong>Acuut gevaar? Bel altijd 112.</strong> Niet zeker of het veilig is om deze pagina te
+    bekijken? <a href="veiligheid.html">Lees hier hoe je je browsergeschiedenis wist</a>.
+  </div>
+
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="index.html">IK GA LEVEN</a>
+      <a class="logo" href="index.html" aria-label="Ik ga leven, home">
+        <img src="design-system/assets/logo/logo-original.png" alt="Ik ga leven">
+      </a>
     </div>
   </header>
 
