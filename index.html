@@ -6,6 +6,7 @@
 <title>Ik ga leven: gratis 10-weekse training voor vrouwen</title>
 <meta name="description" content="Ik ga leven: een gratis 10-weekse training voor vrouwen die geweld of dwingende controle meemaken in hun relatie. Online via Zoom, in jouw eigen tempo, zonder oordeel.">
 <meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- Fonts (besluit Hiltje 2026-07-08): Source Serif altijd Light (300); Work Sans Regular (400)
      voor lopende tekst en Medium (500) voor eyebrows, knoppen en het ervaring/statistieken-blok -->
@@ -357,10 +358,12 @@
     </a>
     <nav class="site-nav" aria-label="Hoofdmenu">
       <span class="nav-links">
+        <a href="index.html">Begin</a>
         <a href="#herken">Herken je dit</a>
         <a href="#over-cursus">De cursus</a>
         <a href="#over-hiltje">Over Hiltje</a>
         <a href="#podcast">Podcast</a>
+        <a href="video.html">Video</a>
       </span>
     </nav>
   </header>
@@ -644,15 +647,10 @@
   <section class="section" id="nieuwsbrief">
     <div class="section__inner center-narrow">
       <p class="eyebrow">Als het veilig is</p>
-      <h2 class="h-optin">Laat je e-mailadres achter voor cursusdata, uitnodigingen en inspiratie.</h2>
-      <!-- TODO: vervang dit placeholder-formulier door de Flodesk-embed -->
-      <form class="optin-form js-optin" aria-label="Schrijf je in voor de nieuwsbrief" style="max-width:520px;margin:1.5rem auto 0;">
-        <div class="optin-form-row">
-          <input type="email" name="email" placeholder="E-mailadres" required autocomplete="email">
-          <button type="submit" class="btn">Inschrijven <span class="btn__arrow">→</span></button>
-        </div>
-        <p class="hint">Alleen als het veilig voor je is. We delen je gegevens nooit met anderen.</p>
-      </form>
+      <!-- Flodesk inline nieuwsbrief-formulier (segment IGL Nieuwsbrief). Het formulier levert
+           zijn eigen titel ("cursusdagen, uitnodigingen en inspiratie") en de regel "als het
+           veilig is". Loader-script staat onderaan deze pagina. -->
+      <div id="fd-form-6a4f7359a8f3787e49cfde44" style="max-width:640px;margin:0 auto;"></div>
     </div>
   </section>
 
@@ -765,6 +763,31 @@
     }, { threshold: 0.3 });
     io.observe(v);
   })();
+</script>
+
+<script>
+  // Flodesk universal loader + init van het nieuwsbrief-formulier.
+  (function(w, d, t, h, s, n) {
+    w.FlodeskObject = n;
+    var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t);
+    sm.async = true;
+    sm.type = 'module';
+    sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true;
+    sn.noModule = true;
+    sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+  window.fd('form', {
+    formId: '6a4f7359a8f3787e49cfde44',
+    containerEl: '#fd-form-6a4f7359a8f3787e49cfde44'
+  });
 </script>
 </body>
 </html>

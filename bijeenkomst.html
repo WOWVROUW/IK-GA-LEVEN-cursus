@@ -6,6 +6,7 @@
   <!-- Tab-titel bewust zonder "psychisch geweld": de titel is zichtbaar in tabblad en
        browsergeschiedenis op een gedeeld toestel. -->
   <title>Gratis online bijeenkomst | Ik ga leven</title>
+  <link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Gratis online bijeenkomst: zit ik in een relatie met psychisch geweld? Meerdere data in juli en augustus 2026. Twee uur helderheid, in een besloten groep vrouwen.">
 
@@ -55,6 +56,14 @@
     .site-header .container { display: flex; align-items: center; padding-right: 15rem; }
     .logo { display: block; }
     .logo img { height: 64px; width: auto; display: block; }
+    .site-nav { margin-left: auto; display: flex; gap: 1.6rem; }
+    .site-nav a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .site-nav a:hover { color: var(--plum); }
 
     /* Veiligheidsbanner, standaard op elke pagina (afspraak 2026-07-08) */
     .announce {
@@ -253,6 +262,10 @@
       <a class="logo" href="index.html" aria-label="Ik ga leven, home">
         <img src="design-system/assets/logo/logo-original.png" alt="Ik ga leven">
       </a>
+      <nav class="site-nav" aria-label="Hoofdmenu">
+        <a href="index.html">Begin</a>
+        <a href="video.html">Video</a>
+      </nav>
     </div>
   </header>
 
@@ -302,7 +315,7 @@
         <div id="formulieren"></div>
 
         <p class="signup-note">Je gegevens blijven bij ons. Met je aanmelding schrijf je je ook in
-           voor de mail van IK GA LEVEN: cursusdata, uitnodigingen en inspiratie. Uitschrijven kan
+           voor de mail van IK GA LEVEN: cursusdagen, uitnodigingen en inspiratie. Uitschrijven kan
            altijd, met &eacute;&eacute;n klik.</p>
       </div>
     </div>
@@ -377,7 +390,7 @@
           <div class="photo-ph" role="presentation" aria-hidden="true"></div>
         </div>
         <div>
-          <p class="eyebrow">Wie de bijeenkomst begeleidt</p>
+          <p class="eyebrow">Wie een bijeenkomst begeleidt</p>
           <h2>Hiltje Oude Luttikhuis</h2>
           <hr class="divider divider--short divider--left">
           <p style="margin-top: 1.6rem;">Ruim twintig jaar huisarts, acht jaar coach. Ik ben door

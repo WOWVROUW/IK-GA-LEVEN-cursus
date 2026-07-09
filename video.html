@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Tab-titel bewust neutraal: zichtbaar in tabblad en geschiedenis op een gedeeld toestel. -->
   <title>Video: Het begon met liefde | Ik ga leven</title>
+  <link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Gratis video van 20 minuten. Kijk wanneer het jou uitkomt, en download het e-book direct als pdf.">
 
@@ -54,6 +55,14 @@
     .site-header .container { display: flex; align-items: center; padding-right: 15rem; }
     .logo { display: block; }
     .logo img { height: 64px; width: auto; display: block; }
+    .site-nav { margin-left: auto; display: flex; gap: 1.6rem; }
+    .site-nav a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .site-nav a:hover { color: var(--plum); }
 
     /* Veiligheidsbanner, standaard op elke pagina (afspraak 2026-07-08) */
     .announce {
@@ -194,6 +203,10 @@
       <a class="logo" href="index.html" aria-label="Ik ga leven, home">
         <img src="design-system/assets/logo/logo-original.png" alt="Ik ga leven">
       </a>
+      <nav class="site-nav" aria-label="Hoofdmenu">
+        <a href="index.html">Begin</a>
+        <a href="bijeenkomst.html">Bijeenkomst</a>
+      </nav>
     </div>
   </header>
 
