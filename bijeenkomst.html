@@ -260,29 +260,12 @@
   <section class="section section--band" id="aanmelden">
     <div class="container">
       <div class="signup">
-        <h2 class="h-optin">Meld je aan voor dinsdag 21 juli</h2>
-        <hr class="divider divider--short">
-        <p style="margin-top: 1.6rem;">Vul je voornaam en e-mailadres in. Je ontvangt de
-           deelnamelink per mail, samen met de gids Veilig meelezen. Gebruik een e-mailadres dat
-           alleen jij leest.</p>
-
-        <!-- ═══════════════════════════════════════════════════════════════
-             FLODESK: vervang dit formulier door de Flodesk inline embed-code
-             (Flodesk > Forms > inline form > Embed). Het formulier hieronder
-             is de blauwdruk voor de styling: voornaam + e-mail + één knop.
-             Redirect na verzending: bevestiging.html
-             ═══════════════════════════════════════════════════════════════ -->
-        <form class="signup-form" action="#" method="post">
-          <div>
-            <label for="voornaam">Voornaam</label>
-            <input type="text" id="voornaam" name="voornaam" autocomplete="given-name" required>
-          </div>
-          <div>
-            <label for="email">E-mailadres</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
-          </div>
-          <button class="btn btn--solid" type="submit">Ja, ik ben erbij</button>
-        </form>
+        <!-- Flodesk inline formulier "bijeenkomst" (segment IGL Meeting 07-26). Het formulier
+             levert zijn eigen titel, subtitel en styling; hier geen eigen kop of intro toevoegen.
+             LET OP: de redirect naar bevestiging.html staat in Flodesk en moet daar de VOLLEDIGE
+             url zijn (https://wowvrouw.github.io/IK-GA-LEVEN-cursus/bevestiging.html, later het
+             eigen domein). Het loader-script staat onderaan deze pagina. -->
+        <div id="fd-form-6a4f759fa8f3787e49cfde50"></div>
 
         <p class="signup-note">Je gegevens blijven bij ons. Met je aanmelding schrijf je je ook in
            voor de mail van IK GA LEVEN: cursusdata, uitnodigingen en inspiratie. Uitschrijven kan
@@ -401,6 +384,31 @@
     document.getElementById("exitBtn").addEventListener("click", quickExit);
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") quickExit();
+    });
+  </script>
+
+  <script>
+    // Flodesk universal loader + init van het aanmeldformulier (zie de container in #aanmelden).
+    (function(w, d, t, h, s, n) {
+      w.FlodeskObject = n;
+      var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+      w[n] = w[n] || fn;
+      var f = d.getElementsByTagName(t)[0];
+      var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+      var sm = d.createElement(t);
+      sm.async = true;
+      sm.type = 'module';
+      sm.src = h + s + '.mjs' + v;
+      f.parentNode.insertBefore(sm, f);
+      var sn = d.createElement(t);
+      sn.async = true;
+      sn.noModule = true;
+      sn.src = h + s + '.js' + v;
+      f.parentNode.insertBefore(sn, f);
+    })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+    window.fd('form', {
+      formId: '6a4f759fa8f3787e49cfde50',
+      containerEl: '#fd-form-6a4f759fa8f3787e49cfde50'
     });
   </script>
 
