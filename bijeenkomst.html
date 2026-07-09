@@ -423,16 +423,8 @@
     </div>
   </footer>
 
-  <script>
-    // Snel-weg: vervangt de huidige pagina (geen terug-knop naar deze site) door een neutrale site.
-    function quickExit() {
-      window.location.replace("https://www.buienradar.nl");
-    }
-    document.getElementById("exitBtn").addEventListener("click", quickExit);
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") quickExit();
-    });
-  </script>
+  <!-- Snel-weg + terugknop-beveiliging: gedeeld script (assets/js/safety.js) -->
+  <script src="assets/js/safety.js"></script>
 
   <script>
     // Flodesk universal loader + de datumkiezer met één formulier per datum.

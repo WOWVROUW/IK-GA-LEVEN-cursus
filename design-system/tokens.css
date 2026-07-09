@@ -1,17 +1,25 @@
 /* ============================================================
    IK GA LEVEN — DESIGN TOKENS
    10-weekse training voor vrouwen die geweld in hun relatie
-   meemaken of hebben meegemaakt. Bron van waarheid: HANDOFF.md
-   §2 (kleuren + typografie, bevestigd door Hiltje) + §5
-   (traumageïnformeerde regels).
+   meemaken of hebben meegemaakt.
+
+   Bron van waarheid: het website-document van Hiltje
+   (Google Doc "2026 IK GA LEVEN CURSUS Website", doorgevoerd
+   2026-07-09) + ik-ga-leven-design-system.md.
 
    Rolverdeling kleur (definitief):
-     pruim    #6B1953  → primair: koppen, knoppen, kaders
-     roos     #D585AE  → secundair: zachte vlakken
-     mint     #B8E5D7  → accent
+     pruim    #6B1953  → primair: koppen-accent, knoppen, kaders
+     roos     #D585AE  → secundair: eyebrows, zachte vlakken
+     mint     #B8E5D7  → accent (dividers, onderranden)
      boter    #FFF8D1  → lichte band
-     magenta  #CE12AE  → pop, SPAARZAAM, max 1 element per pagina
-     ecru     #F6F1EA  → paginabasis (achtergrond)
+     magenta  #CE12AE  → pop, SPAARZAAM: alleen de snel-weg-knop
+                         en de 112-regel
+     wit      #FFFFFF  → paginabasis (besluit 2026-07-09; verving ecru)
+
+   LET OP naamgeving: Hiltje's website-document nummert de
+   tinten soms anders dan de schalen hieronder (bv. "roos 200"
+   in het doc = #ECBED6 = --rose-300 hier). De HEX-waarde is
+   altijd leidend, niet de naam.
    ============================================================ */
 
 :root {
@@ -19,11 +27,11 @@
   --plum:        #6B1953;  /* Pruim — primair */
   --plum-hover:  #4E1240;  /* Diep pruim — hover */
   --rose:        #D585AE;  /* Roos — secundair (= --rose-500) */
-  --rose-tint:   #F5E3EE;  /* Roos-tint — lichte roze band */
+  --rose-tint:   #F5E3EE;  /* Roos-tint — lichte roze band (legacy) */
   --mint:        #B8E5D7;  /* Mint — accent (= --mint-400) */
   --butter:      #FFF8D1;  /* Boter — lichte band (= --butter-300) */
-  --magenta:     #CE12AE;  /* Magenta — pop, spaarzaam, max 1 element (= --magenta-500) */
-  --ecru:        #F6F1EA;  /* Ecru — paginabasis */
+  --magenta:     #CE12AE;  /* Magenta — pop, spaarzaam (= --magenta-500) */
+  --ecru:        #F6F1EA;  /* Ecru — niet langer paginabasis (besluit 2026-07-09) */
   --white:       #FFFFFF;
 
   /* ---- Officiële kleurenschalen (aangeleverd door Hiltje, 2026-07-06) ----
@@ -81,39 +89,46 @@
   --neutral-100: #F7F1F4;
   --neutral-50:  #FFFAF7;
 
-  /* ---- Tekst ---- */
-  --text:        #5C5556; /* warm donkergrijs — hoofdtekst */
+  /* ---- Tekst ----
+     Besluit 2026-07-09 (website-document): koppen én body in het
+     donkere aubergine-zwart #2D1422. Het oude warm grijs #5C5556
+     is vervallen. */
+  --text:        var(--ink);
   --text-on-plum: var(--white);
-  --text-muted:  #8A8283; /* afgeleide, lichtere variant van --text — niet expliciet bevestigd */
+  --text-muted:  var(--neutral-700);
 
-  /* ---- Afgeleide tinten (NIET expliciet bevestigd — pas aan indien gewenst) ---- */
+  /* ---- Afgeleide tinten ---- */
   --rose-hover:   #C36F98;
   --mint-hover:   #9FD6C4;
   --border-rose:  rgba(213, 133, 174, 0.5); /* 1px roos @ 50% — scheidslijnen */
   --focus-ring:   0 0 0 3px rgba(107, 25, 83, 0.25);
 
-  /* ---- Surfaces / secties ---- */
-  --surface-page:    var(--ecru);
+  /* ---- Surfaces / secties ----
+     Paginabasis is wit (besluit 2026-07-09). Elke sectie krijgt haar
+     eigen bandkleur via de .section--*-modifiers hieronder. */
+  --surface-page:    var(--white);
   --surface-card:    var(--white);
-  --surface-band:    var(--rose-tint);
-  --surface-butter:  var(--butter);
+  --surface-band:    var(--rose-200);   /* opt-in band */
+  --surface-butter:  var(--butter-300);
   --surface-plum:    var(--plum);
+  --surface-menu:    var(--plum-50);    /* menu + hero (homepage) */
+  --surface-banner:  var(--rose-300);   /* veiligheidsbanner */
 
   /* ---- Typografie: families ---- */
   --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --font-body:    'Work Sans', system-ui, -apple-system, sans-serif;
   --font-joy:     'Special Elite', 'Courier New', monospace; /* joy-laag: alleen hoop/herstel-content */
 
-  /* ---- Typografie: exacte specs (desktop-waarden, zie ik-ga-leven-design-system.md) ----
-     Schaal bijgesteld 2026-07-08: de echte ChicSpark-demo voert koppen groter
-     uit (hero rond 58px) dan de eerder gemeten 42px, en dat verschil was wat
-     Hiltje miste. Goedgekeurd op de bijeenkomst-pagina als proef. Oude vaste
-     waarden: 42 / 36 / 32. clamp() schaalt kleinere schermen vanzelf terug. */
-  --fs-hero:        clamp(34px, 4.6vw, 58px);
-  --lh-hero:        1.2;
-  --fs-testimonial: clamp(28px, 3.6vw, 46px);
+  /* ---- Typografie: exacte specs ----
+     Besluit Hiltje 2026-07-09 (website-document + expliciete keuze):
+     terug naar de gemeten ChicSpark-maten — hero 42 / testimonial 36 /
+     opt-in 32 / kop-onder-beeld 24. clamp() schaalt kleinere schermen
+     vanzelf terug. */
+  --fs-hero:        clamp(30px, 3.5vw, 42px);
+  --lh-hero:        1.2;      /* ≈50.4px op 42px */
+  --fs-testimonial: clamp(26px, 3vw, 36px);
   --lh-testimonial: 1.2;
-  --fs-optin:       clamp(24px, 3vw, 36px);
+  --fs-optin:       clamp(24px, 2.7vw, 32px);
   --lh-optin:       1.2;
   --fs-under-image: 24px;
   --lh-under-image: 1.2;
@@ -126,15 +141,18 @@
   --fs-body:     17px;
   --lh-body:     34px;     /* ≈2.0 — bewust ruim */
 
-  --fs-button:   13px;
-  --lh-button:   1.3;      /* ≈16.9px */
-  --tracking-button: normal;
+  --fs-button:    15px;    /* hoofdknoppen (doc: 15px) */
+  --fs-button-sm: 13px;    /* open/kaart-knoppen (doc: 13px) */
+  --lh-button:   1.3;
+  --tracking-button: normal; /* doc: letterspacing normaal */
+
+  --fs-menu:     14px;     /* menu: Work Sans medium, all caps */
+  --fs-copyright: 11.2px;
 
   --weight-light:  300;  /* koppen */
   --weight-regular: 400; /* body */
-  --weight-medium: 500;  /* eyebrows, knoppen en het ervaring/statistieken-blok: Work Sans Medium
-                            (bevestigd Hiltje 2026-07-08). Lopende tekst blijft Regular 400. */
-  --weight-bold:   700;  /* joy-laag (Special Elite is enkel regular, maar zwaarder ogend door letterbeeld) */
+  --weight-medium: 500;  /* eyebrows, knoppen, menu, statistieken-labels */
+  --weight-bold:   700;  /* joy-laag */
 
   /* ---- Vorm & ritme ---- */
   --radius: 2px;          /* bijna recht — knoppen, kaders, inputs */
@@ -146,6 +164,9 @@
   --section-padding-mobile: 3rem;
   --container-max: 1120px;
   --gutter: 1.5rem;
+
+  /* ---- Hairlines (doc: 0,25px dividers; 0.5px rendert betrouwbaar) ---- */
+  --hairline: 0.5px;
 
   /* ---- Schaduw — ALLEEN op zwevende objecten (bv. ebook-mockup) ---- */
   --shadow-float: 0 24px 48px rgba(92, 85, 86, 0.18), 0 4px 12px rgba(92, 85, 86, 0.08);
@@ -167,6 +188,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
+  font-weight: var(--weight-regular);
   color: var(--text);
   background: var(--surface-page);
   -webkit-font-smoothing: antialiased;
@@ -177,9 +199,11 @@ h1, h2, h3, h4 {
   font-weight: var(--weight-light);
   letter-spacing: var(--tracking-display);
   line-height: 1.2;
-  color: var(--plum);
+  color: var(--ink);       /* doc 2026-07-09: koppen in #2D1422 */
   margin: 0 0 0.5em;
 }
+/* Uitzondering (doc): statistieken- en testimonialkoppen in pruim */
+.h--plum { color: var(--plum); }
 
 /* ---- Eyebrow — kleine getrackte label boven een kop ---- */
 .eyebrow {
@@ -206,8 +230,9 @@ h1, h2, h3, h4 {
   color: var(--magenta);
 }
 
-/* ---- Knop — zachte ChicSpark-stijl: licht roos vlak met pruim onderrand-accent,
-   pruim getrackte tekst en pijl die opschuift. Outline = dunne roos rand. ---- */
+/* ---- Knoppen (doc 2026-07-09) ----
+   Hoofdknop: plum-300 vlak met plum-700 onderrand, pruim tekst in
+   kapitalen; hover vult naar pruim. Pijl schuift op hover. ---- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -220,9 +245,9 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   padding: 15px 30px 13px;
   border-radius: var(--radius);
-  border: 1px solid var(--rose);
+  border: 0;
   border-bottom: 3px solid var(--plum);   /* onderrand-accent */
-  background: var(--rose-200);
+  background: var(--plum-300);
   color: var(--plum);
   cursor: pointer;
   text-decoration: none;
@@ -230,31 +255,49 @@ h1, h2, h3, h4 {
               color var(--dur-base) var(--ease-out),
               border-color var(--dur-base) var(--ease-out);
 }
-.btn:hover { background: var(--rose-300); border-bottom-color: var(--plum-hover); }
+.btn:hover { background: var(--plum); color: var(--plum-50); border-bottom-color: var(--plum-hover); }
 .btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
-.btn--outline {
+/* Open stijl (doc: kaartsecties): 13px, dunne plum-300 rand, vlakvulling
+   volgt de sectie; hover vult naar vol plum-300, tekst blijft pruim. */
+.btn--open {
+  font-size: var(--fs-button-sm);
   background: transparent;
   color: var(--plum);
-  border: 1px solid var(--rose);
+  border: 1px solid var(--plum-300);
+  border-bottom-width: 1px;
+  padding: 13px 26px 12px;
 }
-.btn--outline:hover { background: var(--rose-100); border-color: var(--plum); }
+.btn--open:hover { background: var(--plum-300); color: var(--plum); border-color: var(--plum-300); }
 
-/* Massief pruim (i.p.v. de zachte roos-variant) */
+/* Legacy-alias: bestaande pagina's gebruiken .btn--outline / .btn--fill */
+.btn--outline {
+  font-size: var(--fs-button-sm);
+  background: transparent;
+  color: var(--plum);
+  border: 1px solid var(--plum-300);
+  border-bottom-width: 1px;
+  padding: 13px 26px 12px;
+}
+.btn--outline:hover { background: var(--plum-300); color: var(--plum); border-color: var(--plum-300); }
+
+/* Massief pruim — opt-in knop (doc: fill plum-700, tekst plum-50) */
 .btn--solid {
   background: var(--plum);
-  color: var(--white);
-  border-color: var(--plum);
+  color: var(--plum-50);
+  border-bottom-color: var(--plum-hover);
 }
-.btn--solid:hover { background: var(--plum-hover); border-color: var(--plum-hover); color: var(--white); }
+.btn--solid:hover { background: var(--plum-hover); color: var(--plum-50); border-bottom-color: var(--plum-hover); }
 
-/* Outline die op hover volledig vult, zoals de snel-weg-knop (maar niet-magenta) */
 .btn--fill {
+  font-size: var(--fs-button-sm);
   background: var(--white);
   color: var(--plum);
-  border: 1px solid var(--plum);
+  border: 1px solid var(--plum-300);
+  border-bottom-width: 1px;
+  padding: 13px 26px 12px;
 }
-.btn--fill:hover { background: var(--plum); color: var(--white); border-color: var(--plum); }
+.btn--fill:hover { background: var(--plum-300); color: var(--plum); border-color: var(--plum-300); }
 
 /* Pijl die opschuift op hover — plaats <span class="btn__arrow">→</span> in de knop */
 .btn__arrow {
@@ -262,6 +305,29 @@ h1, h2, h3, h4 {
   transition: transform var(--dur-fast) var(--ease-out);
 }
 .btn:hover .btn__arrow { transform: translateX(4px); }
+
+/* ---- Snel-weg-knop — GEDEELD COMPONENT op elke pagina ----
+   Besluit Hiltje 2026-07-09: massief magenta gevuld met witte tekst
+   (verving de open stijl met magenta-100 vulling). Het ene felle
+   element van de site. Werkt samen met assets/js/safety.js (klik + Esc). ---- */
+.exit-btn {
+  position: fixed; top: 14px; right: 14px; z-index: 1200;
+  background: var(--magenta);
+  color: var(--white);
+  border: 1px solid var(--magenta);
+  font-family: var(--font-body); font-size: 12px; font-weight: var(--weight-medium);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
+  box-shadow: var(--shadow-float);
+  white-space: nowrap;
+}
+.exit-btn:hover { background: var(--magenta-600); color: var(--white); border-color: var(--magenta-600); }
+.exit-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(206, 18, 174, 0.35); }
+.exit-btn__short { display: none; }
+@media (max-width: 600px) {
+  .exit-btn__full { display: none; }
+  .exit-btn__short { display: inline; }
+}
 
 /* ---- Genummerde stappen (1/2/3) — pruim rand, geen vulling ---- */
 .step-num {
@@ -291,14 +357,21 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-float);
 }
 
-/* ---- Scheidslijn — 1px roos op 50% ---- */
+/* ---- Scheidslijnen ----
+   Basis: 1px roos op 50%. Hairline-varianten (doc: 0,25px) per sectie. */
 .divider {
   border: none;
   border-top: 1px solid var(--border-rose);
   margin: 0;
 }
+.divider--hair      { border-top-width: var(--hairline); }
+.divider--butter    { border-top-color: var(--butter-300); }
+.divider--mint      { border-top-color: var(--mint-400); }
+.divider--mint-500  { border-top-color: var(--mint-500); }
+.divider--mint-700  { border-top-color: var(--mint-700); }
+.divider--plum      { border-top-color: var(--plum); }
 
-/* ---- Secties — band-achtergronden voor ritme ---- */
+/* ---- Secties — bandkleuren per blok (doc 2026-07-09) ---- */
 .section {
   padding: var(--section-padding) var(--gutter);
 }
@@ -306,10 +379,19 @@ h1, h2, h3, h4 {
   max-width: var(--container-max);
   margin: 0 auto;
 }
-.section--band   { background: var(--surface-band); }
+.section--band   { background: var(--surface-band); }    /* rose-200: opt-in */
 .section--butter { background: var(--surface-butter); }
 .section--plum   { background: var(--surface-plum); color: var(--text-on-plum); }
 .section--plum h1, .section--plum h2, .section--plum h3 { color: var(--text-on-plum); }
+
+.section--plum50    { background: var(--plum-50); }
+.section--plum200   { background: var(--plum-200); }
+.section--rose100   { background: var(--rose-100); }
+.section--rose200   { background: var(--rose-200); }
+.section--rose300   { background: var(--rose-300); }
+.section--butter100 { background: var(--butter-100); }
+.section--butter200 { background: var(--butter-200); }
+.section--butter300 { background: var(--butter-300); }
 
 @media (max-width: 768px) {
   .section { padding: var(--section-padding-mobile) var(--gutter); }
@@ -323,10 +405,8 @@ h1, h2, h3, h4 {
 
 /* ============================================================
    COMPONENTLAAG — de ChicSpark-signatuur, vertaald naar het merk
-   Toegevoegd 2026-07-08, na de proef op bijeenkomst.html. Dit zijn
-   de terugkerende elementen die de ChicSpark-demo zijn look geven.
-   De signatuur-knop (licht vlak + pruim onderrand) bestond hier al
-   als .btn; hieronder de rest.
+   Toegevoegd 2026-07-08 (proef op bijeenkomst.html), bijgewerkt
+   2026-07-09 naar het website-document.
    ============================================================ */
 
 /* Container voor pagina's die secties zonder eigen zijpadding bouwen
@@ -337,8 +417,12 @@ h1, h2, h3, h4 {
   padding-inline: var(--gutter);
 }
 
-/* Hairlines aan de randen van elke gekleurde band */
-.section--band, .section--butter {
+/* Hairlines aan de randen van de opt-in band (doc: 1px roos 300) */
+.section--band {
+  border-top: 1px solid var(--rose-300);
+  border-bottom: 1px solid var(--rose-300);
+}
+.section--butter {
   border-top: 1px solid var(--border-rose);
   border-bottom: 1px solid var(--border-rose);
 }
@@ -350,8 +434,7 @@ h1, h2, h3, h4 {
 }
 .divider--short.divider--left { margin-left: 0; }
 
-/* Strip tussen hairlines (het "featured in"-ritme; bij ons voor
-   herkomst, doorverwijzing of een kalme aankondiging) */
+/* Strip tussen hairlines */
 .strip {
   border-top: 1px solid var(--border-rose);
   border-bottom: 1px solid var(--border-rose);
@@ -373,8 +456,8 @@ h1, h2, h3, h4 {
   color: var(--text-muted);
 }
 
-/* Cijferrij: grote dunne serif-waarden met kleine labels
-   (bij ons in kalme woorden, nooit als opschepperige getallen) */
+/* Cijferrij (doc: witte sectie, waarden en labels in pruim,
+   onderrand mint-500 op de sectie) */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -384,19 +467,20 @@ h1, h2, h3, h4 {
 .stat-num {
   font-family: var(--font-display);
   font-weight: var(--weight-light);
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(32px, 4vw, 42px);
   color: var(--plum);
   line-height: 1.1;
 }
 .stat-label {
   margin-top: 0.7rem;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: var(--weight-medium);
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--plum);
 }
+.section--stats { border-bottom: 1px solid var(--mint-500); }
 
 /* Getint binnenpaneel dat in een gewone sectie zweeft */
 .panel {
@@ -405,8 +489,7 @@ h1, h2, h3, h4 {
 }
 .panel--butter { background: var(--butter); }
 
-/* Foto met offset-vlak erachter (de gelaagde portretvorm).
-   Geef de wrapper marge rechtsonder zodat het vlak ruimte heeft. */
+/* Foto met offset-vlak erachter (de gelaagde portretvorm) */
 .photo-offset { position: relative; }
 .photo-offset::before {
   content: "";
@@ -416,20 +499,22 @@ h1, h2, h3, h4 {
 }
 .photo-offset > * { position: relative; }
 
-/* Omcirkeld aanhalingsteken boven een citaat */
+/* Omcirkeld aanhalingsteken boven een citaat
+   (doc testimonials: rond icoon met dikke mint-500 rand) */
 .quote-circle {
   width: 4.6rem; height: 4.6rem;
   margin-inline: auto;
   display: grid; place-items: center;
-  border: 1.5px solid var(--rose);
+  border: 3px solid var(--mint-500);
   border-radius: 50%;
+  background: var(--white);
   font-family: var(--font-display);
   font-size: 2.6rem;
-  color: var(--rose);
+  color: var(--plum);
   line-height: 1;
 }
 
-/* Signatuur-knop voor op een pruim vlak: boter met roos onderrand */
+/* Signatuur-knop voor op een donker vlak: boter met roos onderrand */
 .btn--tint-invert {
   background: var(--butter);
   color: var(--plum);

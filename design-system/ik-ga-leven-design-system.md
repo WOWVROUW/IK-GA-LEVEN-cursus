@@ -45,24 +45,56 @@ Vijf merkkleuren, elk met precies één rol. Geen kleur wordt buiten zijn rol ge
 
 | Rol | Naam | Token | Hex |
 |---|---|---|---|
-| Primair — koppen, knoppen, kaders | Pruim | `--plum` | `#6B1953` |
+| Primair — knoppen-accent, kaders, pruim-koppen | Pruim | `--plum` | `#6B1953` |
 | Hover (op pruim) | Diep pruim | `--plum-hover` | `#4E1240` |
-| Secundair — zachte vlakken | Roos | `--rose` | `#D585AE` |
-| Bandtint — lichte roze secties | Roos-tint | `--rose-tint` | `#F5E3EE` |
-| Accent | Mint | `--mint` | `#B8E5D7` |
+| Secundair — eyebrows, zachte vlakken | Roos | `--rose` | `#D585AE` |
+| Accent — dividers, onderranden | Mint | `--mint` | `#B8E5D7` |
 | Lichte band | Boter | `--butter` | `#FFF8D1` |
-| Pop — spaarzaam, **max 1 element per pagina** | Magenta | `--magenta` | `#CE12AE` |
-| Paginabasis (achtergrond) | Ecru | `--ecru` | `#F6F1EA` |
-| Hoofdtekst | Warm donkergrijs | `--text` | `#5C5556` |
+| Pop — alleen snel-weg-knop en 112-regel | Magenta | `--magenta` | `#CE12AE` |
+| Paginabasis (achtergrond) | Wit | `--white` | `#FFFFFF` |
+| Koppen én hoofdtekst | Aubergine-zwart (ink) | `--text` / `--ink` | `#2D1422` |
+
+> **Besluit 2026-07-09 (website-document Hiltje):** de paginabasis is **wit** met
+> gekleurde banden per sectie; ecru `#F6F1EA` is vervallen als achtergrond. Tekst
+> en koppen staan in **ink `#2D1422`**; het oude warm grijs `#5C5556` is vervallen.
+> Statistieken- en testimonialkoppen zijn de uitzondering: die staan in pruim
+> (klasse `.h--plum`).
+
+> **Naamgeving:** Hiltje's website-document nummert tinten soms anders dan de
+> schalen in `tokens.css` (bv. "roos 200" in het doc = `#ECBED6` = `--rose-300`
+> hier). **De hex-waarde is altijd leidend**, niet de naam.
+
+### Bandkleuren per sectie (homepage, uit het website-document)
+
+| Blok | Achtergrond | Token |
+|---|---|---|
+| Veiligheidsbanner | `#ECBED6` | `--rose-300` (`--surface-banner`) |
+| Menu + hero | `#FDF5F9` | `--plum-50` (`--surface-menu`) |
+| Opt-in veiligheidsplan | `#F8DCEA` | `--rose-200` (`.section--band`, randen 1px `--rose-300`) |
+| Herkenning / persona's | `#FFFDF2` | `--butter-100` |
+| Zit ik in een relatie (video-CTA) | `#FFFBEA` | `--butter-200` |
+| Statistieken | wit, onderrand `--mint-500` | `.section--stats` |
+| Over Hiltje | `#FDF0F5` | `--rose-100` |
+| Testimonials | wit | — |
+| Podcast | `#E2C2D5` | `--plum-200` |
+| Vandaag beginnen | wit | — |
+| Signature-aanbod | `#ECBED6` | `--rose-300` |
+| Als het veilig is (nieuwsbrief) | `#FFF8D1` | `--butter-300` |
+| Footer + veilig verder browsen | `#F8DCEA` | `--rose-200` |
+| Copyright | wit, 11,2px | — |
+
+Videopagina: banner en hero op `--rose-300` (hero met gebogen onderrand die overloopt
+in wit), opt-in op `--rose-200` met bodytekst `--plum-400`, "Wat je hierna kunt doen"
+en het veiligheidsblok op `--butter-100`.
 
 **Regels:**
 - Magenta is de enige "pop"-kleur en verschijnt **hooguit één keer per pagina** — nooit
-  als vlak/achtergrond, alleen als klein accent (bv. één woord, één stip, één CTA-detail
-  op een moment dat echt urgentie verdient). Nooit voor gewone foutmeldingen.
-- De pagina is nooit puur wit — wit is gereserveerd voor kaarten die op de ecru
-  achtergrond "liggen".
-- Roos is de zachte, warme vlakkleur (banden, tint-achtergronden). Mint is het frisse
-  accent — spaarzaam, als lichtpunt, niet als grote achtergrond.
+  als vlak/achtergrond. Vaste rollen: de snel-weg-knop en "Bel 112".
+- Roos is de zachte, warme vlakkleur (banden, tint-achtergronden) en de eyebrow-kleur.
+  Mint is het frisse accent — dividers en onderranden, niet als grote achtergrond.
+  Vaste mint-accenten: onderrand statistieken (`--mint-500`), divider video-blok
+  (`--mint-400`), divider Over Hiltje (`--mint-700`), rand citaat-cirkel (`--mint-500`),
+  IG-kop footer (`--mint-700`).
 
 **Afgeleide tinten** (`--rose-hover`, `--mint-hover`, `--border-rose`, `--text-muted`)
 zijn *niet* expliciet door Hiltje bevestigd — het zijn redelijke afleidingen voor hover-
@@ -87,17 +119,20 @@ Drie lagen, elk met een duidelijke taak. Alle drie gratis op Google Fonts.
 
 | Rol | Font | Grootte | Weight | Line-height | Tracking | Kapitalen |
 |---|---|---|---|---|---|---|
-| Hero-kop | Source Serif 4 | clamp 34-58px | 300 | ≈1.2 | 0.4px | nee |
-| Testimonial-kop | Source Serif 4 | clamp 28-46px | 300 | ≈1.2 | 0.4px | nee |
-| Opt-in-kop | Source Serif 4 | clamp 24-36px | 300 | ≈1.2 | 0.4px | nee |
+| Hero-kop | Source Serif 4 | 42px (clamp 30-42) | 300 | ≈1.2 (50.4px) | 0.4px | nee |
+| Testimonial-kop | Source Serif 4 | 36px (clamp 26-36) | 300 | ≈1.2 | 0.4px | nee |
+| Opt-in-kop | Source Serif 4 | 32px (clamp 24-32) | 300 | ≈1.2 | 0.4px | nee |
 | Kop onder beeld | Source Serif 4 | 24px | 300 | ≈1.2 | 0.4px | nee |
 | Eyebrow-label | Work Sans | 15px | 500 | ≈1.3 (19.5px) | 1.5px | **JA** |
 | Body | Work Sans | 17px | 400 | 34px (≈2.0) | normaal | nee |
-| Knop | Work Sans | 13px | 500 | ≈1.3 (16.9px) | 0.06em | **JA** |
-| Ervaring/statistieken-labels | Work Sans | 12-13px | 500 | ≈1.3 | 1.5px | **JA** |
+| Hoofdknop | Work Sans | 15px | 500 | ≈1.3 | normaal | **JA** |
+| Open/kaart-knop | Work Sans | 13px | 500 | ≈1.3 | normaal | **JA** |
+| Menu | Work Sans | 14px | 500 | — | 0.06em | **JA** |
+| Statistieken-labels | Work Sans | 14px | 500 | ≈1.3 | 1.5px | **JA** |
+| Copyright | Work Sans | 11,2px | 400 | — | — | nee |
 
-(Kopgroottes 2026-07-08 opgeschaald naar de echte ChicSpark-demo-maat via `clamp()`;
-de oude vaste waarden waren 42/36/32.)
+(Besluit Hiltje 2026-07-09: definitief terug naar de gemeten maten 42/36/32/24 uit het
+website-document; de tijdelijke opschaling naar 58px van 2026-07-08 is teruggedraaid.)
 
 Bevestigd: eyebrow én knoppen in kapitalen; de ruime 34px body line-height is bewust
 (leesbaarheid, rust).
@@ -108,8 +143,16 @@ Bevestigd: eyebrow én knoppen in kapitalen; de ruime 34px body line-height is b
 
 - **Knoppen bijna recht** — radius `2px` (token `--radius`, systeembreed gebruikt voor
   knoppen, kaders en inputs — niets in deze site is sterk afgerond).
-- Twee knopstijlen: **pruim vlak** (`.btn`) of **pruim rand** (`.btn--outline`). Een
-  pijltje (`→`) schuift naar rechts op hover.
+- Knopstijlen (besluit 2026-07-09, website-document):
+  - **Hoofdknop** (`.btn`): vlak `--plum-300` met 3px onderrand in pruim, tekst pruim,
+    15px kapitalen; hover vult naar pruim met `--plum-50` tekst.
+  - **Massief** (`.btn--solid`): pruim vlak, `--plum-50` tekst — voor de opt-in.
+  - **Open** (`.btn--open` / `.btn--outline` / `.btn--fill`): 13px, dunne `--plum-300`
+    rand, vulling volgt de sectie (transparant of wit); hover vult naar vol
+    `--plum-300`, de tekst blijft pruim.
+  - **Snel-weg** (`.exit-btn`, gedeeld component in tokens.css): massief magenta
+    gevuld met witte tekst; hover naar `--magenta-600` (besluit 2026-07-09).
+  Een pijltje (`→`) schuift naar rechts op hover.
 - **Genummerde cirkels** met pruim rand (geen vulling) voor de "1/2/3"-stappen —
   `.step-num`, 52px doorsnede.
 - **Scheidslijnen**: 1px roos op 50% dekking (`--border-rose`).
@@ -151,7 +194,17 @@ de drie concurrerende knoppen naast elkaar, de mediologo's-balk.
 ## 6. Traumageïnformeerde regels — niet onderhandelbaar
 
 1. **Snel-weg-knop** rechtsboven, altijd zichtbaar ("Verlaat deze site snel"), stuurt
-   naar een neutrale site en houdt de pagina uit de geschiedenis. Werkt ook op **Esc**.
+   naar een neutrale site (buienradar.nl, overal dezelfde). Werkt ook op **Esc**.
+   Techniek: gedeeld script `assets/js/safety.js` — `location.replace()` haalt de
+   pagina uit de terug-stack, een bfcache-slot voorkomt dat de terugknop de pagina
+   uit het browsergeheugen terughaalt, en interne links navigeren via replace zodat
+   een bezoek maar één item in de terug-stack achterlaat.
+1b. **Eerlijkheid over de geschiedenis (niet onderhandelbaar):** een website kán de
+   browsergeschiedenis niet wissen — geen enkele site kan dat. Beloof dat dus nooit
+   in teksten. Zeg wél wat waar is: de knop verlaat de site direct en de terugknop
+   brengt je niet terug, maar het bezoek kan in de geschiedenis blijven staan; de
+   pagina Veilig meelezen legt uit hoe je zelf wist of incognito gebruikt. Voor deze
+   doelgroep is een valse belofte gevaarlijker dan geen belofte.
 2. **Geen autoplay** van video of geluid, ooit.
 3. **Footerregel** over veilig browsen + acute hulproute (alleen 112; Veilig Thuis
    staat sinds 2026-07-07 bewust niet in content, tenzij Hiltje er expliciet om vraagt).
@@ -188,10 +241,14 @@ de share-pagina.
 ## 7. Bestanden in deze map
 
 - `tokens.css` — alle kleuren, fonts en maten als CSS-variabelen, plus de
-  herbruikbare klassen: `.btn` / `.btn--outline`, `.eyebrow`, `.step-num`,
-  `.section--band` / `.section--butter` / `.section--plum`, `.h-hero` /
-  `.h-testimonial` / `.h-optin` / `.h-under-image`, `.card` / `.card--float`,
-  `.divider`, `.joy`.
+  herbruikbare klassen: `.btn` / `.btn--solid` / `.btn--open` / `.btn--outline` /
+  `.btn--fill`, `.exit-btn`, `.eyebrow`, `.step-num`, de sectie-bandkleuren
+  (`.section--band`, `.section--butter`, `.section--plum`, en per tint
+  `.section--plum50` t/m `.section--butter300`), `.section--stats`, `.h-hero` /
+  `.h-testimonial` / `.h-optin` / `.h-under-image` / `.h--plum`, `.card` /
+  `.card--float`, `.divider` (+ hairline/kleur-modifiers), `.quote-circle`, `.joy`.
+- `../assets/js/safety.js` — het gedeelde veiligheidsscript (snel-weg, Esc,
+  bfcache-slot, replace-navigatie). Elke pagina laadt dit onderaan.
 - `ik-ga-leven-design-system.md` — dit bestand (bestandsnaam bevat "ik ga leven" om verwarring met het aparte WOW! Vrouw / Claude Design-systeem te voorkomen — zie de verzoening bovenaan).
 - `preview.html` — levende styleguide; open 'm in de browser om alles te zien.
 

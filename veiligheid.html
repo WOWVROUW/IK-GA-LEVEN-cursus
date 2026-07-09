@@ -20,17 +20,8 @@
   }
   .skip-link:focus { left: var(--gutter); top: var(--gutter); }
 
-  .exit-btn {
-    position: fixed; top: 14px; right: 14px; z-index: 1200;
-    background: var(--white); color: var(--magenta); border: 1px solid var(--magenta);
-    font-family: var(--font-body); font-size: 12px; font-weight: var(--weight-medium);
-    letter-spacing: 0.04em; text-transform: uppercase;
-    padding: 10px 14px; border-radius: var(--radius); cursor: pointer;
-    box-shadow: var(--shadow-float); white-space: nowrap;
-  }
-  .exit-btn:hover { background: var(--magenta); color: #fff; border-color: var(--magenta); }
-  .exit-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(206, 18, 174, 0.35); }
-  .exit-btn__short { display: none; }
+  /* Snel-weg-knop: gedeeld .exit-btn component uit tokens.css
+     (massief magenta, besluit 2026-07-09) */
 
   .announce {
     background: var(--rose-200); color: var(--plum); text-align: center;
@@ -38,8 +29,6 @@
     padding: 12px 150px 12px var(--gutter);
   }
   @media (max-width: 600px) {
-    .exit-btn__full { display: none; }
-    .exit-btn__short { display: inline; }
     .announce { padding-right: 100px; font-size: 12px; }
   }
 
@@ -169,10 +158,7 @@
   </p>
 </footer>
 
-<script>
-  function quickExit() { window.location.replace('https://www.nu.nl/weer'); }
-  document.getElementById('exitBtn').addEventListener('click', quickExit);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') quickExit(); });
-</script>
+<!-- Snel-weg + terugknop-beveiliging: gedeeld script (assets/js/safety.js) -->
+<script src="assets/js/safety.js"></script>
 </body>
 </html>
