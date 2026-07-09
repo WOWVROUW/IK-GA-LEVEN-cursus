@@ -241,17 +241,11 @@
   <section class="section section--butter">
     <div class="container">
       <div class="optin-narrow">
-        <h2 class="h-optin">Wil je het e-book en informatie en nieuws van IK GA LEVEN ook in je
-           mail ontvangen? Meld je aan voor de nieuwsbrief.</h2>
-        <!-- TODO: vervang dit placeholder-formulier door de Flodesk-embed -->
-        <form class="optin-form js-optin" aria-label="Blijf op de hoogte">
-          <div class="optin-row">
-            <input type="text" name="voornaam" placeholder="Voornaam" autocomplete="given-name">
-            <input type="email" name="email" placeholder="E-mailadres" required autocomplete="email">
-            <button class="btn btn--solid" type="submit">Houd me op de hoogte</button>
-          </div>
-        </form>
-        <p class="optin-note">Gebruik een e-mailadres dat alleen jij leest.</p>
+        <!-- Flodesk inline formulier e-book/nieuwsbrief (segmenten IGL Ebook Het begon met
+             liefde + IGL Nieuwsbrief). Het formulier levert zijn eigen titel, e-mailregel en
+             succesmelding ("Het e-book is naar je mailbox onderweg", geen redirect). Het
+             loader-script staat onderaan deze pagina. -->
+        <div id="fd-form-6a4f6cf9ba8d8849bc66419f"></div>
       </div>
     </div>
   </section>
@@ -274,7 +268,7 @@
         <div class="steps-card">
           <div class="step-num">2</div>
           <h3>Kom naar de online bijeenkomst</h3>
-          <p>Dinsdag 21 juli om 10:00 uur, twee uur via Zoom, gratis. In een besloten groep
+          <p>Meerdere data in juli en augustus, twee uur via Zoom, gratis. In een besloten groep
              vrouwen; je hoeft niets uit te leggen.</p>
           <a href="bijeenkomst.html">Meld je aan &rarr;</a>
         </div>
@@ -309,13 +303,30 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") quickExit();
     });
+  </script>
 
-    // Opt-in: plaatshouder tot de Flodesk-koppeling er is (zelfde patroon als de homepage).
-    document.querySelectorAll(".js-optin").forEach(function (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert("Bedankt! (Dit formulier is nog niet gekoppeld aan Flodesk; dat zetten we hierna op.)");
-      });
+  <script>
+    // Flodesk universal loader + init van het e-book/nieuwsbrief-formulier.
+    (function(w, d, t, h, s, n) {
+      w.FlodeskObject = n;
+      var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+      w[n] = w[n] || fn;
+      var f = d.getElementsByTagName(t)[0];
+      var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+      var sm = d.createElement(t);
+      sm.async = true;
+      sm.type = 'module';
+      sm.src = h + s + '.mjs' + v;
+      f.parentNode.insertBefore(sm, f);
+      var sn = d.createElement(t);
+      sn.async = true;
+      sn.noModule = true;
+      sn.src = h + s + '.js' + v;
+      f.parentNode.insertBefore(sn, f);
+    })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+    window.fd('form', {
+      formId: '6a4f6cf9ba8d8849bc66419f',
+      containerEl: '#fd-form-6a4f6cf9ba8d8849bc66419f'
     });
   </script>
 
