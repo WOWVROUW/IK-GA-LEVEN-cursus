@@ -247,6 +247,10 @@
   }
   .step-card p { font-size: 16px; line-height: 1.8; margin: 0 0 1.4rem; }
   .step-card .btn { margin-top: auto; align-self: center; }
+  /* Flodesk cursus-formulier: eigen kop verbergen (de kaart heeft er al een),
+     subtitel met de e-mailveiligheidsregel blijft staan */
+  #eerste-stap [class*="__title"] { display: none !important; }
+  #eerste-stap form[class*="__form"] { padding: 0 !important; }
   .closing-line {
     max-width: 640px; margin: 3.5rem auto 0; text-align: center;
     font-family: var(--font-display); font-weight: var(--weight-light);
@@ -590,11 +594,12 @@
           <div class="step-num">2</div>
           <h3>Weet je al dat je in september mee wilt doen?</h3>
           <p>Laat weten dat je interesse hebt in de cursusgroep die in september 2026 start. Je zit nergens aan vast; we houden je op de hoogte en nemen persoonlijk contact met je op.</p>
-          <!-- TODO cursus-formulier: zodra het Flodesk-formulier "IGL Cursus 09-26"
-               bestaat, hier het container-patroon plaatsen:
-               <div id="fd-form-[formId]"></div> + init in het Flodesk-scriptblok
-               onderaan. Tot die tijd: mail-knop. -->
-          <a href="mailto:info@ikgalevencursus.nl?subject=Interesse%20IK%20GA%20LEVEN%20cursus%20september" class="btn btn--solid">Mail je interesse <span class="btn__arrow">→</span></a>
+          <!-- Flodesk cursus-formulier (formId 6a4f77e7c9d19cd9480919d7, aangeleverd
+               door Hiltje 2026-07-09). Zelfde aanpak als de andere formulieren: de
+               Flodesk-titel is verborgen (de kaart heeft al een kop), de subtitel
+               "Gebruik een e-mailadres dat alleen jij leest" blijft zichtbaar
+               (veiligheidsregel). Init staat in het scriptblok onderaan. -->
+          <div id="fd-form-6a4f77e7c9d19cd9480919d7"></div>
         </div>
       </div>
       <p class="closing-line">De cursus is er. De groep komt er. En jij bepaalt wanneer het jouw moment is.</p>
@@ -697,6 +702,32 @@
     render();
     start();
   })();
+</script>
+
+<script>
+  // Flodesk universal loader + init van het cursus-interesse-formulier
+  // (IGL Cursus 09-26).
+  (function(w, d, t, h, s, n) {
+    w.FlodeskObject = n;
+    var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t);
+    sm.async = true;
+    sm.type = 'module';
+    sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true;
+    sn.noModule = true;
+    sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+  window.fd('form', {
+    formId: '6a4f77e7c9d19cd9480919d7',
+    containerEl: '#fd-form-6a4f77e7c9d19cd9480919d7'
+  });
 </script>
 </body>
 </html>
