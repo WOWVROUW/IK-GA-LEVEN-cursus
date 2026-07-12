@@ -7,11 +7,12 @@
      Renderen naar PDF: zie ebooks/_HOE-RENDER.md in de werkmap (kopieer de repo naar een pad
      zonder spaties en render ebook-src/ebook-het-begon-met-liefde.html met Chrome headless). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,300i&family=Work+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,300i&family=Work+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   /* ── IK GA LEVEN design tokens (subset, zelfvoorzienend voor print) ── */
   :root {
     --plum: #6B1953;
+    --magenta: #C41E7A;
     --rose: #D585AE;
     --rose-tint: #F5E3EE;
     --butter: #FFF8D1;
@@ -48,6 +49,7 @@
   }
   .page--ecru { background: var(--ecru); }
   .page--tint { background: var(--rose-tint); }
+  .page--butter { background: var(--butter); }
 
   .pfoot {
     position: absolute;
@@ -170,7 +172,7 @@
   .cover-logo { height: 88px; width: auto; margin: 8px auto 34px; display: block; }
   .cover-photo {
     height: 356px;
-    background: url('../assets/photos/hero-bloesem.jpg') center 42% / cover no-repeat;
+    background: url('../assets/photos/cover-pleister-hart.jpg') center 52% / cover no-repeat;
     position: relative;
     margin: 0 0 44px;
   }
@@ -197,6 +199,16 @@
   }
 
   .sign { font-family: var(--font-display); font-style: italic; font-size: 21px; color: var(--plum); margin-top: 4px; }
+
+  /* Acuut-gevaar accent (magenta pop) */
+  .danger {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    color: var(--magenta);
+    margin: 30px 0 0;
+  }
   .geweld-woord {
     font-family: var(--font-display); font-weight: 300;
     font-size: 44px; letter-spacing: 3px; color: var(--plum);
@@ -207,14 +219,14 @@
 <body>
 
 <!-- ═══ PAGINA 1: COVER ═══ -->
-<div class="page page--tint cover">
+<div class="page page--butter cover">
   <img class="cover-logo" src="../design-system/assets/logo/logo-original.png" alt="Ik ga leven">
   <div class="cover-photo"></div>
-  <p class="eyebrow" style="margin-bottom:0;">E-book bij de video</p>
+  <p class="eyebrow" style="margin-bottom:0;">Mini-training</p>
   <h1>Het begon met liefde. Waarom voelt het nu alsof het niet klopt?</h1>
   <hr class="divider divider--center">
-  <p class="sub">Begeleidend e-book bij de videotraining</p>
-  <p class="auteur">Van Hiltje Oude Luttikhuis &middot; IK GA LEVEN</p>
+  <p class="sub">Begeleidend e-book bij de video</p>
+  <p class="auteur">Van Hiltje Oude Luttikhuis &middot; IK GA LEVEN CURSUS</p>
   <div class="cover-foot">ikgalevencursus.nl</div>
 </div>
 
@@ -249,7 +261,9 @@
        twijfelt. En drie eerste stappen, ook als je nog helemaal niet weet wat je wil.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>02</span></div>
+  <p class="small" style="margin-top:18px;">Coverfoto: Christian Agbede via Unsplash.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>02</span></div>
 </div>
 
 <!-- ═══ PAGINA 3: DRIE VROUWEN ═══ -->
@@ -298,7 +312,7 @@
     </div>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>03</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>03</span></div>
 </div>
 
 <!-- ═══ PAGINA 4: HET WOORD GEWELD ═══ -->
@@ -323,7 +337,7 @@
        ook niet erg.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>04</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>04</span></div>
 </div>
 
 <!-- ═══ PAGINA 5: PSYCHISCH GEWELD, ACHT VORMEN ═══ -->
@@ -352,7 +366,7 @@
   <p><span class="lead-in">Hij intimideert.</span> Gebruikt extreme machtsmiddelen om jou ervan te
      overtuigen dat hij alle macht heeft, en jij geen enkele.</p>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>05</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>05</span></div>
 </div>
 
 <!-- ═══ PAGINA 6: SYSTEEM + HERSENSPOELEN + GASLIGHTING ═══ -->
@@ -361,7 +375,8 @@
   <p>Psychisch geweld, of geestelijke mishandeling, is een ernstige vorm van mishandeling. Het
      tast je zelfvertrouwen en je vrijheid aan. Dat leidt tot ernstige emotionele schade, angst en
      langdurige stress. Emotionele mishandeling kan net zo schadelijk zijn als lichamelijk geweld,
-     ook al zijn er geen zichtbare wonden.</p>
+     ook al zijn er geen zichtbare wonden. Als meerdere vormen samen in een patroon voorkomen,
+     spreken we ook van dwingende controle.</p>
 
   <div class="begrip">
     <h3>Hersenspoelen (brainwashing)</h3>
@@ -383,7 +398,7 @@
        niet meer weet wat echt is: dat is gaslighting.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>06</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>06</span></div>
 </div>
 
 <!-- ═══ PAGINA 7: MEER BEGRIPPEN ═══ -->
@@ -409,7 +424,7 @@
        minder jezelf wordt. Het hoeft geen lichamelijk geweld te zijn, maar dat kan wel. Het gaat
        om de manier waarop hij jouw leven beheerst. Wat je doet, wie je ziet, wat je voelt, wat je
        durft te zeggen. Er is niets intiems aan. Het is eenzijdig geweld, waarbij de &eacute;&eacute;n
-       de ander domineert. Niet altijd met een expliciete opdracht, maar door de sfeer, de
+       de ander overheerst. Niet altijd met een expliciete opdracht, maar door de sfeer, de
        blikken, de reacties. Na een tijd doe je het vanzelf.</p>
   </div>
 
@@ -418,7 +433,7 @@
        geweldspatronen en wat ze met je doen.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>07</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>07</span></div>
 </div>
 
 <!-- ═══ PAGINA 8: WAAROM JE TWIJFELT ═══ -->
@@ -443,7 +458,7 @@
   <p class="pull">Je hoeft het niet groter te maken dan het is. Maar je mag het ook niet kleiner
      maken dan het is. Je mag dit serieus nemen. Omdat jij ertoe doet.</p>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>08</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>08</span></div>
 </div>
 
 <!-- ═══ PAGINA 9: DRIE STAPPEN + STAP 1 (vraag 1 en 2) ═══ -->
@@ -474,7 +489,7 @@
     <div class="lijn"></div><div class="lijn"></div><div class="lijn"></div><div class="lijn"></div>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>09</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>09</span></div>
 </div>
 
 <!-- ═══ PAGINA 10: STAP 1 (vraag 3 en 4) + afsluiting ═══ -->
@@ -500,7 +515,7 @@
        Geen verplichtingen, geen vragen die je niet wil beantwoorden. Ik lees mee, in jouw tempo.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>10</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>10</span></div>
 </div>
 
 <!-- ═══ PAGINA 11: STAP 2 ZEG-T-VEILIG ═══ -->
@@ -546,7 +561,7 @@
        ZEG-T-VEILIG-principes toe op een manier die ons, en onze kinderen, veilig houdt.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>11</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>11</span></div>
 </div>
 
 <!-- ═══ PAGINA 12: STAP 3 BIJEENKOMST + AFSLUITING ═══ -->
@@ -558,7 +573,7 @@
   <p>Dat is al veel.</p>
   <p>De volgende stap is de gratis online informatiebijeenkomst.</p>
 
-  <div class="panel panel--rose">
+  <div class="panel panel--rose" style="margin-top:30px;">
     <p class="eyebrow" style="margin-bottom:8px;">Gratis online bijeenkomst</p>
     <p><span class="lead-in">"Zit ik in een relatie met psychisch geweld?"</span><br>
        Een gratis online bijeenkomst van twee uur die je meer helderheid geeft over die ene vraag.</p>
@@ -568,21 +583,18 @@
        <a href="https://ikgalevencursus.nl/bijeenkomst"><strong>ikgalevencursus.nl/bijeenkomst</strong></a></p>
   </div>
 
-  <h3>Meer weten over de IK GA LEVEN-cursus?</h3>
+  <h3 style="margin-top:40px;">Meer weten over de IK GA LEVEN-cursus?</h3>
   <p>De informatiebijeenkomst is de eerste stap. Wil je alvast lezen wat de cursus zelf inhoudt,
      voor wie hij is en hoe hij werkt, kijk dan op
      <a href="https://ikgalevencursus.nl/informatie">ikgalevencursus.nl/informatie</a>.</p>
 
-  <div class="panel" style="margin-top:28px;">
-    <p style="margin-bottom:0;"><span class="lead-in">Ben je op dit moment in gevaar, of is iemand
-       gewond? Bel 112.</span></p>
-  </div>
-
-  <p style="margin-top:24px;">Heb je vragen, of wil je even praten? Je mag mij een bericht sturen
+  <p style="margin-top:40px;">Heb je vragen, of wil je even praten? Je mag mij een bericht sturen
      op <a href="mailto:info@ikgalevencursus.nl">info@ikgalevencursus.nl</a>. Ik ben er.</p>
   <p class="sign">Hiltje</p>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>12</span></div>
+  <p class="danger">Bij acuut gevaar, of als iemand gewond is, bel je 112.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>12</span></div>
 </div>
 
 <!-- ═══ PAGINA 13: BIJLAGE, DEEL 1 ═══ -->
@@ -623,7 +635,7 @@
        gevolg van wat er met je is gedaan.</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>13</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>13</span></div>
 </div>
 
 <!-- ═══ PAGINA 14: BIJLAGE, DEEL 2 + COLOFON ═══ -->
@@ -662,11 +674,11 @@
        Dit e-book staat als bestand op je apparaat. Deel je een computer of telefoon met iemand
        die niet mag weten dat je dit leest? Verwijder het bestand dan na het lezen, ook uit de
        prullenbak en je downloadmap. Bij acuut gevaar bel je 112.</p>
-    <p class="small" style="margin-bottom:0;">IK GA LEVEN &middot; ikgalevencursus.nl &middot;
+    <p class="small" style="margin-bottom:0;">ikgalevencursus.nl &middot;
        &copy; Hiltje Oude Luttikhuis</p>
   </div>
 
-  <div class="pfoot"><span>IK GA LEVEN</span><span>14</span></div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span>14</span></div>
 </div>
 
 </body>

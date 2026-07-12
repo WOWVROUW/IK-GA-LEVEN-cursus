@@ -84,6 +84,10 @@
     /* Opt-in band (doc: vlak rose-200, randen 1px roos-300, bodytekst plum-400) */
     .optin-narrow { max-width: 760px; margin-inline: auto; text-align: center; }
     .optin-narrow p { color: var(--plum-400); }
+    .optin-mock {
+      display: block; width: 100%; max-width: 440px; height: auto;
+      margin: 0 auto 1.75rem;
+    }
 
     /* Next steps (doc: vlak butter-100, drie beeldkaarten met monogram-cirkel
        plum-300 en hairline-dividers butter-300) */
@@ -198,6 +202,8 @@
   <section class="section section--band">
     <div class="container">
       <div class="optin-narrow">
+        <img class="optin-mock" src="assets/photos/ebook-magazine-mockup.png"
+             alt="Het e-book Het begon met liefde, opengeslagen als magazine met de voorkant ernaast">
         <!-- Flodesk inline formulier e-book/nieuwsbrief (segmenten IGL Ebook Het begon met
              liefde + IGL Nieuwsbrief). Het formulier levert zijn eigen titel, e-mailregel en
              succesmelding ("Het e-book is naar je mailbox onderweg", geen redirect). Het
@@ -227,7 +233,7 @@
         </article>
         <article class="steps-card">
           <div class="steps-card__imgwrap">
-            <img class="steps-card__img" src="assets/photos/group-session.png" alt="Groep vrouwen in gesprek tijdens een bijeenkomst">
+            <img class="steps-card__img" src="assets/photos/vrouw-laptop-groen.png" alt="Vrouw achter haar laptop tijdens een online bijeenkomst">
             <span class="steps-card__badge" aria-hidden="true">2</span>
           </div>
           <h3>Kom naar de online bijeenkomst</h3>
