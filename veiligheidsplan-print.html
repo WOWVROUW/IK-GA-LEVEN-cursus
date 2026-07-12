@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veiligheidsplan om te printen | IK GA LEVEN</title>
+<meta name="description" content="De printversie van het IK GA LEVEN-veiligheidsplan. Print het uit en vul het met de hand in, zonder je e-mailadres achter te laten.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&family=Work+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system/tokens.css">
+<style>
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .doc-wrap { max-width: 760px; margin: 0 auto; padding: 2.5rem var(--gutter) 4rem; }
+
+  /* Kop van de printpagina (schermweergave) */
+  .print-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding-bottom: 1.5rem; margin-bottom: 2.5rem;
+    border-bottom: var(--hairline) solid var(--plum);
+  }
+  .print-head .logo img { height: 56px; width: auto; }
+  .print-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: flex-end; }
+
+  h1.doc-title {
+    font-family: var(--font-display); font-weight: var(--weight-light);
+    font-size: var(--fs-hero); line-height: 1.2; color: var(--plum); margin: 0 0 0.75rem;
+  }
+  .doc-intro { font-size: 16px; line-height: 1.8; margin: 0 0 2rem; }
+
+  /* Waarschuwingsblok */
+  .warn-box {
+    background: var(--white); border: 1px solid var(--mint-500); border-left: 4px solid var(--mint-700);
+    border-radius: var(--radius); padding: 1.5rem 1.75rem; margin: 0 0 2.75rem;
+  }
+  .warn-box h2 { font-family: var(--font-display); font-weight: var(--weight-light); font-size: 21px; color: var(--ink); margin: 0 0 0.6rem; }
+  .warn-box p { font-size: 15px; line-height: 1.75; margin: 0 0 0.7rem; }
+  .warn-box p:last-child { margin-bottom: 0; }
+  .warn-box ul { margin: 0.4rem 0 0.7rem; padding-left: 1.2rem; }
+  .warn-box li { font-size: 15px; line-height: 1.7; margin-bottom: 0.35rem; }
+  .warn-box .call112 { color: var(--magenta); font-weight: var(--weight-medium); }
+
+  .plan-section { margin: 0 0 2.5rem; }
+  .plan-section > h2 {
+    font-family: var(--font-display); font-weight: var(--weight-light);
+    font-size: 24px; color: var(--plum); margin: 0 0 0.4rem;
+    padding-bottom: 0.5rem; border-bottom: var(--hairline) solid var(--mint-700);
+  }
+  .plan-section > p { font-size: 15.5px; line-height: 1.8; margin: 0.8rem 0; }
+  .plan-guide { color: var(--neutral-700); font-size: 14px; line-height: 1.7; font-style: italic; }
+  .plan-prompt { margin: 1.2rem 0 0; }
+  .plan-prompt > span { display: block; font-size: 15.5px; line-height: 1.6; }
+  .fill-line { border-bottom: 1px solid var(--neutral-500); height: 1.9rem; margin-top: 0.35rem; }
+  .fill-sub { margin-top: 0.7rem; }
+  .fill-sub .fill-label { font-size: 14.5px; color: var(--neutral-700); }
+
+  .checklist { list-style: none; margin: 1rem 0 0; padding: 0; }
+  .checklist.two-col { columns: 2; column-gap: 2.5rem; }
+  .checklist li { position: relative; padding: 0.3rem 0 0.3rem 1.9rem; font-size: 15px; line-height: 1.55; break-inside: avoid; }
+  .checklist li::before { content: ""; position: absolute; left: 0; top: 0.4rem; width: 15px; height: 15px; border: 1.5px solid var(--plum-400); border-radius: 3px; }
+  .checklist li .star { color: var(--magenta); font-weight: var(--weight-medium); }
+
+  .numbers-list { margin: 0.9rem 0 0; padding: 0; list-style: none; }
+  .numbers-list li { font-size: 15px; line-height: 1.8; padding: 0.1rem 0; }
+  .numbers-list .num { color: var(--plum); font-weight: var(--weight-medium); white-space: nowrap; }
+
+  .doc-foot { margin-top: 3rem; padding-top: 1.5rem; border-top: var(--hairline) solid var(--plum); font-size: 13px; color: var(--neutral-700); text-align: center; }
+  .doc-foot .call112 { color: var(--magenta); font-weight: var(--weight-medium); }
+
+  @media (max-width: 600px) {
+    .checklist.two-col { columns: 1; }
+    .print-head { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ---- PRINT (compact, minder papier) ---- */
+  @media print {
+    .exit-btn, .print-actions, .screen-only { display: none !important; }
+    body { background: #fff; font-size: 11pt; line-height: 1.35; }
+    .doc-wrap { max-width: none; padding: 0; }
+    .print-head { border-color: #000; padding-bottom: 0.6rem; margin-bottom: 1rem; }
+    .print-head .logo img { height: 40px; }
+    h1.doc-title { color: #000; font-size: 22pt; margin: 0 0 0.4rem; }
+    .doc-intro { font-size: 10pt; line-height: 1.4; margin: 0 0 0.8rem; }
+    .warn-box { border-color: #444; border-left-color: #000; break-inside: avoid; padding: 0.8rem 1rem; margin: 0 0 1rem; }
+    .warn-box h2 { font-size: 13pt; margin: 0 0 0.3rem; }
+    .warn-box p, .warn-box li { font-size: 9.5pt; line-height: 1.35; margin-bottom: 0.25rem; }
+    .plan-section { break-inside: avoid; margin: 0 0 1rem; }
+    .plan-section > h2 { border-bottom-color: #444; color: #000; font-size: 14pt; margin: 0 0 0.3rem; padding-bottom: 0.25rem; }
+    .plan-section > p { font-size: 10pt; line-height: 1.4; margin: 0.4rem 0; }
+    .plan-guide { font-size: 8.5pt; line-height: 1.3; }
+    .plan-prompt { margin: 0.5rem 0 0; }
+    .plan-prompt > span { font-size: 10pt; line-height: 1.35; }
+    .fill-line { height: 1.25rem; margin-top: 0.15rem; }
+    .fill-sub { margin-top: 0.3rem; }
+    .fill-sub .fill-label { font-size: 9.5pt; }
+    .checklist li { font-size: 9.5pt; padding: 0.12rem 0 0.12rem 1.6rem; }
+    .checklist li::before { top: 0.2rem; width: 13px; height: 13px; }
+    .numbers-list li { font-size: 9.5pt; line-height: 1.5; }
+    a { text-decoration: none; }
+    @page { margin: 12mm 12mm; }
+  }
+</style>
+</head>
+<body>
+
+<button class="exit-btn" id="exitBtn" type="button" aria-label="Verlaat deze site snel">
+  <span class="exit-btn__full">Verlaat deze site snel</span>
+  <span class="exit-btn__short">Snel weg</span>
+</button>
+
+<div class="doc-wrap">
+
+  <div class="print-head">
+    <a class="logo" href="index.html" aria-label="IK GA LEVEN, home">
+      <img src="design-system/assets/logo/logo-original.png" alt="IK GA LEVEN">
+    </a>
+    <div class="print-actions screen-only">
+      <button class="btn" type="button" onclick="window.print()">Print of sla op als PDF</button>
+    </div>
+  </div>
+
+  <h1 class="doc-title">Veiligheidsplan</h1>
+  <p class="doc-intro">Dit plan helpt je om vooruit te denken over je eigen veiligheid, zodat je op een gespannen of gevaarlijk moment sneller en gerichter kunt handelen. Je hoeft het niet in één keer in te vullen, en niet alles hoeft van toepassing te zijn. Vul in wat past, sla over wat niet aansluit, en pas het aan zodra je situatie verandert. <strong>Bel 112 bij direct gevaar.</strong></p>
+
+  <div class="warn-box">
+    <h2>Voordat je begint: veilig bewaren</h2>
+    <p>Een ingevuld veiligheidsplan bevat informatie die in verkeerde handen schadelijk kan zijn. Denk daarom eerst na over een veilige bewaarplek.</p>
+    <ul>
+      <li>Bewaar het niet op een gedeeld apparaat of account, of op een plek waar de ander bij kan (gedeelde telefoon, gezinsaccount, gedeelde computer).</li>
+      <li>Overweeg een uitdraai op papier op een veilige plek buitenshuis, bijvoorbeeld bij een vertrouwd persoon.</li>
+      <li>Bewaar je het digitaal, gebruik dan een account met een wachtwoord dat de ander niet kent en niet kan raden. Sla het niet op onder een herkenbare bestandsnaam.</li>
+    </ul>
+    <p><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel altijd 112.</span></p>
+  </div>
+
+  <!-- 1 -->
+  <div class="plan-section">
+    <h2>1. Als het nu onveilig wordt</h2>
+    <p>Strategieën om je veiligheid te vergroten op een moment dat de spanning oploopt of geweld dreigt.</p>
+    <div class="plan-prompt">
+      <span>Vluchtroutes uit huis (welke deuren, ramen, trap of gang zijn bruikbaar?):</span>
+      <div class="fill-line"></div>
+      <p class="plan-guide">Oefen het één keer rustig, zodat je het in een stressmoment niet hoeft te bedenken.</p>
+    </div>
+    <div class="plan-prompt">
+      <span>Plek waar telefoon, sleutels en tas klaarliggen om snel te pakken:</span>
+      <div class="fill-line"></div>
+      <p class="plan-guide">Laat eventueel een tweede set sleutels maken, voor het geval de ander de eerste set in handen heeft.</p>
+    </div>
+    <div class="plan-prompt">
+      <span>Veilige plekken om naartoe te gaan:</span>
+      <div class="fill-sub"><span class="fill-label">Om te bellen:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Om een paar uur te blijven:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Om een paar dagen te blijven:</span><div class="fill-line"></div></div>
+    </div>
+    <div class="plan-prompt">
+      <span>Codewoord voor de kinderen of een vertrouwd persoon, als signaal om hulp te halen of de politie te bellen:</span>
+      <div class="fill-line"></div>
+    </div>
+    <div class="plan-prompt">
+      <span>Ruimtes om te vermijden tijdens een ruzie of incident:</span>
+      <div class="fill-line"></div>
+      <p class="plan-guide">Vermijd kleine ruimtes zonder uitgang en ruimtes met gevaarlijke voorwerpen (keuken, badkamer, schuur). Kies een ruimte met een uitgang naar buiten.</p>
+    </div>
+    <div class="plan-prompt">
+      <span>Wie kan vooraf worden ingelicht, met de vraag de politie te bellen bij een vermoeden van gevaar?</span>
+      <div class="fill-line"></div>
+    </div>
+    <p class="plan-guide">Soms is veiligheid op het moment zelf het belangrijkst, ook als dat betekent meebewegen of de confrontatie ontwijken. Dat is geen zwakte, maar overleven.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="plan-section">
+    <h2>2. Voorbereiden op weggaan</h2>
+    <p>Bij de overweging om weg te gaan, nu of later, helpt een rustige voorbereiding. Het is meestal niet veilig om de ander te laten weten dat een vertrek aankomt. Kies het moment zorgvuldig.</p>
+    <p>Leg op tijd een set spullen klaar bij een vertrouwd persoon: wat geld, een extra set sleutels, wat kleding en kopieën van belangrijke documenten (zie de checklist hieronder). Overweeg een eigen bankrekening waar de ander geen zicht op heeft, en vraag de bank om post niet naar het huisadres te sturen. Let op digitale sporen (zie het hoofdstuk Digitale veiligheid).</p>
+    <div class="plan-prompt">
+      <span>Bij wie kunnen spullen, geld en kopieën worden bewaard?</span>
+      <div class="fill-line"></div>
+    </div>
+    <div class="plan-prompt">
+      <span>Wie kan helpen met:</span>
+      <div class="fill-sub"><span class="fill-label">Geld:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Opvang van de kinderen:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Vervoer:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Meegaan naar afspraken:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Anders:</span><div class="fill-line"></div></div>
+    </div>
+    <p class="plan-guide">Veilig Thuis (0800-2000) kan helpen bij het nadenken over een vertrek en doorverwijzen naar de vrouwenopvang. Aanmelden bij een opvangorganisatie kan vaak ook rechtstreeks.</p>
+  </div>
+
+  <!-- 3 -->
+  <div class="plan-section">
+    <h2>3. Wat mee te nemen: checklist</h2>
+    <p>Bij een snel vertrek helpt het als de belangrijkste spullen al op één plek liggen. De gemarkeerde items (<span style="color:var(--magenta);font-weight:500;">*</span>) zijn het meest urgent.</p>
+    <ul class="checklist two-col">
+      <li>Eigen identiteitsbewijs / paspoort <span class="star">*</span></li>
+      <li>Identiteitsbewijzen van de kinderen <span class="star">*</span></li>
+      <li>BSN (eigen en van de kinderen) <span class="star">*</span></li>
+      <li>Bankpas(sen) en pincodes <span class="star">*</span></li>
+      <li>Geld / contant geld <span class="star">*</span></li>
+      <li>Sleutels (huis, auto) <span class="star">*</span></li>
+      <li>Telefoon en oplader <span class="star">*</span></li>
+      <li>DigiD-gegevens en belangrijke wachtwoorden <span class="star">*</span></li>
+      <li>Medicijnen (eigen en van de kinderen) <span class="star">*</span></li>
+      <li>Zorgpas / zorgverzekeringsgegevens <span class="star">*</span></li>
+      <li>Verblijfsvergunning of verblijfsdocumenten <span class="star">*</span></li>
+      <li>Geboorteaktes / trouwboekje</li>
+      <li>Huurcontract, hypotheek- of verzekeringspapieren</li>
+      <li>Echtscheidings- of juridische stukken</li>
+      <li>Eventuele beschikking huisverbod of contactverbod</li>
+      <li>Inschrijving / gegevens school van de kinderen</li>
+      <li>Adressenlijst / belangrijke telefoonnummers</li>
+      <li>Knuffel of vertrouwd voorwerp van de kinderen</li>
+      <li>Sieraden of spullen met persoonlijke waarde</li>
+      <li>Foto's en dierbare herinneringen</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+  <div class="plan-section">
+    <h2>4. Veiligheid in en om de woning</h2>
+    <p>Maatregelen om te overwegen bij verblijf in je eigen woning. Sommige kosten geld; kijk wat haalbaar is.</p>
+    <ul class="checklist">
+      <li>Sloten van deuren en ramen vervangen (zo nodig overleggen met de verhuurder)</li>
+      <li>Een deurspion of (video)deurbel plaatsen</li>
+      <li>Buitenverlichting met bewegingssensor</li>
+      <li>Een alarmsysteem</li>
+      <li>'s Avonds en bij afwezigheid licht laten branden</li>
+      <li>Rookmelders en een brandblusser</li>
+    </ul>
+    <p style="margin-top:1.4rem;">Bij afspraken over de kinderen: licht iedereen die voor hen zorgt in over wie hen wel en niet mag ophalen. Geef zo nodig een foto van de ander mee en, als die er is, een kopie van de rechterlijke beschikking.</p>
+    <div class="plan-prompt">
+      <div class="fill-sub"><span class="fill-label">School:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Kinderopvang / BSO:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Sport / club:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Familie / oppas:</span><div class="fill-line"></div></div>
+    </div>
+    <div class="plan-prompt">
+      <span>Wie in de omgeving wordt ingelicht, met de vraag de politie te bellen bij het zien van de ander bij de woning:</span>
+      <div class="fill-sub"><span class="fill-label">Buren:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Verhuurder:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Vriend(in):</span><div class="fill-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="plan-section">
+    <h2>5. Juridische bescherming in Nederland</h2>
+    <p>Er zijn verschillende beschermende maatregelen. Welke past, hangt af van de situatie. Het Juridisch Loket (0800-8020) geeft gratis eerste advies, en bij een laag inkomen bestaat recht op een gesubsidieerde advocaat.</p>
+    <p><strong>Tijdelijk huisverbod.</strong> De burgemeester (of een gemachtigde hulpofficier van justitie) kan de ander tien dagen uit huis plaatsen, ook als er nog geen strafbaar feit is gepleegd maar wel een ernstige dreiging bestaat. In die periode mag de ander niet thuiskomen en geen contact opnemen met de achterblijvers, inclusief de kinderen. De burgemeester kan het verlengen tot maximaal vier weken. Dit loopt via de politie en Veilig Thuis; je kunt het niet zelf aanvragen, maar er wel om vragen zodra de politie of Veilig Thuis betrokken is. Houdt de ander zich niet aan het huisverbod, dan is dat strafbaar.</p>
+    <p><strong>Contact-, straat- of gebiedsverbod.</strong> Een verbod dat de ander verbiedt om contact te zoeken (contactverbod) of in een bepaald gebied te komen (straat- of gebiedsverbod). Er zijn twee routes. Via het strafrecht: na aangifte bij de politie kan de officier van justitie de rechter vragen om zo'n verbod als voorwaarde op te leggen, zonder eigen procedure en zonder kosten. Via het civiel recht: het verbod wordt aangevraagd via een kort geding, met hulp van een advocaat, vaak sneller maar (deels) met kosten. Houdt de ander zich niet aan het verbod, meld dat dan altijd direct bij de politie.</p>
+    <p><strong>Melding en aangifte bij de politie.</strong> Bij de politie (0900-8844, of 112 bij spoed) kun je een melding doen (vastleggen wat er gebeurt, zonder verzoek om vervolging) of aangifte (een verzoek om de ander te vervolgen). Vraag of de melding of aangifte in het systeem komt, zodat er een dossier wordt opgebouwd.</p>
+    <p><strong>De kinderen.</strong> Bij gezamenlijk gezag kan een rechter op verzoek tijdelijk de omgang stopzetten of bepalen dat één ouder voorlopig alleen het gezag uitoefent. Dit loopt via de familierechter, met een advocaat. Let op: zonder zo'n rechterlijke beslissing kan een school of opvang een kind in principe niet weigeren mee te geven aan een ouder die het gezag heeft.</p>
+    <div class="plan-prompt">
+      <span>Bewaarplek juridische documenten (zo mogelijk de originelen, met een kopie op een tweede veilige plek):</span>
+      <div class="fill-line"></div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="plan-section">
+    <h2>6. Veiligheid op het werk en onderweg</h2>
+    <p>Of en aan wie je iets vertelt, is jouw eigen keuze. Kies bewust wie je in vertrouwen neemt.</p>
+    <div class="plan-prompt">
+      <span>Wie op het werk wordt ingelicht:</span>
+      <div class="fill-sub"><span class="fill-label">Leidinggevende:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Receptie / beveiliging:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Vertrouwd collega:</span><div class="fill-line"></div></div>
+    </div>
+    <p>Overweeg ook: laat iemand telefoongesprekken op het werk screenen, bespreek of de werkgever de politie belt bij gevaar, en spreek af dat iemand weet wanneer je thuiskomst verwacht wordt.</p>
+    <p><strong>Onderweg.</strong> Varieer routes en tijden. Loop niet alleen naar de auto als dat ongemakkelijk voelt; kijk eerst rond. Heb je het gevoel dat je gevolgd wordt, ga dan naar een drukke, openbare plek of een politiebureau, niet naar huis. Doe boodschappen op andere plekken en tijden dan voorheen. Overweeg een persoonlijk alarm. Trek bij gevaar de aandacht en vraag omstanders om hulp.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="plan-section">
+    <h2>7. Digitale veiligheid</h2>
+    <p>Bij controle en dwang loopt het grootste lek vaak via telefoon en accounts. Loop dit rustig na, het liefst op een apparaat waar de ander niet bij kan.</p>
+    <ul class="checklist">
+      <li>Controleer of je telefoon je locatie deelt (functies als 'Zoek mijn iPhone', Google-locatiedeling, gedeelde agenda of gezinsdeling) en zet dat uit.</li>
+      <li>Wijzig de wachtwoorden van e-mail, bankzaken en sociale media. Zet tweestapsverificatie aan.</li>
+      <li>Let op gedeelde accounts en abonnementen (streaming, cloudopslag, gezinsabonnement) waarmee de ander kan meekijken.</li>
+      <li>Een auto kan een ingebouwd volgsysteem hebben; ook een verstopte tracker (zoals een AirTag) is mogelijk.</li>
+      <li>Bel of chat met Veilig Thuis vanaf een telefoon die de ander niet kan inzien.</li>
+    </ul>
+  </div>
+
+  <!-- 8 -->
+  <div class="plan-section">
+    <h2>8. Alcohol en medicijnen</h2>
+    <p>Alcohol of kalmerende middelen kunnen je alertheid en reactievermogen verlagen, juist op een moment dat je die het hardst nodig hebt. Houd daar rekening mee in je planning. Dit is geen oordeel, alleen iets om mee te wegen.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="plan-section">
+    <h2>9. Emotionele veerkracht</h2>
+    <p>Leven met dreiging kost veel energie. Goede zelfzorg is geen luxe, maar houdt je staande.</p>
+    <div class="plan-prompt">
+      <span>Bij eenzaamheid of druk vanuit de ander, zelfzorg door:</span>
+      <div class="fill-line"></div>
+    </div>
+    <div class="plan-prompt">
+      <span>Bij noodzakelijk contact met de ander (in persoon of telefonisch), voorbereiden door:</span>
+      <div class="fill-line"></div>
+      <p class="plan-guide">Houd contact kort en zakelijk, en laat het waar mogelijk via een advocaat lopen.</p>
+    </div>
+    <div class="plan-prompt">
+      <span>Voor moeilijke momenten, zoals een zitting of een gesprek met een advocaat, voorbereiden door:</span>
+      <div class="fill-line"></div>
+      <p class="plan-guide">Denk aan iemand om mee te gaan, en aan iets wat daarna goeddoet.</p>
+    </div>
+    <p>Steun zoeken mag. Bij vertrouwde mensen, bij lotgenoten, of bij een professional.</p>
+  </div>
+
+  <!-- 10 -->
+  <div class="plan-section">
+    <h2>10. Belangrijke nummers</h2>
+    <p><strong>Bij direct gevaar: <span class="num" style="color:var(--magenta);">112</span></strong></p>
+    <ul class="numbers-list">
+      <li><strong>Veilig Thuis:</strong> <span class="num">0800-2000</span> &mdash; advies en melding huiselijk geweld, gratis, dag en nacht, ook anoniem. Chatten kan op werkdagen van 09.00 tot 17.00 uur via veiligthuis.nl.</li>
+      <li><strong>Politie, geen spoed</strong> (melding en aangifte): <span class="num">0900-8844</span></li>
+      <li><strong>Meld Misdaad Anoniem:</strong> <span class="num">0800-7000</span></li>
+      <li><strong>Het Juridisch Loket</strong> (gratis juridisch advies): <span class="num">0800-8020</span></li>
+      <li><strong>Slachtofferhulp Nederland:</strong> <span class="num">0900-0101</span></li>
+      <li><strong>Centrum Seksueel Geweld:</strong> <span class="num">0800-0188</span></li>
+      <li><strong>Kindertelefoon</strong> (voor kinderen, dagelijks 11.00&ndash;21.00 uur): <span class="num">0800-0432</span></li>
+    </ul>
+    <p style="margin-top:1.3rem;">Persoonlijke nummers (bewaar deze zo nodig verborgen maar bereikbaar, of leer ze uit je hoofd):</p>
+    <div class="plan-prompt">
+      <div class="fill-sub"><span class="fill-label">Contactpersoon bij de politie / wijkagent:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Advocaat:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Vrouwenopvang / hulpverlener:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Huisarts:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Werk:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Vertrouwd persoon 1:</span><div class="fill-line"></div></div>
+      <div class="fill-sub"><span class="fill-label">Vertrouwd persoon 2:</span><div class="fill-line"></div></div>
+    </div>
+  </div>
+
+  <div class="doc-foot">
+    IK GA LEVEN &middot; ikgalevencursus.nl &middot; Ben je nu in gevaar? <span class="call112">Bel 112.</span>
+  </div>
+
+</div>
+
+<script src="assets/js/safety.js"></script>
+</body>
+</html>

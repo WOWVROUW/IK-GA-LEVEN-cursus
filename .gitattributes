@@ -1,0 +1,10 @@
+# Binaire bestanden nooit door EOL-conversie halen (voorkomt corrupte PDF's/afbeeldingen)
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
