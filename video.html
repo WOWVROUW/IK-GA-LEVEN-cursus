@@ -82,11 +82,15 @@
     .pdf-block p { margin-inline: auto; margin-bottom: 1.8rem; }
 
     /* Opt-in band (doc: vlak rose-200, randen 1px roos-300, bodytekst plum-400) */
-    .optin-narrow { max-width: 760px; margin-inline: auto; text-align: center; }
+    .optin-narrow {
+      max-width: 900px; margin-inline: auto;
+      display: flex; align-items: center;
+      gap: clamp(1.5rem, 4vw, 3rem); text-align: left;
+    }
     .optin-narrow p { color: var(--plum-400); }
+    .optin-narrow > div { flex: 1 1 auto; min-width: 0; }   /* Flodesk-formulier */
     .optin-mock {
-      display: block; width: 100%; max-width: 440px; height: auto;
-      margin: 0 auto 1.75rem;
+      flex: 0 0 44%; width: 100%; max-width: 400px; height: auto; margin: 0;
     }
 
     /* Next steps (doc: vlak butter-100, drie beeldkaarten met monogram-cirkel
@@ -139,6 +143,8 @@
       .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
       .video-hero { border-radius: 0 0 50% 50% / 0 0 40px 40px; }
       .steps-cards { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+      .optin-narrow { flex-direction: column; text-align: center; }
+      .optin-mock { flex-basis: auto; max-width: 360px; margin: 0 auto 1.5rem; }
     }
   </style>
 </head>
@@ -259,7 +265,7 @@
   <footer class="safety-strip">
     <div class="container">
       <hr class="safety-hair">
-      <p><strong>Bij acuut gevaar bel je <span class="call112">112</span>.</strong></p>
+      <p><strong>Bij acuut gevaar <span class="call112">bel je 112</span>.</strong></p>
       <p>Deel je een computer of telefoon? Met de knop op deze pagina of de Esc-toets verlaat je
          deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop
          brengt je niet terug naar deze pagina. Wil je geen sporen achterlaten, wis dit bezoek dan
