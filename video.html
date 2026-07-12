@@ -82,24 +82,23 @@
     .pdf-block p { margin-inline: auto; margin-bottom: 1.8rem; }
 
     /* Opt-in band (doc: vlak rose-200, randen 1px roos-300, bodytekst plum-400) */
+    /* Opt-in band gebruikt een bredere container zodat de mockup groter kan naast
+       het (in Flodesk vaste) formulier van 772px. */
+    .optin-container { max-width: 1300px; }
     .optin-narrow {
-      max-width: none; margin-inline: auto;
       display: flex; align-items: center;
-      gap: 2rem; text-align: left;
+      gap: clamp(1.5rem, 3vw, 2.75rem); text-align: left;
     }
     .optin-narrow p { color: var(--plum-400); }
-    /* Flodesk-form rechts: ~2/3, breed genoeg (~700px) zodat naam+e-mail+knop op één rij staan */
-    .optin-narrow > div { flex: 1 1 auto; min-width: 0; }
+    .optin-narrow > div { flex: 0 0 772px; max-width: 100%; min-width: 0; }  /* Flodesk-form, vaste 772px */
     .optin-mock {
-      flex: 0 0 240px; width: 100%; max-width: 240px; height: auto; margin: 0;
-      /* 240px is het max: daarboven krijgt het Flodesk-form <800px en klapt de knop
-         eronder / gaat de titel naar 3 regels. */
+      flex: 1 1 auto; width: 100%; max-width: 520px; height: auto; margin: 0;  /* vult de rest, links */
     }
-    /* Onder ~1080px is er te weinig ruimte naast elkaar: stapel, formulier krijgt
-       dan de volle breedte en blijft daardoor op één rij. */
+    /* Onder ~1080px te weinig ruimte naast elkaar: stapel; formulier krijgt de volle breedte. */
     @media (max-width: 1080px) {
       .optin-narrow { flex-direction: column; text-align: center; }
-      .optin-mock { flex: 0 0 auto; width: 100%; max-width: 360px; margin: 0 auto 1.75rem; }
+      .optin-narrow > div { flex: 0 0 auto; width: 100%; max-width: 772px; margin-inline: auto; }
+      .optin-mock { flex: 0 0 auto; width: 100%; max-width: 380px; margin: 0 auto 1.75rem; }
     }
 
     /* Next steps (doc: vlak butter-100, drie beeldkaarten met monogram-cirkel
@@ -213,7 +212,7 @@
 
   <!-- ── SMAL OPT-IN BLOK (rose-200, randen roos-300) ─────────────────── -->
   <section class="section section--band">
-    <div class="container">
+    <div class="container optin-container">
       <div class="optin-narrow">
         <img class="optin-mock" src="assets/photos/ebook-magazine-mockup.png"
              alt="Het e-book Het begon met liefde, opengeslagen als magazine met de voorkant ernaast">
