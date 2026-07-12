@@ -83,14 +83,14 @@
 
     /* Opt-in band (doc: vlak rose-200, randen 1px roos-300, bodytekst plum-400) */
     .optin-narrow {
-      max-width: 900px; margin-inline: auto;
+      max-width: none; margin-inline: auto;
       display: flex; align-items: center;
       gap: clamp(1.5rem, 4vw, 3rem); text-align: left;
     }
     .optin-narrow p { color: var(--plum-400); }
-    .optin-narrow > div { flex: 1 1 auto; min-width: 0; }   /* Flodesk-formulier */
+    .optin-narrow > div { flex: 1 1 auto; min-width: 0; }   /* Flodesk-optin, ~2/3 */
     .optin-mock {
-      flex: 0 0 44%; width: 100%; max-width: 400px; height: auto; margin: 0;
+      flex: 0 0 34%; width: 100%; max-width: 460px; height: auto; margin: 0;   /* ~1/3, iets groter */
     }
 
     /* Next steps (doc: vlak butter-100, drie beeldkaarten met monogram-cirkel
