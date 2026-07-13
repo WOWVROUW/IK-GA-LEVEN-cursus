@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Veiligheidsplan - cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #cccccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cover {
+    width: 210mm; height: 297mm;
+    background: var(--white);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 0; }
+
+  /* Fotoband met zachte boog onderaan (ChicSpark-signatuur) */
+  .cover__photo {
+    position: relative;
+    height: 620px; flex: 0 0 620px;
+    overflow: hidden;
+    border-radius: 0 0 50% 50% / 0 0 84px 84px;
+  }
+  .cover__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; display: block; }
+  /* zachte warme waas onderin de foto zodat de boog vloeiend in het wit zakt */
+  .cover__photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 62%, rgba(255,255,255,0.18) 100%);
+  }
+
+  /* Tekstblok */
+  .cover__body {
+    flex: 1 1 auto;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+    padding: 40px 76px 0;
+  }
+  .eyebrow-cover {
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 17px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--rose-500); margin: 0 0 20px;
+  }
+  .title-cover {
+    font-family: var(--font-display); font-weight: 300;
+    font-size: 76px; line-height: 1.02; letter-spacing: 0.4px;
+    color: var(--plum); margin: 0 0 26px;
+  }
+  .divider-cover {
+    width: 132px; height: 0; border: 0;
+    border-top: 2px solid var(--mint-500);
+    margin: 0 0 26px;
+  }
+  .subtitle-cover {
+    font-family: var(--font-display); font-weight: 300; font-style: normal;
+    font-size: 25px; line-height: 1.5; color: var(--ink);
+    max-width: 500px; margin: 0;
+  }
+
+  /* Voetregel met logo */
+  .cover__foot {
+    margin-top: auto;
+    display: flex; flex-direction: column; align-items: center;
+    padding-bottom: 58px;
+  }
+  .cover__foot img { height: 108px; width: auto; display: block; margin-bottom: 16px; }
+  .cover__url {
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 15px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--plum-400);
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover__photo">
+      <img src="../assets/photos/hero-citroen.jpg" alt="">
+    </div>
+    <div class="cover__body">
+      <p class="eyebrow-cover">Gratis download</p>
+      <h1 class="title-cover">Veiligheids&shy;plan</h1>
+      <hr class="divider-cover">
+      <p class="subtitle-cover">Vooruitdenken over je eigen veiligheid, op een rustig moment.</p>
+      <div class="cover__foot">
+        <img src="../design-system/assets/logo/logo-original.png" alt="IK GA LEVEN">
+        <span class="cover__url">ikgalevencursus.nl</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
