@@ -1,4 +1,7 @@
-# Preview / bouwfase: zoekmachines volledig weren van deze site.
-# Verwijder dit bestand (en de noindex-meta) zodra de site echt live mag.
+# Zoekmachines mogen de site crawlen (live sinds 2026-07-13).
+# Utility- en bevestigingspagina's worden per pagina op noindex gehouden
+# (meta robots), zodat ze wel gecrawld maar niet geindexeerd worden.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://ikgalevencursus.nl/sitemap.xml
