@@ -136,6 +136,10 @@
     font-size: 16px; line-height: 1.7;
   }
   .print-fallback a { color: var(--plum); font-weight: var(--weight-medium); text-underline-offset: 3px; }
+  /* #download als gedeeld opt-in-blok (mockup links + form rechts): linialiseren en kader weg */
+  .optin-narrow .download-intro { max-width: none; margin: 0 0 1.1rem; text-align: left; }
+  .optin-narrow .download-card { max-width: none; margin: 0; background: none; border: 0; padding: 0; }
+  .optin-narrow .print-fallback { max-width: none; margin: 1.25rem 0 0; text-align: left; }
 
   /* ---- Het plan (leesbaar document) ---- */
   .plan-doc { max-width: 760px; margin: 0 auto; }
@@ -316,6 +320,9 @@
   <!-- DOWNLOAD -->
   <section class="section section--band section--optin" id="download">
     <div class="section__inner">
+      <div class="optin-narrow" style="--optin-form-w: 754px;">
+        <img class="optin-mock" src="assets/photos/veiligheidsplan-mockup.png" alt="Mockup van het veiligheidsplan, opengeslagen met de voorkant ernaast">
+        <div>
       <div class="download-intro">
         <p class="eyebrow">Om in te vullen</p>
         <h2 class="h-optin">Download het veiligheidsplan</h2>
@@ -371,6 +378,8 @@
         Weet je niet of het veilig is om je e-mailadres achter te laten?
         <a href="veiligheidsplan-print.html">Klik dan hier voor de printversie</a>, zonder e-mail.
       </p>
+        </div>
+      </div>
     </div>
   </section>
 
