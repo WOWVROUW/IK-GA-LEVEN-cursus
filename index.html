@@ -7,10 +7,9 @@
 <meta name="description" content="IK GA LEVEN: een gratis 10-weekse training voor vrouwen die geweld of dwingende controle meemaken in hun relatie. Online via Zoom, in jouw eigen tempo, zonder oordeel.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- Fonts (besluit Hiltje 2026-07-08): Source Serif altijd Light (300); Work Sans Regular (400)
-     voor lopende tekst en Medium (500) voor eyebrows, knoppen, menu en statistieken -->
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&family=Work+Sans:ital,wght@0,400;0,500;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<!-- Fonts: zelf-gehost via design-system/tokens.css (@font-face); geen Google Fonts-CDN.
+     Source Serif Light (300) + Work Sans Regular/Medium (400/500). Special Elite (joy-laag)
+     wordt niet publiek gebruikt en vervalt naar de systeemfallback. -->
 <link rel="stylesheet" href="design-system/tokens.css">
 <style>
   /* ---- Page-specific layout (not part of the reusable token set) ---- */
@@ -123,7 +122,6 @@
 
   /* ---- SECTIE 4: Opt-in veiligheidsplan (doc: vlak rose-200, randen 1px roos-300
           via .section--band, kop 32px, knop massief pruim met plum-50 tekst) ---- */
-  .optin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
   .optin-form-row { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .optin-form-row input {
     font-family: var(--font-body); font-size: 15px; padding: 12px 14px;
@@ -155,8 +153,6 @@
     .optin-form-row--inline input { flex: 1 1 160px; }
   }
   .form-note { font-size: 14px; margin-top: 1.25rem; }
-  .plan-mockup { display: flex; align-items: center; justify-content: center; }
-  .plan-mockup img { max-width: 300px; width: 100%; }
 
   /* ---- SECTIE 5: Herkenning / persona's (doc: vlak butter-100, monogrammen
           plum-300, hairline-divider butter-300, open knoppen 13px) ---- */
@@ -414,7 +410,7 @@
     .hero-card { margin: 2rem 0 0; max-width: none; box-shadow: none; }
     .hero-text { padding: 2.5rem var(--gutter) 0; justify-content: center; }
     .hero-image { min-height: 320px; order: -1; }
-    .optin-grid, .podcast-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .podcast-split { grid-template-columns: 1fr; gap: 2.5rem; }
     .podcast-visual { min-height: 380px; order: -1; }
     .podcast-content { margin: 0 var(--gutter) var(--gutter); }
     .about-photo-side { order: -1; }
@@ -486,8 +482,7 @@
   <section class="section section--band section--optin" id="veiligheidsplan">
     <div class="section__inner">
       <div class="optin-narrow" style="--optin-form-w: 754px;">
-        <!-- TIJDELIJK: ebook-mockup i.p.v. plan-mockup.jpg, om de maatvoering te beoordelen -->
-        <img class="optin-mock" src="assets/photos/ebook-magazine-mockup.png" alt="Mockup van het gratis veiligheidsplan">
+        <img class="optin-mock" src="assets/photos/veiligheidsplan-mockup.png" alt="Mockup van het gratis veiligheidsplan, opengeslagen met de voorkant ernaast">
         <div>
           <h2 class="h-testimonial">Weet je dat je wilt vertrekken?</h2>
           <p>Het allerbelangrijkste is dat je een plan maakt om veilig te vertrekken. Het liefst bereid je je vertrek voor en maak je een noodplan voor als de situatie uit de hand loopt. Als het veilig kan, laat dan je e-mailadres achter voor een invulversie.</p>
