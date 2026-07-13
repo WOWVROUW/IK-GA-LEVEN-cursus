@@ -81,30 +81,9 @@
     }
     .pdf-block p { margin-inline: auto; margin-bottom: 1.8rem; }
 
-    /* Opt-in band (doc: vlak rose-200, randen 1px roos-300, bodytekst plum-400) */
-    /* Opt-in band gebruikt een bredere container zodat de mockup groter kan naast
-       het (in Flodesk vaste) formulier van 772px. */
-    .optin-container { max-width: 1160px; }
-    /* Krappe strook: boven/ondermarge ca. anderhalve regelhoogte. */
-    .section--band { padding-block: 1.5rem; }
-    @media (max-width: 768px) {
-      .section--band { padding-block: 1.25rem; }
-    }
-    .optin-narrow {
-      display: flex; align-items: center; justify-content: center;
-      gap: clamp(1.5rem, 3vw, 2.5rem); text-align: left;
-    }
-    .optin-narrow p { color: var(--plum-400); }
-    .optin-narrow > div { flex: 0 0 753px; max-width: 100%; min-width: 0; }  /* Flodesk-form, vaste 753px */
-    .optin-mock {
-      flex: 1 1 auto; width: 100%; max-width: 380px; height: auto; margin: 0;  /* vult de rest, links */
-    }
-    /* Onder ~1080px te weinig ruimte naast elkaar: stapel; formulier krijgt de volle breedte. */
-    @media (max-width: 1080px) {
-      .optin-narrow { flex-direction: column; text-align: center; }
-      .optin-narrow > div { flex: 0 0 auto; width: 100%; max-width: 772px; margin-inline: auto; }
-      .optin-mock { flex: 0 0 auto; width: 100%; max-width: 380px; margin: 0 auto 1.75rem; }
-    }
+    /* Opt-in-blok: gedeeld component uit design-system/tokens.css
+       (.section--optin + .optin-container/.optin-narrow/.optin-mock).
+       Deze pagina gebruikt de standaardwaarden: Flodesk-form 753px, mockup max 380px. */
 
     /* Next steps (doc: vlak butter-100, drie beeldkaarten met monogram-cirkel
        plum-300 en hairline-dividers butter-300) */
@@ -216,7 +195,7 @@
   </section>
 
   <!-- ── SMAL OPT-IN BLOK (rose-200, randen roos-300) ─────────────────── -->
-  <section class="section section--band">
+  <section class="section section--band section--optin">
     <div class="container optin-container">
       <div class="optin-narrow">
         <img class="optin-mock" src="assets/photos/ebook-magazine-mockup.png"

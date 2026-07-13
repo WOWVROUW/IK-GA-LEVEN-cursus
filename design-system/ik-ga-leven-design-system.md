@@ -160,6 +160,38 @@ Bevestigd: eyebrow én knoppen in kapitalen; de ruime 34px body line-height is b
 - **Schaduw alleen op zwevende objecten** (bv. het ebook-mockup) — nooit op gewone
   kaarten of secties. Token: `--shadow-float`.
 
+### Opt-in-blok (mockup + Flodesk-form) — gedeeld component
+
+Gebruikt op de video-, homepage- en veiligheidsplan-pagina. De klassen staan in
+`tokens.css`; herbruik ze op nieuwe pagina's in plaats van per pagina opnieuw te stylen.
+
+- **Krappe strook**: geef de opt-in-sectie naast `.section--band` ook `.section--optin`.
+  Dat zet de boven/ondermarge op ~1,5 regelhoogte (`1.5rem`, mobiel `1.25rem`) in plaats
+  van de standaard ~7rem sectiepadding.
+- **Layout** (mockup links, Flodesk-form rechts, gecentreerd en gebalanceerd paar):
+
+  ```html
+  <section class="section section--band section--optin">
+    <div class="container optin-container">
+      <div class="optin-narrow">
+        <img class="optin-mock" src="…" alt="…">
+        <div id="fd-form-XXXX"></div>   <!-- Flodesk inline-form -->
+      </div>
+    </div>
+  </section>
+  ```
+
+- **Per pagina instelbaar** met CSS-variabelen (op `.optin-narrow` of de sectie):
+  - `--optin-form-w` — vaste breedte van het Flodesk-form; matcht de breedte die je in
+    Flodesk zélf instelt (video = **753px**, tevens de standaard). Te smal en Flodesk klapt
+    de knop onder de velden en de titel over meer regels; de omslag ligt rond **800px**.
+  - `--optin-mock-max` — maximale mockupbreedte (standaard **380px**).
+- Onder **1080px** stapelt het automatisch: mockup boven, formulier op volle breedte.
+- Heeft het blok een eigen kop/tekst (zoals de homepage-veiligheidsplan-opt-in), gebruik
+  dan alleen `.section--optin` voor de krappe strook en houd de eigen layout eromheen.
+- Mockup-PNG's staan strak op het onderwerp bijgesneden (geen lege transparante rand),
+  zodat het beeld de toegewezen breedte echt vult.
+
 ---
 
 ## 5. Pagina-blauwdruk (salespagina, 10-weekse training)

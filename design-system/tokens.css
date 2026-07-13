@@ -422,6 +422,49 @@ h1, h2, h3, h4 {
   border-top: 1px solid var(--rose-300);
   border-bottom: 1px solid var(--rose-300);
 }
+
+/* ── Opt-in-blok: mockup links + Flodesk-form rechts ──────────────────────
+   Herbruikbaar patroon (video.html, index.html #veiligheidsplan,
+   veiligheidsplan.html #download). Opzet:
+
+     <section class="section section--band section--optin">
+       <div class="container optin-container">
+         <div class="optin-narrow">
+           <img class="optin-mock" src="..." alt="...">
+           <div id="fd-form-XXXX"></div>        (Flodesk inline-form, rechts)
+         </div>
+       </div>
+     </section>
+
+   - .section--optin  = krappe strook: boven/ondermarge ~1,5 regelhoogte.
+   - .optin-narrow    = gecentreerd, gebalanceerd paar (mockup links, form rechts).
+   - Zet de Flodesk-breedte per pagina met --optin-form-w (matcht de breedte die
+     in Flodesk zelf is ingesteld) en de mockupgrootte met --optin-mock-max.
+   - Onder 1080px stapelt het; het formulier krijgt dan de volle breedte.
+   Losse kop/tekst nodig (zoals op de homepage)? Zet die dan in de form-kolom,
+   of gebruik alleen .section--optin voor de krappe strook op een eigen layout. */
+.section--optin { padding-block: 1.5rem; }
+.optin-container { max-width: 1160px; }
+.optin-narrow {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem); text-align: left;
+}
+.optin-narrow p { color: var(--plum-400); }
+.optin-narrow > div {                                  /* Flodesk-form-kolom */
+  flex: 0 0 var(--optin-form-w, 753px); max-width: 100%; min-width: 0;
+}
+.optin-mock {                                          /* mockup vult de rest, links */
+  flex: 1 1 auto; width: 100%;
+  max-width: var(--optin-mock-max, 380px); height: auto; margin: 0;
+}
+@media (max-width: 1080px) {
+  .optin-narrow { flex-direction: column; text-align: center; }
+  .optin-narrow > div { flex: 0 0 auto; width: 100%; max-width: var(--optin-form-w, 753px); margin-inline: auto; }
+  .optin-mock { flex: 0 0 auto; width: 100%; max-width: var(--optin-mock-max, 380px); margin: 0 auto 1.75rem; }
+}
+@media (max-width: 768px) {
+  .section--optin { padding-block: 1.25rem; }
+}
 .section--butter {
   border-top: 1px solid var(--border-rose);
   border-bottom: 1px solid var(--border-rose);
