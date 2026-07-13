@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Magazine-mockup (transparant) — Veiligheidsplan</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: transparent; }
+
+  .stage {
+    width: 1600px; height: 1200px;
+    position: relative; overflow: hidden;
+    background: transparent;
+  }
+  .mag {
+    position: absolute;
+    border-radius: 5px;
+    box-shadow:
+      0 6px 12px rgba(74,44,30,0.12),
+      0 34px 60px rgba(74,44,30,0.22),
+      0 60px 90px rgba(74,44,30,0.12);
+  }
+  .spread {
+    width: 792px; height: 560px; left: 300px; top: 372px;
+    transform: rotate(-8deg); display: flex; overflow: hidden;
+  }
+  .spread .pg { width: 50%; height: 100%; background-size: cover; background-position: center top; }
+  .spread .pgL { background-image: url('vp_p1_2x.png'); }
+  .spread .pgR { background-image: url('vp_p2_2x.png'); }
+  .spread::after {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 56px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, rgba(40,20,10,0) 0%, rgba(40,20,10,0.10) 40%, rgba(40,20,10,0.20) 50%, rgba(40,20,10,0.10) 60%, rgba(40,20,10,0) 100%);
+    pointer-events: none;
+  }
+  .spread::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 22%);
+    z-index: 2; pointer-events: none;
+  }
+  .cover {
+    width: 452px; height: 639px; left: 858px; top: 286px;
+    transform: rotate(-8deg);
+    background: url('cover_vp2x.png') center / cover no-repeat; overflow: hidden;
+  }
+  .cover::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(100deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.03) 4%, rgba(0,0,0,0) 9%),
+      linear-gradient(100deg, rgba(255,255,255,0) 90%, rgba(255,255,255,0.20) 100%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: ""; position: absolute; left: 3px; right: -6px; bottom: -7px; height: 8px;
+    background: repeating-linear-gradient(90deg, #ffffff 0 2px, #e9e2d6 2px 4px);
+    border-radius: 0 0 4px 4px; transform: skewX(-45deg); transform-origin: bottom left;
+    box-shadow: 0 3px 5px rgba(74,44,30,0.18);
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="mag spread"><div class="pg pgL"></div><div class="pg pgR"></div></div>
+    <div class="mag cover"></div>
+  </div>
+</body>
+</html>
