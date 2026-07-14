@@ -337,6 +337,7 @@
   #nieuwsbrief [class*="__title"],
   #nieuwsbrief [class*="__subtitle"] { display: none !important; }
   #nieuwsbrief form[class*="__form"] { padding: 0 !important; }
+  #nieuwsbrief { padding-block: 2.5rem; }   /* iets meer lucht boven/onder dan de standaard opt-in-strook */
   #nieuwsbrief [class*="__fields"] {
     display: flex !important; flex-wrap: wrap; justify-content: center;
   }
@@ -348,7 +349,7 @@
   /* ---- SECTIE 14: Footer (ChicSpark-opzet, ref. ChicSpark16.png: twee
           menukolommen met serif-kopjes en onderstreping, IG-strip in het
           midden, verticale hairlines pruim, vlak rose-200) ---- */
-  .site-footer { background: var(--rose-200); padding: 4.5rem var(--gutter) 0; }
+  .site-footer { background: var(--butter-100); padding: 4.5rem var(--gutter) 0; }
   .footer-inner { max-width: var(--container-max); margin: 0 auto; }
   .footer-grid {
     display: grid; grid-template-columns: 1fr 2.4fr 1fr; gap: 0;
@@ -747,19 +748,19 @@
         <a href="veiligheid.html">Veilig meelezen</a>
       </div>
       <div class="footer-col footer-col--ig">
-        <p class="footer-ig-head">Volg @ikgalevencursus op Instagram</p>
+        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
         <!-- Statische strip (nog geen live feed): vier beelden die doorklikken naar
              Instagram. Een echte feed-embed vraagt een externe dienst; bewust nog
              niet gekoppeld (privacy + rust). Vervang de beelden gerust. -->
         <div class="ig-strip">
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/journal.png" alt=""></a>
+            <img src="assets/photos/ig-1.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/women-laughing.png" alt=""></a>
+            <img src="assets/photos/ig-2.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/podcast-bloesem.jpg" alt=""></a>
+            <img src="assets/photos/ig-3.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/woman-beach.png" alt=""></a>
+            <img src="assets/photos/ig-4.png" alt=""></a>
         </div>
       </div>
       <div class="footer-col footer-col--menu">
@@ -774,7 +775,7 @@
     <!-- Eerlijk geformuleerd: een website kan de browsergeschiedenis niet wissen.
          Beloof dat dus nooit; verwijs naar de veilig-meelezen-pagina. -->
     <div class="safety-block">
-      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
       <p style="margin:0;"><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span></p>
     </div>
   </div>

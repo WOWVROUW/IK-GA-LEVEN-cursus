@@ -135,7 +135,7 @@
     max-width: 640px; margin: 1.5rem auto 0; text-align: center;
     font-size: 16px; line-height: 1.7;
   }
-  .print-fallback a { color: var(--plum); font-weight: var(--weight-medium); text-underline-offset: 3px; }
+  .print-fallback a { color: var(--mint-700); font-weight: var(--weight-medium); text-underline-offset: 3px; }
   /* #download als gedeeld opt-in-blok (mockup links + form rechts): linialiseren en kader weg */
   .optin-narrow .download-intro { max-width: none; margin: 0 0 1.1rem; text-align: left; }
   .optin-narrow .download-card { max-width: none; margin: 0; background: none; border: 0; padding: 0; }
@@ -158,6 +158,10 @@
   .plan-prompt { margin: 1.4rem 0 0; }
   .plan-prompt > span { display: block; font-size: 16px; line-height: 1.7; }
   .fill-line { border-bottom: 1px solid var(--neutral-400); height: 1.5rem; margin-top: 0.5rem; }
+  /* Leeg checkvakje + schrijfregel voor een eigen toevoeging */
+  .self-add { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+  .self-add .self-box { flex: 0 0 auto; width: 15px; height: 15px; border: 1.5px solid var(--plum-400); border-radius: 3px; }
+  .self-add .fill-line { flex: 1 1 auto; margin-top: 0; }
   .fill-sub { margin-top: 0.9rem; }
   .fill-sub .fill-label { font-size: 15px; color: var(--text-muted); }
 
@@ -182,7 +186,7 @@
   .plan-cta { max-width: 760px; margin: 1rem auto 0; text-align: center; }
 
   /* ---- Footer ---- */
-  .site-footer { background: var(--rose-200); padding: 4.5rem var(--gutter) 0; }
+  .site-footer { background: var(--butter-100); padding: 4.5rem var(--gutter) 0; }
   .footer-inner { max-width: var(--container-max); margin: 0 auto; }
   .footer-grid {
     display: grid; grid-template-columns: 1fr 2.4fr 1fr; gap: 0;
@@ -358,31 +362,40 @@
         <div class="plan-prompt">
           <span>Vluchtroutes uit huis (welke deuren, ramen, trap of gang zijn bruikbaar?):</span>
           <div class="fill-line"></div>
+          <div class="fill-line"></div>
           <p class="plan-guide">Oefen het één keer rustig, zodat je het in een stressmoment niet hoeft te bedenken.</p>
         </div>
         <div class="plan-prompt">
           <span>Plek waar telefoon, sleutels en tas klaarliggen om snel te pakken:</span>
           <div class="fill-line"></div>
+          <div class="fill-line"></div>
           <p class="plan-guide">Laat eventueel een tweede set sleutels maken, voor het geval de ander de eerste set in handen heeft.</p>
         </div>
         <div class="plan-prompt">
           <span>Veilige plekken om naartoe te gaan:</span>
-          <div class="fill-sub"><span class="fill-label">Om te bellen:</span><div class="fill-line"></div></div>
-          <div class="fill-sub"><span class="fill-label">Om een paar uur te blijven:</span><div class="fill-line"></div></div>
-          <div class="fill-sub"><span class="fill-label">Om een paar dagen te blijven:</span><div class="fill-line"></div></div>
+          <div class="fill-sub"><span class="fill-label">Om te bellen:</span><div class="fill-line"></div><div class="fill-line"></div></div>
+          <div class="fill-sub"><span class="fill-label">Om een paar uur te blijven:</span><div class="fill-line"></div><div class="fill-line"></div></div>
+          <div class="fill-sub"><span class="fill-label">Om een paar dagen te blijven:</span><div class="fill-line"></div><div class="fill-line"></div></div>
         </div>
         <div class="plan-prompt">
           <span>Codewoord voor de kinderen of een vertrouwd persoon, als signaal om hulp te halen of de politie te bellen:</span>
           <div class="fill-line"></div>
+          <div class="fill-line"></div>
         </div>
         <div class="plan-prompt">
           <span>Ruimtes om te vermijden tijdens een ruzie of incident:</span>
+          <div class="fill-line"></div>
           <div class="fill-line"></div>
           <p class="plan-guide">Vermijd kleine ruimtes zonder uitgang en ruimtes met gevaarlijke voorwerpen (keuken, badkamer, schuur). Kies een ruimte met een uitgang naar buiten.</p>
         </div>
         <div class="plan-prompt">
           <span>Wie kan vooraf worden ingelicht, met de vraag de politie te bellen bij een vermoeden van gevaar?</span>
           <div class="fill-line"></div>
+          <div class="fill-line"></div>
+        </div>
+        <div class="plan-prompt">
+          <span>Zelf toevoegen:</span>
+          <div class="self-add"><span class="self-box"></span><div class="fill-line"></div></div>
         </div>
         <p class="plan-guide">Soms is veiligheid op het moment zelf het belangrijkst, ook als dat betekent meebewegen of de confrontatie ontwijken. Dat is geen zwakte, maar overleven.</p>
       </div>
@@ -484,7 +497,7 @@
           <span>Wie op het werk wordt ingelicht:</span>
           <div class="fill-sub"><span class="fill-label">Leidinggevende:</span><div class="fill-line"></div></div>
           <div class="fill-sub"><span class="fill-label">Receptie / beveiliging:</span><div class="fill-line"></div></div>
-          <div class="fill-sub"><span class="fill-label">Vertrouwd collega:</span><div class="fill-line"></div></div>
+          <div class="fill-sub"><span class="fill-label">Betrouwbare collega:</span><div class="fill-line"></div></div>
         </div>
         <p>Overweeg ook: laat iemand telefoongesprekken op het werk screenen, bespreek of de werkgever de politie belt bij gevaar, en spreek af dat iemand weet wanneer je thuiskomst verwacht wordt.</p>
         <p><strong>Onderweg.</strong> Varieer routes en tijden. Loop niet alleen naar de auto als dat ongemakkelijk voelt; kijk eerst rond. Heb je het gevoel dat je gevolgd wordt, ga dan naar een drukke, openbare plek of een politiebureau, niet naar huis. Doe boodschappen op andere plekken en tijden dan voorheen. Overweeg een persoonlijk alarm. Trek bij gevaar de aandacht en vraag omstanders om hulp.</p>
@@ -516,16 +529,23 @@
         <div class="plan-prompt">
           <span>Bij eenzaamheid of druk vanuit de ander, zelfzorg door:</span>
           <div class="fill-line"></div>
+          <div class="fill-line"></div>
         </div>
         <div class="plan-prompt">
           <span>Bij noodzakelijk contact met de ander (in persoon of telefonisch), voorbereiden door:</span>
+          <div class="fill-line"></div>
           <div class="fill-line"></div>
           <p class="plan-guide">Houd contact kort en zakelijk, en laat het waar mogelijk via een advocaat lopen.</p>
         </div>
         <div class="plan-prompt">
           <span>Voor moeilijke momenten, zoals een zitting of een gesprek met een advocaat, voorbereiden door:</span>
           <div class="fill-line"></div>
-          <p class="plan-guide">Denk aan iemand om mee te gaan, en aan iets wat daarna goeddoet.</p>
+          <div class="fill-line"></div>
+          <p class="plan-guide">Denk aan iemand om mee te gaan, en aan iets wat jou daarna goeddoet.</p>
+        </div>
+        <div class="plan-prompt">
+          <span>Zelf toevoegen:</span>
+          <div class="self-add"><span class="self-box"></span><div class="fill-line"></div></div>
         </div>
         <p>Steun zoeken mag. Bij vertrouwde mensen, bij lotgenoten, of bij een professional.</p>
       </div>
@@ -576,16 +596,16 @@
         <a href="veiligheid.html">Veilig meelezen</a>
       </div>
       <div class="footer-col footer-col--ig">
-        <p class="footer-ig-head">Volg @ikgalevencursus op Instagram</p>
+        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
         <div class="ig-strip">
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/journal.png" alt=""></a>
+            <img src="assets/photos/ig-1.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/women-laughing.png" alt=""></a>
+            <img src="assets/photos/ig-2.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/podcast-bloesem.jpg" alt=""></a>
+            <img src="assets/photos/ig-3.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/woman-beach.png" alt=""></a>
+            <img src="assets/photos/ig-4.png" alt=""></a>
         </div>
       </div>
       <div class="footer-col footer-col--menu">
@@ -598,7 +618,7 @@
     </div>
     <hr class="footer-hair">
     <div class="safety-block">
-      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
       <p style="margin:0;"><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span></p>
     </div>
   </div>
