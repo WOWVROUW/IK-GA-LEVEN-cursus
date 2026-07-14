@@ -73,24 +73,8 @@
     .nav-sub a:hover { background: transparent; }
   }
 
-  /* ---- Hero ---- */
-  .hero-split {
-    display: grid; grid-template-columns: 1fr 2fr;
-    background: var(--surface-menu);
-  }
-  .hero-text { display: flex; align-items: center; justify-content: flex-end; padding: 4rem var(--gutter); }
-  .hero-card {
-    background: var(--white);
-    max-width: 540px; width: 100%;
-    padding: 2.75rem;
-    border-radius: var(--radius);
-    margin-right: -180px;
-    box-shadow: var(--shadow-float);
-    position: relative; z-index: 2;
-  }
-  .hero-card .btn { margin-top: 1.5rem; }
-  .hero-image { position: relative; overflow: hidden; min-height: 560px; }
-  .hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+  /* ---- Hero (.hero-split): gedeeld component in design-system/tokens.css.
+          Fotokadrering via inline vars op .hero-image (--hero-img-h, --hero-img-pos) ---- */
 
   /* ---- Waarschuwingsblok: veilig bewaren ---- */
   .warn-box {
@@ -222,10 +206,7 @@
   }
 
   @media (max-width: 860px) {
-    .hero-split { grid-template-columns: 1fr; }
-    .hero-card { margin: 2rem 0 0; max-width: none; box-shadow: none; }
-    .hero-text { padding: 2.5rem var(--gutter) 0; justify-content: center; }
-    .hero-image { min-height: 300px; order: -1; }
+    /* hero-split mobiel: gedeeld in tokens.css */
     .checklist.two-col { columns: 1; }
     .checklist-cols { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -274,7 +255,7 @@
         <a href="#download" class="btn">Download het plan <span class="btn__arrow">→</span></a>
       </div>
     </div>
-    <div class="hero-image">
+    <div class="hero-image" style="--hero-img-h: 560px; --hero-img-pos: 50% 60%;">
       <img src="assets/photos/hero-citroen.jpg" alt="Citroenen aan een tak tegen een zachte lucht">
     </div>
   </section>

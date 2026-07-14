@@ -74,24 +74,8 @@
     .nav-sub a:hover { background: transparent; }
   }
 
-  /* ---- Hero: split met witte kaart over de Sisterhood-foto ---- */
-  .hero-split {
-    display: grid; grid-template-columns: 1fr 2fr;
-    background: var(--surface-menu);
-  }
-  .hero-text { display: flex; align-items: center; justify-content: flex-end; padding: 4rem var(--gutter); }
-  .hero-card {
-    background: var(--white);
-    max-width: 540px; width: 100%;
-    padding: 2.75rem;
-    border-radius: var(--radius);
-    margin-right: -180px;
-    box-shadow: var(--shadow-float);
-    position: relative; z-index: 2;
-  }
-  .hero-card .btn { margin-top: 1.5rem; }
-  .hero-image { position: relative; overflow: hidden; min-height: 620px; }
-  .hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+  /* ---- Hero (.hero-split): gedeeld component in design-system/tokens.css.
+          Fotokadrering via inline vars op .hero-image (--hero-img-h, --hero-img-pos) ---- */
 
   /* ---- Voor wie: herkenningslijst ---- */
   .recognise-list { list-style: none; margin: 2.5rem auto 0; padding: 0; max-width: 720px; text-align: left; }
@@ -169,24 +153,7 @@
   @media (prefers-reduced-motion: reduce) { .carousel__track { transition: none; } }
   @media (max-width: 600px) { .carousel { padding: 0 40px; } .carousel__btn { font-size: 24px; } }
 
-  /* ---- Over Hiltje: paneel (zelfde als homepage) ---- */
-  .about-split { display: grid; grid-template-columns: 1fr 1fr; }
-  .about-text {
-    background: var(--rose-100);
-    display: flex; align-items: center; justify-content: center;
-    padding: clamp(3rem, 5vw, 5rem) clamp(var(--gutter), 4vw, 4rem);
-  }
-  .about-text > div { max-width: 520px; }
-  .about-divider {
-    width: 300px; max-width: 80%; height: 0;
-    border: 0; border-top: var(--hairline) solid var(--mint-700);
-    margin: 0 0 1.5rem;
-  }
-  .about-photo-side { position: relative; min-height: 560px; }
-  .about-photo {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: 50% 25%;
-  }
+  /* ---- Over Hiltje (.about-split): gedeeld component in design-system/tokens.css ---- */
 
   /* ---- Praktisch ---- */
   .practical { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
@@ -290,11 +257,7 @@
   }
 
   @media (max-width: 860px) {
-    .hero-split, .about-split { grid-template-columns: 1fr; }
-    .hero-card { margin: 2rem 0 0; max-width: none; box-shadow: none; }
-    .hero-text { padding: 2.5rem var(--gutter) 0; justify-content: center; }
-    .hero-image { min-height: 320px; order: -1; }
-    .about-photo-side { order: -1; min-height: 380px; }
+    /* hero-split + about-split mobiel: gedeeld in tokens.css */
     .themes, .steps-cards { grid-template-columns: 1fr; }
     .practical { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -343,7 +306,7 @@
         <a href="#eerste-stap" class="btn">Zet de eerste stap <span class="btn__arrow">→</span></a>
       </div>
     </div>
-    <div class="hero-image">
+    <div class="hero-image" style="--hero-img-h: 620px; --hero-img-pos: 50% 35%;">
       <img src="assets/photos/sisterhood.png" alt="Drie vrouwen die samen lachen met een kop koffie op de bank">
     </div>
   </section>
