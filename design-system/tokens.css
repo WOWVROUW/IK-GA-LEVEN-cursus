@@ -556,7 +556,8 @@ h1, h2, h3, h4 {
     position: static; transform: none;
     min-height: 320px; margin-bottom: 1.6rem;
   }
-  .hero-card { width: 100%; padding-inline: 0; background: transparent; }
+  /* kaart blijft wit op mobiel; hij vult de containerbreedte onder de foto */
+  .hero-card { width: 100%; }
 }
 
 /* ── Over Hiltje (about-split) — rose-100-paneel links, foto rechts ─────────
