@@ -216,13 +216,13 @@
     .closing p { margin-inline: auto; margin-bottom: 2rem; color: var(--butter); }
 
     /* Footer */
-    .site-footer {
-      padding: 2.5rem 0 3rem;
-      font-size: 15px;
-      color: var(--text-muted);
-    }
-    .site-footer p { max-width: 72ch; }
-    .site-footer strong { color: var(--text); font-weight: var(--weight-medium); }
+    .site-footer { background: var(--butter-100); padding-top: clamp(2.5rem, 5vw, 4.5rem); }
+    .safety-block { padding: 2rem 0 2.5rem; font-size: 15px; line-height: 1.8; max-width: 820px; }
+    .safety-block p { max-width: none; margin: 0 0 0.75rem; }
+    .safety-block p:last-child { margin: 0; }
+    .safety-block strong { color: var(--ink); }
+    .safety-block .call112 { color: var(--magenta); font-weight: var(--weight-medium); }
+    .copyright { background: var(--white); text-align: center; font-family: var(--font-body); font-size: var(--fs-copyright); color: var(--ink); padding: 1.1rem var(--gutter); }
 
     /* Mobiel */
     @media (max-width: 860px) {
@@ -413,13 +413,13 @@
   <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
   <footer class="site-footer">
     <div class="container">
-      <p><strong>Bij acuut gevaar bel je 112.</strong></p>
-      <p>Deel je een computer of telefoon? Met de knop op deze pagina of de Esc-toets verlaat je
-         deze site direct; de pagina vervangt zichzelf door een neutrale website. Wil je geen
-         sporen achterlaten, wis dit bezoek dan ook uit je browsergeschiedenis.</p>
-      <p>&copy; 2026 IK GA LEVEN</p>
+      <div class="safety-block">
+        <p><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+        <p><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span></p>
+      </div>
     </div>
   </footer>
+  <div class="copyright">&copy; 2026 IK GA LEVEN &middot; ikgalevencursus.nl</div>
 
   <!-- Snel-weg + terugknop-beveiliging: gedeeld script (assets/js/safety.js) -->
   <script src="assets/js/safety.js"></script>

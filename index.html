@@ -378,7 +378,8 @@
   .footer-col a:hover { color: var(--plum); }
   .footer-ig-head {
     font-family: var(--font-display); font-weight: var(--weight-light);
-    font-size: 24px; line-height: 1.25; color: var(--mint-700); margin: 0 0 1.4rem;
+    font-size: clamp(15px, 1.6vw, 19px); line-height: 1.25; color: var(--mint-700);
+    margin: 0 0 1.4rem; white-space: nowrap;
   }
   .ig-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
   .ig-strip a { display: block; border-radius: var(--radius); overflow: hidden; }
@@ -446,7 +447,7 @@
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
     <nav class="site-nav" id="siteNav" aria-label="Hoofdmenu">
       <a href="index.html" class="is-accent">Begin</a>
-      <a href="#over-cursus">Over IK GA LEVEN</a>
+      <a href="informatie.html">Over IK GA LEVEN</a>
       <!-- Over Hiltje: wijst nu naar de sectie op de pagina; kan later een eigen pagina worden -->
       <a href="#over-hiltje">Over Hiltje</a>
       <div class="nav-item">
@@ -749,7 +750,7 @@
         <a href="veiligheid.html">Veilig meelezen</a>
       </div>
       <div class="footer-col footer-col--ig">
-        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="font:inherit;color:inherit;text-transform:none;letter-spacing:normal;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
+        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="display:inline;font:inherit;color:inherit;text-transform:none;letter-spacing:normal;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
         <!-- Statische strip (nog geen live feed): vier beelden die doorklikken naar
              Instagram. Een echte feed-embed vraagt een externe dienst; bewust nog
              niet gekoppeld (privacy + rust). Vervang de beelden gerust. -->

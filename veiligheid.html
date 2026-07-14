@@ -27,6 +27,9 @@
     font-family: var(--font-body); font-size: 13px; line-height: 1.5;
     padding: 12px 150px 12px var(--gutter);
   }
+  .announce .announce__112 { color: var(--magenta); font-weight: var(--weight-medium); }
+  .announce .announce__second { color: var(--ink); }
+  .announce .announce__second a { color: var(--mint-700); }
   @media (max-width: 600px) {
     .announce { padding-right: 100px; font-size: 12px; }
   }
@@ -78,7 +81,8 @@
 </button>
 
 <div class="announce">
-  <strong>Acuut gevaar? Bel altijd 112.</strong>
+  <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
+  <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiligheid.html">Lees hoe je veilig meeleest</a>.</span>
 </div>
 
 <div class="site-header-band">
