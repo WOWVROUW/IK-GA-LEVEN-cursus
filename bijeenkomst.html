@@ -65,7 +65,7 @@
 
     /* Veiligheidsbanner, standaard op elke pagina (afspraak 2026-07-08) */
     .announce {
-      background: var(--rose-200);
+      background: var(--rose-300);
       color: var(--plum);
       text-align: center;
       font-family: var(--font-body);
@@ -87,12 +87,7 @@
       background: var(--rose-tint) url('assets/photos/hero-bijeenkomst.jpg') center / cover no-repeat;
       transform: scaleX(-1);   /* horizontaal gespiegeld (bloesems naar rechts) */
     }
-    .hero-photo::after {
-      content: "";
-      position: absolute;
-      inset: 1.6rem;
-      border: 1.5px solid var(--rose);
-    }
+    /* geen kaderlijn over de hero-foto */
     .hero .container { position: relative; }
     .hero-card {
       background: var(--white);
