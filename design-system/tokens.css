@@ -493,6 +493,29 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .section--optin { padding-block: 1.25rem; }
 }
+
+/* ── Veiligheidsbanner (.announce) — standaard bovenaan elke pagina ─────────
+   Besluit 2026-07-08. Achtergrond roos 300, gecentreerd. De rechter-padding maakt
+   ruimte voor de snel-weg-knop rechtsboven. Op mobiel blijft die knop rechtsboven
+   (korte tekst "Snel weg"), dus daar volstaat 100px. Pagina's waar de knop op mobiel
+   naar onderin springt (bijeenkomst, bevestiging) zetten de rechter-padding zelf terug
+   naar var(--gutter) in hun eigen mobiele blok.
+   HTML-structuur: <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
+   <span class="announce__second">... <a href="veiligheid.html">Lees hoe je veilig meeleest</a>.</span> */
+.announce {
+  background: var(--rose-300); color: var(--plum); text-align: center;
+  font-family: var(--font-body); font-size: 15px; font-weight: var(--weight-regular);
+  line-height: 1.5;
+  padding: 12px 215px 12px var(--gutter);
+}
+.announce a { color: inherit; text-underline-offset: 2px; }
+.announce .announce__112 { color: var(--magenta); font-weight: var(--weight-medium); }
+.announce .announce__second { color: var(--ink); }
+.announce .announce__second a { color: var(--mint-700); }
+@media (max-width: 600px) {
+  .announce { padding-right: 125px; font-size: 13px; }
+}
+
 .section--butter {
   border-top: 1px solid var(--border-rose);
   border-bottom: 1px solid var(--border-rose);

@@ -25,21 +25,7 @@
   }
   .skip-link:focus { left: var(--gutter); top: var(--gutter); }
 
-  /* SECTIE 1: Veiligheidsbanner (doc: vlak #ECBED6, tekst Work Sans 15px pruim,
-     2e zin mint-700, "Bel 112" magenta; rechts ruimte voor de snel-weg-knop) */
-  .announce {
-    background: var(--rose-300); color: var(--plum); text-align: center;
-    font-family: var(--font-body); font-size: 15px; font-weight: var(--weight-regular);
-    line-height: 1.5;
-    padding: 12px 215px 12px var(--gutter);
-  }
-  .announce .announce__112 { color: var(--magenta); font-weight: var(--weight-medium); }
-  .announce .announce__second { color: var(--ink); }
-  .announce .announce__second a { color: var(--mint-700); }
-  .announce a { color: inherit; text-underline-offset: 2px; }
-  @media (max-width: 600px) {
-    .announce { padding-right: 125px; font-size: 13px; }
-  }
+  /* Veiligheidsbanner (.announce): gedeeld component in design-system/tokens.css */
 
   /* SECTIE 2: Menu (doc: vlak plum-50, Work Sans medium 14px all caps, pruim;
      Begin en Podcast vast roos-500, overige roos-500 op hover) */

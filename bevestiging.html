@@ -23,27 +23,8 @@
     p { margin: 0 0 1.1em; max-width: 62ch; }
     .eyebrow { color: var(--plum); } /* op de funnelpagina's pruim i.p.v. roos */
 
-    /* Snel-weg-knop: altijd zichtbaar, het ene felle element van de pagina */
-    .exit-btn {
-      position: fixed;
-      top: 0.9rem;
-      right: 0.9rem;
-      z-index: 1200;
-      background: var(--magenta);
-      color: var(--white);
-      border: 0;
-      border-radius: var(--radius);
-      font-family: var(--font-body);
-      font-size: var(--fs-button);
-      font-weight: var(--weight-medium);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.8em 1.4em;
-      cursor: pointer;
-      box-shadow: var(--shadow-float);
-    }
-    .exit-btn:hover { background: var(--plum); }
-    .exit-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+    /* Snel-weg-knop (.exit-btn): gedeeld component in design-system/tokens.css
+       (blijft altijd rechtsboven; krimpt op mobiel naar "Snel weg") */
 
     /* Header */
     .site-header {
@@ -62,17 +43,7 @@
     }
     .site-nav a:hover { color: var(--plum); }
 
-    /* Veiligheidsbanner, standaard op elke pagina (afspraak 2026-07-08) */
-    .announce {
-      background: var(--rose-300);
-      color: var(--plum);
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: 13px;
-      line-height: 1.5;
-      padding: 12px 150px 12px var(--gutter);
-    }
-    .announce a { color: var(--mint-700); text-underline-offset: 2px; }
+    /* Veiligheidsbanner (.announce): gedeeld component in design-system/tokens.css */
 
     /* Hero-band: kalme bevestiging, gecentreerd zoals de confirmation-template */
     .confirm-hero {
@@ -116,8 +87,6 @@
     /* Mobiel */
     @media (max-width: 860px) {
       .site-header .container { padding-right: var(--gutter); }
-      .announce { padding-right: var(--gutter); font-size: 12px; }
-      .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
       .steps-cards { grid-template-columns: 1fr; }
     }
   </style>
@@ -125,12 +94,15 @@
 <body>
 
   <!-- Snel-weg-knop: vervangt de pagina direct door een neutrale site (ook via Esc) -->
-  <button class="exit-btn" id="exitBtn" type="button">Verlaat deze site snel</button>
+  <button class="exit-btn" id="exitBtn" type="button" aria-label="Verlaat deze site snel">
+    <span class="exit-btn__full">Verlaat deze site snel</span>
+    <span class="exit-btn__short">Snel weg</span>
+  </button>
 
   <!-- Veiligheidsbanner: standaard op elke pagina -->
   <div class="announce">
-    <strong>Acuut gevaar? Bel altijd 112.</strong> Niet zeker of het veilig is om deze pagina te
-    bekijken? <a href="veiligheid.html">Lees hier hoe je je browsergeschiedenis wist</a>.
+    <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
+    <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiligheid.html">Lees hoe je veilig meeleest</a>.</span>
   </div>
 
   <header class="site-header">

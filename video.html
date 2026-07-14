@@ -29,16 +29,7 @@
       background: var(--rose-300);
       height: 56px;
     }
-    /* Veiligheidsbanner (tekst) — zelfde als de andere pagina's */
-    .announce {
-      background: var(--rose-300); color: var(--plum); text-align: center;
-      font-family: var(--font-body); font-size: 13px; line-height: 1.5;
-      padding: 12px 150px 12px var(--gutter);
-    }
-    .announce .announce__112 { color: var(--magenta); font-weight: var(--weight-medium); }
-    .announce .announce__second { color: var(--ink); }
-    .announce .announce__second a { color: var(--mint-700); }
-    @media (max-width: 600px) { .announce { padding-right: 100px; font-size: 12px; } }
+    /* Veiligheidsbanner (.announce): gedeeld component in design-system/tokens.css */
 
     /* Header: funnelpagina, bewust zonder volledig menu (alleen logo terug naar home) */
     .site-header {
@@ -141,7 +132,6 @@
 
     /* Mobiel */
     @media (max-width: 860px) {
-      .exit-btn { top: auto; bottom: 0.9rem; right: 0.9rem; }
       .video-hero { border-radius: 0 0 50% 50% / 0 0 40px 40px; }
       .steps-cards { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
     }
