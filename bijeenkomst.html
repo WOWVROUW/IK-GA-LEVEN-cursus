@@ -47,33 +47,8 @@
     /* Veiligheidsbanner (.announce): gedeeld component in design-system/tokens.css */
 
     /* Hero: witte kaart over een beeldvlak dat doorloopt tot de paginarand */
-    .hero {
-      position: relative;
-      background: var(--plum-50);
-      padding-block: clamp(2.5rem, 5vw, 5rem) clamp(3rem, 6vw, 6rem);
-    }
-    .hero-photo {
-      position: absolute;
-      top: 0; bottom: 0; right: 0; left: 34%;
-      background: var(--rose-tint) url('assets/photos/hero-bijeenkomst.jpg') center / cover no-repeat;
-      transform: scaleX(-1);   /* horizontaal gespiegeld (bloesems naar rechts) */
-    }
-    /* geen kaderlijn over de hero-foto */
-    .hero .container { position: relative; }
-    .hero-card {
-      background: var(--white);
-      width: min(600px, 100%);
-      padding: clamp(2rem, 4vw, 3.5rem);
-    }
-    .hero-card p { margin-bottom: 1.4em; }
-    .hero-meta {
-      font-size: var(--fs-eyebrow);
-      font-weight: var(--weight-medium);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--plum);
-      margin: 0 0 1.8rem;
-    }
+    /* Hero (.hero): gedeeld component in design-system/tokens.css.
+       Foto per pagina via inline vars op .hero-photo (--hero-photo-img, -pos, -flip) */
 
     /* Aanmeldformulier (blauwdruk; wordt vervangen door de Flodesk-embed) */
     .signup { max-width: 620px; margin-inline: auto; text-align: center; }
@@ -191,14 +166,7 @@
     /* Mobiel */
     @media (max-width: 860px) {
       .site-header .container { padding-right: var(--gutter); }
-      .hero { padding-top: 0; }
-      .hero-photo {
-        position: static;
-        display: block;
-        height: 280px;
-        margin-bottom: 1.6rem;
-      }
-      .hero-card { padding-inline: 0; background: transparent; }
+      /* hero mobiel: gedeeld in tokens.css */
       .points { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .about-grid .photo-offset { order: -1; }
@@ -231,8 +199,8 @@
 
   <!-- ── HERO ─────────────────────────────────────────────────────────── -->
   <section class="hero">
-    <!-- PLAATSHOUDER: hier komt een warme foto (Hiltje of hoopvol beeld), doorlopend tot de paginarand -->
-    <div class="hero-photo" role="presentation" aria-hidden="true"></div>
+    <div class="hero-photo" role="presentation" aria-hidden="true"
+         style="background-image: url('assets/photos/hero-bijeenkomst.jpg'); --hero-photo-flip: scaleX(-1);"></div>
     <div class="container">
       <div class="hero-card">
         <p class="eyebrow">Gratis online bijeenkomst</p>

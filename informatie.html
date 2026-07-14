@@ -74,8 +74,8 @@
     .nav-sub a:hover { background: transparent; }
   }
 
-  /* ---- Hero (.hero-split): gedeeld component in design-system/tokens.css.
-          Fotokadrering via inline vars op .hero-image (--hero-img-h, --hero-img-pos) ---- */
+  /* ---- Hero (.hero): gedeeld component in design-system/tokens.css.
+          Foto per pagina via inline style op .hero-photo (background-image + --hero-photo-pos) ---- */
 
   /* ---- Voor wie: herkenningslijst ---- */
   .recognise-list { list-style: none; margin: 2.5rem auto 0; padding: 0; max-width: 720px; text-align: left; }
@@ -247,17 +247,16 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero-split" id="hero">
-    <div class="hero-text">
+  <section class="hero" id="hero">
+    <div class="hero-photo" role="img" aria-label="Drie vrouwen die samen lachen met een kop koffie op de bank"
+         style="background-image: url('assets/photos/sisterhood.png'); --hero-photo-pos: 50% 35%;"></div>
+    <div class="container">
       <div class="hero-card">
         <p class="eyebrow">Gratis 10-weekse cursus &middot; online via Zoom</p>
         <h1 class="h-hero">Je weet dat er iets niet klopt. Tijd om jezelf terug te vinden.</h1>
         <p>IK GA LEVEN is een gratis cursus van 10 weken voor vrouwen die geweld of dwingende controle meemaken of hebben meegemaakt in hun relatie. Je krijgt inzicht in wat er werkelijk gebeurt, je bouwt stap voor stap je eigen keuzes weer op, en je doet dat in een kleine groep vrouwen die begrijpen wat jij doormaakt.</p>
         <a href="#eerste-stap" class="btn">Zet de eerste stap <span class="btn__arrow">→</span></a>
       </div>
-    </div>
-    <div class="hero-image" style="--hero-img-h: 620px; --hero-img-pos: 50% 35%;">
-      <img src="assets/photos/sisterhood.png" alt="Drie vrouwen die samen lachen met een kop koffie op de bank">
     </div>
   </section>
 

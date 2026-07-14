@@ -73,8 +73,8 @@
     .nav-sub a:hover { background: transparent; }
   }
 
-  /* ---- Hero (.hero-split): gedeeld component in design-system/tokens.css.
-          Fotokadrering via inline vars op .hero-image (--hero-img-h, --hero-img-pos) ---- */
+  /* ---- Hero (.hero): gedeeld component in design-system/tokens.css.
+          Foto per pagina via inline style op .hero-photo (background-image + --hero-photo-pos) ---- */
 
   /* ---- Waarschuwingsblok: veilig bewaren ---- */
   .warn-box {
@@ -196,17 +196,16 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero-split" id="hero">
-    <div class="hero-text">
+  <section class="hero" id="hero">
+    <div class="hero-photo" role="img" aria-label="Citroenen aan een tak tegen een zachte lucht"
+         style="background-image: url('assets/photos/hero-citroen.jpg'); --hero-photo-pos: 50% 60%;"></div>
+    <div class="container">
       <div class="hero-card">
         <p class="eyebrow">Gratis veiligheidsplan</p>
         <h1 class="h-hero">Vooruitdenken over je veiligheid, op een rustig moment.</h1>
         <p>Dit plan helpt je om vooruit te denken over je eigen veiligheid, zodat je op een gespannen of gevaarlijk moment sneller en gerichter kunt handelen. Je hoeft het niet in één keer in te vullen, en niet alles hoeft van toepassing te zijn. Vul in wat past, sla over wat niet aansluit, en pas het aan zodra je situatie verandert.</p>
         <a href="#download" class="btn">Download het plan <span class="btn__arrow">→</span></a>
       </div>
-    </div>
-    <div class="hero-image" style="--hero-img-h: 560px; --hero-img-pos: 50% 60%;">
-      <img src="assets/photos/hero-citroen.jpg" alt="Citroenen aan een tak tegen een zachte lucht">
     </div>
   </section>
 

@@ -516,32 +516,47 @@ h1, h2, h3, h4 {
   .announce { padding-right: 125px; font-size: 13px; }
 }
 
-/* ── Hero-split — witte tekstkaart die over een doorlopende foto valt ───────
-   Gebruikt op index, informatie en veiligheidsplan. Structuur is gedeeld; de
-   fotokadrering verschilt per foto en zet je op de .hero-image zelf met inline
-   vars --hero-img-h (hoogte) en --hero-img-pos (object-position). */
-.hero-split {
-  display: grid; grid-template-columns: 1fr 2fr;  /* tekst 1/3, beeld 2/3 */
-  background: var(--surface-menu);
+/* ── Hero — plum-50 vlak, witte tekstkaart links, doorlopende foto rechts ────
+   Gebruikt op index, informatie, veiligheidsplan en bijeenkomst. De foto zet je
+   per pagina op de .hero-photo met inline styles:
+     background-image: url('...')   de foto (verplicht; als echte property zodat het
+                                    pad relatief aan de PAGINA resolvet, niet aan tokens.css)
+     --hero-photo-pos   focuspunt van de foto (default center; bv. 50% 60%)
+     --hero-photo-left  waar de foto begint vanaf links (default 34%)
+     --hero-photo-flip  bv. scaleX(-1) om de foto horizontaal te spiegelen
+   Op mobiel stapelt het: foto bovenaan, kaart eronder. */
+.hero {
+  position: relative;
+  background: var(--plum-50);
+  padding-block: clamp(2.5rem, 5vw, 5rem) clamp(3rem, 6vw, 6rem);
 }
-.hero-split .hero-text { display: flex; align-items: center; justify-content: flex-end; padding: 4rem var(--gutter); }
-.hero-split .hero-card {
+.hero-photo {
+  position: absolute; top: 0; bottom: 0; right: 0; left: var(--hero-photo-left, 34%);
+  background-color: var(--rose-tint);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: var(--hero-photo-pos, center);
+  transform: var(--hero-photo-flip, none);
+}
+.hero .container { position: relative; }
+.hero-card {
   background: var(--white);
-  max-width: 540px; width: 100%;
-  padding: 2.75rem;
-  border-radius: var(--radius);
-  margin-right: -180px;   /* valt ±1/3 over de foto heen */
-  box-shadow: var(--shadow-float);
-  position: relative; z-index: 2;
+  width: min(600px, 100%);
+  padding: clamp(2rem, 4vw, 3.5rem);
 }
-.hero-split .hero-card .btn { margin-top: 1.5rem; }
-.hero-image { position: relative; overflow: hidden; min-height: var(--hero-img-h, 620px); }
-.hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hero-img-pos, 50% 45%); }
-.hero-image-placeholder {
-  position: absolute; inset: 1.5rem; border-radius: var(--radius);
-  border: 1px dashed var(--plum-300); background: rgba(255, 255, 255, 0.5);
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  padding: 1.5rem; font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+.hero-card p { margin-bottom: 1.4em; }
+.hero-card .btn { margin-top: 0.4rem; }
+.hero-meta {
+  font-size: var(--fs-eyebrow); font-weight: var(--weight-medium);
+  letter-spacing: 1px; text-transform: uppercase; color: var(--plum); margin: 0 0 1.8rem;
+}
+@media (max-width: 860px) {
+  .hero { padding-top: 0; }
+  .hero-photo {
+    position: static; transform: none;
+    min-height: 320px; margin-bottom: 1.6rem;
+  }
+  .hero-card { width: 100%; padding-inline: 0; background: transparent; }
 }
 
 /* ── Over Hiltje (about-split) — rose-100-paneel links, foto rechts ─────────
@@ -564,12 +579,9 @@ h1, h2, h3, h4 {
   object-fit: cover; object-position: 50% 25%;
 }
 
-/* Hero-split + about-split: mobiel gestapeld (beeld boven, kaart/paneel eronder) */
+/* About-split: mobiel gestapeld (foto boven, paneel eronder) */
 @media (max-width: 860px) {
-  .hero-split, .about-split { grid-template-columns: 1fr; }
-  .hero-split .hero-card { margin: 2rem 0 0; max-width: none; box-shadow: none; }
-  .hero-split .hero-text { padding: 2.5rem var(--gutter) 0; justify-content: center; }
-  .hero-split .hero-image { min-height: 320px; order: -1; }
+  .about-split { grid-template-columns: 1fr; }
   .about-photo-side { order: -1; min-height: 380px; }
 }
 

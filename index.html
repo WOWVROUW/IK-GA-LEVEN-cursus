@@ -81,8 +81,8 @@
     .nav-sub a:hover { background: transparent; }
   }
 
-  /* ---- SECTIE 3: Hero (.hero-split): gedeeld component in design-system/tokens.css.
-          Fotokadrering via inline vars op .hero-image (--hero-img-h, --hero-img-pos) ---- */
+  /* ---- SECTIE 3: Hero (.hero): gedeeld component in design-system/tokens.css.
+          Foto per pagina via inline style op .hero-photo (background-image + --hero-photo-pos) ---- */
 
   /* ---- SECTIE 4: Opt-in veiligheidsplan (doc: vlak rose-200, randen 1px roos-300
           via .section--band, kop 32px, knop massief pruim met plum-50 tekst) ---- */
@@ -349,17 +349,16 @@
 <main id="main">
 
   <!-- SECTIE 3: Hero -->
-  <section class="hero-split" id="hero">
-    <div class="hero-text">
+  <section class="hero" id="hero">
+    <div class="hero-photo" role="img" aria-label="Tak met witte bloesems in zacht groen voorjaarslicht"
+         style="background-image: url('assets/photos/hero-bloesem-wit.jpg'); --hero-photo-pos: 50% 45%;"></div>
+    <div class="container">
       <div class="hero-card">
         <p class="eyebrow">Het begon met liefde</p>
         <h1 class="h-hero">Waarom voelt het nu alsof het niet klopt?</h1>
         <p>Je voelt dat er iets niet klopt. Je loopt op eieren. Steeds pas je jezelf weer aan om het goed te doen voor hem. Maar het lijkt nooit goed genoeg. Je twijfelt aan jezelf. Je vriendin zegt dat ze je niet meer terugkent. Je voelt je steeds angstiger en slaapt slecht. Je vraagt jezelf soms af waarom je in deze relatie blijft.</p>
         <a href="#over-cursus" class="btn">Meer informatie over IK GA LEVEN <span class="btn__arrow">→</span></a>
       </div>
-    </div>
-    <div class="hero-image" style="--hero-img-h: 640px; --hero-img-pos: 50% 45%;">
-      <img src="assets/photos/hero-bloesem-wit.jpg" alt="Tak met witte bloesems in zacht groen voorjaarslicht">
     </div>
   </section>
 
