@@ -292,66 +292,8 @@
     #nieuwsbrief [class*="__field"] { max-width: 100% !important; margin-inline: 0 !important; }
   }
 
-  /* ---- SECTIE 14: Footer (ChicSpark-opzet, ref. ChicSpark16.png: twee
-          menukolommen met serif-kopjes en onderstreping, IG-strip in het
-          midden, verticale hairlines pruim, vlak rose-200) ---- */
-  .site-footer { background: var(--butter-100); padding: 4.5rem var(--gutter) 0; }
-  .footer-inner { max-width: var(--container-max); margin: 0 auto; }
-  .footer-grid {
-    display: grid; grid-template-columns: 1fr 2.4fr 1fr; gap: 0;
-    padding-bottom: 3rem; align-items: start;
-  }
-  .footer-col { text-align: center; }
-  .footer-col--menu { padding-top: 2.2rem; }
-  .footer-col--ig {
-    padding: 0 clamp(1.5rem, 4vw, 3rem);
-    border-left: var(--hairline) solid var(--plum);
-    border-right: var(--hairline) solid var(--plum);
-  }
-  .footer-col h4 {
-    display: inline-block;
-    font-family: var(--font-display); font-weight: var(--weight-light);
-    font-size: 17px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink);
-    border-bottom: var(--hairline) solid var(--plum);
-    padding-bottom: 0.55rem; margin: 0 0 1.2rem;
-  }
-  .footer-col a {
-    display: block; font-family: var(--font-body); font-size: 13px;
-    font-weight: var(--weight-medium); letter-spacing: 1px; text-transform: uppercase;
-    margin-bottom: 0.85rem; text-decoration: none;
-  }
-  .footer-col a:hover { color: var(--plum); }
-  .footer-ig-head {
-    font-family: var(--font-display); font-weight: var(--weight-light);
-    font-size: clamp(15px, 1.6vw, 19px); line-height: 1.25; color: var(--mint-700);
-    margin: 0 0 1.4rem; white-space: nowrap;
-  }
-  .ig-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-  .ig-strip a { display: block; border-radius: var(--radius); overflow: hidden; }
-  .ig-strip img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: opacity var(--dur-fast) var(--ease-out); }
-  .ig-strip a:hover img { opacity: 0.85; }
-  .footer-hair { border: 0; border-top: var(--hairline) solid var(--plum); margin: 0; }
-  @media (max-width: 860px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .footer-col--menu { padding-top: 0; }
-    .footer-col--ig {
-      border-left: 0; border-right: 0; padding: 2rem 0;
-      border-top: var(--hairline) solid var(--plum);
-      border-bottom: var(--hairline) solid var(--plum);
-    }
-  }
-
-  /* SECTIE 15: Veilig verder browsen (doc: vlak rose-200, hairline pruim erboven) */
-  .safety-block { padding: 2rem 0 2.5rem; font-size: 15px; line-height: 1.8; max-width: 820px; }
-  .safety-block strong { color: var(--ink); }
-  .safety-block .call112 { color: var(--magenta); font-weight: var(--weight-medium); }
-
-  /* SECTIE 16: Copyright (doc: wit, 11,2px) */
-  .copyright {
-    background: var(--white); text-align: center;
-    font-family: var(--font-body); font-size: var(--fs-copyright); color: var(--ink);
-    padding: 1.1rem var(--gutter);
-  }
+  /* ---- SECTIE 14: Footer (volledige homepage-footer met menukolommen + IG-strip)
+          + veiligheidsblok + copyright: gedeeld footer-systeem in design-system/tokens.css ---- */
 
   @media (max-width: 860px) {
     /* hero-split + about-split mobiel: gedeeld in tokens.css */
@@ -361,7 +303,6 @@
     .persona-grid, .products-grid, .program-features {
       grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto;
     }
-    .footer-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>

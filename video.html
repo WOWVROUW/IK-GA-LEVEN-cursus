@@ -113,22 +113,7 @@
     .steps-card p { font-size: 15px; line-height: 1.9; margin: 0 auto 1.4rem; }
     .steps-card .btn { margin-top: auto; align-self: center; }
 
-    /* Veilig verder browsen (doc: vlak butter-100, hairline pruim erboven,
-       Bel 112 vet magenta) — EERLIJK geformuleerd: geen wis-belofte. */
-    /* Footer: zelfde als de veiligheidsplan-pagina (site-footer butter 100 + veilig-browsen-blok) */
-    .site-footer { background: var(--butter-100); padding-top: clamp(2.5rem, 5vw, 4.5rem); }
-    .safety-block { padding: 2rem 0 2.5rem; font-size: 15px; line-height: 1.8; max-width: 820px; }
-    .safety-block p { max-width: none; margin: 0 0 0.75rem; }
-    .safety-block p:last-child { margin: 0; }
-    .safety-block strong { color: var(--ink); }
-    .safety-block .call112 { color: var(--magenta); font-weight: var(--weight-medium); }
-
-    /* Copyright (doc: wit, 11,2px) */
-    .copyright {
-      background: var(--white); text-align: center;
-      font-family: var(--font-body); font-size: var(--fs-copyright); color: var(--ink);
-      padding: 1.1rem var(--gutter);
-    }
+    /* Footer (vereenvoudigd) + copyright: gedeeld footer-systeem in design-system/tokens.css */
 
     /* Mobiel */
     @media (max-width: 860px) {
@@ -258,7 +243,7 @@
 
   <!-- ── VEILIG VERDER BROWSEN + COPYRIGHT ────────────────────────────── -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="footer-inner">
       <div class="safety-block">
         <p><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
         <p><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span></p>

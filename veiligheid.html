@@ -54,12 +54,7 @@
   th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-rose); vertical-align: top; }
   th { font-family: var(--font-body); font-weight: 400; color: var(--plum); background: var(--rose-tint); }
 
-  .site-footer { padding: 2.5rem var(--gutter); background: var(--rose-tint); }
-  .site-footer .safety-line {
-    max-width: 760px; margin: 0 auto; font-family: var(--font-body);
-    font-size: 13px; color: var(--text-muted); line-height: 1.6;
-  }
-  .site-footer .safety-line strong { color: var(--text); }
+  /* Footer (vereenvoudigd) + copyright: gedeeld footer-systeem in design-system/tokens.css */
 </style>
 </head>
 <body>
@@ -145,11 +140,14 @@
 </main>
 
 <footer class="site-footer">
-  <p class="safety-line">
-    <strong>Ben je nu in gevaar?</strong> Bel 112.
-    Denk je aan zelfdoding of maak je je zorgen om iemand? Bel 113 Zelfmoordpreventie, 0800-0113.
-  </p>
+  <div class="footer-inner">
+    <div class="safety-block">
+      <p><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+      <p><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span></p>
+    </div>
+  </div>
 </footer>
+<div class="copyright">&copy; 2026 IK GA LEVEN &middot; ikgalevencursus.nl</div>
 
 <!-- Snel-weg + terugknop-beveiliging: gedeeld script (assets/js/safety.js) -->
 <script src="assets/js/safety.js"></script>
