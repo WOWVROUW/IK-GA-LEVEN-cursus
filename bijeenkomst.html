@@ -84,6 +84,7 @@
       position: absolute;
       top: 0; bottom: 0; right: 0; left: 34%;
       background: var(--rose-tint) url('assets/photos/hero-bijeenkomst.jpg') center / cover no-repeat;
+      transform: scaleX(-1);   /* horizontaal gespiegeld (bloesems naar rechts) */
     }
     .hero-photo::after {
       content: "";
@@ -109,6 +110,7 @@
 
     /* Aanmeldformulier (blauwdruk; wordt vervangen door de Flodesk-embed) */
     .signup { max-width: 620px; margin-inline: auto; text-align: center; }
+    .optin-narrow .signup { max-width: none; }
     .signup p { margin-inline: auto; }
     .signup-form {
       display: grid;
@@ -318,8 +320,8 @@
   <!-- ── AANMELDEN ────────────────────────────────────────────────────── -->
   <section class="section section--band section--optin" id="aanmelden">
     <div class="container optin-container">
-      <div class="optin-narrow" style="--optin-form-w: 620px; --optin-mock-max: 350px;">
-        <img class="optin-mock" src="assets/photos/vrouw-laptop-groen.png" alt="Vrouw achter haar laptop tijdens een online bijeenkomst" style="border-radius: 8px;">
+      <div class="optin-narrow" style="--optin-form-w: 760px; --optin-mock-max: 300px;">
+        <img class="optin-mock" src="assets/photos/vrouw-laptop-groen.png" alt="Vrouw achter haar laptop tijdens een online bijeenkomst">
         <div class="signup">
         <!-- Datumkiezer + Flodesk inline formulieren. Eén Flodesk-formulier per datum, elk met
              een eigen segment (IGL Meeting-0721 / -0724 / -0826) en eigen workflow. De kiezer
@@ -378,7 +380,7 @@
   <div class="strip strip--roomy">
     <div class="container">
       <div class="stats">
-        <div><div class="stat-num">3 data</div><div class="stat-label">Juli en augustus</div></div>
+        <div><div class="stat-num">meerdere dagen</div><div class="stat-label">elke maand</div></div>
         <div><div class="stat-num">Zoom</div><div class="stat-label">Online</div></div>
         <div><div class="stat-num">&plusmn;2 uur</div><div class="stat-label">Duur</div></div>
         <div><div class="stat-num">gratis</div><div class="stat-label">Deelname</div></div>
