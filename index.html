@@ -34,7 +34,8 @@
     padding: 12px 215px 12px var(--gutter);
   }
   .announce .announce__112 { color: var(--magenta); font-weight: var(--weight-medium); }
-  .announce .announce__second { color: var(--mint-700); }
+  .announce .announce__second { color: var(--ink); }
+  .announce .announce__second a { color: var(--mint-700); }
   .announce a { color: inherit; text-underline-offset: 2px; }
   @media (max-width: 600px) {
     .announce { padding-right: 125px; font-size: 13px; }
@@ -337,7 +338,7 @@
   #nieuwsbrief [class*="__title"],
   #nieuwsbrief [class*="__subtitle"] { display: none !important; }
   #nieuwsbrief form[class*="__form"] { padding: 0 !important; }
-  #nieuwsbrief { padding-block: 2.5rem; }   /* iets meer lucht boven/onder dan de standaard opt-in-strook */
+  #nieuwsbrief { padding-block: 3.5rem; }   /* meer lucht boven/onder dan de standaard opt-in-strook */
   #nieuwsbrief [class*="__fields"] {
     display: flex !important; flex-wrap: wrap; justify-content: center;
   }
@@ -748,7 +749,7 @@
         <a href="veiligheid.html">Veilig meelezen</a>
       </div>
       <div class="footer-col footer-col--ig">
-        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
+        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="font:inherit;color:inherit;text-transform:none;letter-spacing:normal;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
         <!-- Statische strip (nog geen live feed): vier beelden die doorklikken naar
              Instagram. Een echte feed-embed vraagt een externe dienst; bewust nog
              niet gekoppeld (privacy + rust). Vervang de beelden gerust. -->
@@ -758,7 +759,7 @@
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
             <img src="assets/photos/ig-2.png" alt=""></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/ig-3.png" alt=""></a>
+            <img src="assets/photos/ig-3.png" alt="" style="object-position:center 82%;"></a>
           <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
             <img src="assets/photos/ig-4.png" alt=""></a>
         </div>

@@ -28,7 +28,8 @@
     padding: 12px 215px 12px var(--gutter);
   }
   .announce .announce__112 { color: var(--magenta); font-weight: var(--weight-medium); }
-  .announce .announce__second { color: var(--mint-700); }
+  .announce .announce__second { color: var(--ink); }
+  .announce .announce__second a { color: var(--mint-700); }
   .announce a { color: inherit; text-underline-offset: 2px; }
   @media (max-width: 600px) {
     .announce { padding-right: 125px; font-size: 13px; }
@@ -167,6 +168,9 @@
 
   .checklist { list-style: none; margin: 1.1rem 0 0; padding: 0; }
   .checklist.two-col { columns: 2; column-gap: 2.5rem; }
+  .checklist-cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
+  .checklist-cols .checklist { margin-top: 0; }
+  .checklist li .fill-line { margin-top: 0.2rem; }
   .checklist li {
     position: relative; padding: 0.35rem 0 0.35rem 2rem;
     font-size: 16px; line-height: 1.6; break-inside: avoid;
@@ -236,6 +240,7 @@
     .hero-text { padding: 2.5rem var(--gutter) 0; justify-content: center; }
     .hero-image { min-height: 300px; order: -1; }
     .checklist.two-col { columns: 1; }
+    .checklist-cols { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-col--menu { padding-top: 0; }
     .footer-col--ig {
@@ -393,10 +398,6 @@
           <div class="fill-line"></div>
           <div class="fill-line"></div>
         </div>
-        <div class="plan-prompt">
-          <span>Zelf toevoegen:</span>
-          <div class="self-add"><span class="self-box"></span><div class="fill-line"></div></div>
-        </div>
         <p class="plan-guide">Soms is veiligheid op het moment zelf het belangrijkst, ook als dat betekent meebewegen of de confrontatie ontwijken. Dat is geen zwakte, maar overleven.</p>
       </div>
 
@@ -417,35 +418,40 @@
           <div class="fill-sub"><span class="fill-label">Meegaan naar afspraken:</span><div class="fill-line"></div></div>
           <div class="fill-sub"><span class="fill-label">Anders:</span><div class="fill-line"></div></div>
         </div>
-        <p class="plan-guide">Veilig Thuis (0800-2000) kan helpen bij het nadenken over een vertrek en doorverwijzen naar de vrouwenopvang. Aanmelden bij een opvangorganisatie kan vaak ook rechtstreeks.</p>
+        <p class="plan-guide">Veilig Thuis (0800-2000) kan helpen bij het nadenken over een vertrek en doorverwijzen naar de vrouwenopvang. Aanmelden bij een opvangorganisatie kan soms ook rechtstreeks. Vraag na of zij wel of niet melden bij Veilig Thuis, zodat je weet waar je aan toe bent.</p>
       </div>
 
       <!-- 3 -->
       <div class="plan-section">
         <h2>3. Wat mee te nemen: checklist</h2>
         <p>Bij een snel vertrek helpt het als de belangrijkste spullen al op één plek liggen. De gemarkeerde items (<span style="color:var(--magenta);font-weight:500;">*</span>) zijn het meest urgent.</p>
-        <ul class="checklist two-col">
-          <li>Eigen identiteitsbewijs / paspoort <span class="star">*</span></li>
-          <li>Identiteitsbewijzen van de kinderen <span class="star">*</span></li>
-          <li>BSN (eigen en van de kinderen) <span class="star">*</span></li>
-          <li>Bankpas(sen) en pincodes <span class="star">*</span></li>
-          <li>Geld / contant geld <span class="star">*</span></li>
-          <li>Sleutels (huis, auto) <span class="star">*</span></li>
-          <li>Telefoon en oplader <span class="star">*</span></li>
-          <li>DigiD-gegevens en belangrijke wachtwoorden <span class="star">*</span></li>
-          <li>Medicijnen (eigen en van de kinderen) <span class="star">*</span></li>
-          <li>Zorgpas / zorgverzekeringsgegevens <span class="star">*</span></li>
-          <li>Verblijfsvergunning of verblijfsdocumenten <span class="star">*</span></li>
-          <li>Geboorteaktes / trouwboekje</li>
-          <li>Huurcontract, hypotheek- of verzekeringspapieren</li>
-          <li>Echtscheidings- of juridische stukken</li>
-          <li>Eventuele beschikking huisverbod of contactverbod</li>
-          <li>Inschrijving / gegevens school van de kinderen</li>
-          <li>Adressenlijst / belangrijke telefoonnummers</li>
-          <li>Knuffel of vertrouwd voorwerp van de kinderen</li>
-          <li>Sieraden of spullen met persoonlijke waarde</li>
-          <li>Foto's en dierbare herinneringen</li>
-        </ul>
+        <div class="checklist-cols">
+          <ul class="checklist">
+            <li>Eigen identiteitsbewijs / paspoort <span class="star">*</span></li>
+            <li>Identiteitsbewijzen van de kinderen <span class="star">*</span></li>
+            <li>BSN (eigen en van de kinderen) <span class="star">*</span></li>
+            <li>Bankpas(sen) en pincodes <span class="star">*</span></li>
+            <li>Geld / contant geld <span class="star">*</span></li>
+            <li>Sleutels (huis, auto) <span class="star">*</span></li>
+            <li>Telefoon en oplader <span class="star">*</span></li>
+            <li>DigiD-gegevens en belangrijke wachtwoorden <span class="star">*</span></li>
+            <li>Medicijnen (eigen en van de kinderen) <span class="star">*</span></li>
+            <li>Zorgpas / zorgverzekeringsgegevens <span class="star">*</span></li>
+            <li>Verblijfsvergunning of verblijfsdocumenten <span class="star">*</span></li>
+            <li>Geboorteaktes / trouwboekje</li>
+          </ul>
+          <ul class="checklist">
+            <li>Huurcontract, hypotheek- of verzekeringspapieren</li>
+            <li>Echtscheidings- of juridische stukken</li>
+            <li>Eventuele beschikking huisverbod of contactverbod</li>
+            <li>Inschrijving / gegevens school van de kinderen</li>
+            <li>Adressenlijst / belangrijke telefoonnummers</li>
+            <li>Knuffel of vertrouwd voorwerp van de kinderen</li>
+            <li>Sieraden of spullen met persoonlijke waarde</li>
+            <li>Foto's en dierbare herinneringen</li>
+            <li><div class="fill-line"></div></li>
+          </ul>
+        </div>
       </div>
 
       <!-- 4 -->
@@ -587,36 +593,6 @@
 <!-- Footer -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col footer-col--menu">
-        <h4>IK GA LEVEN</h4>
-        <a href="index.html#herken">Herken je dit</a>
-        <a href="informatie.html">De cursus</a>
-        <a href="informatie.html#over-hiltje">Over Hiltje</a>
-        <a href="veiligheid.html">Veilig meelezen</a>
-      </div>
-      <div class="footer-col footer-col--ig">
-        <p class="footer-ig-head">Volg <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">@ikgalevencursus</a> op Instagram</p>
-        <div class="ig-strip">
-          <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/ig-1.png" alt=""></a>
-          <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/ig-2.png" alt=""></a>
-          <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/ig-3.png" alt=""></a>
-          <a href="https://instagram.com/ikgalevencursus" target="_blank" rel="noopener" aria-label="Instagram @ikgalevencursus">
-            <img src="assets/photos/ig-4.png" alt=""></a>
-        </div>
-      </div>
-      <div class="footer-col footer-col--menu">
-        <h4>Gratis</h4>
-        <a href="video.html">Video</a>
-        <a href="bijeenkomst.html">Bijeenkomst</a>
-        <a href="veiligheidsplan.html">Veiligheidsplan</a>
-        <a href="index.html#podcast">Podcast</a>
-      </div>
-    </div>
-    <hr class="footer-hair">
     <div class="safety-block">
       <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
       <p style="margin:0;"><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span></p>

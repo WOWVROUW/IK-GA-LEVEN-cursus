@@ -61,6 +61,9 @@
 
   .checklist { list-style: none; margin: 1rem 0 0; padding: 0; }
   .checklist.two-col { columns: 2; column-gap: 2.5rem; }
+  .checklist-cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
+  .checklist-cols .checklist { margin-top: 0; }
+  .checklist li .fill-line { margin-top: 0.2rem; }
   .checklist li { position: relative; padding: 0.3rem 0 0.3rem 1.9rem; font-size: 15px; line-height: 1.55; break-inside: avoid; }
   .checklist li::before { content: ""; position: absolute; left: 0; top: 0.4rem; width: 15px; height: 15px; border: 1.5px solid var(--plum-400); border-radius: 3px; }
   .checklist li .star { color: var(--magenta); font-weight: var(--weight-medium); }
@@ -74,6 +77,7 @@
 
   @media (max-width: 600px) {
     .checklist.two-col { columns: 1; }
+    .checklist-cols { grid-template-columns: 1fr; }
     .print-head { flex-direction: column; align-items: flex-start; }
   }
 
@@ -176,10 +180,6 @@
       <div class="fill-line"></div>
       <div class="fill-line"></div>
     </div>
-    <div class="plan-prompt">
-      <span>Zelf toevoegen:</span>
-      <div class="self-add"><span class="self-box"></span><div class="fill-line"></div></div>
-    </div>
     <p class="plan-guide">Soms is veiligheid op het moment zelf het belangrijkst, ook als dat betekent meebewegen of de confrontatie ontwijken. Dat is geen zwakte, maar overleven.</p>
   </div>
 
@@ -200,35 +200,40 @@
       <div class="fill-sub"><span class="fill-label">Meegaan naar afspraken:</span><div class="fill-line"></div></div>
       <div class="fill-sub"><span class="fill-label">Anders:</span><div class="fill-line"></div></div>
     </div>
-    <p class="plan-guide">Veilig Thuis (0800-2000) kan helpen bij het nadenken over een vertrek en doorverwijzen naar de vrouwenopvang. Aanmelden bij een opvangorganisatie kan vaak ook rechtstreeks.</p>
+    <p class="plan-guide">Veilig Thuis (0800-2000) kan helpen bij het nadenken over een vertrek en doorverwijzen naar de vrouwenopvang. Aanmelden bij een opvangorganisatie kan soms ook rechtstreeks. Vraag na of zij wel of niet melden bij Veilig Thuis, zodat je weet waar je aan toe bent.</p>
   </div>
 
   <!-- 3 -->
   <div class="plan-section">
     <h2>3. Wat mee te nemen: checklist</h2>
     <p>Bij een snel vertrek helpt het als de belangrijkste spullen al op één plek liggen. De gemarkeerde items (<span style="color:var(--magenta);font-weight:500;">*</span>) zijn het meest urgent.</p>
-    <ul class="checklist two-col">
-      <li>Eigen identiteitsbewijs / paspoort <span class="star">*</span></li>
-      <li>Identiteitsbewijzen van de kinderen <span class="star">*</span></li>
-      <li>BSN (eigen en van de kinderen) <span class="star">*</span></li>
-      <li>Bankpas(sen) en pincodes <span class="star">*</span></li>
-      <li>Geld / contant geld <span class="star">*</span></li>
-      <li>Sleutels (huis, auto) <span class="star">*</span></li>
-      <li>Telefoon en oplader <span class="star">*</span></li>
-      <li>DigiD-gegevens en belangrijke wachtwoorden <span class="star">*</span></li>
-      <li>Medicijnen (eigen en van de kinderen) <span class="star">*</span></li>
-      <li>Zorgpas / zorgverzekeringsgegevens <span class="star">*</span></li>
-      <li>Verblijfsvergunning of verblijfsdocumenten <span class="star">*</span></li>
-      <li>Geboorteaktes / trouwboekje</li>
-      <li>Huurcontract, hypotheek- of verzekeringspapieren</li>
-      <li>Echtscheidings- of juridische stukken</li>
-      <li>Eventuele beschikking huisverbod of contactverbod</li>
-      <li>Inschrijving / gegevens school van de kinderen</li>
-      <li>Adressenlijst / belangrijke telefoonnummers</li>
-      <li>Knuffel of vertrouwd voorwerp van de kinderen</li>
-      <li>Sieraden of spullen met persoonlijke waarde</li>
-      <li>Foto's en dierbare herinneringen</li>
-    </ul>
+    <div class="checklist-cols">
+      <ul class="checklist">
+        <li>Eigen identiteitsbewijs / paspoort <span class="star">*</span></li>
+        <li>Identiteitsbewijzen van de kinderen <span class="star">*</span></li>
+        <li>BSN (eigen en van de kinderen) <span class="star">*</span></li>
+        <li>Bankpas(sen) en pincodes <span class="star">*</span></li>
+        <li>Geld / contant geld <span class="star">*</span></li>
+        <li>Sleutels (huis, auto) <span class="star">*</span></li>
+        <li>Telefoon en oplader <span class="star">*</span></li>
+        <li>DigiD-gegevens en belangrijke wachtwoorden <span class="star">*</span></li>
+        <li>Medicijnen (eigen en van de kinderen) <span class="star">*</span></li>
+        <li>Zorgpas / zorgverzekeringsgegevens <span class="star">*</span></li>
+        <li>Verblijfsvergunning of verblijfsdocumenten <span class="star">*</span></li>
+        <li>Geboorteaktes / trouwboekje</li>
+      </ul>
+      <ul class="checklist">
+        <li>Huurcontract, hypotheek- of verzekeringspapieren</li>
+        <li>Echtscheidings- of juridische stukken</li>
+        <li>Eventuele beschikking huisverbod of contactverbod</li>
+        <li>Inschrijving / gegevens school van de kinderen</li>
+        <li>Adressenlijst / belangrijke telefoonnummers</li>
+        <li>Knuffel of vertrouwd voorwerp van de kinderen</li>
+        <li>Sieraden of spullen met persoonlijke waarde</li>
+        <li>Foto's en dierbare herinneringen</li>
+        <li><div class="fill-line"></div></li>
+      </ul>
+    </div>
   </div>
 
   <!-- 4 -->
