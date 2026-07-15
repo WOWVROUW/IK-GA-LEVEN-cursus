@@ -192,6 +192,8 @@
   --section-padding-mobile: 3rem;
   --container-max: 1120px;
   --gutter: 1.5rem;
+  --hero-card-w: 600px;   /* breedte van de witte hero-kaart */
+  --hero-overlap: 200px;  /* hoever de kaart over de foto valt = 1/3 van 600px */
 
   /* ---- Hairlines (doc: 0,25px dividers; 0.5px rendert betrouwbaar) ---- */
   --hairline: 0.5px;
@@ -528,20 +530,29 @@ h1, h2, h3, h4 {
 .hero {
   position: relative;
   background: var(--plum-50);
+  min-height: 800px;      /* vaste herohoogte: op elke pagina dezelfde foto-verhouding,
+                             ongeacht hoeveel tekst er in de kaart staat */
+  display: flex;
+  align-items: center;    /* kaart verticaal gecentreerd in de vaste hoogte */
   padding-block: clamp(2.5rem, 5vw, 5rem) clamp(3rem, 6vw, 6rem);
 }
 .hero-photo {
-  position: absolute; top: 0; bottom: 0; right: 0; left: var(--hero-photo-left, 34%);
+  /* De foto begint waar de kaart ophoudt, min de gewenste overlap. Zo valt de
+     kaart op ELKE schermbreedte met precies --hero-overlap (1/3) over de foto,
+     terwijl de kaart uitgelijnd blijft met de rest van de pagina. Een pagina kan
+     dit overrulen met een eigen --hero-photo-left. */
+  position: absolute; top: 0; bottom: 0; right: 0;
+  left: var(--hero-photo-left, calc(max((100% - var(--container-max)) / 2, 0px) + var(--gutter) + var(--hero-card-w) - var(--hero-overlap)));
   background-color: var(--rose-tint);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: var(--hero-photo-pos, center);
   transform: var(--hero-photo-flip, none);
 }
-.hero .container { position: relative; }
+.hero .container { position: relative; flex: 1 1 auto; width: 100%; }
 .hero-card {
   background: var(--white);
-  width: min(600px, 100%);
+  width: min(var(--hero-card-w), 100%);
   padding: clamp(2rem, 4vw, 3.5rem);
 }
 .hero-card p { margin-bottom: 1.4em; }
@@ -551,7 +562,7 @@ h1, h2, h3, h4 {
   letter-spacing: 1px; text-transform: uppercase; color: var(--plum); margin: 0 0 1.8rem;
 }
 @media (max-width: 860px) {
-  .hero { padding-top: 0; }
+  .hero { padding-top: 0; min-height: 0; display: block; }  /* mobiel: gewoon stapelen */
   .hero-photo {
     position: static; transform: none;
     min-height: 320px; margin-bottom: 1.6rem;
