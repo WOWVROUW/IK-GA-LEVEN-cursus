@@ -160,6 +160,32 @@ Bevestigd: eyebrow én knoppen in kapitalen; de ruime 34px body line-height is b
 - **Schaduw alleen op zwevende objecten** (bv. het ebook-mockup) — nooit op gewone
   kaarten of secties. Token: `--shadow-float`.
 
+### Mockup-PNG's: altijd strak bijsnijden — geen transparante rand
+
+**Regel: een mockup-PNG (telefoon, ebook, cover) wordt bijgesneden tot het onderwerp
+zelf. Nul transparante rand.** Dit geldt voor élke mockup op de site, ook als hij uit
+Canva of een mockup-generator komt — die exporteren standaard mét lucht eromheen.
+
+Waarom dit niet cosmetisch is:
+
+- CSS meet de **PNG-box**, niet wat je ziet. Zit er lucht omheen, dan liggen alle maten
+  ernaast: `width: 260px` levert een zichtbaar kleinere telefoon op, en een uitlijning
+  als "de telefoon valt met 1/3 over de witte kaart" klopt wel in de code maar niet
+  voor het oog. Bij het podcastblok scheelde dat 56px aan weerszijden.
+- Een mockup die zijn toegewezen breedte niet vult, oogt te klein in blokken waar hij
+  het beeld moet dragen (opt-in, podcast).
+
+Praktisch:
+
+- Snijd bij op de **alpha-bounding-box** (de buitenste niet-transparante pixel). Op deze
+  pc kan dat zonder extra software met System.Drawing in PowerShell; er is geen
+  Python/Node/ImageMagick.
+- **Levert Hiltje een nieuwe export, dan moet die opnieuw worden bijgesneden.** Dat is
+  onzichtbaar als je het niet weet: het bestand ziet er goed uit, de pagina schuift stil
+  scheef. Controleer het bij elke vervanging.
+- Rekent CSS met de verhouding van de mockup (zoals `--podcast-phone-h` uit 970x1920),
+  loop die token dan na zodra de afmetingen veranderen.
+
 ### Opt-in-blok (mockup + Flodesk-form) — gedeeld component
 
 Gebruikt op de video-, homepage- en veiligheidsplan-pagina. De klassen staan in
@@ -189,8 +215,8 @@ Gebruikt op de video-, homepage- en veiligheidsplan-pagina. De klassen staan in
 - Onder **1080px** stapelt het automatisch: mockup boven, formulier op volle breedte.
 - Heeft het blok een eigen kop/tekst (zoals de homepage-veiligheidsplan-opt-in), gebruik
   dan alleen `.section--optin` voor de krappe strook en houd de eigen layout eromheen.
-- Mockup-PNG's staan strak op het onderwerp bijgesneden (geen lege transparante rand),
-  zodat het beeld de toegewezen breedte echt vult.
+- De mockup staat strak bijgesneden, zonder transparante rand — zie "Mockup-PNG's"
+  hierboven; dat geldt site-breed, niet alleen hier.
 
 ---
 

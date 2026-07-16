@@ -244,10 +244,13 @@
     padding: clamp(2.5rem, 5vw, 5rem) 0;
   }
   /* Breedte expliciet, niet via left+right: een <img> rekt daar niet mee op
-     (anders dan de hero, die een div met achtergrondfoto gebruikt). */
+     (anders dan de hero, die een div met achtergrondfoto gebruikt).
+     object-position 85%: de snit staat ver naar rechts in de foto, zodat de
+     scherpe bloesem als HELE bloemen links naast de telefoon uitkomt. Op
+     center (de standaard) staat daar alleen onscherpe achtergrond. */
   .podcast-photo {
     position: absolute; top: 0; left: 0;
-    width: 50%; height: 100%; object-fit: cover; z-index: 0;
+    width: 50%; height: 100%; object-fit: cover; object-position: 85% center; z-index: 0;
   }
   #podcast .container { position: relative; z-index: 1; flex: 1 1 auto; width: 100%; }
   /* De telefoon hangt aan de LINKERRAND VAN DE KAART: hij steekt er met
@@ -371,10 +374,17 @@
       opacity: 1; transform: translateX(-50%); transition: none;
     }
     #podcast.in .podcast-phone { transform: translateX(-50%); }
+    /* De foto valt tot één regelafstand BOVEN de knop onder de kaart, en steekt
+       er onderaan ruim onderuit. Snit los van desktop.
+       Hoogte 560 is niet vrijblijvend: een liggende foto in een staand venster
+       toont altijd de VOLLE hoogte (verticaal pannen doet niets), dus de enige
+       manier om de scherpe tak onder de kaart vandaan te krijgen is de foto
+       hoger maken. Bij 420 viel hij nog net achter de kaart. */
     .podcast-photo {
       position: static; order: 2; z-index: 0;
-      width: 100%; height: 320px;
-      margin-top: calc(-1 * (var(--podcast-knop-h) + var(--podcast-card-pad)));
+      width: 100%; height: 560px;
+      object-position: 62% center;
+      margin-top: calc(-1 * (var(--podcast-knop-h) + var(--podcast-card-pad) + var(--lh-body)));
     }
     .persona-grid, .products-grid, .program-features {
       grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto;
