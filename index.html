@@ -214,27 +214,66 @@
   @media (max-width: 600px) { .carousel { padding: 0 40px; } .carousel__btn { font-size: 24px; } }
 
   /* ---- SECTIE 10: Podcast (doc: vlak plum-200, speler-icoon pruim,
-          afleveringstekst hover naar roos-500) ---- */
-  #podcast { position: relative; overflow: hidden; background: var(--plum-200); padding: 0; }
-  .podcast-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; }
-  .podcast-visual { position: relative; align-self: stretch; min-height: 560px; }
-  .podcast-visual .podcast-photo {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+          afleveringstekst hover naar roos-500) ----
+     Zelfde bouw als de hero in tokens.css, maar horizontaal gespiegeld:
+     foto links tot 50%, plum-200-vlak rechts, witte kaart rechts.
+     De kaart staat rechts in de container, dus zijn rechterrand ligt vast op
+     (helft van het scherm) + container-max/2 - gutter. Willen we dat de kaart
+     tegelijk met 1/3 van zijn breedte over de foto valt, dan ligt de breedte
+     vast: rechterrand = helft + 2/3 * breedte, dus breedte = 1,5 * (container-max/2
+     - gutter) = 804px. Die 1/3 klopt dan op ELKE schermbreedte, net als in de hero.
+     De telefoon vliegt vanaf de fotokant in en eindigt met 1/3 van zijn breedte
+     over de kaart. Hij staat IN de kaart en wordt links naar buiten geduwd, zodat
+     die 1/3 klopt ongeacht hoe breed de kaart uitvalt. */
+  #podcast {
+    --podcast-card-w: calc((var(--container-max) / 2 - var(--gutter)) * 1.5);
+    /* 260px = ~20% van de sectiebreedte en ~64% van de sectiehoogte: dezelfde
+       verhouding als de telefoon in ChicSpark. Pas je dit aan, dan volgt de
+       overlap vanzelf, want die is hieronder een derde van deze breedte. */
+    --podcast-phone-w: 260px;
+    --podcast-phone-over: calc(var(--podcast-phone-w) / 3);   /* 1/3 ligt over het wit */
+    --podcast-card-pad: clamp(2rem, 4vw, 3.5rem);
+    position: relative; overflow: hidden;
+    background: var(--plum-200);
+    min-height: 800px;             /* zelfde vaste hoogte als de hero */
+    display: flex; align-items: center;
+    padding: clamp(2.5rem, 5vw, 5rem) 0;
   }
-  /* Telefoon blijft binnen de linkerkolom zodat de tekst in de witte kaart
-     altijd vrij leesbaar is (aangepast 2026-07-09 op verzoek Hiltje) */
-  .podcast-visual .podcast-phone {
-    position: absolute; bottom: 0; left: 8%; width: 300px; max-width: 60%; height: auto; z-index: 3;
+  /* Breedte expliciet, niet via left+right: een <img> rekt daar niet mee op
+     (anders dan de hero, die een div met achtergrondfoto gebruikt). */
+  .podcast-photo {
+    position: absolute; top: 0; left: 0;
+    width: 50%; height: 100%; object-fit: cover; z-index: 0;
+  }
+  #podcast .container { position: relative; z-index: 1; flex: 1 1 auto; width: 100%; }
+  /* De telefoon hangt aan de LINKERRAND VAN DE KAART: hij steekt er met
+     (breedte - overlap) links uit, dus precies 1/3 blijft op het wit liggen.
+     Daardoor klopt de 1/3 ook als de kaart smaller wordt. */
+  .podcast-phone {
+    position: absolute; z-index: 3; top: 50%;
+    left: calc(var(--podcast-phone-over) - var(--podcast-phone-w));
+    width: var(--podcast-phone-w); height: auto;
     filter: drop-shadow(0 20px 40px rgba(92, 85, 86, 0.28));
-    opacity: 0; transform: translateX(-180%);
+    opacity: 0; transform: translateY(-50%) translateX(-180%);
     transition: opacity 0.6s var(--ease-out), transform 0.9s var(--ease-out);
   }
-  .podcast-visual.in .podcast-phone { opacity: 1; transform: none; }
+  #podcast.in .podcast-phone { opacity: 1; transform: translateY(-50%); }
   .podcast-content {
-    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-float);
-    padding: 2.75rem; position: relative; z-index: 2;
-    margin-left: -100px;
-    margin-right: max(var(--gutter), calc((100vw - var(--container-max)) / 2));
+    background: var(--white);
+    /* Nooit zo breed dat de telefoon links buiten beeld valt: het deel van de
+       telefoon dat NIET over de kaart ligt (breedte - overlap) moet er links
+       naast passen, plus een gutter lucht. Speelt tussen 860px en ~1170px,
+       waar de container al krimpt maar we nog niet stapelen. */
+    width: min(
+      var(--podcast-card-w),
+      calc(100% - var(--podcast-phone-w) + var(--podcast-phone-over) - var(--gutter))
+    );
+    margin-left: auto;
+    padding: var(--podcast-card-pad);
+    /* extra ruimte links, zodat de telefoon alleen over de padding valt
+       en de tekst vrij leesbaar blijft */
+    padding-left: calc(var(--podcast-phone-over) + var(--podcast-card-pad));
+    position: relative; z-index: 2;
   }
   .episode-list { list-style: none; padding: 0; margin: 1.5rem 0; }
   .episode { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 0; border-top: 1px solid var(--border-rose); }
@@ -257,7 +296,7 @@
   #fd-form-6a4fd42887111b754f5f26f3 [class*="__subtitle"] { display: none !important; }
   #fd-form-6a4fd42887111b754f5f26f3 [class*="__form"] { padding: 10px 0 0 !important; }
   @media (prefers-reduced-motion: reduce) {
-    .podcast-visual .podcast-phone { opacity: 1; transform: none; transition: none; }
+    .podcast-phone { opacity: 1; transform: translateY(-50%); transition: none; }
   }
 
   /* ---- SECTIE 11: Vandaag beginnen (doc: wit, kaarten met beeld, monogram
@@ -295,10 +334,24 @@
   /* ---- SECTIE 14: Footer (volledige homepage-footer met menukolommen + IG-strip)
           + veiligheidsblok + copyright: gedeeld footer-systeem in design-system/tokens.css ---- */
 
+  /* Mobiel: stapelen zoals de hero. Fotoband bovenaan met de telefoon erin,
+     witte kaart eronder. Geen invliegen hier; de telefoon staat er gewoon. */
   @media (max-width: 860px) {
-    .podcast-split { grid-template-columns: 1fr; gap: 2.5rem; }
-    .podcast-visual { min-height: 380px; order: -1; }
-    .podcast-content { margin: 0 var(--gutter) var(--gutter); }
+    #podcast { min-height: 0; display: block; padding: 0 0 2.5rem; }
+    .podcast-photo { width: 100%; height: 380px; }
+    /* static, zodat de telefoon hier aan de SECTIE hangt (in de fotoband)
+       in plaats van aan de kaartrand */
+    .podcast-content {
+      position: static;
+      width: 100%; margin-left: 0;
+      padding: var(--podcast-card-pad);
+    }
+    .podcast-phone {
+      top: 22px; left: 50%; width: 170px;
+      opacity: 1; transform: translateX(-50%); transition: none;
+    }
+    #podcast.in .podcast-phone { transform: translateX(-50%); }
+    #podcast .container { padding-top: 380px; }
     .persona-grid, .products-grid, .program-features {
       grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto;
     }
@@ -519,14 +572,16 @@
     </div>
   </section>
 
-  <!-- SECTIE 10: Podcast -->
-  <section class="section" id="podcast">
-    <div class="podcast-split">
-      <div class="podcast-visual">
-        <img class="podcast-photo" src="assets/photos/podcast-bloesem.jpg" alt="">
-        <img class="podcast-phone" src="assets/photos/podcast-phone.png" alt="Podcastspeler op een telefoon">
-      </div>
+  <!-- SECTIE 10: Podcast — hero-geometrie, horizontaal gespiegeld: foto links
+       tot 50%, plum-200-vlak rechts, witte kaart rechts uitgelijnd met de
+       container. De telefoon-mockup is getrimd tot de telefoon zelf (geen
+       transparante rand); een nieuwe export moet opnieuw getrimd worden,
+       anders klopt de 1/3-overlap niet meer met wat je ziet. -->
+  <section id="podcast">
+    <img class="podcast-photo" src="assets/photos/podcast-bloesem.jpg" alt="">
+    <div class="container">
       <div class="podcast-content">
+        <img class="podcast-phone" src="assets/photos/podcast-phone-igl.png" alt="Telefoon met de podcast Van Geweld naar Geluk in een podcastspeler">
         <p class="eyebrow">Van Geweld naar Geluk</p>
         <!-- Placeholder: de podcast is nog niet live (nooit als beluisterbaar presenteren
              tot Hiltje bevestigt dat hij live is). Aflevering-titels volgen. -->
@@ -742,7 +797,7 @@
   // Podcast: telefoon-mockup schuift zachtjes in beeld zodra het blok zichtbaar wordt.
   // Respecteert 'reduce motion' (traumageïnformeerd: geen verrassende animaties).
   (function () {
-    var v = document.querySelector('.podcast-visual');
+    var v = document.getElementById('podcast');
     if (!v) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || !('IntersectionObserver' in window)) { v.classList.add('in'); return; }
