@@ -213,6 +213,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Regelafbreking die ALLEEN op mobiel telt (<br class="br-mobile">): voor tekst
+   die op desktop prima op 1 regel past, maar op smalle schermen op een lelijke
+   plek afbreekt. Zet 'm op de gewenste knip-plek; op desktop doet-ie niets. */
+.br-mobile { display: none; }
+@media (max-width: 860px) {
+  .br-mobile { display: initial; }
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
