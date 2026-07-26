@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Dagboek bij de bijeenkomst | IK GA LEVEN</title>
+<!-- Bron: Google Doc 1KBtjsd877sKruaVpC6FS0l5p--PR6FdaA2Ro2g6Te7U (aangeleverd 2026-07-24).
+     Mengvorm: cover/tekstpagina's uit ebook-het-begon-met-liefde.html, invulpagina's uit
+     ../../ebooks/_TEMPLATE-les.html, alles in de IK GA LEVEN-tokens.
+     Renderen naar A4 PDF: zie ../../ebooks/_HOE-RENDER.md (map zonder spaties). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,ital,wght@8..60,0,300;8..60,1,300&family=Work+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ══ IK GA LEVEN design tokens (subset, zelfvoorzienend voor print) ══ */
+  :root {
+    --plum: #6B1953;
+    --magenta: #C41E7A;
+    --rose: #D585AE;
+    --rose-tint: #F5E3EE;
+    --butter: #FFF8D1;
+    --ecru: #F6F1EA;
+    --white: #FFFFFF;
+    --text: #5C5556;
+    --text-muted: #8A8283;
+    --border-rose: rgba(213, 133, 174, 0.5);
+    --write: #E0C8D6;
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Work Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  @page { size: A4; margin: 0; }
+
+  /* ══ Pagina (A4 op 96dpi) ══ */
+  .page {
+    width: 794px;
+    height: 1123px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--white);
+    padding: 54px 66px 92px;
+  }
+  .page:last-child { page-break-after: auto; }
+  .page--ecru { background: var(--ecru); }
+  .page--tint { background: var(--rose-tint); }
+  .page--butter { background: var(--butter); }
+
+  /* Kopregel bovenaan (uit het werkboek, in IGL-stijl) */
+  .rh {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--font-body); font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; font-size: 9px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-rose);
+    padding-bottom: 12px;
+  }
+  .pfoot {
+    position: absolute; left: 66px; right: 66px; bottom: 34px;
+    border-top: 1px solid var(--border-rose);
+    padding-top: 10px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; font-weight: 500; letter-spacing: 1.4px;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .pfoot .pg { color: var(--plum); }
+  .pfoot a { color: inherit; text-decoration: none; }
+
+  /* ══ Typografie ══ */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 300; color: var(--plum);
+    line-height: 1.2; letter-spacing: 0.4px;
+    margin: 0 0 14px;
+  }
+  h1 { font-size: 40px; }
+  h2 { font-size: 29px; }
+  h3 { font-size: 20px; margin: 26px 0 8px; }
+  .it { font-style: italic; }
+  p { margin: 0 0 13px; }
+  a { color: var(--plum); }
+  strong { font-weight: 500; color: var(--plum); }
+
+  .eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--plum); margin: 0 0 12px;
+  }
+  .divider { border: 0; border-top: 1px solid var(--border-rose); width: 140px; margin: 18px 0 22px; }
+  .divider--center { margin-left: auto; margin-right: auto; }
+  .center { text-align: center; }
+  .small { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+  .lead-in { font-weight: 500; color: var(--plum); }
+  .lead {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 19px; line-height: 1.5; color: var(--text-muted);
+    margin: 0 0 26px;
+  }
+  .verhaal p { margin: 0 0 11px; }
+
+  /* Pull-quote */
+  .pull {
+    font-family: var(--font-display); font-weight: 300; font-size: 25px;
+    line-height: 1.35; color: var(--plum); letter-spacing: 0.4px;
+    margin: 30px 0; padding-left: 22px; border-left: 2px solid var(--rose);
+  }
+  /* Cursieve aanwijzing van Hiltje */
+  .note {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 15.5px; line-height: 1.6; color: var(--text-muted);
+    border-left: 2px solid var(--rose); padding: 2px 0 2px 20px; margin: 0 0 8px;
+  }
+
+  /* Getint binnenpaneel */
+  .panel { background: var(--butter); padding: 26px 30px; margin: 22px 0; }
+  .panel--rose { background: var(--rose-tint); }
+  .panel--white { background: var(--white); }
+  .panel > :last-child { margin-bottom: 0; }
+
+  /* ══ Invul-vocabulaire (uit het werkboek) ══ */
+  .item { margin: 0 0 34px; }
+  .item-head { display: flex; align-items: baseline; gap: 14px; margin: 0 0 6px; }
+  .num {
+    font-family: var(--font-display); font-style: italic; font-size: 30px;
+    line-height: 1; color: var(--rose); min-width: 40px;
+  }
+  .qlabel {
+    font-family: var(--font-body); font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; font-size: 13px; color: var(--plum);
+  }
+  .question {
+    font-family: var(--font-display); font-style: italic; font-size: 18.5px;
+    line-height: 1.35; color: var(--plum); margin: 0 0 6px;
+  }
+  .desc { font-size: 12.5px; line-height: 1.55; color: var(--text-muted); margin: 0 0 10px; }
+  .desc.pad, .question.pad, .rules.pad { margin-left: 54px; }
+
+  .rules {
+    background-image: repeating-linear-gradient(to bottom,
+      var(--write) 0px, var(--write) 1px, transparent 1px, transparent 30px);
+  }
+  .rules.n2  { height: 60px; }
+  .rules.n3  { height: 90px; }
+  .rules.n4  { height: 120px; }
+  .rules.n5  { height: 150px; }
+  .rules.n6  { height: 180px; }
+  .rules.n8  { height: 240px; }
+  .rules.n10 { height: 300px; }
+  .rules.n12 { height: 360px; }
+  .rules.top { margin-top: 24px; }
+
+  /* Aankruisvakjes */
+  .checks { display: flex; gap: 34px; margin: 16px 0 22px; }
+  .checks.stack { flex-direction: column; gap: 12px; }
+  .check { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--text); }
+  .box { width: 15px; height: 15px; border: 1.5px solid var(--plum); background: var(--white); flex: 0 0 auto; }
+
+  /* Leeg teken- of werkvlak */
+  .draw { border: 1px solid var(--border-rose); background: var(--white); }
+
+  /* ══ Fabel/feit-tabel ══ */
+  .tbl { width: 100%; border-collapse: collapse; margin: 6px 0 0; }
+  .tbl th {
+    font-family: var(--font-body); font-weight: 500; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--plum);
+    text-align: left; padding: 0 0 8px; border-bottom: 1px solid var(--rose);
+  }
+  .tbl th:first-child { width: 34%; padding-right: 22px; }
+  .tbl td {
+    vertical-align: top; padding: 14px 0; border-bottom: 1px solid var(--border-rose);
+    font-size: 12.5px; line-height: 1.6; color: var(--text);
+  }
+  .tbl td:first-child {
+    padding-right: 22px; color: var(--plum);
+    font-family: var(--font-display); font-style: italic; font-size: 14.5px; line-height: 1.45;
+  }
+  .tbl tr:last-child td { border-bottom: 0; }
+
+  /* ══ Cover ══ */
+  .cover { display: flex; flex-direction: column; height: 977px; }
+  .cover-top { flex: 0 0 auto; }
+  .cover-mid { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; }
+  .archwrap { position: relative; width: 300px; }
+  .petal-shape {
+    position: absolute; left: -54px; bottom: -30px;
+    width: 210px; height: 340px; background: var(--rose);
+    border-radius: 130px 6px 4px 4px;
+  }
+  .arch-img {
+    position: relative; display: block; width: 300px; height: 400px; object-fit: cover;
+    object-position: 50% 30%;
+    border-radius: 999px 999px 0 0;
+    box-shadow: 0 16px 36px -22px rgba(107, 25, 83, .45);
+  }
+  .cover h1 { font-size: 50px; }
+
+  /* ══ Quote-pagina ══ */
+  .quote-page {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; height: 977px;
+  }
+  .bigquote {
+    font-family: var(--font-display); font-style: italic; font-size: 27px;
+    line-height: 1.5; color: var(--plum); margin: 0 0 26px; max-width: 620px;
+  }
+  .qline { width: 150px; height: 1px; background: var(--rose); border: 0; margin: 24px 0; }
+  .sig { font-family: var(--font-display); font-style: italic; font-size: 17px; color: var(--text-muted); }
+
+  /* ══ Over Hiltje ══ */
+  .bio { display: flex; gap: 30px; align-items: flex-start; margin: 26px 0 0; }
+  .bio-img {
+    flex: 0 0 auto; width: 210px; height: 262px; object-fit: cover;
+    border-radius: 999px 999px 6px 6px;
+  }
+  .bio-body > :last-child { margin-bottom: 0; }
+
+  .danger {
+    border-top: 1px solid var(--border-rose);
+    padding-top: 14px; margin: 0;
+    font-size: 12.5px; line-height: 1.6; color: var(--text-muted);
+  }
+  .danger strong { color: var(--magenta); font-weight: 500; }
+
+  .linklist { margin: 0; padding: 0; list-style: none; }
+  .linklist li { margin: 0 0 9px; font-size: 14px; line-height: 1.5; }
+  .linklist li:last-child { margin-bottom: 0; }
+  .linklist .lbl { display: block; font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 1px; }
+  .linklist .val { font-weight: 500; color: var(--plum); }
+</style>
+</head>
+<body>
+
+<!-- ════════ 01 · COVER ════════ -->
+<section class="page page--ecru">
+  <div class="cover">
+    <div class="cover-top">
+      <div class="rh"><span>IK GA LEVEN</span><span>Bij de online bijeenkomst</span></div>
+      <div style="margin-top:44px;">
+        <p class="eyebrow">Werkboek</p>
+        <h1>Dagboek bij de <span class="it">bijeenkomst</span></h1>
+        <hr class="divider">
+        <p class="lead" style="max-width:430px;">Zit ik in een relatie met psychisch geweld? Ruimte om te
+          schrijven, te tekenen en niets te hoeven weten.</p>
+      </div>
+    </div>
+    <div class="cover-mid">
+      <div class="archwrap">
+        <div class="petal-shape"></div>
+        <img class="arch-img" src="../assets/photos/woman-writing.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">01</span></span></div>
+</section>
+
+<!-- ════════ 02 · WELKOM ════════ -->
+<section class="page">
+  <div class="rh"><span>Dagboek bij de bijeenkomst</span><span>Welkom</span></div>
+  <div style="margin-top:40px;">
+    <p class="eyebrow">Voor je begint</p>
+    <h1>Dit boekje is van <span class="it">jou</span>.</h1>
+    <hr class="divider">
+    <p>Dit dagboek hoort bij de bijeenkomst. Het is bedoeld om in te schrijven, in te tekenen, of
+      gewoon open te laten liggen tot je er zin in hebt.</p>
+    <p>Er is geen goed antwoord. Er is geen volgorde die moet. Je mag pagina's overslaan, halverwege
+      stoppen, of alleen de zinnen lezen zonder iets in te vullen. Alles wat je hier opschrijft blijft
+      van jou. Niemand kijkt mee.</p>
+
+    <div class="panel panel--rose">
+      <p><span class="lead-in">Denk even aan je veiligheid.</span> Als het thuis niet veilig is om dit
+        boekje te bewaren, laat het dan bij iemand die je vertrouwt, of schrijf alleen losse woorden op
+        die voor niemand anders te lezen zijn. Wat je onthoudt, ben je niet kwijt.</p>
+    </div>
+
+    <h3>Wat je in dit boekje vindt</h3>
+    <p class="small" style="color:var(--text);">Het eiland &middot; Het schema van Biderman &middot;
+      Waarom bestaat misbruik &middot; De boom van Bancroft &middot; De zieke planeet &middot;
+      De relatiequiz &middot; De grondslag voor een gezonde relatie &middot; Hoop en dankbaarheid</p>
+
+    <div class="panel" style="margin-top:34px;">
+      <p style="margin-bottom:6px;"><span class="lead-in">Neem je tijd.</span></p>
+      <p class="small" style="margin-bottom:0;">Sommige stukken in dit boekje gaan over dingen die zwaar
+        kunnen zijn om te lezen. Merk je dat het te veel wordt, leg het dan weg. Het loopt niet weg.</p>
+    </div>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">02</span></span></div>
+</section>
+
+<!-- ════════ 03 · HET EILAND · opdracht ════════ -->
+<section class="page">
+  <div class="rh"><span>Het eiland</span><span>De opdracht</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Het eiland</p>
+    <h1>Teken wat je <span class="it">ziet</span>.</h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:26px;">
+    <div class="item-head"><span class="num">01</span><span class="qlabel">De opdracht</span></div>
+    <p class="question pad">Teken de vrouw en de koning op het eiland.</p>
+    <p class="desc pad">Beschrijf de fysieke en emotionele gevolgen van het leven op het eiland.</p>
+  </div>
+
+  <div class="draw" style="height:560px;"></div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">03</span></span></div>
+</section>
+
+<!-- ════════ 04 · HET EILAND · verhaal 1 ════════ -->
+<section class="page page--ecru">
+  <div class="rh"><span>Het eiland</span><span>Het verhaal</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Het verhaal</p>
+    <h1>Het eiland</h1>
+    <hr class="divider">
+    <div class="verhaal">
+      <p>Er was eens een vrouw. Ze besloot op een lastminutevakantie te gaan. Ze ging naar het reisbureau
+        en hoorde daar over een prachtig eiland. Het weer was er heerlijk en het was erg goedkoop om
+        erheen te gaan. Ze boekte een vakantie van twee weken en vloog de week daarop naar het eiland.</p>
+      <p>De vrouw kwam aan bij haar hotel op het eiland en was diep onder de indruk van het prachtige
+        hotel, de vriendelijke mensen en het adembenemende landschap. Bij de receptie van het hotel
+        kreeg ze te horen dat ze haar paspoort moest afgeven. Ze deed dit met tegenzin. De receptionist
+        legde uit dat dit om veiligheidsredenen was.</p>
+      <p>De vrouw beleefde twee heerlijke weken op het eiland: plezier, ontspanning en lekker eten. Ze
+        maakte zelfs iets bijzonders mee: ze ontmoette de koning van het eiland. Hij toonde grote
+        belangstelling voor haar en al snel ontstond er een wervelende vakantieromance.</p>
+      <p>Op de dag dat de vrouw zou vertrekken, verraste de koning haar bij het hotel. Hij vertelde dat
+        hij verliefd op haar was geworden en wilde dat ze als zijn koningin op het eiland zou blijven.
+        De vrouw voelde zich nerveus, maar ook opgewonden. Ze stemde ermee in om nog een paar weken te
+        blijven en te zien hoe het zou lopen.</p>
+      <p>Na een paar dagen besefte de vrouw dat er iets goed mis was met het eiland. De eilandbewoners
+        leken minder vriendelijk en het eten minder lekker. Op een dag hoorde ze toevallig een
+        fluisterend gesprek: ze ontdekte dat de koning een wrede dictator was die alles op het eiland
+        in zijn greep hield.</p>
+    </div>
+    <p class="small" style="margin-top:18px;">Het verhaal gaat verder op de volgende pagina.</p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">04</span></span></div>
+</section>
+
+<!-- ════════ 05 · HET EILAND · verhaal 2 ════════ -->
+<section class="page page--ecru">
+  <div class="rh"><span>Het eiland</span><span>Het verhaal</span></div>
+  <div style="margin-top:36px;">
+    <div class="verhaal">
+      <p>De vrouw was geschokt. Ze haastte zich naar het paleis van de koning om hem hiermee te
+        confronteren. De koning werd woedend en sloot haar op in de harem bij zijn vele vrouwen. De
+        vrouw was doodsbang en wist niet wat ze moest doen.</p>
+      <p>Na vele dagen wist de vrouw te ontsnappen en een bericht in een fles te versturen om hulp te
+        vragen. Maar al snel werd ze weer gevangengenomen en teruggebracht naar het paleis van de
+        koning. Maanden later werd het bericht gevonden en arriveerde er een reddingsploeg.</p>
+      <p>De redders slaagden erin de vrouw van het eiland te halen en in veiligheid te brengen.</p>
+    </div>
+
+    <p class="pull">Maar dit was niet het einde van het verhaal: de vrouw had veel hulp en steun nodig
+      om te herstellen van alles wat ze had meegemaakt.</p>
+
+    <p class="note" style="margin-top:34px;">Gebruik de ruimte hieronder om bij het verhaal stil te
+      staan en iets op te schrijven.</p>
+    <div class="rules n12 top"></div>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">05</span></span></div>
+</section>
+
+<!-- ════════ 06 · BIDERMAN SCHEMA ════════ -->
+<section class="page">
+  <div class="rh"><span>Het schema van Biderman</span><span>Wat het met je doet</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Biderman</p>
+    <h1>Het schema van <span class="it">Biderman</span></h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:24px;">
+    <p class="question">Ontdekken wat het schema van Biderman weergeeft, heeft me geholpen mijn
+      ervaringen en wat mij is aangedaan te begrijpen.</p>
+    <div class="checks">
+      <span class="check"><span class="box"></span>Eens</span>
+      <span class="check"><span class="box"></span>Oneens</span>
+      <span class="check"><span class="box"></span>Ik weet het niet</span>
+    </div>
+  </div>
+
+  <p class="note">Gebruik de ruimte hieronder om gedachten over de tabel van Biderman op te schrijven
+    of te tekenen.</p>
+  <div class="draw" style="height:300px; margin-top:20px;"></div>
+  <div class="rules n6 top"></div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">06</span></span></div>
+</section>
+
+<!-- ════════ 07 · WAAROM BESTAAT MISBRUIK ════════ -->
+<section class="page">
+  <div class="rh"><span>Waarom bestaat misbruik?</span><span>Jouw antwoord</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">De vraag eronder</p>
+    <h1>Waarom bestaat <span class="it">misbruik</span>?</h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:44px;">
+    <div class="item-head"><span class="num">01</span><span class="qlabel">Wat ik zelf denk</span></div>
+    <p class="question pad">Ik denk dat misbruik plaatsvindt omdat...</p>
+    <div class="rules n8 pad top"></div>
+  </div>
+
+  <div class="item" style="margin-top:56px;">
+    <div class="item-head"><span class="num">02</span><span class="qlabel">Wat ik hoorde of las</span></div>
+    <p class="question pad">Wat ik over misbruik heb gehoord of gelezen, suggereert dat misbruik
+      plaatsvindt omdat...</p>
+    <div class="rules n8 pad top"></div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">07</span></span></div>
+</section>
+
+<!-- ════════ 08 · BANCROFT · intro + tabel 1 ════════ -->
+<section class="page">
+  <div class="rh"><span>De boom van Bancroft</span><span>Fabel en feit &middot; 1 van 2</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Bancroft</p>
+    <h1>De boom van <span class="it">Bancroft</span></h1>
+    <hr class="divider">
+    <p class="lead" style="margin-bottom:20px;">Wat we over plegers geloven, en wat er werkelijk aan de
+      hand is.</p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Fabel</th><th>Feit</th></tr>
+    <tr>
+      <td>Plegers van mishandeling zijn meestal zelf als kind mishandeld.</td>
+      <td>Ongeveer 50% van de plegers van misbruik heeft zelf als kind misbruik ervaren. Iemand
+        misbruiken is echter een keuze en aangeleerd gedrag; het komt niet voort uit trauma.</td>
+    </tr>
+    <tr>
+      <td>Alcohol- of drugsgebruik is een reden waarom sommige mensen zich misdragen of gewelddadig
+        gedragen.</td>
+      <td>Hoewel alcohol- of drugsgebruik het risico vergroten en een rol spelen bij mishandeling, ligt
+        de oorzaak bij de onderliggende opvattingen over bezit en recht hebben op (entitlement), en
+        niet bij het middelengebruik zelf.</td>
+    </tr>
+    <tr>
+      <td>Therapie helpt plegers.</td>
+      <td>Plegers moeten zich richten op hun eigen gedrag en de gevoelens van anderen. Begeleiding
+        richt zich echter op hun gevoelens en het gedrag van anderen. Individuele begeleiding of
+        relatietherapie kan gevaarlijk zijn en extra trauma veroorzaken.</td>
+    </tr>
+    <tr>
+      <td>Autisme, diabetes en andere medische aandoeningen kunnen iemand tot misbruikend gedrag
+        aanzetten.</td>
+      <td>Hoewel medische problemen het risico kunnen vergroten en een rol spelen bij misbruik, maken
+        ze iemand niet tot een misbruiker of pleger van geweld. Gewelddadig gedrag dat voortkomt uit
+        opvattingen over bezit en recht hebben op (entitlement) kan door gezondheidsproblemen worden
+        verergerd, maar de oorzaak ligt in die opvattingen zelf.</td>
+    </tr>
+    <tr>
+      <td>Misbruik ontstaat meestal door stress of een gebrek aan goede communicatieve
+        vaardigheden.</td>
+      <td>Stress kan bestaand gewelddadig gedrag verergeren, maar is niet de oorzaak ervan.
+        Vaardigheden op het gebied van relaties, zoals communicatie of onderhandelen, helpen een pleger
+        van mishandeling niet. Misbruik is geen relatieprobleem; het is een probleem van de pleger.</td>
+    </tr>
+  </table>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">08</span></span></div>
+</section>
+
+<!-- ════════ 09 · BANCROFT · tabel 2 ════════ -->
+<section class="page">
+  <div class="rh"><span>De boom van Bancroft</span><span>Fabel en feit &middot; 2 van 2</span></div>
+  <div style="margin-top:36px;">
+    <table class="tbl">
+      <tr><th>Fabel</th><th>Feit</th></tr>
+      <tr>
+        <td>Mishandelaars en plegers van geweld kampen vrijwel altijd met psychische problemen of zijn
+          narcisten.</td>
+        <td>De meeste mensen met psychische problemen vertonen geen gewelddadig of misbruikend gedrag.
+          Hoewel het grillige en onvoorspelbare gedrag van iemand die zich schuldig maakt aan misbruik
+          kan lijken op een psychisch probleem, richt diegene zijn acties doorgaans uitsluitend op de
+          partner, wat erop wijst dat er wel degelijk sprake is van zelfbeheersing.
+          <br><br>
+          Bij mannelijke plegers komen specifieke stoornissen significant vaker voor dan gemiddeld.
+          Internationaal longitudinaal onderzoek toont aan dat bijna alle psychiatrische diagnoses het
+          risico op partnergeweld met een factor 2 tot 8 verhogen vergeleken met de algemene bevolking.
+          In grootschalige registers en enquêtes onder de normale bevolking, dus los van klinieken of
+          reclassering, rapporteert het overgrote deel van de actieve plegers geen psychiatrische
+          stoornis. Ongeveer 10% tot 15% van de mensen die milde tot matige vormen van partnergeweld
+          gebruiken, heeft een gediagnosticeerde psychische stoornis.
+          <br><br>
+          Onderzoek van de Universiteit Leiden naar partnerdoding (femicide) in Nederland toont aan dat
+          bij ongeveer een derde van de daders die hun partner om het leven brachten, officieel een
+          psychiatrische stoornis was vastgesteld ten tijde van het delict.</td>
+      </tr>
+      <tr>
+        <td>Bij misbruik en geweld draait het om woede en een verlies van controle.</td>
+        <td>Cursussen woedebeheersing zijn nooit een geschikte interventie voor plegers van geweld en
+          kunnen zelfs gevaarlijk zijn. Plegers proberen mensen via hun gedrag te controleren; door
+          boos over te komen of zichzelf op te winden, kunnen ze hun gedrag rechtvaardigen.</td>
+      </tr>
+      <tr>
+        <td>Mishandelaars hebben meestal een laag zelfbeeld.</td>
+        <td>Hoewel sommige plegers van geweld een laag zelfbeeld hebben, ligt het eigenlijke probleem
+          bij de overtuiging dat ze superieur zijn aan hun partner, dat ze hun partner bezitten en dat
+          ze het recht hebben zich te gedragen zoals ze doen.</td>
+      </tr>
+      <tr>
+        <td>Religie en cultuur spelen een grote rol bij de redenen waarom sommige mensen zich schuldig
+          maken aan geweld of mishandeling.</td>
+        <td>Opvattingen over eigendom en recht hebben op (entitlement) kunnen hun oorsprong vinden in
+          religie en culturele contexten; er bestaat een direct verband tussen culturen en
+          gemeenschappen die vrouwen waarderen en vrouwenrechten bevorderen, en de mate van geweld
+          tegen vrouwen. Plegers van geweld zijn echter in elke gemeenschap ter wereld te vinden. Alle
+          religies zijn geworteld in waarden als respect en zorgzaamheid en keuren mishandeling niet
+          goed.</td>
+      </tr>
+    </table>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">09</span></span></div>
+</section>
+
+<!-- ════════ 10 · BANCROFT · reflectie ════════ -->
+<section class="page page--tint">
+  <div class="rh"><span>De boom van Bancroft</span><span>Wat het met je doet</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Bancroft</p>
+    <h1>Wat je zelf had <span class="it">geloofd</span></h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:40px;">
+    <div class="item-head"><span class="num">01</span><span class="qlabel">De fabel</span></div>
+    <p class="question pad">Welke fabel had jij zelf geloofd?</p>
+    <p class="desc pad">Misschien meerdere. Misschien een die hier niet tussen staat.</p>
+    <div class="rules n8 pad top"></div>
+  </div>
+
+  <div class="item" style="margin-top:48px;">
+    <div class="item-head"><span class="num">02</span><span class="qlabel">Wat het verandert</span></div>
+    <p class="question pad">Wat verandert er als die fabel niet waar blijkt te zijn?</p>
+    <div class="rules n8 pad top"></div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">10</span></span></div>
+</section>
+
+<!-- ════════ 11 · BIDERMAN GEDRAG ════════ -->
+<section class="page">
+  <div class="rh"><span>Biderman en gedrag</span><span>Jouw aantekeningen</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Biderman</p>
+    <h1>Biderman en <span class="it">gedrag</span></h1>
+    <hr class="divider">
+    <p class="lead" style="margin-bottom:8px;">Ruimte om te noteren wat je herkent, wat je opvalt, of
+      wat je nog niet kunt plaatsen.</p>
+  </div>
+
+  <div class="draw" style="height:360px; margin-top:26px;"></div>
+  <div class="rules n10 top"></div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">11</span></span></div>
+</section>
+
+<!-- ════════ 12 · DE ZIEKE PLANEET · tekst ════════ -->
+<section class="page page--butter">
+  <div class="rh"><span>De zieke planeet</span><span>De wereld eromheen</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">De zieke planeet</p>
+    <h1>De zieke <span class="it">planeet</span></h1>
+    <hr class="divider">
+    <div class="verhaal">
+      <p>Er heerst een kwaal in onze samenleving, en wereldwijd, waardoor vrouwen, net als de eenhoorns
+        in het verhaal, slecht worden behandeld en benadeeld. Door de jaren heen hebben velen deze
+        kwaal aangeduid als patriarchaat. Een patriarch is het mannelijk gezinshoofd, zoals Vito
+        Corleone in de Godfather-films of de paus in de katholieke kerk, en een patriarchaat is een
+        maatschappelijk of bestuurlijk systeem waarin mannen de macht in handen hebben en vrouwen daar
+        grotendeels van zijn uitgesloten.</p>
+      <p>Ook al heeft een land een vrouwelijke regeringsleider, denk aan Margaret Thatcher, Theresa May,
+        Nicola Sturgeon in Schotland of Jacinda Ardern in Nieuw-Zeeland, de macht blijft vaak
+        onevenredig verdeeld onder mannen, doorgaans witte mannen met een goede gezondheid uit de
+        midden- of hogere klasse, terwijl vrouwen er doorgaans buiten worden gehouden.</p>
+      <p>In onze samenleving is het de meesten van ons waarschijnlijk wel opgevallen dat mannen en
+        vrouwen verschillend worden behandeld. Mannen bekleden nog steeds de meeste belangrijke functies
+        en lijken beter te presteren in banen die goed betaald worden en gepaard gaan met macht.
+        Vrouwen doen over het algemeen het slecht betaalde of onbetaalde werk, zelfs wanneer daarvoor
+        dezelfde vaardigheden vereist zijn. Zo zijn goedbetaalde chef-koks bijvoorbeeld bijna altijd
+        mannen. Thuis zijn het echter doorgaans de vrouwen die koken, schoonmaken en voor de kinderen
+        zorgen.</p>
+    </div>
+  </div>
+
+  <div style="position:absolute; left:66px; right:66px; bottom:104px;">
+    <div class="panel panel--white" style="margin:0;">
+      <p style="margin-bottom:0;"><span class="lead-in">Waar het om gaat.</span> Een pleger bedenkt zijn
+        opvattingen niet in zijn eentje. Hij haalt ze ergens vandaan.</p>
+    </div>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">12</span></span></div>
+</section>
+
+<!-- ════════ 13 · DE ZIEKE PLANEET · vragen 1 ════════ -->
+<section class="page">
+  <div class="rh"><span>De zieke planeet</span><span>Jouw antwoord</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">De zieke planeet</p>
+    <h1>Waar komt het <span class="it">vandaan</span>?</h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:40px;">
+    <div class="item-head"><span class="num">01</span><span class="qlabel">De herkomst</span></div>
+    <p class="question pad">Waar zouden de opvattingen van een pleger over eigendom en aanspraak
+      (entitlement, recht hebben op) op de ander vandaan kunnen komen?</p>
+    <div class="rules n8 pad top"></div>
+  </div>
+
+  <div class="item" style="margin-top:52px;">
+    <div class="item-head"><span class="num">02</span><span class="qlabel">Noreen</span></div>
+    <p class="question pad">Herken je je in Noreen, de roze eenhoorn?</p>
+    <div class="checks" style="margin-left:54px;">
+      <span class="check"><span class="box"></span>Ja</span>
+      <span class="check"><span class="box"></span>Nee</span>
+      <span class="check"><span class="box"></span>Weet ik niet zeker</span>
+    </div>
+    <p class="question pad" style="font-size:17px;">Waarom wel? Of waarom niet?</p>
+    <div class="rules n5 pad top"></div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">13</span></span></div>
+</section>
+
+<!-- ════════ 14 · DE ZIEKE PLANEET · vragen 2 ════════ -->
+<section class="page">
+  <div class="rh"><span>De zieke planeet</span><span>Jouw antwoord</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">De zieke planeet</p>
+    <h1>Hoe gaat de wereld ermee <span class="it">om</span>?</h1>
+    <hr class="divider">
+    <p class="note" style="margin-top:26px;">Gebruik de ruimte hieronder om na te denken over de manier
+      waarop onze samenleving omgaat met plegers van misbruik en geweld en de schade die zij aanrichten.
+      Lijkt dit op de zieke planeet?</p>
+  </div>
+
+  <div class="rules n12 top" style="margin-top:34px;"></div>
+  <div class="rules n6" style="margin-top:30px;"></div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">14</span></span></div>
+</section>
+
+<!-- ════════ 15 · RELATIE QUIZ ════════ -->
+<section class="page page--tint">
+  <div class="rh"><span>De relatiequiz</span><span>Wat je opviel</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">De relatiequiz</p>
+    <h1>Wat je over jezelf <span class="it">merkte</span></h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:44px;">
+    <p class="question">Wat merkte je op over je eigen ideeën over relaties?</p>
+    <p class="desc">Er is geen goed of fout. Schrijf wat er opkwam, ook als het je verraste.</p>
+    <div class="rules n12 top"></div>
+    <div class="rules n4" style="margin-top:30px;"></div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">15</span></span></div>
+</section>
+
+<!-- ════════ 16 · GRONDSLAG GEZONDE RELATIE ════════ -->
+<section class="page">
+  <div class="rh"><span>Een gezonde relatie</span><span>De grondslag</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">De grondslag</p>
+    <h1>Waar een gezonde relatie op <span class="it">rust</span></h1>
+    <hr class="divider">
+    <p class="lead" style="margin-bottom:6px;">Ruimte om op te schrijven of te tekenen wat volgens jou
+      de bodem is waar een relatie op mag staan.</p>
+  </div>
+
+  <div class="draw" style="height:340px; margin-top:26px;"></div>
+  <div class="rules n10 top"></div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">16</span></span></div>
+</section>
+
+<!-- ════════ 17 · HOOP EN DANKBAARHEID ════════ -->
+<section class="page">
+  <div class="rh"><span>Hoop en dankbaarheid</span><span>Eén woord</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Tot slot</p>
+    <h1>Hoop en <span class="it">dankbaarheid</span></h1>
+    <hr class="divider">
+    <p class="note" style="margin-top:26px;">Gebruik de ruimte hieronder om je woord of zin die de
+      bijeenkomst voor je samenvat op te schrijven.</p>
+  </div>
+
+  <div class="rules n6 top" style="margin-top:34px;"></div>
+
+  <div style="position:absolute; left:66px; right:66px; bottom:170px;">
+    <div class="panel panel--rose" style="margin:0;">
+      <p class="eyebrow" style="margin-bottom:8px;">Als je nog even zin hebt</p>
+      <p style="margin-bottom:0;">Schrijf op wat je vandaag hebt gehoord en wat je wilt onthouden. Niet
+        omdat het moet. Omdat het jouw dag was.</p>
+    </div>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">17</span></span></div>
+</section>
+
+<!-- ════════ 18 · QUOTE ════════ -->
+<section class="page page--ecru">
+  <div class="quote-page">
+    <p class="eyebrow">Om mee te nemen</p>
+    <p class="bigquote">&ldquo;Nothing is more beautiful than the smile that has struggled through the
+      tears.&rdquo;</p>
+    <hr class="qline">
+    <p class="sig">Demi Lovato</p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">18</span></span></div>
+</section>
+
+<!-- ════════ 19 · VERVOLG NAAR IK GA LEVEN ════════ -->
+<section class="page">
+  <div class="rh"><span>Vervolg</span><span>Naar IK GA LEVEN</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Vervolg</p>
+    <h1>Naar <span class="it">IK GA LEVEN</span></h1>
+    <hr class="divider">
+    <p>Dit dagboek hoort bij de gratis online bijeenkomst &ldquo;Zit ik in een relatie met psychisch
+      geweld?&rdquo;. Misschien heb je dit boekje in handen gekregen zonder dat je weet waar het vandaan
+      komt. Daarom hier kort waar het bij hoort.</p>
+    <p>IK GA LEVEN is een cursus van tien weken voor vrouwen die te maken hebben of hebben gehad met
+      psychisch geweld in hun relatie. Het is de Nederlandse bewerking van Own My Life, een programma
+      dat in het Verenigd Koninkrijk en Ierland al door meer dan 20.000 vrouwen is gevolgd. Je doet het
+      in een kleine groep, samen met andere vrouwen.</p>
+    <p>Er wordt niets van je verwacht. Je hoeft niets uit te leggen, niets te beslissen en niets aan je
+      situatie te veranderen om mee te doen. De cursus geeft je taal voor wat er gebeurt, laat zien hoe
+      geweld werkt en waarom het niet jouw schuld is, en helpt je terugvinden wie je was voordat dit
+      begon.</p>
+
+    <div class="panel panel--rose" style="margin-top:28px;">
+      <p class="eyebrow" style="margin-bottom:14px;">Waar je terecht kunt</p>
+      <ul class="linklist">
+        <li><span class="lbl">Alles over de cursus</span>
+          <span class="val">ikgalevencursus.nl/informatie</span></li>
+        <li><span class="lbl">Aanmelden voor de gratis online bijeenkomst</span>
+          <span class="val">ikgalevencursus.nl/bijeenkomst</span></li>
+        <li><span class="lbl">Gratis veiligheidsplan om te downloaden</span>
+          <span class="val">ikgalevencursus.nl/veiligheidsplan</span></li>
+        <li><span class="lbl">Vragen of even praten</span>
+          <span class="val">info@ikgalevencursus.nl</span></li>
+      </ul>
+    </div>
+
+    <p class="small" style="margin-top:22px;">Instagram: <strong>@ikgalevencursus</strong>
+      &middot; Podcast: <strong>Van Geweld naar Geluk</strong></p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">19</span></span></div>
+</section>
+
+<!-- ════════ 20 · OVER HILTJE ════════ -->
+<section class="page page--ecru">
+  <div class="rh"><span>Over</span><span>Hiltje</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Wie dit maakte</p>
+    <h1>Over <span class="it">Hiltje</span></h1>
+    <hr class="divider">
+  </div>
+
+  <div class="bio">
+    <img class="bio-img" src="../assets/photos/hiltje.jpg" alt="">
+    <div class="bio-body">
+      <p>Ik ben Hiltje. Als huisarts en als arts bij Veilig Thuis heb ik gewerkt met geweld in
+        afhankelijkheidsrelaties, zoals partnergeweld en kindermishandeling.</p>
+      <p>Ik heb te vaak gezien wat er gebeurt als een vrouw geen taal heeft voor wat haar overkomt, en
+        hoeveel er verandert zodra ze die taal wel krijgt. Daarom bracht ik IK GA LEVEN naar Nederland.</p>
+    </div>
+  </div>
+
+  <div class="panel panel--white" style="margin-top:30px;">
+    <p style="margin-bottom:0;">Heb je vragen, of wil je even praten, dan mag je mij altijd een bericht
+      sturen op <strong>info@ikgalevencursus.nl</strong>. Geen verplichtingen, geen vragen die je niet
+      wil beantwoorden. Ik lees mee, in jouw tempo.</p>
+  </div>
+
+  <p class="pull" style="margin-top:40px;">Ik ben er.</p>
+  <p class="sig" style="margin-top:14px; font-size:22px; color:var(--plum);">Hiltje</p>
+
+  <div style="position:absolute; left:66px; right:66px; bottom:104px;">
+    <p class="danger">
+      <strong>Bij acuut gevaar, of als iemand gewond is, bel je 112.</strong><br>
+      Denk je aan zelfdoding, bel dan 0800-0113.
+    </p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">20</span></span></div>
+</section>
+
+</body>
+</html>

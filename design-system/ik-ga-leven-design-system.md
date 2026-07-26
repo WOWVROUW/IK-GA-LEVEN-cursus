@@ -305,8 +305,26 @@ de share-pagina.
   `.section--plum50` t/m `.section--butter300`), `.section--stats`, `.h-hero` /
   `.h-testimonial` / `.h-optin` / `.h-under-image` / `.h--plum`, `.card` /
   `.card--float`, `.divider` (+ hairline/kleur-modifiers), `.quote-circle`, `.joy`.
+  Ook de gedeelde blokken: `.announce`, `.hero`, `.about-split`, het footer-systeem
+  en de menubalk (`.site-header-band` met `.site-nav`, `.nav-item`, `.nav-sub`,
+  `.nav-toggle`, en de losse `.site-header-link` voor pagina's met maar 1 link).
+  Die menuregels staan bewust binnen `.site-header-band`: bevestiging heeft nog
+  een andere, eigen `.site-header` (kale funnelpagina, geen menu, expres).
 - `../assets/js/safety.js` — het gedeelde veiligheidsscript (snel-weg, Esc,
   bfcache-slot, replace-navigatie). Elke pagina laadt dit onderaan.
+- `../assets/js/nav.js` — het gedeelde menuscript (hamburger + submenu "Gratis").
+  Menu-per-pagina (vastgelegd 2026-07-26, keuze Hiltje):
+  - **Volledig menu:** index, informatie, video, bijeenkomst.
+  - **Alleen "Begin" (`.site-header-link`, geen nav.js nodig):** veiligheidsplan
+    en veiliglezen (voorheen veiligheid.html, hernoemd 2026-07-26) — bewust geen
+    uitklapmenu op deze gevoelige pagina's, wel een weg terug voor wie er via
+    Instagram of een zoekmachine rechtstreeks binnenkomt.
+  - **Geen menu:** bevestiging, veiligheidsplan-klaar (funnelpagina's na een
+    actie, één focus, geen afleiding).
+  `veiligheid.html` bestaat nog als stille 0-seconden-doorverwijzing naar
+  `veiliglezen.html` (oude gedeelde links blijven werken); nieuwe links wijzen
+  altijd naar `veiliglezen.html`.
+  Esc wordt hier bewust niet gebruikt: dat is de snel-weg-toets.
 - `ik-ga-leven-design-system.md` — dit bestand (bestandsnaam bevat "ik ga leven" om verwarring met het aparte WOW! Vrouw / Claude Design-systeem te voorkomen — zie de verzoening bovenaan).
 - `preview.html` — levende styleguide; open 'm in de browser om alles te zien.
 

@@ -23,57 +23,8 @@
 
   /* Veiligheidsbanner (.announce): gedeeld component in design-system/tokens.css */
 
-  /* Menu (zelfde als homepage) */
-  .site-header-band { background: var(--surface-menu); position: relative; z-index: 900; }
-  .site-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem var(--gutter);
-    max-width: var(--container-max); margin: 0 auto;
-  }
-  .site-header .logo img { height: 64px; width: auto; }
-  .site-nav { display: flex; gap: 1.9rem; align-items: center; }
-  .site-nav a, .nav-sub-toggle {
-    font-family: var(--font-body); font-size: var(--fs-menu); font-weight: var(--weight-medium);
-    letter-spacing: 0.06em; text-transform: uppercase;
-    text-decoration: none; color: var(--plum);
-    background: none; border: 0; padding: 0; cursor: pointer;
-    transition: color var(--dur-fast) var(--ease-out);
-  }
-  .site-nav a:hover, .nav-sub-toggle:hover { color: var(--rose-500); }
-  .site-nav a.is-accent { color: var(--rose-500); }
-  .nav-item { position: relative; }
-  .nav-sub {
-    display: none; position: absolute; top: calc(100% + 0.9rem); left: 50%; transform: translateX(-50%);
-    background: var(--white); border: 1px solid var(--rose-300); border-radius: var(--radius);
-    box-shadow: var(--shadow-float); padding: 0.6rem 0; min-width: 240px; z-index: 950;
-  }
-  .nav-item:hover .nav-sub, .nav-item:focus-within .nav-sub, .nav-item.open .nav-sub { display: block; }
-  .nav-sub a { display: block; padding: 0.55rem 1.25rem; white-space: nowrap; }
-  .nav-sub a:hover { background: var(--rose-100); }
-  .nav-sub-toggle .caret { font-size: 10px; }
-  .nav-toggle {
-    display: none; background: none; border: 1px solid var(--plum-300); border-radius: var(--radius);
-    color: var(--plum); font-family: var(--font-body); font-size: 13px; font-weight: var(--weight-medium);
-    letter-spacing: 0.06em; text-transform: uppercase; padding: 9px 14px; cursor: pointer;
-  }
-  @media (max-width: 900px) {
-    .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
-    .site-nav {
-      display: none; position: absolute; top: 100%; left: 0; right: 0;
-      flex-direction: column; align-items: stretch; gap: 0;
-      background: var(--surface-menu); border-top: 1px solid var(--rose-300);
-      border-bottom: 1px solid var(--rose-300); padding: 0.5rem 0 1rem;
-    }
-    .site-nav.open { display: flex; }
-    .site-nav > a, .site-nav .nav-item { padding: 0.7rem var(--gutter); }
-    .nav-sub {
-      display: block; position: static; transform: none; box-shadow: none; border: 0;
-      background: transparent; padding: 0.25rem 0 0 1rem; min-width: 0;
-    }
-    .nav-sub a { padding: 0.45rem 0; }
-    .nav-sub a:hover { background: transparent; }
-  }
-
+  /* Menubalk (.site-header-band): gedeeld component in design-system/tokens.css.
+     Deze pagina toont daarin alleen het logo, geen navigatie. */
   /* ---- Hero (.hero): gedeeld component in design-system/tokens.css.
           Foto per pagina via inline style op .hero-photo (background-image + --hero-photo-pos) ---- */
 
@@ -230,7 +181,7 @@
 <!-- Veiligheidsbanner -->
 <div class="announce">
   <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
-  <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiligheid.html">Lees hoe je veilig meeleest</a>.</span>
+  <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiliglezen.html">Lees hoe je veilig meeleest</a>.</span>
 </div>
 
 <!-- Menu -->
@@ -239,7 +190,22 @@
     <a class="logo" href="index.html" aria-label="IK GA LEVEN, home">
       <img src="design-system/assets/logo/logo-original.png" alt="IK GA LEVEN">
     </a>
-    <!-- Menu bewust weg (alleen op de homepage en de veiligheidspagina) -->
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="site-nav" id="siteNav" aria-label="Hoofdmenu">
+      <a href="index.html" class="is-accent">Begin</a>
+      <a href="informatie.html">Over IK GA LEVEN</a>
+      <a href="index.html#over-hiltje">Over Hiltje</a>
+      <div class="nav-item">
+        <button class="nav-sub-toggle" type="button" aria-expanded="false">Gratis <span class="caret" aria-hidden="true">&#9662;</span></button>
+        <div class="nav-sub">
+          <a href="video.html">Video: Het begon met liefde</a>
+          <a href="bijeenkomst.html">Bijeenkomst</a>
+          <a href="veiligheidsplan.html">Veiligheidsplan</a>
+        </div>
+      </div>
+      <a href="veiliglezen.html">Veilig meelezen</a>
+      <a href="index.html#podcast" class="is-accent">Podcast</a>
+    </nav>
   </header>
 </div>
 
@@ -452,7 +418,7 @@
           <li>Als je kinderen hebt: zijn zij op school tijdens de sessie, of zorgt iemand voor hen?</li>
           <li>Is het veilig om je e-mailadres achter te laten? Een apart e-mailadres aanmaken kan een goede stap zijn.</li>
         </ul>
-        <p>Kun je nog niet op alles ja antwoorden? Laat je niet ontmoedigen. Mail naar <a href="mailto:info@ikgalevencursus.nl" style="color:var(--plum);">info@ikgalevencursus.nl</a> of bel of app naar 06&nbsp;847&nbsp;381&nbsp;67; dan kijken we samen naar een veilige manier om mee te doen. Op de pagina <a href="veiligheid.html" style="color:var(--plum);">Veilig meelezen</a> lees je hoe je deze site bezoekt zonder sporen achter te laten.</p>
+        <p>Kun je nog niet op alles ja antwoorden? Laat je niet ontmoedigen. Mail naar <a href="mailto:info@ikgalevencursus.nl" style="color:var(--plum);">info@ikgalevencursus.nl</a> of bel of app naar 06&nbsp;847&nbsp;381&nbsp;67; dan kijken we samen naar een veilige manier om mee te doen. Op de pagina <a href="veiliglezen.html" style="color:var(--plum);">Veilig meelezen</a> lees je hoe je deze site bezoekt zonder sporen achter te laten.</p>
         <p><strong>Acuut gevaar?</strong> <span class="call112">Bel altijd 112.</span></p>
       </div>
     </div>
@@ -495,7 +461,7 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="safety-block">
-      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiliglezen.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
       <p style="margin:0;"><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span> Denk je aan zelfdoding of maak je je zorgen om iemand? Bel 113 Zelfmoordpreventie, 0800-0113.</p>
     </div>
   </div>
@@ -504,29 +470,8 @@
 <div class="copyright">&copy; 2026 IK GA LEVEN &middot; ikgalevencursus.nl</div>
 
 <script src="assets/js/safety.js"></script>
+<script src="assets/js/nav.js"></script>
 <script>
-  // Mobiel menu
-  (function () {
-    var toggle = document.getElementById('navToggle');
-    var nav = document.getElementById('siteNav');
-    if (!toggle || !nav) return;
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  })();
-
-  // Submenu "Gratis": klik-toggle voor touch; hover werkt via CSS
-  (function () {
-    document.querySelectorAll('.nav-sub-toggle').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var item = btn.closest('.nav-item');
-        var open = item.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    });
-  })();
-
   // Testimonials: zelfde rustige carrousel als de homepage (pauzeert bij
   // hover/focus, staat stil bij 'reduce motion').
   (function () {

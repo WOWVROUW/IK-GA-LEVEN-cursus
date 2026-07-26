@@ -31,14 +31,10 @@
     }
     /* Veiligheidsbanner (.announce): gedeeld component in design-system/tokens.css */
 
-    /* Header: funnelpagina, bewust zonder volledig menu (alleen logo terug naar home) */
-    .site-header {
-      padding: 1.4rem 0;
-      background: var(--plum-50);
-    }
-    .site-header .container { display: flex; align-items: center; }
-    .logo { display: block; }
-    .logo img { height: 64px; width: auto; display: block; }
+    /* Menu (.site-header-band): gedeeld component in design-system/tokens.css.
+       Sinds 2026-07-26 het volledige menu (was bewust kaal: deze pagina is vaak
+       de eerste die iemand ziet, bijvoorbeeld vanuit de Instagram-bio, en moet
+       dus verder laten kijken op de site). */
 
     /* Hero-band (doc: vlak #ECBED6 met gebogen onderrand die halverwege het
        videoframe overgaat in wit) */
@@ -133,17 +129,33 @@
   <!-- Veiligheidsbanner (tekst) -->
   <div class="announce">
     <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
-    <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiligheid.html">Lees hoe je veilig meeleest</a>.</span>
+    <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiliglezen.html">Lees hoe je veilig meeleest</a>.</span>
   </div>
 
-  <!-- Header op de bandkleur: alleen het logo (funnelpagina, bewust geen vol menu) -->
-  <header class="site-header">
-    <div class="container">
+  <!-- Menu -->
+  <div class="site-header-band">
+    <header class="site-header">
       <a class="logo" href="index.html" aria-label="Ik ga leven, home">
         <img src="design-system/assets/logo/logo-original.png" alt="Ik ga leven">
       </a>
-    </div>
-  </header>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      <nav class="site-nav" id="siteNav" aria-label="Hoofdmenu">
+        <a href="index.html" class="is-accent">Begin</a>
+        <a href="informatie.html">Over IK GA LEVEN</a>
+        <a href="index.html#over-hiltje">Over Hiltje</a>
+        <div class="nav-item">
+          <button class="nav-sub-toggle" type="button" aria-expanded="false">Gratis <span class="caret" aria-hidden="true">&#9662;</span></button>
+          <div class="nav-sub">
+            <a href="video.html">Video: Het begon met liefde</a>
+            <a href="bijeenkomst.html">Bijeenkomst</a>
+            <a href="veiligheidsplan.html">Veiligheidsplan</a>
+          </div>
+        </div>
+        <a href="veiliglezen.html">Veilig meelezen</a>
+        <a href="index.html#podcast" class="is-accent">Podcast</a>
+      </nav>
+    </header>
+  </div>
 
   <!-- ── HERO-BAND MET KOP (rose-300, gebogen onderrand) ─────────────── -->
   <section class="section video-hero">
@@ -245,7 +257,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="safety-block">
-        <p><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiligheid.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+        <p><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiliglezen.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
         <p><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span> Denk je aan zelfdoding of maak je je zorgen om iemand? Bel 113 Zelfmoordpreventie, 0800-0113.</p>
       </div>
     </div>
@@ -253,6 +265,7 @@
   <div class="copyright">&copy; 2026 IK GA LEVEN &middot; ikgalevencursus.nl</div>
 
   <script src="assets/js/safety.js"></script>
+  <script src="assets/js/nav.js"></script>
 
   <script>
     // Flodesk universal loader + init van het e-book/nieuwsbrief-formulier.
