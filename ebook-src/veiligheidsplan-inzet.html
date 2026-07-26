@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Veiligheidsplan (inzet voor het dagboek) | IK GA LEVEN</title>
+<!-- Bron: veiligheidsplan.html (de website-tekst, rijker dan de kale invulbare PDF).
+     Bedoeld als LOSSE INZET om na pagina 23 ("Over Hiltje", voetregel 20) van het
+     Canva-bestand DAHQfEnb7RU ("IGL A4 dagboek 2 template") te worden ingevoegd.
+     Tokens en componentklassen 1-op-1 gekopieerd uit dagboek-bij-de-bijeenkomst.html
+     zodat het beeld naadloos aansluit. Renderen naar A4 PDF: Edge headless, zie
+     ../../ebooks/_HOE-RENDER.md (map zonder spaties), NOOIT Chrome (schrijft hier
+     stil niets weg). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,ital,wght@8..60,0,300;8..60,1,300&family=Work+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ══ IK GA LEVEN design tokens (subset, zelfvoorzienend voor print) ══ */
+  :root {
+    --plum: #6B1953;
+    --magenta: #C41E7A;
+    --rose: #D585AE;
+    --rose-tint: #F5E3EE;
+    --butter: #FFF8D1;
+    --ecru: #F6F1EA;
+    --white: #FFFFFF;
+    --text: #5C5556;
+    --text-muted: #8A8283;
+    --border-rose: rgba(213, 133, 174, 0.5);
+    --write: #E0C8D6;
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Work Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  @page { size: A4; margin: 0; }
+
+  /* ══ Pagina (A4 op 96dpi) ══ */
+  .page {
+    width: 794px;
+    height: 1123px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--white);
+    padding: 54px 66px 92px;
+  }
+  .page:last-child { page-break-after: auto; }
+  .page--ecru { background: var(--ecru); }
+  .page--tint { background: var(--rose-tint); }
+  .page--butter { background: var(--butter); }
+
+  .rh {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--font-body); font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; font-size: 9px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-rose);
+    padding-bottom: 12px;
+  }
+  .pfoot {
+    position: absolute; left: 66px; right: 66px; bottom: 34px;
+    border-top: 1px solid var(--border-rose);
+    padding-top: 10px;
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; font-weight: 500; letter-spacing: 1.4px;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .pfoot .pg { color: var(--plum); }
+  .pfoot a { color: inherit; text-decoration: none; }
+
+  /* ══ Typografie ══ */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 300; color: var(--plum);
+    line-height: 1.2; letter-spacing: 0.4px;
+    margin: 0 0 14px;
+  }
+  h1 { font-size: 36px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 19px; margin: 22px 0 8px; }
+  .it { font-style: italic; }
+  p { margin: 0 0 13px; }
+  a { color: var(--plum); }
+  strong { font-weight: 500; color: var(--plum); }
+
+  .eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--plum); margin: 0 0 12px;
+  }
+  .divider { border: 0; border-top: 1px solid var(--border-rose); width: 140px; margin: 18px 0 22px; }
+  .center { text-align: center; }
+  .small { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+  .lead-in { font-weight: 500; color: var(--plum); }
+  .lead {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 18px; line-height: 1.5; color: var(--text-muted);
+    margin: 0 0 14px;
+  }
+
+  /* Pull-quote / kern-zin */
+  .pull {
+    font-family: var(--font-display); font-weight: 300; font-size: 22px;
+    line-height: 1.4; color: var(--plum); letter-spacing: 0.4px;
+    margin: 26px 0 0; padding-left: 22px; border-left: 2px solid var(--rose);
+  }
+  /* Cursieve aanwijzing van Hiltje */
+  .note {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 15.5px; line-height: 1.6; color: var(--text-muted);
+    border-left: 2px solid var(--rose); padding: 2px 0 2px 20px; margin: 0 0 8px;
+  }
+
+  /* Getint binnenpaneel */
+  .panel { background: var(--butter); padding: 24px 28px; margin: 20px 0; }
+  .panel--rose { background: var(--rose-tint); }
+  .panel--white { background: var(--white); }
+  .panel > :last-child { margin-bottom: 0; }
+
+  /* ══ Invul-vocabulaire (uit het dagboek) ══ */
+  .item { margin: 0 0 24px; }
+  .item-head { display: flex; align-items: baseline; gap: 14px; margin: 0 0 6px; }
+  .num {
+    font-family: var(--font-display); font-style: italic; font-size: 28px;
+    line-height: 1; color: var(--rose); min-width: 38px;
+  }
+  .qlabel {
+    font-family: var(--font-body); font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; font-size: 12.5px; color: var(--plum);
+  }
+  .question {
+    font-family: var(--font-display); font-style: italic; font-size: 17.5px;
+    line-height: 1.35; color: var(--plum); margin: 0 0 6px;
+  }
+  .desc { font-size: 12.5px; line-height: 1.55; color: var(--text-muted); margin: 0 0 10px; }
+  .desc.pad, .question.pad, .wlines.pad { margin-left: 52px; }
+
+  /* Invullijnen als losse randen (een CSS-gradient-achtergrond bleek niet mee te
+     printen in de headless-PDF-render, een echte border-bottom wel). */
+  .wlines.top { margin-top: 22px; }
+  .wline { border-bottom: 1px solid var(--write); height: 28px; }
+
+  /* Aankruisvakjes */
+  .checks { display: flex; gap: 30px; margin: 14px 0 20px; flex-wrap: wrap; }
+  .checks.stack { flex-direction: column; gap: 12px; }
+  .check { display: flex; align-items: center; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--text); }
+  .check--top { align-items: flex-start; }
+  .box { width: 14px; height: 14px; border: 1.5px solid var(--plum); background: var(--white); flex: 0 0 auto; margin-top: 1px; }
+  .clabel { flex: 1 1 auto; min-width: 0; }
+  .star { color: var(--magenta); font-weight: 500; }
+
+  /* Twee-koloms checklist (sectie 3: wat mee te nemen) */
+  .checklist2 { columns: 2; column-gap: 36px; margin: 16px 0 0; }
+  .checklist2 .check { margin: 0 0 12px; break-inside: avoid; align-items: flex-start; }
+
+  /* Losse invulregel met klein label (kortere velden, meerdere per blok) */
+  .subfill { margin: 0 0 16px 52px; }
+  .subfill .flabel { display: block; font-size: 12.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .subfill .fline { border-bottom: 1px solid var(--write); height: 22px; }
+  .subfill-block { margin: 18px 0 24px; }
+
+  /* ══ Rustpunt / kernzin-pagina ══ */
+  .rustpage {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; height: 977px;
+  }
+  .rustquote {
+    font-family: var(--font-display); font-style: italic; font-size: 24px;
+    line-height: 1.5; color: var(--plum); margin: 0 0 0; max-width: 560px;
+  }
+
+  .linklist { margin: 0; padding: 0; list-style: none; }
+  .linklist li { margin: 0 0 9px; font-size: 14px; line-height: 1.5; }
+  .linklist li:last-child { margin-bottom: 0; }
+  .linklist .lbl { display: block; font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 1px; }
+  .linklist .val { font-weight: 500; color: var(--plum); }
+</style>
+</head>
+<body>
+
+<!-- ════════ 21 · OPENING ════════ -->
+<section class="page page--ecru">
+  <div class="rh"><span>Bijlage</span><span>Je veiligheidsplan</span></div>
+  <div style="margin-top:36px;">
+    <p class="eyebrow">Gratis veiligheidsplan</p>
+    <h1>Vooruitdenken over je <span class="it">veiligheid</span></h1>
+    <hr class="divider">
+    <p class="lead" style="max-width:540px;">Dit plan helpt je om vooruit te denken over je eigen
+      veiligheid, op een rustig moment, zodat je op een gespannen of gevaarlijk moment sneller en
+      gerichter kunt handelen.</p>
+    <p>Vul in wat past. Sla over wat niet aansluit. Pas het aan zodra je situatie verandert. Er is
+      geen goed antwoord en geen volgorde die moet, net als bij de rest van dit boekje.</p>
+    <p style="margin-top:8px; font-size:16px;"><strong style="color:var(--magenta);">Bel 112 bij
+      direct gevaar.</strong></p>
+
+    <div class="panel panel--rose" style="margin-top:28px;">
+      <p class="eyebrow" style="margin-bottom:10px;">Voordat je begint: veilig bewaren</p>
+      <p>Een ingevuld veiligheidsplan bevat informatie die in verkeerde handen schadelijk kan zijn.
+        Bewaar het niet op een gedeeld apparaat of account, of op een plek waar de ander bij kan.</p>
+      <p style="margin-bottom:0;">Overweeg een uitdraai op papier, op een veilige plek buitenshuis
+        bij een vertrouwd persoon. Bewaar je het digitaal, gebruik dan een wachtwoord dat de ander
+        niet kent, en sla het niet op onder een herkenbare naam.</p>
+    </div>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">21</span></span></div>
+</section>
+
+<!-- ════════ 22 · SECTIE 1 · deel 1 ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>1. Als het nu onveilig wordt</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 1</p>
+    <h1>Als het nu onveilig <span class="it">wordt</span></h1>
+    <hr class="divider">
+  </div>
+
+  <div class="item" style="margin-top:26px;">
+    <div class="item-head"><span class="num">01</span><span class="qlabel">Vluchtroutes</span></div>
+    <p class="question pad">Welke deuren, ramen, trap of gang zijn bruikbaar om uit huis te komen?</p>
+    <div class="wlines pad top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+    <p class="desc pad" style="margin-top:8px;">Oefen het één keer rustig, zodat je het in een
+      stressmoment niet hoeft te bedenken.</p>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><span class="num">02</span><span class="qlabel">Snel te pakken</span></div>
+    <p class="question pad">Plek waar telefoon, sleutels en tas klaarliggen om snel mee te nemen:</p>
+    <div class="wlines pad top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+    <p class="desc pad" style="margin-top:8px;">Laat eventueel een tweede set sleutels maken, voor
+      het geval de ander de eerste set in handen heeft.</p>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><span class="num">03</span><span class="qlabel">Veilige plekken</span></div>
+    <div class="subfill-block">
+      <div class="subfill"><span class="flabel">Om te bellen:</span><div class="fline"></div></div>
+      <div class="subfill"><span class="flabel">Om een paar uur te blijven:</span><div class="fline"></div></div>
+      <div class="subfill" style="margin-bottom:0;"><span class="flabel">Om een paar dagen te blijven:</span><div class="fline"></div></div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">22</span></span></div>
+</section>
+
+<!-- ════════ 23 · SECTIE 1 · deel 2 ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>1. Als het nu onveilig wordt</span></div>
+  <div style="margin-top:34px;">
+    <div class="item">
+      <div class="item-head"><span class="num">04</span><span class="qlabel">Codewoord</span></div>
+      <p class="question pad">Codewoord voor de kinderen of een vertrouwd persoon, als signaal om
+        hulp te halen of de politie te bellen:</p>
+      <div class="wlines pad top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="num">05</span><span class="qlabel">Ruimtes vermijden</span></div>
+      <p class="question pad">Welke ruimtes vermijd je tijdens een ruzie of incident?</p>
+      <div class="wlines pad top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+      <p class="desc pad" style="margin-top:8px;">Vermijd kleine ruimtes zonder uitgang en ruimtes
+        met gevaarlijke voorwerpen, zoals de keuken of de badkamer. Kies een ruimte met een uitgang
+        naar buiten.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="num">06</span><span class="qlabel">Wie vooraf inlichten</span></div>
+      <p class="question pad">Wie kan vooraf worden ingelicht, met de vraag de politie te bellen bij
+        een vermoeden van gevaar?</p>
+      <div class="wlines pad top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+    </div>
+
+    <p class="pull" style="margin-top:30px;">Soms is veiligheid op het moment zelf het belangrijkst,
+      ook als dat betekent meebewegen of de confrontatie ontwijken. Dat is geen zwakte, maar
+      overleven.</p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">23</span></span></div>
+</section>
+
+<!-- ════════ 24 · SECTIE 2 · VOORBEREIDEN OP WEGGAAN ════════ -->
+<section class="page page--ecru">
+  <div class="rh"><span>Je veiligheidsplan</span><span>2. Voorbereiden op weggaan</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 2</p>
+    <h1>Voorbereiden op <span class="it">weggaan</span></h1>
+    <hr class="divider">
+    <p>Bij de overweging om weg te gaan, nu of later, helpt een rustige voorbereiding. Het is
+      meestal niet veilig om de ander te laten weten dat een vertrek aankomt. Kies het moment
+      zorgvuldig, en leg op tijd een set spullen klaar bij een vertrouwd persoon: wat geld, een
+      extra sleutel, wat kleding en kopieën van belangrijke documenten.</p>
+  </div>
+
+  <div class="item" style="margin-top:22px;">
+    <div class="item-head"><span class="num">01</span><span class="qlabel">Bewaarplek</span></div>
+    <p class="question pad">Bij wie kunnen spullen, geld en kopieën worden bewaard?</p>
+    <div class="wlines pad top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><span class="num">02</span><span class="qlabel">Wie kan helpen</span></div>
+    <div class="subfill-block" style="margin-top:12px;">
+      <div class="subfill"><span class="flabel">Geld:</span><div class="fline"></div></div>
+      <div class="subfill"><span class="flabel">Opvang van de kinderen:</span><div class="fline"></div></div>
+      <div class="subfill"><span class="flabel">Vervoer:</span><div class="fline"></div></div>
+      <div class="subfill"><span class="flabel">Meegaan naar afspraken:</span><div class="fline"></div></div>
+      <div class="subfill" style="margin-bottom:0;"><span class="flabel">Anders:</span><div class="fline"></div></div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:8px;">Veilig Thuis (0800-2000) kan helpen bij het nadenken over
+    een vertrek, en doorverwijzen naar de vrouwenopvang.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">24</span></span></div>
+</section>
+
+<!-- ════════ 25 · SECTIE 3 · WAT MEE TE NEMEN ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>3. Wat mee te nemen</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 3</p>
+    <h1>Wat mee te <span class="it">nemen</span></h1>
+    <hr class="divider">
+    <p class="lead" style="margin-bottom:0;">Bij een snel vertrek helpt het als de belangrijkste
+      spullen al op één plek liggen. De gemarkeerde items (<span class="star">*</span>) zijn het
+      meest urgent.</p>
+  </div>
+
+  <div class="checklist2">
+    <div class="check"><span class="box"></span><span class="clabel">Eigen identiteitsbewijs / paspoort <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Identiteitsbewijzen van de kinderen <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">BSN (eigen en van de kinderen) <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Bankpas(sen) en pincodes <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Geld / contant geld <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Sleutels (huis, auto) <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Telefoon en oplader <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">DigiD-gegevens en belangrijke wachtwoorden <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Medicijnen (eigen en van de kinderen) <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Zorgpas / zorgverzekeringsgegevens <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span><span class="clabel">Verblijfsvergunning of verblijfsdocumenten <span class="star">*</span></span></div>
+    <div class="check"><span class="box"></span>Geboorteaktes / trouwboekje</div>
+    <div class="check"><span class="box"></span>Huurcontract, hypotheek- of verzekeringspapieren</div>
+    <div class="check"><span class="box"></span>Echtscheidings- of juridische stukken</div>
+    <div class="check"><span class="box"></span>Eventuele beschikking huisverbod of contactverbod</div>
+    <div class="check"><span class="box"></span>Inschrijving / gegevens school van de kinderen</div>
+    <div class="check"><span class="box"></span>Adressenlijst / belangrijke telefoonnummers</div>
+    <div class="check"><span class="box"></span>Knuffel of vertrouwd voorwerp van de kinderen</div>
+    <div class="check"><span class="box"></span>Sieraden of spullen met persoonlijke waarde</div>
+    <div class="check"><span class="box"></span>Foto's en dierbare herinneringen</div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">25</span></span></div>
+</section>
+
+<!-- ════════ 26 · SECTIE 4 · VEILIGHEID IN EN OM DE WONING ════════ -->
+<section class="page page--tint">
+  <div class="rh"><span>Je veiligheidsplan</span><span>4. Veiligheid in en om de woning</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 4</p>
+    <h1>Veiligheid in en om de <span class="it">woning</span></h1>
+    <hr class="divider">
+    <p style="margin-bottom:0;">Maatregelen om te overwegen bij verblijf in je eigen woning.
+      Sommige kosten geld, kijk wat haalbaar is.</p>
+  </div>
+
+  <div class="checks stack" style="margin-top:20px;">
+    <div class="check"><span class="box"></span>Sloten van deuren en ramen vervangen</div>
+    <div class="check"><span class="box"></span>Een deurspion of (video)deurbel plaatsen</div>
+    <div class="check"><span class="box"></span>Buitenverlichting met bewegingssensor</div>
+    <div class="check"><span class="box"></span>Een alarmsysteem</div>
+    <div class="check"><span class="box"></span>'s Avonds en bij afwezigheid licht laten branden</div>
+    <div class="check"><span class="box"></span>Rookmelders en een brandblusser</div>
+  </div>
+
+  <div class="item" style="margin-top:6px;">
+    <div class="item-head"><span class="qlabel">Wie mag de kinderen ophalen</span></div>
+    <div class="subfill-block" style="margin-top:8px;">
+      <div class="subfill"><span class="flabel">School:</span><div class="fline"></div></div>
+      <div class="subfill"><span class="flabel">Kinderopvang / BSO:</span><div class="fline"></div></div>
+      <div class="subfill" style="margin-bottom:0;"><span class="flabel">Sport, familie of oppas:</span><div class="fline"></div></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><span class="qlabel">Wie belt de politie bij het zien van de ander bij de woning</span></div>
+    <div class="subfill-block" style="margin-top:8px;">
+      <div class="subfill"><span class="flabel">Buren:</span><div class="fline"></div></div>
+      <div class="subfill" style="margin-bottom:0;"><span class="flabel">Verhuurder of vriend(in):</span><div class="fline"></div></div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">26</span></span></div>
+</section>
+
+<!-- ════════ 27 · SECTIE 5 · JURIDISCHE BESCHERMING · deel 1 ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>5. Juridische bescherming &middot; 1 van 2</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 5</p>
+    <h1>Juridische bescherming in <span class="it">Nederland</span></h1>
+    <hr class="divider">
+    <p class="lead" style="margin-bottom:16px;">Er zijn verschillende beschermende maatregelen.
+      Welke past, hangt af van de situatie. Het Juridisch Loket (0800-8020) geeft gratis eerste
+      advies, en bij een laag inkomen bestaat recht op een gesubsidieerde advocaat.</p>
+
+    <p><strong>Tijdelijk huisverbod.</strong> De burgemeester, of een gemachtigde hulpofficier van
+      justitie, kan de ander tien dagen uit huis plaatsen, ook als er nog geen strafbaar feit is
+      gepleegd maar wel een ernstige dreiging bestaat. In die periode mag de ander niet thuiskomen
+      en geen contact opnemen met de achterblijvers, inclusief de kinderen. De burgemeester kan het
+      verlengen tot maximaal vier weken. Dit loopt via de politie en Veilig Thuis, je kunt het niet
+      zelf aanvragen, maar er wel om vragen zodra zij betrokken zijn.</p>
+
+    <p style="margin-bottom:0;"><strong>Contact-, straat- of gebiedsverbod.</strong> Een verbod dat
+      de ander verbiedt om contact te zoeken, of in een bepaald gebied te komen. Via het strafrecht
+      kan de officier van justitie de rechter, na aangifte, vragen om zo'n verbod op te leggen,
+      zonder kosten. Via het civiel recht kan het worden aangevraagd via een kort geding, met hulp
+      van een advocaat, vaak sneller maar deels met kosten. Houdt de ander zich niet aan het
+      verbod, meld dat dan altijd direct bij de politie.</p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">27</span></span></div>
+</section>
+
+<!-- ════════ 28 · SECTIE 5 · JURIDISCHE BESCHERMING · deel 2 ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>5. Juridische bescherming &middot; 2 van 2</span></div>
+  <div style="margin-top:34px;">
+    <p><strong>Melding en aangifte bij de politie.</strong> Bij de politie (0900-8844, of 112 bij
+      spoed) kun je een melding doen, waarbij wordt vastgelegd wat er gebeurt zonder verzoek om
+      vervolging, of aangifte, een verzoek om de ander te vervolgen. Vraag of het in het systeem
+      komt, zodat er een dossier wordt opgebouwd.</p>
+
+    <p style="margin-bottom:0;"><strong>De kinderen.</strong> Bij gezamenlijk gezag kan een rechter
+      op verzoek tijdelijk de omgang stopzetten, of bepalen dat één ouder voorlopig alleen het
+      gezag uitoefent. Dit loopt via de familierechter, met een advocaat. Zonder zo'n rechterlijke
+      beslissing kan een school of opvang een kind in principe niet weigeren mee te geven aan een
+      ouder die het gezag heeft.</p>
+  </div>
+
+  <div class="item" style="margin-top:26px;">
+    <div class="item-head"><span class="qlabel">Bewaarplek juridische documenten</span></div>
+    <p class="desc" style="margin-bottom:8px;">Zo mogelijk de originelen, met een kopie op een
+      tweede veilige plek.</p>
+    <div class="wlines top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">28</span></span></div>
+</section>
+
+<!-- ════════ 29 · SECTIE 6 · WERK EN ONDERWEG ════════ -->
+<section class="page page--ecru">
+  <div class="rh"><span>Je veiligheidsplan</span><span>6. Veiligheid op het werk en onderweg</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 6</p>
+    <h1>Op het werk en <span class="it">onderweg</span></h1>
+    <hr class="divider">
+    <p>Of en aan wie je iets vertelt, is jouw eigen keuze. Kies bewust wie je in vertrouwen neemt.</p>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><span class="qlabel">Wie op het werk wordt ingelicht</span></div>
+    <div class="subfill-block" style="margin-top:10px;">
+      <div class="subfill"><span class="flabel">Leidinggevende:</span><div class="fline"></div></div>
+      <div class="subfill"><span class="flabel">Receptie / beveiliging:</span><div class="fline"></div></div>
+      <div class="subfill" style="margin-bottom:0;"><span class="flabel">Vertrouwde collega:</span><div class="fline"></div></div>
+    </div>
+  </div>
+
+  <p style="margin-top:20px;"><strong>Onderweg.</strong> Varieer routes en tijden. Loop niet alleen
+    naar de auto als dat ongemakkelijk voelt, kijk eerst rond. Heb je het gevoel dat je gevolgd
+    wordt, ga dan naar een drukke, openbare plek of een politiebureau, niet naar huis. Overweeg een
+    persoonlijk alarm, en trek bij gevaar de aandacht en vraag omstanders om hulp.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">29</span></span></div>
+</section>
+
+<!-- ════════ 30 · SECTIE 7 · DIGITALE VEILIGHEID ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>7. Digitale veiligheid</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 7</p>
+    <h1>Digitale <span class="it">veiligheid</span></h1>
+    <hr class="divider">
+    <p style="margin-bottom:0;">Bij controle en dwang loopt het grootste lek vaak via telefoon en
+      accounts. Loop dit rustig na, het liefst op een apparaat waar de ander niet bij kan.</p>
+  </div>
+
+  <div class="checks stack" style="margin-top:22px;">
+    <div class="check check--top"><span class="box"></span>Koop zo mogelijk een nieuw
+      telefoontoestel en regel een nieuwe simkaart bij een lokale winkel. Vraag of zij de oude
+      telefoon kunnen controleren op spyware.</div>
+    <div class="check check--top"><span class="box"></span>Controleer of je telefoon je locatie
+      deelt (Zoek mijn iPhone, Google-locatiedeling, gedeelde agenda of gezinsdeling) en zet dat
+      uit.</div>
+    <div class="check check--top"><span class="box"></span>Wijzig de wachtwoorden van mail, bank en
+      sociale media. Zet tweestapsverificatie aan.</div>
+    <div class="check check--top"><span class="box"></span>Let op gedeelde accounts en abonnementen
+      (streaming, cloudopslag, gezinsabonnement) waarmee de ander kan meekijken.</div>
+    <div class="check check--top"><span class="box"></span>Een auto kan een ingebouwd volgsysteem
+      hebben, ook een verstopte tracker zoals een AirTag is mogelijk.</div>
+    <div class="check check--top"><span class="box"></span>Bel of chat met Veilig Thuis vanaf een
+      telefoon die de ander niet kan inzien.</div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">30</span></span></div>
+</section>
+
+<!-- ════════ 31 · SECTIE 8 · ALCOHOL EN MEDICIJNEN ════════ -->
+<section class="page page--butter">
+  <div class="rustpage">
+    <p class="eyebrow">Sectie 8</p>
+    <p class="rustquote">Alcohol of kalmerende middelen kunnen je alertheid en reactievermogen
+      verlagen, juist op een moment dat je die het hardst nodig hebt.</p>
+    <p class="small" style="margin-top:20px; max-width:420px;">Houd daar rekening mee in je
+      planning. Dit is geen oordeel, alleen iets om mee te wegen.</p>
+  </div>
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">31</span></span></div>
+</section>
+
+<!-- ════════ 32 · SECTIE 9 · EMOTIONELE VEERKRACHT ════════ -->
+<section class="page">
+  <div class="rh"><span>Je veiligheidsplan</span><span>9. Emotionele veerkracht</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 9</p>
+    <h1>Emotionele <span class="it">veerkracht</span></h1>
+    <hr class="divider">
+    <p>Leven met dreiging kost veel energie. Goede zelfzorg is geen luxe, maar houdt je staande.</p>
+  </div>
+
+  <div class="item" style="margin-top:16px;">
+    <p class="question">Bij eenzaamheid of druk vanuit de ander, zelfzorg door:</p>
+    <div class="wlines top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <p class="question">Bij noodzakelijk contact met de ander, voorbereiden door:</p>
+    <div class="wlines top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+    <p class="desc" style="margin-top:8px;">Houd contact kort en zakelijk, en laat het waar mogelijk
+      via een advocaat lopen.</p>
+  </div>
+
+  <div class="item">
+    <p class="question">Voor moeilijke momenten, zoals een zitting of een gesprek met een advocaat,
+      voorbereiden door:</p>
+    <div class="wlines top">
+      <div class="wline"></div>
+      <div class="wline"></div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:4px;">Steun zoeken mag. Bij vertrouwde mensen, bij lotgenoten,
+    of bij een professional.</p>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">32</span></span></div>
+</section>
+
+<!-- ════════ 33 · SECTIE 10 · BELANGRIJKE NUMMERS ════════ -->
+<section class="page page--tint">
+  <div class="rh"><span>Je veiligheidsplan</span><span>10. Belangrijke nummers</span></div>
+  <div style="margin-top:34px;">
+    <p class="eyebrow">Sectie 10</p>
+    <h1>Belangrijke <span class="it">nummers</span></h1>
+    <hr class="divider">
+  </div>
+
+  <div class="panel panel--white" style="margin-top:4px;">
+    <ul class="linklist">
+      <li><span class="lbl">Direct gevaar</span><span class="val">112</span></li>
+      <li><span class="lbl">Veilig Thuis</span><span class="val">0800-2000</span></li>
+      <li><span class="lbl">Politie, geen spoed</span><span class="val">0900-8844</span></li>
+      <li><span class="lbl">Meld Misdaad Anoniem</span><span class="val">0800-7000</span></li>
+      <li><span class="lbl">Juridisch Loket</span><span class="val">0800-8020</span></li>
+      <li><span class="lbl">Slachtofferhulp Nederland</span><span class="val">0900-0101</span></li>
+      <li><span class="lbl">Centrum Seksueel Geweld</span><span class="val">0800-0188</span></li>
+      <li style="margin-bottom:0;"><span class="lbl">Kindertelefoon</span><span class="val">0800-0432</span></li>
+    </ul>
+  </div>
+
+  <p class="desc" style="margin:18px 0 8px;">Persoonlijke nummers, bewaar deze zo nodig verborgen
+    maar bereikbaar, of leer ze uit je hoofd:</p>
+  <div class="subfill-block" style="margin-top:4px;">
+    <div class="subfill" style="margin-left:0;"><span class="flabel">Politie of wijkagent, en advocaat:</span><div class="fline"></div></div>
+    <div class="subfill" style="margin-left:0;"><span class="flabel">Vrouwenopvang of hulpverlener, en huisarts:</span><div class="fline"></div></div>
+    <div class="subfill" style="margin-left:0; margin-bottom:0;"><span class="flabel">Vertrouwd persoon 1 en 2:</span><div class="fline"></div></div>
+  </div>
+
+  <div class="pfoot"><span>IK GA LEVEN CURSUS</span><span><a href="https://ikgalevencursus.nl">ikgalevencursus.nl</a> &middot; <span class="pg">33</span></span></div>
+</section>
+
+</body>
+</html>

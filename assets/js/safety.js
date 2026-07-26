@@ -53,4 +53,19 @@
     e.preventDefault();
     window.location.replace(a.href);
   });
+
+  // Terugknop-val (<body data-trap-back>): voor pagina's die je NIET via een
+  // eigen linkklik bereikt, maar waar Flodesk zelf naartoe stuurt na een
+  // formulier (bevestiging, veiligheidsplan-klaar). Zo'n redirect is geen
+  // linkklik, dus de replace-logica hierboven vangt 'm niet af en de vorige,
+  // mogelijk ingevulde pagina blijft één tik op terug bereikbaar. Deze val
+  // duwt de pagina bij elke terug-poging meteen weer terug naar zichzelf.
+  // EERLIJKHEIDSREGEL geldt onverkort: dit blokkeert alleen de directe
+  // terugknop, niet de volledige geschiedenislijst van de browser.
+  if (document.body && document.body.hasAttribute('data-trap-back')) {
+    history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, '', window.location.href);
+    });
+  }
 })();
