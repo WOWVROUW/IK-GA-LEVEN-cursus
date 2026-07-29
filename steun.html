@@ -387,12 +387,18 @@
   <!-- NIEUWSBRIEF — zelfde blok als sectie 13 op de homepage -->
   <section class="section section--butter300 section--optin" id="nieuwsbrief">
     <div class="section__inner" style="text-align:center;">
-      <!-- Eigen kop in de huisstijl; het Flodesk-formulier (segment IGL Nieuwsbrief)
-           levert alleen de velden en de knop (titel/subtitel via CSS verborgen).
-           Loader-script staat onderaan deze pagina. -->
-      <p class="eyebrow">Als het veilig is</p>
-      <h2 class="h-optin">Laat je e-mailadres achter voor cursusdagen,<br>uitnodigingen en inspiratie</h2>
-      <div id="fd-form-6a4f7359a8f3787e49cfde44" style="max-width:960px;margin:1.25rem auto 0;"></div>
+      <!-- Eigen kop in de huisstijl; het Flodesk-formulier levert alleen de velden en de knop
+           (titel/subtitel via CSS verborgen). Loader-script staat onderaan deze pagina.
+           Eigen formulier + segment voor donateurs, aangeleverd door Hiltje 2026-07-29
+           (formId 6a6a70fc9cefd38aba001af1, inline/ribbonBanner, knop "JA stuur me nieuws",
+           succes = bericht op de pagina, dus GEEN bevestigingspagina nodig). Dit is bewust
+           niet de nieuwsbrief van de homepage (6a4f7359a8f3787e49cfde44): wie geld geeft
+           hoort iets anders te krijgen dan wie de cursus overweegt.
+           De kop hieronder is de titel uit haar eigen formulier, zodat de tekst hetzelfde is
+           op de plek waar hij wel in de huisstijl staat. -->
+      <p class="eyebrow">Op de hoogte blijven</p>
+      <h2 class="h-optin">Laat je e-mailadres achter voor inspiratie<br>en informatie over je steun</h2>
+      <div id="fd-form-6a6a70fc9cefd38aba001af1" style="max-width:960px;margin:1.25rem auto 0;"></div>
     </div>
   </section>
 
@@ -419,11 +425,19 @@
      nav van index, informatie, video, bijeenkomst en steun zelf, plus in de footermenu-kolom
      van index.
 
-     1. VISUEEL CONTROLEREN
-        Open steun.html in je browser en kijk naar twee dingen: valt de witte hero-card goed
-        over de foto, en staat de foto goed uitgesneden? Bijsturen kan met --hero-photo-pos
-        in de style van .hero-photo (nu 50% 50%; veiligheidsplan.html gebruikt 50% 60%,
-        index.html 50% 45%).
+     1. HERO-UITSNEDE: NAGEREKEND 2026-07-29, 50% 50% KAN BLIJVEN STAAN.
+        hero-steun.jpg is 1170x780 (liggend, ratio 1,5), het fotovlak is op een 1440px-scherm
+        ongeveer 856x800 (bijna vierkant). Met background-size: cover wordt de foto dus op
+        HOOGTE geschaald en valt er links en rechts elk zo'n 14 procent buiten beeld; verticaal
+        wordt er niets afgesneden. Gevolg: de tweede waarde van --hero-photo-pos doet hier
+        niets. Pas boven een schermbreedte van ongeveer 2130px wordt het fotovlak breder dan
+        ratio 1,5 en gaat die verticale waarde meespelen (op een 2560px-monitor valt er dan
+        boven en onder elk 72px weg, wat de bovenste citroen licht aantikt).
+        De witte kaart bedekt de linkerkant van het fotovlak, en daar zitten de donkere
+        bladeren en een deel van de citroen linksboven. De grote citroengroep zit rechts en
+        blijft helemaal vrij. Kortom: niets bij te sturen. Vind je de snit toch te ruim, dan
+        is de horizontale waarde de knop (bv. 60% 50% schuift de citroengroep naar het
+        midden van het zichtbare vlak).
 
      2. KLAAR: de bankrekening staat onder de laatste knop (NL87 KNAB 0777 1898 87 t.n.v.
         WoW! Vrouw), zodat wie geen iDEAL wil gebruiken toch kan overmaken.
@@ -484,8 +498,8 @@
 </script>
 
 <script>
-  // Flodesk universal loader + init van het nieuwsbrief-formulier
-  // (segment IGL Nieuwsbrief, zelfde formId als op de homepage).
+  // Flodesk universal loader + init van het donateurs-formulier
+  // (eigen segment, aangeleverd 2026-07-29; niet de nieuwsbrief van de homepage).
   (function(w, d, t, h, s, n) {
     w.FlodeskObject = n;
     var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
@@ -504,8 +518,8 @@
     f.parentNode.insertBefore(sn, f);
   })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
   window.fd('form', {
-    formId: '6a4f7359a8f3787e49cfde44',
-    containerEl: '#fd-form-6a4f7359a8f3787e49cfde44'
+    formId: '6a6a70fc9cefd38aba001af1',
+    containerEl: '#fd-form-6a6a70fc9cefd38aba001af1'
   });
 </script>
 </body>
