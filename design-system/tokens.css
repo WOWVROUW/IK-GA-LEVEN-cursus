@@ -590,15 +590,17 @@ h1, h2, h3, h4 {
   color: var(--plum); font-family: var(--font-body); font-size: 13px; font-weight: var(--weight-medium);
   letter-spacing: 0.06em; text-transform: uppercase; padding: 9px 14px; cursor: pointer;
 }
-/* Grens verhoogd van 900px naar 1040px op 2026-07-29, toen "Steun" in het menu
-   "Steun IK GA LEVEN" werd. Gemeten in de browser met white-space:nowrap op de
-   menu-items (anders meet je een al afgebroken regel en kom je te laag uit): de
-   nav heeft met het lange label 900px nodig, plus logo 64 en 2x gutter 24 = 1012px
-   minimale schermbreedte. Met het korte label was dat 910px, vandaar de oude 900.
-   Op 1040 zit er ruim 25px lucht in; onder die breedte verschijnt de hamburger,
-   dus ook op een half gedeeld scherm van een 1920px-monitor (960px) blijft de balk
-   heel. Verander je de menu-items, meet dan opnieuw met nowrap. */
-@media (max-width: 1040px) {
+/* Grens verhoogd van 900px naar 990px, laatst gemeten 2026-07-30.
+   Aanleiding: "Steun" werd "Steun IK GA LEVEN" en "Over IK GA LEVEN" werd
+   "De cursus". Meet ALTIJD met white-space:nowrap op de menu-items, anders meet je
+   een al afgebroken regel en kom je te laag uit. Stand nu: de nav heeft 845px
+   nodig, plus logo 64 en 2x gutter 24 = 957px minimale schermbreedte. Op 990 zit
+   daar 33px lucht in. Alleen "Steun IK GA LEVEN" zonder "De cursus" vroeg 1012px;
+   met het oude korte "Steun" was het 910px, vandaar de oorspronkelijke 900.
+   Onder deze grens verschijnt de hamburger, dus ook op een half gedeeld scherm van
+   een 1920px-monitor (960px) blijft de balk heel.
+   Verander je de menu-items, meet dan opnieuw. */
+@media (max-width: 990px) {
   .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
   .site-header-band .site-nav {
     display: none; position: absolute; top: 100%; left: 0; right: 0;

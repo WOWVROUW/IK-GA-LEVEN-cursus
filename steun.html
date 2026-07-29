@@ -33,32 +33,68 @@
        gedeelde componenten in design-system/tokens.css. Foto per pagina via de
        inline style op .hero-photo (background-image + --hero-photo-pos). */
 
-    /* ---- De ladder: kaarten met bedrag, zelfde grid-ritme als de kaartsecties
-            op de homepage (.products-grid / .practical) ---- */
-    .ladder {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin: 3rem 0 0;
+    /* ---- Wat jouw bijdrage doet: exact het herkennings-blok van de homepage
+            (SECTIE 5 op index.html). Beeldkaart met monogram-rondje dat over de
+            bovenrand valt, een pruimen vlak dat op hover én op focus over de foto
+            schuift met de uitleg erin, en een open knop eronder.
+            De CSS staat hier omdat dit patroon op index.html ook pagina-eigen is;
+            verhuist het ooit naar tokens.css, haal deze blokken dan weg.
+            LET OP: het zichtbare deel (bedrag + wat het is) moet buiten de hover
+            staan. Een donateur op een telefoon zonder hover mag het bedrag nooit
+            missen; de hover geeft alleen de toelichting. ---- */
+    .herken-divider {
+      width: 300px; max-width: 80%; height: 0;
+      border: 0; border-top: var(--hairline) solid var(--butter-600);
+      margin: 1.25rem auto 1.5rem;
     }
-    .ladder .card { display: flex; flex-direction: column; }
-    .ladder .amount {
-      font-family: var(--font-display);
-      font-weight: var(--weight-light);
-      letter-spacing: var(--tracking-display);
-      font-size: 32px;
-      line-height: 1.2;
-      color: var(--plum);
-      margin: 0 0 .35em;
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .persona { text-align: center; display: flex; flex-direction: column; }
+    .persona .btn { margin-top: auto; align-self: center; }
+    .persona__imgwrap { position: relative; border-radius: var(--radius); }
+    .persona__imgwrap:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+    .persona__img {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); display: block;
     }
-    .ladder p { margin: 0; font-size: 16px; line-height: 1.8; }
-    .ladder .card--wide { grid-column: 1 / -1; }
+    /* Monogram-rondje bovenaan, overlapt de bovenkant van de foto (doc: plum-300) */
+    .persona__badge {
+      position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); z-index: 3;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--white); border: 2px solid var(--plum-300);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 22px; color: var(--plum);
+    }
+    /* Kaart met de toelichting 'achter' de foto — verschijnt op hover/focus */
+    .persona__overlay {
+      position: absolute; inset: 0; border-radius: var(--radius);
+      background: rgba(107, 25, 83, 0.92); color: var(--white);
+      padding: 1.75rem; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity var(--dur-base) var(--ease-out);
+    }
+    .persona__imgwrap:hover .persona__overlay,
+    .persona__imgwrap:focus .persona__overlay,
+    .persona__imgwrap:focus-within .persona__overlay { opacity: 1; }
+    .persona__label {
+      display: block; font-family: var(--font-body); font-size: 13px; font-weight: 400;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin: 0 0 0.75rem;
+    }
+    .persona__story { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.92); }
+    /* Bedrag + wat het is, onder de foto; daarna de knop */
+    .persona__statement {
+      font-family: var(--font-display); font-weight: var(--weight-light);
+      font-size: 21px; line-height: 1.35; color: var(--ink);
+      margin: 1.75rem 0 1.25rem;
+    }
+    @media (max-width: 860px) {
+      .persona-grid {
+        grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto;
+      }
+    }
 
     .cta-row { margin-top: 2.5rem; }
     .fineprint { font-size: 15px; color: var(--text-muted); }
 
     /* Statement-blok: één regel op testimonial-maat in pruim, als scharnier tussen
-       "waarom zij niets betaalt" en de ladder. Zelfde typografische register als de
+       "waarom zij niets betaalt" en het bijdrage-blok. Zelfde typografische register als de
        testimonial-carrousel (--fs-testimonial), zelfde functie als .joy-line en
        .closing-line op informatie.html: een display-regel die een sectie afsluit.
        Geen aanhalingstekens, want dit is geen citaat maar een oproep. */
@@ -156,7 +192,7 @@
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
     <nav class="site-nav" id="siteNav" aria-label="Hoofdmenu">
       <a href="index.html" class="is-accent">Begin</a>
-      <a href="informatie.html">Over IK GA LEVEN</a>
+      <a href="informatie.html">De cursus</a>
       <a href="index.html#over-hiltje">Over Hiltje</a>
       <div class="nav-item">
         <button class="nav-sub-toggle" type="button" aria-expanded="false">Gratis <span class="caret" aria-hidden="true">&#9662;</span></button>
@@ -209,43 +245,98 @@
     </div>
   </section>
 
-  <!-- DE LADDER -->
+  <!-- WAT JOUW BIJDRAGE DOET — herkennings-blok-format van de homepage.
+       Het monogram-rondje houdt hier het AANTAL DAGBOEKEN vast (1, 10, 12), zodat het
+       rondje betekenis heeft zoals de M/J/A op de homepage. Alle drie de knoppen gaan
+       naar dezelfde membirds-checkout; daar kiest de gever het pakket (Één dagboek,
+       Een hele groep, Doorlopende steun). -->
   <section class="section section--butter100" id="bijdrage">
     <div class="section__inner">
       <div class="center-narrow">
         <p class="eyebrow">Wat jouw bijdrage doet</p>
         <h2 class="h-hero">Voor 25 euro ligt er een dagboek klaar</h2>
+        <hr class="herken-divider">
         <p>Je kunt zelf kiezen wat je draagt. Dit is wat elk bedrag betekent voor de vrouwen die in september beginnen.</p>
       </div>
 
-      <div class="ladder">
-        <div class="card">
-          <p class="amount">25 euro</p>
-          <p><strong>Eén dagboek.</strong> Elke deelneemster krijgt een gedrukt IK GA LEVEN-dagboek. Daar schrijft ze tien weken in, en het blijft van haar. Voor 25 euro ligt er in september een dagboek klaar voor één vrouw.</p>
-        </div>
+      <div class="persona-grid">
+        <article class="persona">
+          <div class="persona__imgwrap" tabindex="0">
+            <img class="persona__img" src="assets/photos/journal.png" alt="Opengeslagen dagboek met pen">
+            <span class="persona__badge" aria-hidden="true">1</span>
+            <div class="persona__overlay">
+              <span class="persona__label">Eén dagboek</span>
+              <p class="persona__story">Elke deelneemster krijgt een gedrukt IK GA LEVEN-dagboek. Daar schrijft ze tien weken in, en het blijft van haar. <em>Voor 25 euro ligt er in september een dagboek klaar voor één vrouw.</em></p>
+            </div>
+          </div>
+          <p class="persona__statement">25 euro, één dagboek.</p>
+          <a href="https://ikgalevencursus.membirds.com/checkout/steun" class="btn btn--open">Ik draag bij <span class="btn__arrow">→</span></a>
+        </article>
 
-        <div class="card">
-          <p class="amount">250 euro</p>
-          <p><strong>De hele groep.</strong> Tien vrouwen, tien dagboeken. Een complete pilotgroep voorzien van het enige tastbare dat ze mee naar huis nemen.</p>
-        </div>
+        <article class="persona">
+          <div class="persona__imgwrap" tabindex="0">
+            <img class="persona__img" src="assets/photos/sisterhood.png" alt="Drie vrouwen die samen lachen met een kop koffie op de bank">
+            <span class="persona__badge" aria-hidden="true">10</span>
+            <div class="persona__overlay">
+              <span class="persona__label">De hele groep</span>
+              <p class="persona__story">Tien vrouwen, tien dagboeken. <em>Een complete pilotgroep voorzien van het enige tastbare dat ze mee naar huis nemen.</em></p>
+            </div>
+          </div>
+          <p class="persona__statement">250 euro, de hele groep.</p>
+          <a href="https://ikgalevencursus.membirds.com/checkout/steun" class="btn btn--open">Ik draag bij <span class="btn__arrow">→</span></a>
+        </article>
 
-        <div class="card">
-          <p class="amount">25 euro per maand</p>
-          <p><strong>Twaalf vrouwen per jaar.</strong> Een maandelijkse bijdrage is het meest waard, want daar kan ik op vooruit plannen. Vijfentwintig euro per maand komt neer op twaalf dagboeken in een jaar.</p>
-        </div>
+        <article class="persona">
+          <div class="persona__imgwrap" tabindex="0">
+            <img class="persona__img" src="assets/photos/woman-writing.png" alt="Vrouw die schrijft in een dagboek">
+            <span class="persona__badge" aria-hidden="true">12</span>
+            <div class="persona__overlay">
+              <span class="persona__label">Twaalf vrouwen per jaar</span>
+              <p class="persona__story">Een maandelijkse bijdrage is het meest waard, want daar kan ik op vooruit plannen. <em>Vijfentwintig euro per maand komt neer op twaalf dagboeken in een jaar.</em></p>
+            </div>
+          </div>
+          <p class="persona__statement">25 euro per maand, twaalf vrouwen.</p>
+          <a href="https://ikgalevencursus.membirds.com/checkout/steun" class="btn btn--open">Ik draag bij <span class="btn__arrow">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <div class="card card--wide">
-          <p class="amount">Een groep dragen</p>
-          <p>Werk je bij een bedrijf, een fonds, een praktijk of een netwerk dat meer wil doen dan het papier? Mail me op <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a>, dan laat ik zien wat een hele groep kost en wat erbij komt kijken.</p>
+  <!-- EEN GROEP DRAGEN — videoblok-format van de homepage (SECTIE 6): smalle
+       gecentreerde kolom, eyebrow, kop, mint hairline, één knop.
+       De knop opent een mail met een vooringevuld onderwerp, zodat Hiltje in haar
+       inbox direct ziet waar het over gaat. -->
+  <section class="section section--butter200" id="groep-dragen">
+    <div class="section__inner center-narrow">
+      <p class="eyebrow">Voor bedrijven, fondsen en netwerken</p>
+      <h2 class="h-hero">Een groep dragen</h2>
+      <hr class="divider divider--hair divider--mint divider--short">
+      <p style="margin-top:1.5rem;">Werk je bij een bedrijf, een fonds, een praktijk of een netwerk dat meer wil doen dan het papier? Dan laat ik zien wat een hele groep kost en wat erbij komt kijken.</p>
+      <p><a href="mailto:steun@ikgalevencursus.nl?subject=Ik%20wil%20informatie%20over%20steun%20aan%20IK%20GA%20LEVEN" class="btn">Vraag informatie aan <span class="btn__arrow">→</span></a></p>
+    </div>
+  </section>
+
+  <!-- CIJFERS (Own My Life, UK/Ierland) — staat sinds 2026-07-30 direct onder het
+       bijdrage-deel, op verzoek van Hiltje. -->
+  <section class="section section--stats" id="cijfers">
+    <div class="section__inner">
+      <div class="stats">
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Zou de cursus aanbevelen</div>
+        </div>
+        <div>
+          <div class="stat-num">20.000+</div>
+          <div class="stat-label">Vrouwen via Own My Life</div>
+        </div>
+        <div>
+          <div class="stat-num">10</div>
+          <div class="stat-label">Weken, in een besloten groep</div>
         </div>
       </div>
-
-      <div class="center-narrow">
-        <p class="cta-row">
-          <a class="btn" href="https://ikgalevencursus.membirds.com/checkout/steun">Ik draag bij <span class="btn__arrow">→</span></a>
-        </p>
-        <p class="fineprint">Eenmalig, maandelijks of per jaar. Je kunt ook zelf een bedrag invullen. Je hele bijdrage gaat naar de cursus.</p>
-      </div>
+      <!-- Congruentie: dit zijn cijfers van het originele OML-programma (UK/Ierland),
+           er zijn nog geen eigen NL-cijfers. Altijd zo benoemen. -->
+      <p class="stats-note">Cijfers van de originele Own My Life Course in het Verenigd Koninkrijk en Ierland.</p>
     </div>
   </section>
 
@@ -274,29 +365,6 @@
     </div>
   </section>
 
-  <!-- CIJFERS (Own My Life, UK/Ierland) -->
-  <section class="section section--stats" id="cijfers">
-    <div class="section__inner">
-      <div class="stats">
-        <div>
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Zou de cursus aanbevelen</div>
-        </div>
-        <div>
-          <div class="stat-num">20.000+</div>
-          <div class="stat-label">Vrouwen via Own My Life</div>
-        </div>
-        <div>
-          <div class="stat-num">10</div>
-          <div class="stat-label">Weken, in een besloten groep</div>
-        </div>
-      </div>
-      <!-- Congruentie: dit zijn cijfers van het originele OML-programma (UK/Ierland),
-           er zijn nog geen eigen NL-cijfers. Altijd zo benoemen. -->
-      <p class="stats-note">Cijfers van de originele Own My Life Course in het Verenigd Koninkrijk en Ierland: alle deelneemsters daar zouden de cursus aan andere vrouwen aanbevelen. In Nederland bestaan die cijfers nog niet, want de cursus heeft hier nog niet gedraaid.</p>
-    </div>
-  </section>
-
   <!-- ERVARINGEN -->
   <section class="section" id="ervaringen">
     <div class="section__inner">
@@ -322,14 +390,14 @@
               <div class="testi">
                 <span class="carousel__quote" aria-hidden="true">&rdquo;</span>
                 <blockquote>Het is geweldig en laat je zien dat het niet jouw schuld is.</blockquote>
-                <cite>Deelneemster van de cursus</cite>
+                <cite>Deelneemster Own My Life, vertaald uit het Engels</cite>
               </div>
             </li>
             <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="3 van 3">
               <div class="testi">
                 <span class="carousel__quote" aria-hidden="true">&rdquo;</span>
                 <blockquote>Dit is de cursus die je je leven echt teruggeeft en je helpt om met hoop naar de toekomst te kijken!</blockquote>
-                <cite>Deelneemster van de cursus</cite>
+                <cite>Deelneemster Own My Life, vertaald uit het Engels</cite>
               </div>
             </li>
           </ul>
@@ -370,7 +438,10 @@
         <!-- BTW staat sinds 2026-07-29 op 0 procent in membirds: een bijdrage waarvoor de gever
              niets terugkrijgt is geen vergoeding voor een dienst of goed. Hiltje checkt dit na de
              vakantie met haar boekhouder (staat in brein/open-beslissingen.md). Komt daar iets
-             anders uit, dan moet deze alinea terug én de fineprint onder de ladder. -->
+             anders uit, dan moet de alinea hieronder worden vervangen door de rekensom: van
+             25 euro gaat 4,34 naar de Belastingdienst en blijft 20,66 over. De kleine regel
+             onder het bijdrage-blok bestaat niet meer (vervallen op verzoek van Hiltje
+             2026-07-30), dus die hoeft niet terug. -->
         <p>Je bijdrage is geen betaling voor iets dat jij krijgt, dus er gaat geen BTW af. Het hele bedrag gaat naar de cursus.</p>
         <p>Wat je krijgt is dit: een vrouw die in september haar eigen dagboek in handen heeft.</p>
         <p class="fineprint">Vragen over facturen, jaarrekening of verantwoording? Mail <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a>.</p>
@@ -384,7 +455,10 @@
       <p class="eyebrow">Nog een manier om te helpen</p>
       <h2 class="h-hero">Ken je iemand?</h2>
       <p>Ken je een fonds, een bedrijf of iemand die dit werk zou willen steunen? Breng ons met elkaar in contact. Eén introductie doet vaak meer dan een donatie.</p>
-      <p>Mail me op <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a> en ik neem het van daar over.</p>
+      <p>Eén mail is genoeg. Ik neem het van daar over.</p>
+      <!-- Knop met vooringevuld onderwerp, zodat Hiltje deze mails er in haar inbox
+           direct uit pikt. Vervangt de losse mailto-regel. -->
+      <p><a href="mailto:steun@ikgalevencursus.nl?subject=Ik%20breng%20jullie%20met%20elkaar%20in%20contact" class="btn">Mail me <span class="btn__arrow">→</span></a></p>
     </div>
   </section>
 
