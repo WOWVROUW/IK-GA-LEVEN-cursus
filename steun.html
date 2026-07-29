@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Indexeerbaar, conform de lijn van de site: hoofdpagina's vindbaar, doorklikpagina's niet.
+       Gecontroleerd op de live site 2026-07-28: index.html, informatie.html en video.html staan
+       op "index, follow"; veiliglezen.html en bevestiging.html op noindex. Deze pagina moet
+       gevonden kunnen worden door fondsen, dus index.
+       De titel is wel neutraal gehouden ("Steun de cursus"), zonder de woorden geweld of
+       misbruik, omdat hij zichtbaar is in tabblad en browsergeschiedenis. -->
+  <meta name="robots" content="index, follow">
+  <title>Steun de cursus | IK GA LEVEN</title>
+  <meta name="description" content="IK GA LEVEN is gratis voor de vrouwen die meedoen. Voor 25 euro ligt er een gedrukt dagboek klaar voor één vrouw. Zo kun je bijdragen.">
+  <link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
+  <!-- Fonts: zelf-gehost via design-system/tokens.css (@font-face); geen Google Fonts-CDN -->
+  <link rel="stylesheet" href="design-system/tokens.css">
+
+  <style>
+    /* ---- Page-specific layout (patronen gedeeld met index.html) ---- */
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .center-narrow { max-width: 680px; margin: 0 auto; text-align: center; }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; background: var(--plum); color: #fff;
+      padding: 10px 16px; z-index: 2000; border-radius: var(--radius);
+    }
+    .skip-link:focus { left: var(--gutter); top: var(--gutter); }
+
+    /* Veiligheidsbanner (.announce) + menubalk (.site-header-band) + hero (.hero):
+       gedeelde componenten in design-system/tokens.css. Foto per pagina via de
+       inline style op .hero-photo (background-image + --hero-photo-pos). */
+
+    /* ---- De ladder: kaarten met bedrag, zelfde grid-ritme als de kaartsecties
+            op de homepage (.products-grid / .practical) ---- */
+    .ladder {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0 0;
+    }
+    .ladder .card { display: flex; flex-direction: column; }
+    .ladder .amount {
+      font-family: var(--font-display);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-display);
+      font-size: 32px;
+      line-height: 1.2;
+      color: var(--plum);
+      margin: 0 0 .35em;
+    }
+    .ladder p { margin: 0; font-size: 16px; line-height: 1.8; }
+    .ladder .card--wide { grid-column: 1 / -1; }
+
+    .cta-row { margin-top: 2.5rem; }
+    .fineprint { font-size: 15px; color: var(--text-muted); }
+
+    /* ---- Statistieken (OML-cijfers), zelfde opzet als index en informatie ---- */
+    .section--stats { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .stats-note { text-align: center; font-size: 14px; color: var(--text-muted); margin: 2rem auto 0; max-width: 760px; }
+
+    /* ---- Testimonial-carrousel (zelfde patroon als homepage) ---- */
+    .carousel { position: relative; padding: 0 64px; }
+    .carousel__viewport { overflow: hidden; }
+    .carousel__track { display: flex; margin: 0; padding: 0; list-style: none; transition: transform var(--dur-base) var(--ease-out); }
+    .carousel__slide { flex: 0 0 100%; display: flex; justify-content: center; padding: 0 0.5rem; }
+    .carousel__slide .testi { max-width: 720px; width: 100%; text-align: center; }
+    .carousel__slide .testi blockquote {
+      margin: 0;
+      font-family: var(--font-display); font-weight: var(--weight-light);
+      font-size: var(--fs-testimonial); line-height: var(--lh-testimonial); color: var(--plum);
+    }
+    .carousel__slide .testi cite {
+      display: block; margin-top: 1rem; font-family: var(--font-body); font-size: 12px; font-style: normal;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .carousel__quote {
+      display: flex; align-items: center; justify-content: center;
+      width: 88px; height: 88px; margin: 0 auto 1.75rem;
+      border-radius: 50%; border: 3px solid var(--mint-500); background: var(--white);
+      font-family: var(--font-display); font-size: 150px; line-height: 1; color: var(--mint-500);
+      padding-top: 84px; overflow: hidden;
+    }
+    .carousel__btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none; border: 0; padding: 0.5rem; cursor: pointer;
+      color: var(--plum); font-size: 30px; line-height: 1;
+      transition: color var(--dur-fast) var(--ease-out);
+    }
+    .carousel__btn:hover { color: var(--rose-500); }
+    .carousel__btn:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius); }
+    .carousel__btn--prev { left: 0; }
+    .carousel__btn--next { right: 0; }
+    @media (prefers-reduced-motion: reduce) { .carousel__track { transition: none; } }
+    @media (max-width: 600px) { .carousel { padding: 0 40px; } .carousel__btn { font-size: 24px; } }
+
+    /* ---- Over Hiltje (.about-split): gedeeld component in design-system/tokens.css ---- */
+
+    /* ---- Nieuwsbrief-opt-in, exact als sectie 13 op de homepage: eigen eyebrow
+            en kop in de huisstijl, Flodesk levert alleen de velden en de knop ---- */
+    #nieuwsbrief [class*="__title"],
+    #nieuwsbrief [class*="__subtitle"] { display: none !important; }
+    #nieuwsbrief form[class*="__form"] { padding: 0 !important; }
+    #nieuwsbrief { padding-block: 3.5rem; }
+    #nieuwsbrief [class*="__fields"] {
+      display: flex !important; flex-wrap: wrap; justify-content: center;
+    }
+    @media (max-width: 600px) {
+      #nieuwsbrief [class*="__fields"] { display: block !important; }
+      #nieuwsbrief [class*="__field"] { max-width: 100% !important; margin-inline: 0 !important; }
+    }
+
+    /* ---- Footer (vereenvoudigd: safety-block) + copyright: gedeeld footer-systeem
+            in design-system/tokens.css ---- */
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Ga direct naar de inhoud</a>
+
+<button class="exit-btn" id="exitBtn" type="button" aria-label="Verlaat deze site snel">
+  <span class="exit-btn__full">Verlaat deze site snel</span>
+  <span class="exit-btn__short">Snel weg</span>
+</button>
+
+<!-- Veiligheidsbanner -->
+<div class="announce">
+  <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
+  <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiliglezen.html">Lees hoe je veilig meeleest</a>.</span>
+</div>
+
+<!-- Menu -->
+<div class="site-header-band">
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="IK GA LEVEN, home">
+      <img src="design-system/assets/logo/logo-original.png" alt="IK GA LEVEN">
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="site-nav" id="siteNav" aria-label="Hoofdmenu">
+      <a href="index.html" class="is-accent">Begin</a>
+      <a href="informatie.html">Over IK GA LEVEN</a>
+      <a href="index.html#over-hiltje">Over Hiltje</a>
+      <div class="nav-item">
+        <button class="nav-sub-toggle" type="button" aria-expanded="false">Gratis <span class="caret" aria-hidden="true">&#9662;</span></button>
+        <div class="nav-sub">
+          <a href="video.html">Video: Het begon met liefde</a>
+          <a href="bijeenkomst.html">Bijeenkomst</a>
+          <a href="veiligheidsplan.html">Veiligheidsplan</a>
+        </div>
+      </div>
+      <a href="veiliglezen.html">Veilig meelezen</a>
+      <a href="steun.html">Steun</a>
+      <a href="index.html#podcast" class="is-accent">Podcast</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-photo" role="img"
+         aria-label="Rijpe citroenen aan een tak met groene bladeren, in warm zonlicht tegen een blauwe lucht"
+         style="background-image: url('assets/photos/hero-steun.jpg'); --hero-photo-pos: 50% 50%;"></div>
+    <div class="container">
+      <div class="hero-card">
+        <p class="eyebrow">Steun IK GA LEVEN</p>
+        <h1 class="h-hero">De cursus is gratis.<br class="br-mobile"> Niet kosteloos.</h1>
+        <p>IK GA LEVEN kost een vrouw niets. Op dit moment betaal ik het zelf. Hier lees je wat het wel kost, en wat jij kunt dragen.</p>
+        <a class="btn" href="https://ikgalevencursus.membirds.com/checkout/steun">Ik draag bij <span class="btn__arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAAROM ZIJ NIETS BETAALT -->
+  <section class="section" id="waarom-gratis">
+    <div class="section__inner">
+      <div class="center-narrow">
+        <p class="eyebrow">Waarom gratis</p>
+        <h2 class="h-hero">Waarom zij niets betaalt</h2>
+        <hr class="divider divider--hair divider--mint divider--short">
+        <p style="margin-top:1.5rem;">Er is een reden dat IK GA LEVEN gratis is, en het is geen marketingkeuze.</p>
+        <p>De vrouwen voor wie deze cursus bedoeld is hebben vaak geen eigen geld. Of ze hebben het wel, maar staat elke afschrijving op een rekening waar hij in kan kijken. Een factuur van een cursus over geweld in je relatie is dan geen betaling. Dat is een risico.</p>
+        <p>Dus vraag ik haar niets. Dat blijft zo.</p>
+        <p>Wat overblijft is de vraag wie het dan wel betaalt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DE LADDER -->
+  <section class="section section--butter100" id="bijdrage">
+    <div class="section__inner">
+      <div class="center-narrow">
+        <p class="eyebrow">Wat jouw bijdrage doet</p>
+        <h2 class="h-hero">Voor 25 euro ligt er een dagboek klaar</h2>
+        <p>Je kunt zelf kiezen wat je draagt. Dit is wat elk bedrag betekent voor de vrouwen die in september beginnen.</p>
+      </div>
+
+      <div class="ladder">
+        <div class="card">
+          <p class="amount">25 euro</p>
+          <p><strong>Eén dagboek.</strong> Elke deelneemster krijgt een gedrukt IK GA LEVEN-dagboek. Daar schrijft ze tien weken in, en het blijft van haar. Voor 25 euro ligt er in september een dagboek klaar voor één vrouw.</p>
+        </div>
+
+        <div class="card">
+          <p class="amount">250 euro</p>
+          <p><strong>De hele groep.</strong> Tien vrouwen, tien dagboeken. Een complete pilotgroep voorzien van het enige tastbare dat ze mee naar huis nemen.</p>
+        </div>
+
+        <div class="card">
+          <p class="amount">25 euro per maand</p>
+          <p><strong>Twaalf vrouwen per jaar.</strong> Een maandelijkse bijdrage is het meest waard, want daar kan ik op vooruit plannen. Vijfentwintig euro per maand komt neer op twaalf dagboeken in een jaar.</p>
+        </div>
+
+        <div class="card card--wide">
+          <p class="amount">Een groep dragen</p>
+          <p>Werk je bij een bedrijf, een fonds, een praktijk of een netwerk dat meer wil doen dan het papier? Mail me op <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a>, dan laat ik zien wat een hele groep kost en wat erbij komt kijken.</p>
+        </div>
+      </div>
+
+      <div class="center-narrow">
+        <p class="cta-row">
+          <a class="btn" href="https://ikgalevencursus.membirds.com/checkout/steun">Ik draag bij <span class="btn__arrow">→</span></a>
+        </p>
+        <p class="fineprint">Eenmalig, maandelijks of per jaar. Je kunt ook zelf een bedrag invullen. Alle bedragen zijn inclusief BTW.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAT HET NIET DEKT -->
+  <section class="section" id="wat-niet">
+    <div class="section__inner">
+      <div class="center-narrow">
+        <p class="eyebrow">Eerlijk gerekend</p>
+        <h2 class="h-hero">Wat je bijdrage niet dekt</h2>
+        <hr class="divider divider--hair divider--mint divider--short">
+        <p style="margin-top:1.5rem;">Vijfentwintig euro dekt het papier. Niet het hele programma.</p>
+        <p>Daarnaast zijn er de vertaling en bewerking van het materiaal, de licentie, de online leeromgeving, de besloten community, en de tien weken die ik elke woensdagochtend vrijhoud. Dat betaal ik nu uit eigen zak, en ik zoek daarvoor subsidie en sponsoring.</p>
+        <p>Ik schrijf dat er liever bij dan dat ik het weglaat. Je moet kunnen zien waar je geld heen gaat, en wat er nog niet gedekt is.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAAROM NU -->
+  <section class="section section--butter200" id="waarom-nu">
+    <div class="section__inner center-narrow">
+      <p class="eyebrow">Waarom nu</p>
+      <h2 class="h-hero">In september start de eerste Nederlandse groep</h2>
+      <hr class="divider divider--hair divider--mint divider--short">
+      <p style="margin-top:1.5rem;">IK GA LEVEN is de Nederlandse bewerking van Own My Life. In Engeland en Ierland zijn daar meer dan twintigduizend vrouwen doorheen gegaan.</p>
+      <p>Wie deze eerste groep draagt, financiert dus meer dan tien dagboeken. Je financiert het bewijs dat dit hier ook werkt.</p>
+    </div>
+  </section>
+
+  <!-- CIJFERS (Own My Life, UK/Ierland) -->
+  <section class="section section--stats" id="cijfers">
+    <div class="section__inner">
+      <div class="stats">
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Zou de cursus aanbevelen</div>
+        </div>
+        <div>
+          <div class="stat-num">20.000+</div>
+          <div class="stat-label">Vrouwen via Own My Life</div>
+        </div>
+        <div>
+          <div class="stat-num">10</div>
+          <div class="stat-label">Weken, in een besloten groep</div>
+        </div>
+      </div>
+      <!-- Congruentie: dit zijn cijfers van het originele OML-programma (UK/Ierland),
+           er zijn nog geen eigen NL-cijfers. Altijd zo benoemen. -->
+      <p class="stats-note">Cijfers van de originele Own My Life Course in het Verenigd Koninkrijk en Ierland: alle deelneemsters daar zouden de cursus aan andere vrouwen aanbevelen. In Nederland bestaan die cijfers nog niet, want de cursus heeft hier nog niet gedraaid.</p>
+    </div>
+  </section>
+
+  <!-- ERVARINGEN -->
+  <section class="section" id="ervaringen">
+    <div class="section__inner">
+      <!-- Echte, geanonimiseerde citaten van deelneemsters. Slide 1 komt uit Own My Life
+           (Verenigd Koninkrijk); het Engelse origineel luidt verbatim:
+           "Everyone has seen a life changing improvement in me. I was ready to give up and
+           end it all as I couldn't cope. This course helps change lives."
+           Slide 2 en 3 komen uit de vertaalde cursusfolder (Folder voor Vrouwen,
+           Own My Life / IK GA LEVEN, 2026-07-08). Verbatim; niet herschrijven. -->
+      <div class="carousel" id="testiCarousel" aria-roledescription="carrousel" aria-label="Ervaringen van deelneemsters">
+        <button class="carousel__btn carousel__btn--prev" type="button" data-dir="-1" aria-label="Vorige ervaring">&#9664;</button>
+        <button class="carousel__btn carousel__btn--next" type="button" data-dir="1" aria-label="Volgende ervaring">&#9654;</button>
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="1 van 3">
+              <div class="testi">
+                <span class="carousel__quote" aria-hidden="true">&rdquo;</span>
+                <blockquote>Iedereen ziet een opmerkelijke verandering in mij. Ik stond op het punt het op te geven, omdat ik het niet meer aankon. Deze cursus verandert levens.</blockquote>
+                <cite>Deelneemster Own My Life, vertaald uit het Engels</cite>
+              </div>
+            </li>
+            <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="2 van 3">
+              <div class="testi">
+                <span class="carousel__quote" aria-hidden="true">&rdquo;</span>
+                <blockquote>Het is geweldig en laat je zien dat het niet jouw schuld is.</blockquote>
+                <cite>Deelneemster van de cursus</cite>
+              </div>
+            </li>
+            <li class="carousel__slide" role="group" aria-roledescription="dia" aria-label="3 van 3">
+              <div class="testi">
+                <span class="carousel__quote" aria-hidden="true">&rdquo;</span>
+                <blockquote>Dit is de cursus die je je leven echt teruggeeft en je helpt om met hoop naar de toekomst te kijken!</blockquote>
+                <cite>Deelneemster van de cursus</cite>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIE DIT DOET -->
+  <section class="section" id="over-hiltje">
+    <div class="section__inner">
+    <div class="about-split">
+    <div class="about-text">
+      <div>
+        <p class="eyebrow">Wie dit doet</p>
+        <h2 class="h-under-image">Ontmoet Hiltje</h2>
+        <hr class="about-divider">
+        <p>Ik ben Hiltje. Als huisarts en als arts bij Veilig Thuis heb ik gewerkt met geweld in afhankelijkheidsrelaties, zoals partnergeweld en kindermishandeling.</p>
+        <p>Ik ben door Natalie Collins, de maker van Own My Life, opgeleid om dit programma te leiden. In Nederland bestond het niet. Nu wel.</p>
+        <a href="informatie.html" class="btn">Over de cursus <span class="btn__arrow">→</span></a>
+      </div>
+    </div>
+    <div class="about-photo-side">
+      <img class="about-photo" src="assets/photos/hiltje.jpg" alt="Hiltje, huisarts, coach en initiatiefnemer van de IK GA LEVEN-cursus, met een briefje met 'Proud to be me'">
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- EERLIJK OVER DE VORM -->
+  <section class="section section--plum50" id="vorm">
+    <div class="section__inner">
+      <div class="center-narrow">
+        <p class="eyebrow">Waar je aan toe bent</p>
+        <h2 class="h-hero">Eerlijk over de vorm</h2>
+        <hr class="divider divider--hair divider--mint divider--short">
+        <p style="margin-top:1.5rem;">WOWVROUW is een bedrijf, geen stichting. Er is geen ANBI-status, dus je bijdrage is geen aftrekbare gift. Je krijgt er ook geen logo of tegenprestatie voor.</p>
+        <p>Omdat het een bedrijf is, gaat er BTW over je bijdrage. Van 25 euro gaat 4,34 naar de Belastingdienst en blijft 20,66 over voor het werk. Dat zeg ik liever hardop dan dat je het zelf uit een bon moet opmaken.</p>
+        <p>Wat je krijgt is dit: een vrouw die in september haar eigen dagboek in handen heeft.</p>
+        <p class="fineprint">Vragen over facturen, jaarrekening of verantwoording? Mail <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRENG ME IN CONTACT -->
+  <section class="section section--rose200" id="introductie">
+    <div class="section__inner center-narrow">
+      <p class="eyebrow">Nog een manier om te helpen</p>
+      <h2 class="h-hero">Ken je iemand?</h2>
+      <p>Ken je een fonds, een bedrijf of iemand die dit werk zou willen steunen? Breng ons met elkaar in contact. Eén introductie doet vaak meer dan een donatie.</p>
+      <p>Mail me op <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a> en ik neem het van daar over.</p>
+    </div>
+  </section>
+
+  <!-- SLOT -->
+  <section class="section section--rose300" id="draag-een-vrouw">
+    <div class="section__inner center-narrow">
+      <p class="eyebrow">Steun IK GA LEVEN</p>
+      <h2 class="h-hero">Draag één vrouw.</h2>
+      <p>Voor 25 euro ligt er in september een dagboek klaar voor een vrouw die tien weken lang haar eigen verhaal terugpakt.</p>
+      <p class="cta-row">
+        <a class="btn" href="https://ikgalevencursus.membirds.com/checkout/steun">Ik draag bij <span class="btn__arrow">→</span></a>
+      </p>
+      <!-- Betalen via de knop gaat met iDEAL of Wero. Wie liever zelf overmaakt, doet dat op de
+           rekening hieronder (aangeleverd door Hiltje 2026-07-29; de controlecijfers van het IBAN
+           kloppen). De opzet is die van centreofjoy.nl/steun-centre-of-joy: knop eerst, rekening
+           eronder in kleine letters. -->
+      <p class="fineprint">Liever zelf overmaken? Dat kan op <strong>NL87&nbsp;KNAB&nbsp;0777&nbsp;1898&nbsp;87</strong> ten name van WoW! Vrouw, met "IK GA LEVEN" als omschrijving. Eerst iets vragen kan ook: mail <a href="mailto:steun@ikgalevencursus.nl">steun@ikgalevencursus.nl</a>.</p>
+    </div>
+  </section>
+
+  <!-- NIEUWSBRIEF — zelfde blok als sectie 13 op de homepage -->
+  <section class="section section--butter300 section--optin" id="nieuwsbrief">
+    <div class="section__inner" style="text-align:center;">
+      <!-- Eigen kop in de huisstijl; het Flodesk-formulier (segment IGL Nieuwsbrief)
+           levert alleen de velden en de knop (titel/subtitel via CSS verborgen).
+           Loader-script staat onderaan deze pagina. -->
+      <p class="eyebrow">Als het veilig is</p>
+      <h2 class="h-optin">Laat je e-mailadres achter voor cursusdagen,<br>uitnodigingen en inspiratie</h2>
+      <div id="fd-form-6a4f7359a8f3787e49cfde44" style="max-width:960px;margin:1.25rem auto 0;"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="safety-block">
+      <p style="margin:0 0 0.75rem;"><strong>Veilig verder browsen?</strong> Met de knop rechtsboven of de Esc-toets verlaat je deze site direct; de pagina vervangt zichzelf door een neutrale website en de terugknop brengt je dan niet terug naar deze pagina. Let op: het bezoek kan wel in je browsergeschiedenis blijven staan. Wil je geen sporen achterlaten, <a href="veiliglezen.html" style="color:var(--mint-700);">wis dan je geschiedenis of lees hoe je onzichtbaar meeleest</a>.</p>
+      <p style="margin:0;"><strong>Ben je nu in gevaar?</strong> <span class="call112">Bel 112.</span> Denk je aan zelfdoding of maak je je zorgen om iemand? Bel 113 Zelfmoordpreventie, 0800-0113.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="copyright">&copy; 2026 IK GA LEVEN &middot; ikgalevencursus.nl</div>
+
+<!-- ============================================================
+     NOG TE DOEN VOOR DEZE PAGINA LIVE KAN
+
+     KLAAR: de herofoto staat als assets/photos/hero-steun.jpg in de repo (jpg en geen avif,
+     want AVIF wordt pas ondersteund vanaf Safari 16 en een vrouw op een oudere iPhone zou
+     dan een leeg vlak zien). De aria-label is ingevuld. Het menu-item "Steun" staat in de
+     nav van index, informatie, video, bijeenkomst en steun zelf, plus in de footermenu-kolom
+     van index.
+
+     1. VISUEEL CONTROLEREN
+        Open steun.html in je browser en kijk naar twee dingen: valt de witte hero-card goed
+        over de foto, en staat de foto goed uitgesneden? Bijsturen kan met --hero-photo-pos
+        in de style van .hero-photo (nu 50% 50%; veiligheidsplan.html gebruikt 50% 60%,
+        index.html 50% 45%).
+
+     2. KLAAR: de bankrekening staat onder de laatste knop (NL87 KNAB 0777 1898 87 t.n.v.
+        WoW! Vrouw), zodat wie geen iDEAL wil gebruiken toch kan overmaken.
+
+        De betaallink zelf is ook gecontroleerd (2026-07-29): alle drie de knoppen wijzen
+        naar https://ikgalevencursus.membirds.com/checkout/steun, die pagina werkt en heeft
+        de pakketten Één dagboek (25 euro), Een hele groep (250 euro) en Doorlopende steun
+        (25 euro per maand), plus een vrij bedrag. Betalen kan alleen met iDEAL of Wero.
+        Alle bedragen zijn inclusief 21 procent BTW.
+
+     3. DUBBELE CITROENFOTO
+        hero-citroen.jpg staat al als hero op veiligheidsplan.html, en dat is ook een tak met
+        citroenen. Twee citroenhero's op één site kan bewust en rustig ogen, maar het kan ook
+        als een herhaling voelen. Jouw keuze. Wil je variatie, dan is er nog
+        hero-bloesem.jpg ongebruikt.
+
+     4. KLAAR: de financieringszin op informatie.html is aangepast (2026-07-29). Daar
+        stond "De cursus wordt gefinancierd via subsidie en sponsoring"; nu staat er
+        alleen nog "Deelname kost je niets".
+
+     5. LOSSTAAND, MAAR WEL BELANGRIJK: bijeenkomst.html staat op
+        <meta name="robots" content="noindex, nofollow">. Dat is de enige hoofdpagina met
+        noindex (gemeten 2026-07-28) en het lijkt een restant. Zolang dat zo staat, kan
+        niemand die bijeenkomst via Google vinden.
+     ============================================================ -->
+
+<script src="assets/js/safety.js"></script>
+<script src="assets/js/nav.js"></script>
+<script>
+  // Testimonials: zelfde rustige carrousel als de homepage (pauzeert bij
+  // hover/focus, staat stil bij 'reduce motion').
+  (function () {
+    var root = document.getElementById('testiCarousel');
+    if (!root) return;
+    var track = root.querySelector('.carousel__track');
+    var slides = root.querySelectorAll('.carousel__slide');
+    var prev = root.querySelector('[data-dir="-1"]');
+    var next = root.querySelector('[data-dir="1"]');
+    var i = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var DELAY = 6000;
+
+    function render() { track.style.transform = 'translateX(' + (-i * 100) + '%)'; }
+    function go(n) { i = (n + slides.length) % slides.length; render(); }
+    function start() { if (reduce || timer) return; timer = setInterval(function () { go(i + 1); }, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    next.addEventListener('click', function () { go(i + 1); });
+    prev.addEventListener('click', function () { go(i - 1); });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+
+    render();
+    start();
+  })();
+</script>
+
+<script>
+  // Flodesk universal loader + init van het nieuwsbrief-formulier
+  // (segment IGL Nieuwsbrief, zelfde formId als op de homepage).
+  (function(w, d, t, h, s, n) {
+    w.FlodeskObject = n;
+    var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t);
+    sm.async = true;
+    sm.type = 'module';
+    sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true;
+    sn.noModule = true;
+    sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+  window.fd('form', {
+    formId: '6a4f7359a8f3787e49cfde44',
+    containerEl: '#fd-form-6a4f7359a8f3787e49cfde44'
+  });
+</script>
+</body>
+</html>
