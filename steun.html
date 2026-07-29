@@ -57,6 +57,23 @@
     .cta-row { margin-top: 2.5rem; }
     .fineprint { font-size: 15px; color: var(--text-muted); }
 
+    /* Statement-blok: één regel op testimonial-maat in pruim, als scharnier tussen
+       "waarom zij niets betaalt" en de ladder. Zelfde typografische register als de
+       testimonial-carrousel (--fs-testimonial), zelfde functie als .joy-line en
+       .closing-line op informatie.html: een display-regel die een sectie afsluit.
+       Geen aanhalingstekens, want dit is geen citaat maar een oproep. */
+    .statement {
+      max-width: 34rem;
+      margin: 3.5rem auto 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: var(--weight-light);
+      font-size: var(--fs-testimonial);
+      line-height: var(--lh-testimonial);
+      letter-spacing: var(--tracking-display);
+      color: var(--plum);
+    }
+
     /* ---- Statistieken (OML-cijfers), zelfde opzet als index en informatie ---- */
     .section--stats { padding-top: 4.5rem; padding-bottom: 4.5rem; }
     .stats-note { text-align: center; font-size: 14px; color: var(--text-muted); margin: 2rem auto 0; max-width: 760px; }
@@ -150,7 +167,7 @@
         </div>
       </div>
       <a href="veiliglezen.html">Veilig meelezen</a>
-      <a href="steun.html">Steun</a>
+      <a href="steun.html">Steun IK GA LEVEN</a>
       <a href="index.html#podcast" class="is-accent">Podcast</a>
     </nav>
   </header>
@@ -183,7 +200,11 @@
         <p style="margin-top:1.5rem;">Er is een reden dat IK GA LEVEN gratis is, en het is geen marketingkeuze.</p>
         <p>De vrouwen voor wie deze cursus bedoeld is hebben vaak geen eigen geld. Of ze hebben het wel, maar staat elke afschrijving op een rekening waar hij in kan kijken. Een factuur van een cursus over geweld in je relatie is dan geen betaling. Dat is een risico.</p>
         <p>Dus vraag ik haar niets. Dat blijft zo.</p>
-        <p>Wat overblijft is de vraag wie het dan wel betaalt.</p>
+        <!-- Regel aangeleverd door Hiltje 2026-07-29, verving "Wat overblijft is de vraag wie
+             het dan wel betaalt". LET OP de stem: de hele pagina staat bewust in "ik" (besluit
+             2026-07-28, dit is geen bedrijf met een team), en hier staat "ons". Hiltje weet dat;
+             haar woorden staan er verbatim. -->
+        <p class="statement">Help ons de levens van vrouwen veiliger te maken.</p>
       </div>
     </div>
   </section>
