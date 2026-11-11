@@ -334,7 +334,7 @@ de share-pagina.
 - Card-radius volgt nu dezelfde `--radius: 2px` als knoppen (consistent met "bijna
   recht"); zeg het als kaarten iets ronder mogen.
 - De volledige lijst openstaande beslissingen wordt bijgehouden in
-  `brein/open-beslissingen.md` in de werkmap (Operations/Claude CODE), niet hier.
+  `brein/08 Methode en werkwijze/Bedrijfsvoering/open-beslissingen.md` in de werkmap (Operations/Claude CODE), niet hier.
 
 (Bijgewerkt 2026-07-08: snel-weg-knop en crisis-melding zijn inmiddels gebouwd en
 staan op alle pagina's.)
