@@ -3,17 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Tab-titel bewust zonder "psychisch geweld": de titel is zichtbaar in tabblad en
-       browsergeschiedenis op een gedeeld toestel. -->
   <title>Gratis online bijeenkomst | Ik ga leven</title>
   <link rel="icon" type="image/png" href="design-system/assets/logo/logo-original.png">
-  <!-- 2026-11-11: weer noindex. De bijeenkomst vervalt (Hiltje); deze pagina wordt omgebouwd
-       tot de meedenkgesprek-pagina. Zie SEO-GEO/zoekwoorden.md. -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://ikgalevencursus.nl/bijeenkomst.html">
   <meta name="description" content="Gratis online bijeenkomst: zit ik in een relatie met psychisch geweld? Twee uur helderheid via Zoom, in een besloten groep vrouwen. Kies een datum die jou past.">
 
-  <!-- Fonts: zelf-gehost via design-system/tokens.css (@font-face); geen Google Fonts-CDN -->
 
   <link rel="stylesheet" href="design-system/tokens.css">
 
@@ -165,19 +160,16 @@
 </head>
 <body>
 
-  <!-- Snel-weg-knop: vervangt de pagina direct door een neutrale site (ook via Esc) -->
   <button class="exit-btn" id="exitBtn" type="button" aria-label="Verlaat deze site snel">
     <span class="exit-btn__full">Verlaat deze site snel</span>
     <span class="exit-btn__short">Snel weg</span>
   </button>
 
-  <!-- Veiligheidsbanner: standaard op elke pagina -->
   <div class="announce">
     <strong>Acuut gevaar? <span class="announce__112">Bel altijd 112.</span></strong>
     <span class="announce__second">Niet zeker of het veilig is om deze pagina te bekijken? <a href="veiliglezen.html">Lees hoe je veilig meeleest</a>.</span>
   </div>
 
-  <!-- Menu -->
   <div class="site-header-band">
     <header class="site-header">
       <a class="logo" href="index.html" aria-label="Ik ga leven, home">
@@ -203,7 +195,6 @@
     </header>
   </div>
 
-  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-photo" role="presentation" aria-hidden="true"
          style="background-image: url('assets/photos/hero-bijeenkomst.jpg'); --hero-photo-flip: scaleX(-1);"></div>
@@ -215,16 +206,12 @@
            In twee uur krijg je helderheid over wat psychisch geweld is, hoe het werkt en waarom
            het zo verwarrend voelt. Online, in een besloten groep vrouwen. Je hoeft niets uit te
            leggen.</p>
-        <!-- Evergreen gehouden (2026-07-30, wens Hiltje): geen maandnamen in de vaste
-             tekst. De actuele data staan in de lijst bij #aanmelden en worden daar
-             onderhouden; een maand hier zou telkens verouderen. -->
         <p class="hero-meta">Twee uur &middot; via Zoom &middot; gratis</p>
         <a class="btn" href="#aanmelden">Ik ben erbij <span class="btn__arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ── HERKOMST-STRIP ───────────────────────────────────────────────── -->
   <div class="strip">
     <div class="container strip-items">
       <span>Gebaseerd op Own My Life</span>
@@ -233,20 +220,11 @@
     </div>
   </div>
 
-  <!-- ── AANMELDEN ────────────────────────────────────────────────────── -->
   <section class="section section--band section--optin" id="aanmelden">
     <div class="container optin-container">
       <div class="optin-narrow" style="--optin-form-w: 760px; --optin-mock-max: 300px;">
         <img class="optin-mock" src="assets/photos/vrouw-laptop-groen.png" alt="Vrouw achter haar laptop tijdens een online bijeenkomst">
         <div class="signup">
-        <!-- Datumkiezer + Flodesk inline formulieren. Eén Flodesk-formulier per datum, elk met
-             een eigen segment (IGL Meeting-0721 / -0724 / -0826) en eigen workflow. De kiezer
-             wisselt welk formulier zichtbaar is; de datumlijst staat in het script onderaan deze
-             pagina (nieuwe datum = formulier dupliceren in Flodesk en de formId daar invullen).
-             Het formulier levert zijn eigen titel en styling; hier geen eigen kop toevoegen.
-             LET OP: de redirect in Flodesk moet per formulier de VOLLEDIGE url zijn
-             (https://wowvrouw.github.io/IK-GA-LEVEN-cursus/bevestiging.html, later het eigen
-             domein). -->
         <div class="datum-kiezer">
           <label for="datumKeuze">Kies de datum die jou past</label>
           <select id="datumKeuze" class="datum-select"></select>
@@ -261,7 +239,6 @@
     </div>
   </section>
 
-  <!-- ── WAT JE ERAAN HEBT ────────────────────────────────────────────── -->
   <section class="section">
     <div class="container">
       <div class="points-head">
@@ -292,7 +269,6 @@
     </div>
   </section>
 
-  <!-- ── CIJFERRIJ ────────────────────────────────────────────────────── -->
   <div class="strip strip--roomy">
     <div class="container">
       <div class="stats">
@@ -304,7 +280,6 @@
     </div>
   </div>
 
-  <!-- ── PRAKTISCH ────────────────────────────────────────────────────── -->
   <section class="section">
     <div class="container">
       <div class="panel panel--butter">
@@ -321,7 +296,6 @@
     </div>
   </section>
 
-  <!-- ── OVER HILTJE ──────────────────────────────────────────────────── -->
   <section class="section">
     <div class="container">
       <div class="about-split">
@@ -344,7 +318,6 @@
     </div>
   </section>
 
-  <!-- ── SLOT ─────────────────────────────────────────────────────────── -->
   <section class="section section--plum">
     <div class="container closing">
       <h2>Kies de datum die jou past</h2>
@@ -353,7 +326,6 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="safety-block">
@@ -364,7 +336,6 @@
   </footer>
   <div class="copyright">&copy; 2026 IK GA LEVEN &middot; ikgalevencursus.nl</div>
 
-  <!-- Snel-weg + terugknop-beveiliging: gedeeld script (assets/js/safety.js) -->
   <script src="assets/js/safety.js"></script>
   <script src="assets/js/nav.js"></script>
 
