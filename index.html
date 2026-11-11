@@ -139,7 +139,7 @@
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-display); font-size: 22px; color: var(--plum);
   }
-  /* Kaart met naam + verhaal 'achter' de foto — verschijnt op hover/focus */
+  /* Kaart met naam + verhaal 'achter' de foto: verschijnt op hover/focus */
   .persona__overlay {
     position: absolute; inset: 0; border-radius: var(--radius);
     background: rgba(107, 25, 83, 0.92); color: var(--white);
@@ -182,7 +182,7 @@
     display: block; margin-top: 1rem; font-family: var(--font-body); font-size: 12px; font-style: normal;
     color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
   }
-  /* Rond icoon boven de quote — dikke mint-500 rand met groot mint
+  /* Rond icoon boven de quote: dikke mint-500 rand met groot mint
      aanhalingsteken (sluitvariant ”) */
   .carousel__quote {
     display: flex; align-items: center; justify-content: center;
@@ -334,7 +334,7 @@
   /* ---- SECTIE 14: Footer (volledige homepage-footer met menukolommen + IG-strip)
           + veiligheidsblok + copyright: gedeeld footer-systeem in design-system/tokens.css ---- */
 
-  /* Mobiel: stapelen als in de ChicSpark-demo — gekleurd vlak bovenaan, dan de
+  /* Mobiel: stapelen als in de ChicSpark-demo: gekleurd vlak bovenaan, dan de
      witte kaart met tekst, dan de foto onderaan.
      Het kleurvlak is precies zo hoog als de telefoon. Dat is wat de twee
      vijfdes vastlegt: de telefoon start op 1/5 van dat vlak, dus 1/5 kleur
@@ -348,7 +348,7 @@
       min-height: 0; flex-direction: column; align-items: stretch;
       padding: 0;
     }
-    /* order: eerst de kaart, dan de foto — omgekeerd aan de DOM-volgorde */
+    /* order: eerst de kaart, dan de foto: omgekeerd aan de DOM-volgorde */
     #podcast .container {
       order: 1; z-index: 2;
       padding-top: var(--podcast-phone-h);   /* dit is het gekleurde vlak bovenaan */
