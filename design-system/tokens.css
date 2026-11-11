@@ -828,6 +828,11 @@ h1, h2, h3, h4 {
   gap: 2.5rem;
   text-align: center;
 }
+/* Vier tegels: twee bij twee, op brede schermen vier naast elkaar (nooit 3 + 1) */
+.stats:has(> div:nth-child(4)) { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) {
+  .stats:has(> div:nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
+}
 .stat-num {
   font-family: var(--font-display);
   font-weight: var(--weight-light);
